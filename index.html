@@ -1,1891 +1,1986 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>IFAN BTC ANALYSIS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>social live.IF</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#071018;color:#e8f0f7}
-button{font-family:inherit}
-.app{display:flex;min-height:100vh}
-.sidebar{width:240px;background:#0b151e;border-right:1px solid #1b2b38;position:fixed;left:0;top:0;bottom:0;overflow-y:auto;z-index:20}
-.logo{padding:22px 18px;font-size:20px;font-weight:bold;border-bottom:1px solid #1b2b38}
-.logo span{color:#28d7ff}
-.menu{padding:12px}
-.menu button{width:100%;background:transparent;color:#aebdca;border:0;padding:13px 12px;text-align:left;border-radius:10px;margin-bottom:5px;cursor:pointer;font-size:14px}
-.menu button:hover,.menu button.active{background:#122533;color:#fff}
-.menu-icon{display:inline-block;width:27px;font-size:17px}
-.trading-disabled{margin:15px 12px;padding:12px;border:1px solid #344451;border-radius:10px;color:#aebdca;font-size:11px;line-height:1.5}
-.main{margin-left:240px;width:calc(100% - 240px)}
-.topbar{height:68px;background:#09141d;border-bottom:1px solid #1b2b38;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:10}
-.symbol{font-weight:bold;font-size:18px}
-.symbol small{color:#8394a2;font-size:11px;margin-left:6px}
-.status-area{display:flex;align-items:center;gap:12px}
-.status{padding:7px 11px;border-radius:20px;font-size:11px;font-weight:bold}
-.connecting{background:#183044;color:#6edcff}
-.live{background:#103b30;color:#43e6b0}
-.stale{background:#403514;color:#ffd86b}
-.error{background:#411d23;color:#ff8b9b}
-.last-update{font-size:11px;color:#80909d}
-.content{padding:20px;max-width:1500px;margin:auto}
-.mobile-menu{display:none;background:#122533;border:1px solid #243b4b;color:#fff;border-radius:8px;padding:8px 10px;cursor:pointer}
-.card{background:linear-gradient(145deg,#0c1822,#09131b);border:1px solid #1b2b38;border-radius:14px;padding:17px;box-shadow:0 8px 25px rgba(0,0,0,.16)}
-.card-title{font-size:12px;color:#8193a1;margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px}
-.value{font-size:25px;font-weight:bold}
-.sub{color:#7e919f;font-size:11px;margin-top:7px}
-.green{color:#43e6b0}.red{color:#ff7184}.yellow{color:#ffd86b}.blue{color:#28d7ff}
-.price-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:15px}
-.chart-card{margin-bottom:15px}
-.chart-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.timeframes{display:flex;gap:5px;flex-wrap:wrap}
-.timeframes button{background:#101f2a;color:#8ea1ae;border:1px solid #223746;border-radius:7px;padding:7px 10px;cursor:pointer;font-size:11px}
-.timeframes button.active{background:#164154;color:#fff;border-color:#24758d}
-.chart-wrap{height:390px;width:100%}
-canvas{width:100%;height:100%;display:block}
-.analysis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:15px}
-.analysis-item{padding:14px;background:#0b1720;border:1px solid #1a2b37;border-radius:11px}
-.analysis-label{color:#8193a1;font-size:11px;margin-bottom:8px}
-.analysis-value{font-weight:bold;font-size:17px}
-.indicator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:15px}
-.indicator-value{font-size:21px;font-weight:bold}
-.progress{height:5px;background:#182833;border-radius:5px;overflow:hidden;margin-top:12px}
-.progress span{display:block;height:100%;width:50%;background:#28d7ff}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:650px}
-th,td{padding:11px 9px;border-bottom:1px solid #192b37;font-size:12px;text-align:left}
-th{color:#7e919f;font-weight:normal}
-td{color:#d9e4eb}
-.badge{display:inline-block;padding:5px 8px;border-radius:6px;font-size:10px;font-weight:bold}
-.badge-up{background:#10372d;color:#43e6b0}
-.badge-down{background:#401d24;color:#ff7184}
-.badge-neutral{background:#302d1d;color:#ffd86b}
-.signal-box{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px}
-.signal-main{min-height:170px;display:flex;align-items:center;justify-content:center;flex-direction:column;border-radius:14px;border:1px solid #253744;background:#0b1720}
-.signal-text{font-size:36px;font-weight:bold}
-.signal-note{margin-top:10px;color:#7e919f;font-size:11px;text-align:center}
-.components{display:grid;gap:8px}
-.component{display:flex;justify-content:space-between;padding:12px;background:#0b1720;border:1px solid #1a2b37;border-radius:9px;font-size:12px}
-.log{max-height:280px;overflow-y:auto;background:#050c11;border-radius:10px;padding:12px;font-family:monospace;font-size:11px;color:#90a5b3}
-.log-line{margin-bottom:6px}
-.raw-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.action{background:#112330;border:1px solid #263e4d;color:#dbe7ee;padding:9px 12px;border-radius:8px;cursor:pointer;font-size:11px}
-.page{display:none}.page.active{display:block}
-.section-title{font-size:20px;font-weight:bold;margin-bottom:5px}
-.section-sub{color:#718491;font-size:12px;margin-bottom:18px}
-.setting{padding:14px;border-bottom:1px solid #1a2b37}
-.setting:last-child{border-bottom:0}
-.setting strong{display:block;margin-bottom:5px}
-.setting small{color:#778a97}
-.footer-note{text-align:center;color:#586b78;font-size:10px;padding:25px 0 10px}
-
-@media(max-width:1050px){
-.price-grid{grid-template-columns:repeat(3,1fr)}
-.analysis-grid{grid-template-columns:repeat(2,1fr)}
-.indicator-grid{grid-template-columns:repeat(2,1fr)}
+*{
+  box-sizing:border-box;
 }
 
-@media(max-width:750px){
-.sidebar{transform:translateX(-100%);transition:.25s}
-.sidebar.open{transform:translateX(0)}
-.main{margin-left:0;width:100%}
-.mobile-menu{display:block}
-.topbar{padding:0 12px}
-.last-update{display:none}
-.content{padding:12px}
-.price-grid{grid-template-columns:repeat(2,1fr)}
-.analysis-grid{grid-template-columns:1fr 1fr}
-.indicator-grid{grid-template-columns:1fr 1fr}
-.signal-box{grid-template-columns:1fr}
-.chart-wrap{height:300px}
-.value{font-size:20px}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f4f7;
+  color:#18202a;
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:62px;
+  background:#ffffff;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#e53935;
+}
+
+.header-right{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#f0f2f5;
+  font-size:19px;
+}
+
+.app{
+  max-width:650px;
+  margin:auto;
+  padding-bottom:85px;
+}
+
+.page{
+  display:none;
+  padding:14px;
+}
+
+.page.active{
+  display:block;
+}
+
+/* LOGIN */
+
+.login-box{
+  margin:60px 14px;
+  background:#fff;
+  padding:24px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.login-box h1{
+  text-align:center;
+  margin-top:0;
+}
+
+.login-box p{
+  text-align:center;
+  color:#777;
+}
+
+.field{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:10px;
+  outline:none;
+}
+
+.field:focus{
+  border-color:#777;
+}
+
+.main-btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.secondary-btn{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:13px;
+  background:white;
+  margin-top:8px;
+}
+
+.message{
+  text-align:center;
+  margin-top:10px;
+  color:#d32f2f;
+}
+
+/* LIVE CARD */
+
+.live-card{
+  background:#111;
+  color:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+
+.live-top{
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.live-badge{
+  background:#e53935;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.live-video{
+  width:100%;
+  aspect-ratio:16/10;
+  background:#222;
+  object-fit:cover;
+  display:block;
+}
+
+.live-bottom{
+  padding:14px;
+}
+
+.live-actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.live-actions button{
+  flex:1;
+  border:0;
+  border-radius:10px;
+  padding:11px;
+  font-weight:bold;
+}
+
+.start-live{
+  background:#e53935;
+  color:white;
+}
+
+.stop-live{
+  background:#fff;
+  color:#111;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 12px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:18px;
+}
+
+/* CREATE POST */
+
+.create-card{
+  background:#fff;
+  padding:14px;
+  border-radius:18px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.create-top{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.avatar-small{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+}
+
+.create-text{
+  flex:1;
+  border:0;
+  background:#f1f3f5;
+  border-radius:20px;
+  padding:12px;
+  outline:none;
+}
+
+.create-options{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.create-options label,
+.create-options button{
+  flex:1;
+  border:0;
+  background:#f1f3f5;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+}
+
+.create-options input{
+  display:none;
+}
+
+.post-btn{
+  background:#111 !important;
+  color:white;
+}
+
+/* POST */
+
+.post{
+  background:#fff;
+  border-radius:18px;
+  margin-bottom:14px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.post-head{
+  padding:13px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.post-user{
+  flex:1;
+}
+
+.post-user strong{
+  display:block;
+}
+
+.post-time{
+  font-size:11px;
+  color:#888;
+  margin-top:3px;
+}
+
+.post-menu{
+  border:0;
+  background:none;
+  font-size:20px;
+}
+
+.post-body{
+  padding:0 14px 12px;
+}
+
+.post-image{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  display:block;
+}
+
+.post-actions{
+  display:flex;
+  border-top:1px solid #eee;
+}
+
+.post-actions button{
+  flex:1;
+  border:0;
+  background:white;
+  padding:12px 5px;
+  font-size:14px;
+}
+
+.post-actions button:active{
+  background:#eee;
+}
+
+.comment-box{
+  display:none;
+  padding:10px;
+  border-top:1px solid #eee;
+}
+
+.comment-row{
+  display:flex;
+  gap:7px;
+}
+
+.comment-input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:18px;
+  padding:9px 12px;
+}
+
+.comment-send{
+  border:0;
+  border-radius:18px;
+  padding:0 15px;
+  background:#111;
+  color:#fff;
+}
+
+.comment-text{
+  padding:8px 10px;
+  background:#f2f3f5;
+  border-radius:12px;
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* PROFILE */
+
+.profile-card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+}
+
+.profile-avatar{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+  border:4px solid #eee;
+}
+
+.profile-name{
+  font-size:21px;
+  font-weight:bold;
+  margin:10px 0 3px;
+}
+
+.profile-email{
+  color:#777;
+  font-size:13px;
+}
+
+.profile-edit{
+  margin-top:18px;
+  text-align:left;
+}
+
+.logout{
+  margin-top:12px;
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#e53935;
+  color:white;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:200;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:650px;
+  display:flex;
+  justify-content:space-around;
+}
+
+.nav-btn{
+  flex:1;
+  border:0;
+  background:white;
+  font-size:11px;
+  color:#777;
+}
+
+.nav-btn span{
+  display:block;
+  font-size:22px;
+  margin-bottom:2px;
+}
+
+.nav-btn.active{
+  color:#111;
+  font-weight:bold;
+}
+
+.plus{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:28px;
+  line-height:48px;
+  margin-top:-12px;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:35px 15px;
+  color:#888;
+  background:#fff;
+  border-radius:18px;
+}
+
+/* CAMERA */
+
+.camera-box{
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+#camera{
+  width:100%;
+  display:block;
+  aspect-ratio:9/16;
+  max-height:70vh;
+  object-fit:cover;
+  background:#000;
+}
+
+.camera-info{
+  color:#fff;
+  padding:14px;
+}
+
+.viewer-count{
+  color:#bbb;
+  font-size:13px;
+}
+
+.camera-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.camera-buttons button{
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.start-camera{
+  background:#e53935;
+  color:#fff;
+}
+
+.stop-camera{
+  background:#fff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:420px){
+  .logo{
+    font-size:18px;
+  }
+
+  .page{
+    padding:10px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<header id="appHeader" style="display:none;">
+  <div class="logo">
+    social <span>live.IF</span>
+  </div>
 
-<aside class="sidebar" id="sidebar">
-
-<div class="logo">IFAN <span>BTC ANALYSIS</span></div>
-
-<div class="menu">
-
-<button class="active" onclick="showPage('dashboard',this)">
-<span class="menu-icon">🏠</span> Dashboard
-</button>
-
-<button onclick="showPage('market',this)">
-<span class="menu-icon">📡</span> Live Market
-</button>
-
-<button onclick="showPage('analysis',this)">
-<span class="menu-icon">📊</span> BTC Analysis
-</button>
-
-<button onclick="showPage('multi',this)">
-<span class="menu-icon">🕐</span> Multi-Timeframe
-</button>
-
-<button onclick="showPage('indicators',this)">
-<span class="menu-icon">📈</span> Indicators
-</button>
-
-<button onclick="showPage('signals',this)">
-<span class="menu-icon">🎯</span> Technical Signal
-</button>
-
-<button onclick="showPage('raw',this)">
-<span class="menu-icon">💾</span> Raw Data
-</button>
-
-<button onclick="showPage('settings',this)">
-<span class="menu-icon">⚙️</span> Settings
-</button>
-
-</div>
-
-<div class="trading-disabled">
-<strong>🔒 TRADING DISABLED</strong><br><br>
-Sistem ini hanya membaca dan menganalisa data BTC.
-Tidak ada order nyata yang dikirim.
-</div>
-
-</aside>
-
-<main class="main">
-
-<header class="topbar">
-
-<div style="display:flex;align-items:center;gap:10px">
-<button class="mobile-menu" onclick="toggleMenu()">☰</button>
-
-<div class="symbol">
-BTC / USDT
-<small>BINANCE</small>
-</div>
-</div>
-
-<div class="status-area">
-<div id="statusBadge" class="status connecting">CONNECTING</div>
-<div class="last-update" id="lastUpdate">Menghubungkan...</div>
-</div>
-
+  <div class="header-right">
+    <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
+    <button class="icon-btn" onclick="showPage('profile')">👤</button>
+  </div>
 </header>
 
-<div class="content">
 
-<section id="dashboard" class="page active">
+<!-- LOGIN -->
 
-<div class="section-title">BTC Market Dashboard</div>
-<div class="section-sub">Analisa Bitcoin berdasarkan data pasar yang diterima.</div>
+<div id="loginScreen">
 
-<div class="price-grid">
+  <div class="login-box">
 
-<div class="card">
-<div class="card-title">BTC Price</div>
-<div class="value" id="price">--</div>
-<div class="sub" id="priceChange">24H --</div>
-</div>
+    <h1>social live.IF</h1>
 
-<div class="card"><div class="card-title">Bid</div><div class="value" id="bid">--</div></div>
-<div class="card"><div class="card-title">Ask</div><div class="value" id="ask">--</div></div>
-<div class="card"><div class="card-title">Spread</div><div class="value blue" id="spread">--</div></div>
-<div class="card"><div class="card-title">24H High</div><div class="value" id="high">--</div></div>
-<div class="card"><div class="card-title">24H Low</div><div class="value" id="low">--</div></div>
+    <p>Masuk untuk menggunakan aplikasi</p>
 
-</div>
+    <input
+      id="email"
+      class="field"
+      type="email"
+      placeholder="Email">
 
-<div class="card chart-card">
+    <input
+      id="password"
+      class="field"
+      type="password"
+      placeholder="Password">
 
-<div class="chart-head">
+    <button
+      class="main-btn"
+      onclick="loginUser()">
+      MASUK
+    </button>
 
-<div>
-<div class="card-title">BTC PRICE CHART</div>
-<div style="font-size:11px;color:#718491">Close + EMA20 + EMA50</div>
-</div>
+    <button
+      class="secondary-btn"
+      onclick="registerUser()">
+      DAFTAR AKUN
+    </button>
 
-<div class="timeframes">
-<button class="tf active" data-tf="1m">1M</button>
-<button class="tf" data-tf="5m">5M</button>
-<button class="tf" data-tf="15m">15M</button>
-<button class="tf" data-tf="1h">1H</button>
-<button class="tf" data-tf="4h">4H</button>
-</div>
+    <div
+      id="loginMessage"
+      class="message">
+    </div>
 
-</div>
-
-<div class="chart-wrap">
-<canvas id="priceChart"></canvas>
-</div>
+  </div>
 
 </div>
 
-<div class="analysis-grid">
 
-<div class="analysis-item">
-<div class="analysis-label">TREND</div>
-<div class="analysis-value" id="trend">--</div>
+<!-- APP -->
+
+<div id="app" class="app" style="display:none;">
+
+  <!-- HOME -->
+
+  <section id="home" class="page active">
+
+    <div class="section-title">
+      <h2>Beranda</h2>
+    </div>
+
+    <div class="create-card">
+
+      <div class="create-top">
+
+        <img
+          id="homeAvatar"
+          class="avatar-small"
+          src=""
+          alt="avatar">
+
+        <input
+          id="statusInput"
+          class="create-text"
+          placeholder="Apa yang ingin kamu bagikan?">
+
+      </div>
+
+      <div class="create-options">
+
+        <label>
+          📷 Foto
+          <input
+            id="postPhoto"
+            type="file"
+            accept="image/*">
+        </label>
+
+        <button
+          class="post-btn"
+          onclick="addPost()">
+          POST
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="live-card">
+
+      <div class="live-top">
+        <strong>🔴 Live sekarang</strong>
+        <span class="live-badge">LIVE</span>
+      </div>
+
+      <div
+        style="
+        padding:25px;
+        text-align:center;
+        color:#bbb;">
+        Mulai siaran langsung dari menu Live
+      </div>
+
+      <div class="live-bottom">
+        <button
+          class="start-live"
+          style="
+          width:100%;
+          border:0;
+          border-radius:10px;
+          padding:12px;"
+          onclick="showPage('live')">
+          📹 Buka Live
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="section-title">
+      <h2>Postingan</h2>
+    </div>
+
+    <div id="posts"></div>
+
+  </section>
+
+
+  <!-- LIVE -->
+
+  <section id="live" class="page">
+
+    <div class="section-title">
+      <h2>🔴 Live Streaming</h2>
+    </div>
+
+    <div class="camera-box">
+
+      <video
+        id="camera"
+        autoplay
+        muted
+        playsinline>
+      </video>
+
+      <div class="camera-info">
+
+        <strong>social live.IF</strong>
+
+        <div class="viewer-count">
+          👁 0 penonton
+        </div>
+
+        <div class="camera-buttons">
+
+          <button
+            class="start-camera"
+            onclick="startCamera()">
+            🔴 MULAI LIVE
+          </button>
+
+          <button
+            class="stop-camera"
+            onclick="stopCamera()">
+            ⏹ AKHIRI
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      id="liveStatus"
+      class="empty"
+      style="margin-top:12px;">
+      Kamera belum dimulai.
+    </div>
+
+  </section>
+
+
+  <!-- CREATE -->
+
+  <section id="create" class="page">
+
+    <div class="section-title">
+      <h2>➕ Buat Postingan</h2>
+    </div>
+
+    <div class="create-card">
+
+      <img
+        id="createAvatar"
+        class="avatar-small"
+        src=""
+        alt="avatar">
+
+      <textarea
+        id="bigStatus"
+        class="field"
+        style="
+        height:130px;
+        margin-top:12px;"
+        placeholder="Tulis sesuatu..."></textarea>
+
+      <label
+        style="
+        display:block;
+        background:#f1f3f5;
+        padding:13px;
+        border-radius:12px;
+        text-align:center;
+        margin-bottom:10px;">
+
+        📷 Pilih Foto
+
+        <input
+          id="bigPhoto"
+          type="file"
+          accept="image/*"
+          style="display:none;">
+
+      </label>
+
+      <button
+        class="main-btn"
+        onclick="addBigPost()">
+        TERBITKAN POSTINGAN
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTIFICATIONS -->
+
+  <section id="notifications" class="page">
+
+    <div class="section-title">
+      <h2>🔔 Notifikasi</h2>
+    </div>
+
+    <div class="empty">
+      Belum ada notifikasi.
+    </div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+
+  <section id="profile" class="page">
+
+    <div class="profile-card">
+
+      <img
+        id="profileAvatar"
+        class="profile-avatar"
+        src=""
+        alt="profile">
+
+      <div
+        id="profileName"
+        class="profile-name">
+        Ifan
+      </div>
+
+      <div
+        id="profileEmail"
+        class="profile-email">
+      </div>
+
+      <div class="profile-edit">
+
+        <input
+          id="nameInput"
+          class="field"
+          placeholder="Nama">
+
+        <label
+          style="
+          display:block;
+          border:1px solid #ddd;
+          padding:12px;
+          border-radius:12px;
+          text-align:center;
+          margin-bottom:10px;">
+
+          📷 Ganti foto profil
+
+          <input
+            id="avatarInput"
+            type="file"
+            accept="image/*"
+            style="display:none;">
+
+        </label>
+
+        <button
+          class="main-btn"
+          onclick="saveProfile()">
+          SIMPAN PROFIL
+        </button>
+
+        <button
+          class="logout"
+          onclick="logoutUser()">
+          KELUAR
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </div>
 
-<div class="analysis-item">
-<div class="analysis-label">MOMENTUM</div>
-<div class="analysis-value" id="momentum">--</div>
-</div>
 
-<div class="analysis-item">
-<div class="analysis-label">VOLATILITY</div>
-<div class="analysis-value" id="volatility">--</div>
-</div>
+<!-- BOTTOM NAV -->
 
-<div class="analysis-item">
-<div class="analysis-label">LATENCY</div>
-<div class="analysis-value blue" id="latency">--</div>
-</div>
+<div
+  id="bottomNav"
+  class="bottom-nav"
+  style="display:none;">
 
-</div>
+  <div class="nav-inner">
 
-</section>
+    <button
+      class="nav-btn active"
+      onclick="showPage('home')">
+      <span>🏠</span>
+      Beranda
+    </button>
 
-<section id="market" class="page">
+    <button
+      class="nav-btn"
+      onclick="showPage('live')">
+      <span>🔴</span>
+      Live
+    </button>
 
-<div class="section-title">Live Market</div>
-<div class="section-sub">Data pasar BTC/USDT melalui server perantara.</div>
+    <button
+      class="nav-btn"
+      onclick="showPage('create')">
+      <span class="plus">+</span>
+      Buat
+    </button>
 
-<div class="price-grid">
+    <button
+      class="nav-btn"
+      onclick="showPage('notifications')">
+      <span>💬</span>
+      Pesan
+    </button>
 
-<div class="card"><div class="card-title">Price</div><div class="value" id="mPrice">--</div></div>
-<div class="card"><div class="card-title">Bid</div><div class="value" id="mBid">--</div></div>
-<div class="card"><div class="card-title">Ask</div><div class="value" id="mAsk">--</div></div>
-<div class="card"><div class="card-title">Spread</div><div class="value" id="mSpread">--</div></div>
-<div class="card"><div class="card-title">24H Volume</div><div class="value" id="volume">--</div></div>
-<div class="card"><div class="card-title">24H Change</div><div class="value" id="mChange">--</div></div>
+    <button
+      class="nav-btn"
+      onclick="showPage('profile')">
+      <span>👤</span>
+      Saya
+    </button>
 
-</div>
-
-<div class="card">
-<div class="card-title">SYSTEM CONNECTION LOG</div>
-<div class="log" id="log"></div>
-</div>
-
-</section>
-
-<section id="analysis" class="page">
-
-<div class="section-title">BTC Analysis Engine</div>
-<div class="section-sub">Perhitungan indikator teknikal dari candle BTC.</div>
-
-<div class="indicator-grid">
-
-<div class="card"><div class="card-title">EMA 20</div><div class="indicator-value" id="ema20">--</div><div class="sub">Exponential Moving Average</div></div>
-<div class="card"><div class="card-title">EMA 50</div><div class="indicator-value" id="ema50">--</div><div class="sub">Exponential Moving Average</div></div>
-
-<div class="card">
-<div class="card-title">RSI 14</div>
-<div class="indicator-value" id="rsi">--</div>
-<div class="progress"><span id="rsiBar"></span></div>
-</div>
-
-<div class="card"><div class="card-title">ATR 14</div><div class="indicator-value" id="atr">--</div></div>
+  </div>
 
 </div>
 
-<div class="indicator-grid">
 
-<div class="card"><div class="card-title">MACD</div><div class="indicator-value" id="macd">--</div><div class="sub" id="macdStatus">--</div></div>
-<div class="card"><div class="card-title">MACD SIGNAL</div><div class="indicator-value" id="macdSignal">--</div></div>
-<div class="card"><div class="card-title">SUPPORT</div><div class="indicator-value green" id="support">--</div></div>
-<div class="card"><div class="card-title">RESISTANCE</div><div class="indicator-value red" id="resistance">--</div></div>
+<script type="module">
 
-</div>
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-</section>
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-<section id="multi" class="page">
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-<div class="section-title">Multi-Timeframe Analysis</div>
-<div class="section-sub">Ringkasan indikator BTC dari beberapa timeframe.</div>
 
-<div class="card">
+/* =========================
+   FIREBASE
+========================= */
 
-<div class="table-wrap">
-
-<table>
-<thead>
-<tr>
-<th>TIMEFRAME</th>
-<th>PRICE</th>
-<th>EMA20</th>
-<th>EMA50</th>
-<th>RSI</th>
-<th>MACD</th>
-<th>TREND</th>
-</tr>
-</thead>
-
-<tbody id="multiBody"></tbody>
-</table>
-
-</div>
-</div>
-
-</section>
-
-<section id="indicators" class="page">
-
-<div class="section-title">Technical Indicators</div>
-<div class="section-sub">Detail indikator timeframe yang sedang dipilih.</div>
-
-<div class="indicator-grid">
-
-<div class="card"><div class="card-title">EMA20</div><div class="indicator-value" id="iEma20">--</div></div>
-<div class="card"><div class="card-title">EMA50</div><div class="indicator-value" id="iEma50">--</div></div>
-<div class="card"><div class="card-title">RSI14</div><div class="indicator-value" id="iRsi">--</div></div>
-<div class="card"><div class="card-title">ATR14</div><div class="indicator-value" id="iAtr">--</div></div>
-<div class="card"><div class="card-title">MACD</div><div class="indicator-value" id="iMacd">--</div></div>
-<div class="card"><div class="card-title">MACD SIGNAL</div><div class="indicator-value" id="iMacdSignal">--</div></div>
-<div class="card"><div class="card-title">SUPPORT</div><div class="indicator-value" id="iSupport">--</div></div>
-<div class="card"><div class="card-title">RESISTANCE</div><div class="indicator-value" id="iResistance">--</div></div>
-
-</div>
-</section>
-
-<section id="signals" class="page">
-
-<div class="section-title">Technical Signal</div>
-<div class="section-sub">Hasil aturan teknikal untuk analisa/edukasi. Tidak mengirim order.</div>
-
-<div class="signal-box">
-
-<div class="signal-main">
-<div class="card-title">CURRENT TECHNICAL STATE</div>
-<div class="signal-text" id="signal">WAIT</div>
-<div class="signal-note">Trading tetap disabled.</div>
-</div>
-
-<div class="components">
-
-<div class="component"><span>Trend</span><strong id="sTrend">--</strong></div>
-<div class="component"><span>Momentum</span><strong id="sMomentum">--</strong></div>
-<div class="component"><span>RSI</span><strong id="sRsi">--</strong></div>
-<div class="component"><span>MACD</span><strong id="sMacd">--</strong></div>
-<div class="component"><span>Volatility</span><strong id="sVolatility">--</strong></div>
-
-</div>
-</div>
-</section>
-
-<section id="raw" class="page">
-
-<div class="section-title">Raw Market Data</div>
-<div class="section-sub">Data yang masuk disimpan dengan ID dan timestamp.</div>
-
-<div class="card">
-
-<div class="raw-actions">
-<button class="action" onclick="exportCSV()">⬇ Export CSV</button>
-<button class="action" onclick="clearRaw()">🗑 Clear Raw Data</button>
-</div>
-
-<div class="table-wrap">
-
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>TIME</th>
-<th>PRICE</th>
-<th>BID</th>
-<th>ASK</th>
-<th>TF</th>
-</tr>
-</thead>
-<tbody id="rawBody"></tbody>
-</table>
-
-</div>
-</div>
-</section>
-
-<section id="settings" class="page">
-
-<div class="section-title">Settings</div>
-<div class="section-sub">Konfigurasi sistem analisa.</div>
-
-<div class="card">
-
-<div class="setting">
-<strong>Symbol</strong>
-<small>BTCUSDT</small>
-</div>
-
-<div class="setting">
-<strong>Data Source</strong>
-<small>Binance Public API melalui Server Perantara IFAN</small>
-</div>
-
-<div class="setting">
-<strong>Data Mode</strong>
-<small>Server Proxy / Polling</small>
-</div>
-
-<div class="setting">
-<strong>Indicators</strong>
-<small>EMA20 / EMA50 / RSI14 / MACD / ATR14</small>
-</div>
-
-<div class="setting">
-<strong>Trading</strong>
-<small>DISABLED</small>
-</div>
-
-</div>
-</section>
-
-<div class="footer-note">
-IFAN BTC ANALYSIS • Market data analysis • Trading disabled
-</div>
-
-</div>
-</main>
-</div>
-
-<script>
-
-/* =========================================================
-   SERVER URL
-   =========================================================
-
-   Kalau index.html dan server.js nanti berada pada
-   hosting/server yang sama, gunakan:
-
-   const SERVER_URL="";
-
-   Kalau server berada di alamat lain, isi URL server:
-   const SERVER_URL="https://alamat-server-ifan.com";
-
-========================================================= */
-
-const SERVER_URL="";
-
-const TIMEFRAMES=[
-    "1m",
-    "5m",
-    "15m",
-    "1h",
-    "4h"
-];
-
-let currentTF="1m";
-let candles=[];
-let tfData={};
-
-let market={
-    price:0,
-    bid:0,
-    ask:0,
-    high:0,
-    low:0,
-    volume:0,
-    change:0
+const firebaseConfig = {
+  apiKey: "AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
+  authDomain: "ifan-social-web.firebaseapp.com",
+  projectId: "ifan-social-web"
 };
 
-let lastUpdate=0;
-let latency=0;
+const app = initializeApp(firebaseConfig);
 
-let rawData=[];
-let logs=[];
+const auth = getAuth(app);
 
-try{
-    rawData=JSON.parse(
-        localStorage.getItem("IFAN_BTC_RAW_PROXY")||"[]"
-    );
+const db = getFirestore(app);
 
-    if(!Array.isArray(rawData))
-        rawData=[];
-}catch(e){
-    rawData=[];
-}
 
-try{
-    logs=JSON.parse(
-        localStorage.getItem("IFAN_BTC_LOG_PROXY")||"[]"
-    );
+/* =========================
+   DATA
+========================= */
 
-    if(!Array.isArray(logs))
-        logs=[];
-}catch(e){
-    logs=[];
-}
+let posts = [];
+
+let profile = {
+  name:"Ifan",
+  avatar:""
+};
+
+let cameraStream = null;
+
+
+/* =========================
+   ELEMENT
+========================= */
 
 function $(id){
-    return document.getElementById(id);
+  return document.getElementById(id);
 }
 
-function setText(id,text){
-    const el=$(id);
-    if(el) el.textContent=text;
+
+/* =========================
+   IMAGE
+========================= */
+
+function readImage(file){
+
+  return new Promise((resolve,reject)=>{
+
+    if(!file){
+      resolve("");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = e => resolve(e.target.result);
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
 }
 
-function price(v){
 
-    if(!Number.isFinite(Number(v)))
-        return "--";
+/* =========================
+   ESCAPE TEXT
+========================= */
 
-    return Number(v).toLocaleString(
-        "en-US",
+function esc(text){
+
+  return String(text || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+window.showPage = function(page){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
+
+  const target = $(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(b => b.classList.remove("active"));
+
+  if(page === "home"){
+    document.querySelectorAll(".nav-btn")[0].classList.add("active");
+  }
+
+  if(page === "live"){
+    document.querySelectorAll(".nav-btn")[1].classList.add("active");
+  }
+
+  if(page === "create"){
+    document.querySelectorAll(".nav-btn")[2].classList.add("active");
+  }
+
+  if(page === "notifications"){
+    document.querySelectorAll(".nav-btn")[3].classList.add("active");
+  }
+
+  if(page === "profile"){
+    document.querySelectorAll(".nav-btn")[4].classList.add("active");
+  }
+
+};
+
+
+/* =========================
+   PROFILE LOCAL
+========================= */
+
+function loadLocalProfile(){
+
+  try{
+
+    const saved =
+      localStorage.getItem("social_live_if_profile");
+
+    if(saved){
+      profile = JSON.parse(saved);
+    }
+
+  }catch(e){
+
+    console.log(e);
+
+  }
+
+  updateProfileUI();
+
+}
+
+
+function updateProfileUI(){
+
+  $("profileName").textContent =
+    profile.name || "Ifan";
+
+  $("nameInput").value =
+    profile.name || "Ifan";
+
+  if(auth.currentUser){
+
+    $("profileEmail").textContent =
+      auth.currentUser.email || "";
+
+  }
+
+  const avatar =
+    profile.avatar ||
+    "https://via.placeholder.com/150";
+
+  $("profileAvatar").src = avatar;
+
+  $("homeAvatar").src = avatar;
+
+  $("createAvatar").src = avatar;
+
+}
+
+
+/* =========================
+   SAVE PROFILE
+========================= */
+
+window.saveProfile = async function(){
+
+  const name =
+    $("nameInput").value.trim() || "Ifan";
+
+  const file =
+    $("avatarInput").files[0];
+
+  try{
+
+    let avatar = profile.avatar;
+
+    if(file){
+      avatar = await readImage(file);
+    }
+
+    profile = {
+      name,
+      avatar
+    };
+
+    localStorage.setItem(
+      "social_live_if_profile",
+      JSON.stringify(profile)
+    );
+
+    updateProfileUI();
+
+    alert("Profil berhasil disimpan.");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Gagal menyimpan profil: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   REGISTER
+========================= */
+
+window.registerUser = async function(){
+
+  const email =
+    $("email").value.trim();
+
+  const password =
+    $("password").value;
+
+  $("loginMessage").textContent = "";
+
+  if(!email || !password){
+
+    $("loginMessage").textContent =
+      "Isi email dan password.";
+
+    return;
+
+  }
+
+  if(password.length < 6){
+
+    $("loginMessage").textContent =
+      "Password minimal 6 karakter.";
+
+    return;
+
+  }
+
+  try{
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    $("loginMessage").textContent =
+      "Akun berhasil dibuat.";
+
+  }catch(error){
+
+    console.error(error);
+
+    $("loginMessage").textContent =
+      error.message;
+
+  }
+
+};
+
+
+/* =========================
+   LOGIN
+========================= */
+
+window.loginUser = async function(){
+
+  const email =
+    $("email").value.trim();
+
+  const password =
+    $("password").value;
+
+  $("loginMessage").textContent = "";
+
+  if(!email || !password){
+
+    $("loginMessage").textContent =
+      "Isi email dan password.";
+
+    return;
+
+  }
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    $("loginMessage").textContent =
+      error.message;
+
+  }
+
+};
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+window.logoutUser = async function(){
+
+  stopCamera();
+
+  await signOut(auth);
+
+};
+
+
+/* =========================
+   ADD POST
+========================= */
+
+window.addPost = async function(){
+
+  const text =
+    $("statusInput").value.trim();
+
+  const file =
+    $("postPhoto").files[0];
+
+  if(!text && !file){
+
+    alert("Tulis status atau pilih foto.");
+
+    return;
+
+  }
+
+  if(!auth.currentUser){
+
+    alert("Silakan login terlebih dahulu.");
+
+    return;
+
+  }
+
+  try{
+
+    const image =
+      await readImage(file);
+
+    const post = {
+
+      uid:auth.currentUser.uid,
+
+      name:profile.name || "Ifan",
+
+      avatar:profile.avatar || "",
+
+      text:text,
+
+      image:image,
+
+      likes:0,
+
+      comments:[],
+
+      time:new Date().toLocaleString("id-ID"),
+
+      createdAt:serverTimestamp()
+
+    };
+
+    const ref =
+      await addDoc(
+        collection(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts"
+        ),
+        post
+      );
+
+    posts.unshift({
+      ...post,
+      id:ref.id
+    });
+
+    $("statusInput").value = "";
+
+    $("postPhoto").value = "";
+
+    renderPosts();
+
+    alert("Postingan berhasil disimpan.");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Gagal menyimpan postingan:\n" +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   BIG POST
+========================= */
+
+window.addBigPost = async function(){
+
+  const text =
+    $("bigStatus").value.trim();
+
+  const file =
+    $("bigPhoto").files[0];
+
+  if(!text && !file){
+
+    alert("Tulis sesuatu atau pilih foto.");
+
+    return;
+
+  }
+
+  $("statusInput").value = text;
+
+  const temp =
+    $("postPhoto");
+
+  const dataTransfer =
+    new DataTransfer();
+
+  if(file){
+    dataTransfer.items.add(file);
+    temp.files = dataTransfer.files;
+  }
+
+  await addPost();
+
+  $("bigStatus").value = "";
+
+  $("bigPhoto").value = "";
+
+};
+
+
+/* =========================
+   LOAD POSTS
+========================= */
+
+async function loadPosts(){
+
+  if(!auth.currentUser){
+    return;
+  }
+
+  try{
+
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts"
+        )
+      );
+
+    posts = [];
+
+    snap.forEach(item => {
+
+      posts.push({
+        id:item.id,
+        ...item.data()
+      });
+
+    });
+
+    posts.sort((a,b)=>{
+
+      const aa =
+        a.createdAt?.seconds || 0;
+
+      const bb =
+        b.createdAt?.seconds || 0;
+
+      return bb-aa;
+
+    });
+
+    renderPosts();
+
+  }catch(error){
+
+    console.error(error);
+
+    $("posts").innerHTML = `
+      <div class="empty">
+        Gagal memuat postingan.
+        <br>
+        <small>${esc(error.message)}</small>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   RENDER POSTS
+========================= */
+
+function renderPosts(){
+
+  const box =
+    $("posts");
+
+  if(!posts.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        Belum ada postingan.<br>
+        Buat postingan pertama kamu.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  box.innerHTML =
+    posts.map((p,index)=>{
+
+      const avatar =
+        p.avatar ||
+        "https://via.placeholder.com/100";
+
+      const comments =
+        Array.isArray(p.comments)
+          ? p.comments
+          : [];
+
+      const commentsHtml =
+        comments.map(c => `
+          <div class="comment-text">
+            <strong>${esc(c.name)}</strong><br>
+            ${esc(c.text)}
+          </div>
+        `).join("");
+
+      return `
+
+        <article class="post">
+
+          <div class="post-head">
+
+            <img
+              class="avatar-small"
+              src="${avatar}">
+
+            <div class="post-user">
+
+              <strong>
+                ${esc(p.name || "Ifan")}
+              </strong>
+
+              <div class="post-time">
+                ${esc(p.time || "")}
+              </div>
+
+            </div>
+
+            <button
+              class="post-menu"
+              onclick="postMenu(${index})">
+              ⋮
+            </button>
+
+          </div>
+
+          ${
+            p.text
+            ?
+            `<div class="post-body">
+              ${esc(p.text)}
+            </div>`
+            :
+            ""
+          }
+
+          ${
+            p.image
+            ?
+            `<img
+              class="post-image"
+              src="${p.image}">
+            `
+            :
+            ""
+          }
+
+          <div class="post-actions">
+
+            <button onclick="likePost(${index})">
+              ❤️ ${p.likes || 0}
+            </button>
+
+            <button onclick="toggleComments(${index})">
+              💬 Komentar
+            </button>
+
+            <button onclick="sharePost(${index})">
+              📤 Bagikan
+            </button>
+
+          </div>
+
+          <div
+            id="comments-${index}"
+            class="comment-box">
+
+            <div class="comment-row">
+
+              <input
+                id="comment-${index}"
+                class="comment-input"
+                placeholder="Tulis komentar...">
+
+              <button
+                class="comment-send"
+                onclick="addComment(${index})">
+                Kirim
+              </button>
+
+            </div>
+
+            ${commentsHtml}
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   LIKE
+========================= */
+
+window.likePost = async function(index){
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  p.likes =
+    Number(p.likes || 0) + 1;
+
+  renderPosts();
+
+  if(p.id && auth.currentUser){
+
+    try{
+
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
+        ),
         {
-            minimumFractionDigits:2,
-            maximumFractionDigits:2
+          likes:p.likes
         }
-    );
-}
+      );
 
-function timeText(ts){
-    try{
-        return new Date(ts).toLocaleTimeString("id-ID");
-    }catch(e){
-        return "--";
+    }catch(error){
+
+      console.error(error);
+
     }
-}
 
-function escapeHTML(v){
+  }
 
-    return String(v)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
+};
 
-/* =========================================================
-   PROXY API
-========================================================= */
 
-async function proxy(path){
+/* =========================
+   COMMENTS
+========================= */
 
-    const url=
-        SERVER_URL+
-        path;
+window.toggleComments = function(index){
 
-    const started=performance.now();
+  const box =
+    $("comments-" + index);
 
-    const controller=new AbortController();
+  if(!box) return;
 
-    const timer=setTimeout(
-        function(){
-            controller.abort();
-        },
-        10000
-    );
+  box.style.display =
+    box.style.display === "block"
+      ? "none"
+      : "block";
+
+};
+
+
+window.addComment = async function(index){
+
+  const input =
+    $("comment-" + index);
+
+  const text =
+    input.value.trim();
+
+  if(!text) return;
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  if(!Array.isArray(p.comments)){
+    p.comments = [];
+  }
+
+  p.comments.push({
+
+    name:profile.name || "Ifan",
+
+    text:text,
+
+    time:new Date().toLocaleString("id-ID")
+
+  });
+
+  input.value = "";
+
+  renderPosts();
+
+  const box =
+    $("comments-" + index);
+
+  if(box){
+    box.style.display = "block";
+  }
+
+  if(p.id && auth.currentUser){
 
     try{
 
-        const response=await fetch(
-            url,
-            {
-                method:"GET",
-                cache:"no-store",
-                signal:controller.signal,
-                headers:{
-                    "Accept":"application/json"
-                }
-            }
-        );
-
-        if(!response.ok){
-
-            let message="HTTP "+response.status;
-
-            try{
-                const e=await response.json();
-
-                if(e&&e.error)
-                    message=e.error;
-            }catch(ignore){}
-
-            throw new Error(message);
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
+        ),
+        {
+          comments:p.comments
         }
+      );
 
-        const json=await response.json();
+    }catch(error){
 
-        latency=Math.round(
-            performance.now()-started
-        );
+      console.error(error);
 
-        return json;
-
-    }finally{
-
-        clearTimeout(timer);
-    }
-}
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-function setStatus(state,message){
-
-    const badge=$("statusBadge");
-
-    if(!badge)
-        return;
-
-    badge.className="status";
-
-    if(state==="CONNECTING"){
-        badge.classList.add("connecting");
-        badge.textContent="CONNECTING";
     }
 
-    if(state==="LIVE"){
-        badge.classList.add("live");
-        badge.textContent="LIVE";
-    }
+  }
 
-    if(state==="STALE"){
-        badge.classList.add("stale");
-        badge.textContent="STALE";
-    }
+};
 
-    if(state==="ERROR"){
-        badge.classList.add("error");
-        badge.textContent="ERROR";
-    }
 
-    setText("lastUpdate",message);
-}
+/* =========================
+   SHARE
+========================= */
 
-function monitorStatus(){
+window.sharePost = async function(index){
 
-    if(!lastUpdate){
+  const p = posts[index];
 
-        setStatus(
-            "CONNECTING",
-            "Menunggu server..."
-        );
+  const text =
+    (p.name || "IFAN") +
+    ": " +
+    (p.text || "Postingan di social live.IF");
 
-        return;
-    }
+  try{
 
-    const age=Date.now()-lastUpdate;
+    if(navigator.share){
 
-    if(age<=12000){
-
-        setStatus(
-            "LIVE",
-            "Update "+
-            Math.floor(age/1000)+
-            "s lalu • "+
-            latency+
-            " ms"
-        );
-
-    }else if(age<=30000){
-
-        setStatus(
-            "STALE",
-            "Data terakhir "+
-            Math.floor(age/1000)+
-            "s lalu"
-        );
+      await navigator.share({
+        title:"social live.IF",
+        text:text
+      });
 
     }else{
 
-        setStatus(
-            "ERROR",
-            "Server belum mengirim data"
-        );
+      await navigator.clipboard.writeText(text);
+
+      alert("Teks postingan disalin.");
+
     }
-}
 
-/* =========================================================
-   MARKET
-========================================================= */
+  }catch(error){
 
-async function updateMarket(){
+    console.log(error);
+
+  }
+
+};
+
+
+/* =========================
+   POST MENU
+========================= */
+
+window.postMenu = async function(index){
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  const action =
+    prompt(
+      "Pilih:\n" +
+      "1 = Hapus\n" +
+      "2 = Batalkan"
+    );
+
+  if(action !== "1"){
+    return;
+  }
+
+  if(!confirm("Hapus postingan ini?")){
+    return;
+  }
+
+  posts.splice(index,1);
+
+  renderPosts();
+
+  if(p.id && auth.currentUser){
 
     try{
 
-        const result=await proxy(
-            "/api/market"
-        );
-
-        if(
-            !result||
-            !result.price
-        ){
-            throw new Error(
-                "Server tidak mengembalikan data market"
-            );
-        }
-
-        market.price=Number(result.price)||0;
-        market.bid=Number(result.bid)||0;
-        market.ask=Number(result.ask)||0;
-        market.high=Number(result.high)||0;
-        market.low=Number(result.low)||0;
-        market.volume=Number(result.volume)||0;
-        market.change=Number(result.change)||0;
-
-        lastUpdate=Date.now();
-
-        updateMarketUI();
-        addRaw();
-
-        setStatus(
-            "LIVE",
-            "Server OK • "+
-            latency+
-            " ms"
-        );
-
-    }catch(error){
-
-        log(
-            "Market error: "+
-            error.message
-        );
-
-        monitorStatus();
-    }
-}
-
-function updateMarketUI(){
-
-    setText("price","$ "+price(market.price));
-    setText("bid","$ "+price(market.bid));
-    setText("ask","$ "+price(market.ask));
-
-    setText(
-        "spread",
-        "$ "+
-        price(
-            Math.max(
-                0,
-                market.ask-market.bid
-            )
+      await deleteDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
         )
-    );
-
-    setText("high","$ "+price(market.high));
-    setText("low","$ "+price(market.low));
-
-    const change=
-        (market.change>=0?"+":"")+
-        market.change.toFixed(2)+
-        "%";
-
-    setText("priceChange","24H "+change);
-
-    setText("mPrice","$ "+price(market.price));
-    setText("mBid","$ "+price(market.bid));
-    setText("mAsk","$ "+price(market.ask));
-
-    setText(
-        "mSpread",
-        "$ "+
-        price(
-            Math.max(
-                0,
-                market.ask-market.bid
-            )
-        )
-    );
-
-    setText("volume",compact(market.volume));
-    setText("mChange",change);
-
-    const c=$("mChange");
-
-    if(c){
-
-        c.className=
-            "value "+
-            (
-                market.change>=0
-                ?"green"
-                :"red"
-            );
-    }
-}
-
-function compact(v){
-
-    v=Number(v);
-
-    if(!Number.isFinite(v))
-        return "--";
-
-    if(v>=1000000000)
-        return (v/1000000000).toFixed(2)+"B";
-
-    if(v>=1000000)
-        return (v/1000000).toFixed(2)+"M";
-
-    if(v>=1000)
-        return (v/1000).toFixed(2)+"K";
-
-    return v.toFixed(2);
-}
-
-/* =========================================================
-   CANDLES
-========================================================= */
-
-function validCandle(k){
-
-    if(!Array.isArray(k)||k.length<6)
-        return false;
-
-    return(
-        Number.isFinite(Number(k.time))&&
-        Number.isFinite(Number(k.open))&&
-        Number.isFinite(Number(k.high))&&
-        Number.isFinite(Number(k.low))&&
-        Number.isFinite(Number(k.close))
-    );
-}
-
-function convertCandle(k){
-
-    return{
-        time:Number(k.time),
-        open:Number(k.open),
-        high:Number(k.high),
-        low:Number(k.low),
-        close:Number(k.close),
-        volume:Number(k.volume)||0
-    };
-}
-
-async function loadCandles(tf){
-
-    try{
-
-        log(
-            "Mengambil candle TF "+
-            tf+
-            " dari server..."
-        );
-
-        const result=await proxy(
-            "/api/klines?symbol=BTCUSDT&interval="+
-            encodeURIComponent(tf)
-        );
-
-        if(
-            !result||
-            !Array.isArray(result.data)
-        ){
-
-            throw new Error(
-                "Format candle dari server tidak valid"
-            );
-        }
-
-        const clean=result.data
-            .filter(validCandle)
-            .map(convertCandle);
-
-        if(clean.length<50){
-
-            throw new Error(
-                "Data TF "+
-                tf+
-                " kurang: "+
-                clean.length+
-                " candle"
-            );
-        }
-
-        tfData[tf]=clean;
-
-        if(tf===currentTF){
-
-            candles=clean;
-
-            const a=indicators(candles);
-
-            if(a){
-
-                renderAnalysis(a);
-                drawChart(candles,a);
-            }
-        }
-
-        updateMulti();
-
-        log(
-            "Candle TF "+
-            tf+
-            " OK • "+
-            clean.length+
-            " candle"
-        );
+      );
 
     }catch(error){
 
-        log(
-            "Candle TF "+
-            tf+
-            " ERROR: "+
-            error.message
-        );
+      console.error(error);
 
-        updateMulti();
-    }
-}
+      alert(
+        "Gagal menghapus:\n" +
+        error.message
+      );
 
-async function loadAllTF(){
-
-    log("Mengambil keseluruhan TF...");
-
-    for(const tf of TIMEFRAMES){
-
-        await loadCandles(tf);
-
-        await new Promise(
-            resolve=>setTimeout(resolve,200)
-        );
     }
 
-    log("Pengambilan keseluruhan TF selesai.");
-}
+  }
 
-/* =========================================================
-   INDICATORS
-========================================================= */
+};
 
-function EMA(values,period){
 
-    if(!values.length)
-        return [];
+/* =========================
+   CAMERA
+========================= */
 
-    const out=[];
-    const multiplier=2/(period+1);
+window.startCamera = async function(){
 
-    let prev=Number(values[0]);
+  try{
 
-    out.push(prev);
-
-    for(let i=1;i<values.length;i++){
-
-        const v=Number(values[i]);
-
-        prev=
-            (v-prev)*
-            multiplier+
-            prev;
-
-        out.push(prev);
+    if(cameraStream){
+      stopCamera();
     }
 
-    return out;
-}
-
-function RSI(values,period){
-
-    if(values.length<=period)
-        return [];
-
-    let gain=0;
-    let loss=0;
-
-    for(let i=1;i<=period;i++){
-
-        const d=
-            values[i]-
-            values[i-1];
-
-        if(d>=0)
-            gain+=d;
-        else
-            loss-=d;
-    }
-
-    let avgGain=gain/period;
-    let avgLoss=loss/period;
-
-    const out=[];
-
-    function calc(){
-
-        if(avgLoss===0)
-            return 100;
-
-        const rs=avgGain/avgLoss;
-
-        return 100-(100/(1+rs));
-    }
-
-    out.push(calc());
-
-    for(
-        let i=period+1;
-        i<values.length;
-        i++
-    ){
-
-        const d=
-            values[i]-
-            values[i-1];
-
-        const g=d>0?d:0;
-        const l=d<0?-d:0;
-
-        avgGain=
-            (
-                avgGain*(period-1)+g
-            )/period;
-
-        avgLoss=
-            (
-                avgLoss*(period-1)+l
-            )/period;
-
-        out.push(calc());
-    }
-
-    return out;
-}
-
-function MACD(values){
-
-    const e12=EMA(values,12);
-    const e26=EMA(values,26);
-
-    const line=[];
-
-    for(let i=0;i<values.length;i++)
-        line.push(e12[i]-e26[i]);
-
-    const signal=EMA(line,9);
-    const histogram=[];
-
-    for(let i=0;i<line.length;i++)
-        histogram.push(line[i]-signal[i]);
-
-    return{
-        line,
-        signal,
-        histogram
-    };
-}
-
-function ATR(data,period){
-
-    if(data.length<2)
-        return [];
-
-    const tr=[];
-
-    for(let i=0;i<data.length;i++){
-
-        if(i===0){
-
-            tr.push(
-                data[i].high-
-                data[i].low
-            );
-
-        }else{
-
-            const p=data[i-1];
-            const c=data[i];
-
-            tr.push(
-                Math.max(
-                    c.high-c.low,
-                    Math.abs(c.high-p.close),
-                    Math.abs(c.low-p.close)
-                )
-            );
-        }
-    }
-
-    const out=[];
-    let sum=0;
-
-    for(let i=0;i<tr.length;i++){
-
-        sum+=tr[i];
-
-        if(i<period){
-
-            out.push(
-                sum/(i+1)
-            );
-
-        }else{
-
-            sum-=tr[i-period];
-
-            out.push(
-                sum/period
-            );
-        }
-    }
-
-    return out;
-}
-
-function indicators(data){
-
-    if(data.length<50)
-        return null;
-
-    const closes=data.map(
-        x=>x.close
-    );
-
-    const e20=EMA(closes,20);
-    const e50=EMA(closes,50);
-    const r=RSI(closes,14);
-    const m=MACD(closes);
-    const at=ATR(data,14);
-
-    if(
-        !e20.length||
-        !e50.length||
-        !r.length||
-        !m.line.length||
-        !at.length
-    )
-        return null;
-
-    const i=data.length-1;
-
-    const p=closes[i];
-    const ema20=e20[i];
-    const ema50=e50[i];
-    const rsi=r[r.length-1];
-    const macd=m.line[i];
-    const macdSignal=m.signal[i];
-    const atr=at[at.length-1];
-
-    let trend="NEUTRAL";
-
-    if(ema20>ema50)
-        trend="UP";
-    else if(ema20<ema50)
-        trend="DOWN";
-
-    let momentum="NEUTRAL";
-
-    if(rsi>55&&macd>macdSignal)
-        momentum="POSITIVE";
-    else if(rsi<45&&macd<macdSignal)
-        momentum="NEGATIVE";
-
-    const atrPercent=
-        p>0?
-        atr/p*100:
-        0;
-
-    let volatility="MODERATE";
-
-    if(atrPercent<0.5)
-        volatility="LOW";
-
-    if(atrPercent>1)
-        volatility="HIGH";
-
-    const recent=data.slice(-20);
-
-    let support=Math.min(
-        ...recent.map(x=>x.low)
-    );
-
-    let resistance=Math.max(
-        ...recent.map(x=>x.high)
-    );
-
-    let signal="WAIT";
-
-    if(
-        trend==="UP"&&
-        momentum==="POSITIVE"
-    )
-        signal="BUY";
-
-    else if(
-        trend==="DOWN"&&
-        momentum==="NEGATIVE"
-    )
-        signal="SELL";
-
-    return{
-        price:p,
-        ema20,
-        ema50,
-        rsi,
-        macd,
-        macdSignal,
-        atr,
-        atrPercent,
-        trend,
-        momentum,
-        volatility,
-        support,
-        resistance,
-        signal,
-        ema20Array:e20,
-        ema50Array:e50
-    };
-}
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderAnalysis(a){
-
-    if(!a)
-        return;
-
-    setText("ema20",price(a.ema20));
-    setText("ema50",price(a.ema50));
-    setText("rsi",a.rsi.toFixed(2));
-    setText("atr",price(a.atr));
-    setText("macd",a.macd.toFixed(4));
-    setText("macdSignal",a.macdSignal.toFixed(4));
-    setText("support","$ "+price(a.support));
-    setText("resistance","$ "+price(a.resistance));
-
-    setText("trend",a.trend);
-    setText("momentum",a.momentum);
-    setText("volatility",a.volatility);
-    setText("latency",latency+" ms");
-
-    setText("iEma20",price(a.ema20));
-    setText("iEma50",price(a.ema50));
-    setText("iRsi",a.rsi.toFixed(2));
-    setText("iAtr",price(a.atr));
-    setText("iMacd",a.macd.toFixed(4));
-    setText("iMacdSignal",a.macdSignal.toFixed(4));
-    setText("iSupport",price(a.support));
-    setText("iResistance",price(a.resistance));
-
-    setText("sTrend",a.trend);
-    setText("sMomentum",a.momentum);
-    setText("sRsi",a.rsi.toFixed(2));
-
-    setText(
-        "sMacd",
-        a.macd>=a.macdSignal
-        ?"ABOVE SIGNAL"
-        :"BELOW SIGNAL"
-    );
-
-    setText("sVolatility",a.volatility);
-    setText("signal",a.signal);
-
-    const signal=$("signal");
-
-    if(signal){
-
-        signal.className=
-            "signal-text "+
-            (
-                a.signal==="BUY"
-                ?"green"
-                :
-                a.signal==="SELL"
-                ?"red"
-                :
-                "yellow"
-            );
-    }
-
-    const bar=$("rsiBar");
-
-    if(bar)
-        bar.style.width=
-            Math.max(
-                0,
-                Math.min(100,a.rsi)
-            )+"%";
-
-    setText(
-        "macdStatus",
-        a.macd>=a.macdSignal
-        ?"ABOVE SIGNAL"
-        :"BELOW SIGNAL"
-    );
-
-    updateMulti();
-}
-
-function updateMulti(){
-
-    const body=$("multiBody");
-
-    if(!body)
-        return;
-
-    let html="";
-
-    TIMEFRAMES.forEach(function(tf){
-
-        const data=tfData[tf];
-
-        if(!data){
-
-            html+=`
-            <tr>
-            <td>${tf.toUpperCase()}</td>
-            <td colspan="6">
-            <span class="badge badge-neutral">WAIT</span>
-            </td>
-            </tr>`;
-
-            return;
-        }
-
-        const a=indicators(data);
-
-        if(!a)
-            return;
-
-        let cls="badge-neutral";
-
-        if(a.trend==="UP")
-            cls="badge-up";
-
-        if(a.trend==="DOWN")
-            cls="badge-down";
-
-        html+=`
-        <tr>
-        <td>${tf.toUpperCase()}</td>
-        <td>${price(a.price)}</td>
-        <td>${price(a.ema20)}</td>
-        <td>${price(a.ema50)}</td>
-        <td>${a.rsi.toFixed(1)}</td>
-        <td>${a.macd.toFixed(3)}</td>
-        <td>
-        <span class="badge ${cls}">
-        ${a.trend}
-        </span>
-        </td>
-        </tr>`;
-    });
-
-    body.innerHTML=html;
-}
-
-/* =========================================================
-   CHART
-========================================================= */
-
-function drawChart(data,a){
-
-    const canvas=$("priceChart");
-
-    if(!canvas||!data.length||!a)
-        return;
-
-    const rect=canvas.getBoundingClientRect();
-
-    if(rect.width<=0||rect.height<=0)
-        return;
-
-    const dpr=window.devicePixelRatio||1;
-
-    canvas.width=rect.width*dpr;
-    canvas.height=rect.height*dpr;
-
-    const ctx=canvas.getContext("2d");
-
-    ctx.setTransform(
-        dpr,0,0,dpr,0,0
-    );
-
-    const w=rect.width;
-    const h=rect.height;
-
-    ctx.clearRect(0,0,w,h);
-
-    const visible=data.slice(-100);
-
-    const values=visible.map(
-        x=>x.close
-    );
-
-    const e20=a.ema20Array.slice(-100);
-    const e50=a.ema50Array.slice(-100);
-
-    const all=
-        values
-        .concat(e20)
-        .concat(e50)
-        .concat([
-            a.support,
-            a.resistance
-        ]);
-
-    let min=Math.min(...all);
-    let max=Math.max(...all);
-
-    const gap=(max-min)*.08||1;
-
-    min-=gap;
-    max+=gap;
-
-    function X(i){
-
-        if(values.length<=1)
-            return 0;
-
-        return i/(values.length-1)*w;
-    }
-
-    function Y(v){
-
-        return h-
-            ((v-min)/(max-min))*h;
-    }
-
-    ctx.strokeStyle="#152733";
-    ctx.lineWidth=1;
-
-    for(let i=0;i<5;i++){
-
-        const y=i/4*h;
-
-        ctx.beginPath();
-        ctx.moveTo(0,y);
-        ctx.lineTo(w,y);
-        ctx.stroke();
-    }
-
-    function line(arr,stroke,width){
-
-        if(!arr.length)
-            return;
-
-        ctx.beginPath();
-
-        arr.forEach(function(v,i){
-
-            if(i===0)
-                ctx.moveTo(X(i),Y(v));
-            else
-                ctx.lineTo(X(i),Y(v));
-        });
-
-        ctx.strokeStyle=stroke;
-        ctx.lineWidth=width;
-        ctx.stroke();
-    }
-
-    line(values,"#e8f0f7",2);
-    line(e20,"#28d7ff",1.5);
-    line(e50,"#ffd86b",1.5);
-
-    ctx.setLineDash([5,5]);
-
-    line(
-        new Array(values.length).fill(a.support),
-        "#43e6b0",
-        1
-    );
-
-    line(
-        new Array(values.length).fill(a.resistance),
-        "#ff7184",
-        1
-    );
-
-    ctx.setLineDash([]);
-
-    ctx.fillStyle="#e8f0f7";
-    ctx.font="11px Arial";
-
-    ctx.fillText(
-        "$ "+price(values[values.length-1]),
-        10,
-        18
-    );
-}
-
-/* =========================================================
-   RAW
-========================================================= */
-
-function addRaw(){
-
-    if(!market.price)
-        return;
-
-    rawData.push({
-        id:
-            Date.now()+
-            "-"+
-            Math.random()
-            .toString(36)
-            .slice(2,7),
-
-        timestamp:Date.now(),
-
-        price:market.price,
-        bid:market.bid,
-        ask:market.ask,
-
-        spread:
-            market.ask-market.bid,
-
-        timeframe:currentTF
-    });
-
-    if(rawData.length>5000)
-        rawData=rawData.slice(-5000);
-
-    try{
-
-        localStorage.setItem(
-            "IFAN_BTC_RAW_PROXY",
-            JSON.stringify(rawData)
-        );
-
-    }catch(e){}
-
-    renderRaw();
-}
-
-function renderRaw(){
-
-    const body=$("rawBody");
-
-    if(!body)
-        return;
-
-    body.innerHTML=
-        rawData
-        .slice()
-        .reverse()
-        .slice(0,200)
-        .map(function(r){
-
-            return`
-            <tr>
-            <td>${escapeHTML(r.id)}</td>
-            <td>${timeText(r.timestamp)}</td>
-            <td>${price(r.price)}</td>
-            <td>${price(r.bid)}</td>
-            <td>${price(r.ask)}</td>
-            <td>${escapeHTML(r.timeframe)}</td>
-            </tr>`;
-        })
-        .join("");
-}
-
-function exportCSV(){
-
-    if(!rawData.length){
-
-        alert("Belum ada data.");
-        return;
-    }
-
-    let csv=
-        "id,timestamp,time,price,bid,ask,spread,timeframe\n";
-
-    rawData.forEach(function(r){
-
-        csv+=
-            [
-                r.id,
-                r.timestamp,
-                new Date(r.timestamp).toISOString(),
-                r.price,
-                r.bid,
-                r.ask,
-                r.spread,
-                r.timeframe
-            ].join(",")+
-            "\n";
-    });
-
-    const blob=new Blob(
-        [csv],
-        {
-            type:"text/csv;charset=utf-8"
-        }
-    );
-
-    const url=URL.createObjectURL(blob);
-
-    const a=document.createElement("a");
-
-    a.href=url;
-    a.download="IFAN_BTC_RAW.csv";
-
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    URL.revokeObjectURL(url);
-}
-
-function clearRaw(){
-
-    if(!confirm("Hapus semua raw data?"))
-        return;
-
-    rawData=[];
-
-    localStorage.removeItem(
-        "IFAN_BTC_RAW_PROXY"
-    );
-
-    renderRaw();
-}
-
-/* =========================================================
-   LOG
-========================================================= */
-
-function log(message){
-
-    logs.unshift(
-        "["+
-        timeText(Date.now())+
-        "] "+
-        message
-    );
-
-    logs=logs.slice(0,200);
-
-    try{
-
-        localStorage.setItem(
-            "IFAN_BTC_LOG_PROXY",
-            JSON.stringify(logs)
-        );
-
-    }catch(e){}
-
-    renderLogs();
-}
-
-function renderLogs(){
-
-    const box=$("log");
-
-    if(!box)
-        return;
-
-    box.innerHTML=
-        logs.map(function(x){
-
-            return`
-            <div class="log-line">
-            ${escapeHTML(x)}
-            </div>`;
-        }).join("");
-}
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showPage(id,button){
-
-    document
-        .querySelectorAll(".page")
-        .forEach(
-            p=>p.classList.remove("active")
-        );
-
-    const page=$(id);
-
-    if(page)
-        page.classList.add("active");
-
-    document
-        .querySelectorAll(".menu button")
-        .forEach(
-            b=>b.classList.remove("active")
-        );
-
-    if(button)
-        button.classList.add("active");
-
-    $("sidebar").classList.remove("open");
-
-    if(id==="market")
-        renderLogs();
-
-    if(id==="raw")
-        renderRaw();
-
-    if(id==="dashboard"){
-
-        setTimeout(function(){
-
-            if(candles.length){
-
-                const a=indicators(candles);
-
-                if(a)
-                    drawChart(candles,a);
-            }
-
-        },100);
-    }
-}
-
-function toggleMenu(){
-
-    $("sidebar").classList.toggle("open");
-}
-
-/* =========================================================
-   TIMEFRAME BUTTONS
-========================================================= */
-
-document
-    .querySelectorAll(".tf")
-    .forEach(function(btn){
-
-        btn.addEventListener(
-            "click",
-            async function(){
-
-                document
-                    .querySelectorAll(".tf")
-                    .forEach(
-                        b=>b.classList.remove("active")
-                    );
-
-                btn.classList.add("active");
-
-                currentTF=btn.dataset.tf;
-
-                await loadCandles(currentTF);
-            }
-        );
-    });
-
-/* =========================================================
-   START
-========================================================= */
-
-async function start(){
-
-    renderLogs();
-    renderRaw();
-
-    setStatus(
-        "CONNECTING",
-        "Menghubungkan ke server IFAN..."
-    );
-
-    log(
-        "IFAN BTC Analysis dimulai"
-    );
-
-    try{
-
-        const health=await proxy(
-            "/api/health"
-        );
-
-        if(health&&health.ok){
-
-            log(
-                "Server perantara terhubung"
-            );
-
-        }else{
-
-            throw new Error(
-                "Server health check gagal"
-            );
-        }
-
-    }catch(error){
-
-        log(
-            "SERVER ERROR: "+
-            error.message
-        );
-
-        setStatus(
-            "ERROR",
-            "Server perantara belum terhubung"
-        );
-
-        return;
-    }
-
-    await updateMarket();
-
-    await loadCandles(currentTF);
-
-    for(const tf of TIMEFRAMES){
-
-        if(tf===currentTF)
-            continue;
-
-        await loadCandles(tf);
-
-        await new Promise(
-            resolve=>setTimeout(resolve,200)
-        );
-    }
-
-    updateMulti();
-
-    log(
-        "Sistem analisa BTC siap"
-    );
-
-    setInterval(
-        updateMarket,
-        5000
-    );
-
-    setInterval(
-        function(){
-            loadCandles(currentTF);
+    cameraStream =
+      await navigator.mediaDevices.getUserMedia({
+
+        video:{
+          facingMode:"environment"
         },
-        15000
-    );
 
-    setInterval(
-        loadAllTF,
-        120000
-    );
+        audio:true
 
-    setInterval(
-        monitorStatus,
-        1000
-    );
-}
+      });
 
-window.addEventListener(
-    "resize",
-    function(){
+    $("camera").srcObject =
+      cameraStream;
 
-        if(candles.length){
+    $("liveStatus").innerHTML =
+      "🔴 <strong>LIVE AKTIF</strong><br>" +
+      "Kamera sedang digunakan.";
 
-            const a=indicators(candles);
+  }catch(error){
 
-            if(a)
-                drawChart(candles,a);
-        }
+    console.error(error);
+
+    $("liveStatus").innerHTML =
+      "Kamera tidak dapat dibuka.<br>" +
+      "<small>" +
+      esc(error.message) +
+      "</small>";
+
+  }
+
+};
+
+
+window.stopCamera = function(){
+
+  if(cameraStream){
+
+    cameraStream
+      .getTracks()
+      .forEach(track => track.stop());
+
+    cameraStream = null;
+
+  }
+
+  $("camera").srcObject = null;
+
+  $("liveStatus").innerHTML =
+    "Kamera belum dimulai.";
+
+};
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(user){
+
+      $("loginScreen").style.display =
+        "none";
+
+      $("app").style.display =
+        "block";
+
+      $("appHeader").style.display =
+        "flex";
+
+      $("bottomNav").style.display =
+        "flex";
+
+      loadLocalProfile();
+
+      updateProfileUI();
+
+      await loadPosts();
+
+    }else{
+
+      $("loginScreen").style.display =
+        "block";
+
+      $("app").style.display =
+        "none";
+
+      $("appHeader").style.display =
+        "none";
+
+      $("bottomNav").style.display =
+        "none";
+
+      stopCamera();
+
     }
+
+  }
 );
 
-start();
+
+/* =========================
+   START
+========================= */
+
+loadLocalProfile();
 
 </script>
 
