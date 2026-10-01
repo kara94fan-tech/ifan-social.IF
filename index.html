@@ -6,9 +6,7 @@
 <title>social live.IF</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -17,22 +15,15 @@ body{
   color:#18202a;
 }
 
-button,
-input,
-textarea{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
+button,input,textarea{font-family:inherit}
+button{cursor:pointer}
 
 header{
   position:sticky;
   top:0;
   z-index:100;
   height:62px;
-  background:#ffffff;
+  background:#fff;
   border-bottom:1px solid #ddd;
   display:flex;
   align-items:center;
@@ -45,9 +36,7 @@ header{
   font-weight:bold;
 }
 
-.logo span{
-  color:#e53935;
-}
+.logo span{color:#e53935}
 
 .header-right{
   display:flex;
@@ -74,9 +63,7 @@ header{
   padding:14px;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 /* LOGIN */
 
@@ -107,9 +94,7 @@ header{
   outline:none;
 }
 
-.field:focus{
-  border-color:#777;
-}
+.field:focus{border-color:#777}
 
 .main-btn{
   width:100%;
@@ -117,7 +102,7 @@ header{
   border-radius:12px;
   padding:13px;
   background:#111;
-  color:white;
+  color:#fff;
   font-weight:bold;
   margin-top:5px;
 }
@@ -127,7 +112,7 @@ header{
   border:1px solid #ddd;
   border-radius:12px;
   padding:13px;
-  background:white;
+  background:#fff;
   margin-top:8px;
 }
 
@@ -135,67 +120,6 @@ header{
   text-align:center;
   margin-top:10px;
   color:#d32f2f;
-}
-
-/* LIVE CARD */
-
-.live-card{
-  background:#111;
-  color:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  margin-bottom:15px;
-}
-
-.live-top{
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.live-badge{
-  background:#e53935;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.live-video{
-  width:100%;
-  aspect-ratio:16/10;
-  background:#222;
-  object-fit:cover;
-  display:block;
-}
-
-.live-bottom{
-  padding:14px;
-}
-
-.live-actions{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.live-actions button{
-  flex:1;
-  border:0;
-  border-radius:10px;
-  padding:11px;
-  font-weight:bold;
-}
-
-.start-live{
-  background:#e53935;
-  color:white;
-}
-
-.stop-live{
-  background:#fff;
-  color:#111;
 }
 
 /* SECTION */
@@ -212,7 +136,65 @@ header{
   font-size:18px;
 }
 
-/* CREATE POST */
+/* SEARCH */
+
+.search-card{
+  background:#fff;
+  padding:12px;
+  border-radius:18px;
+  margin-bottom:14px;
+}
+
+.search-row{
+  display:flex;
+  gap:8px;
+}
+
+.search-row input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:12px;
+}
+
+.search-row button{
+  border:0;
+  border-radius:12px;
+  padding:0 15px;
+  background:#111;
+  color:#fff;
+}
+
+.user-result{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-top:1px solid #eee;
+}
+
+.user-result .user-info{
+  flex:1;
+}
+
+.user-result strong{
+  display:block;
+}
+
+.small-text{
+  color:#777;
+  font-size:12px;
+}
+
+.avatar-small{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+}
+
+/* CREATE */
 
 .create-card{
   background:#fff;
@@ -226,14 +208,6 @@ header{
   display:flex;
   gap:10px;
   align-items:center;
-}
-
-.avatar-small{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
 }
 
 .create-text{
@@ -261,13 +235,11 @@ header{
   text-align:center;
 }
 
-.create-options input{
-  display:none;
-}
+.create-options input{display:none}
 
 .post-btn{
   background:#111 !important;
-  color:white;
+  color:#fff;
 }
 
 /* POST */
@@ -287,13 +259,9 @@ header{
   gap:10px;
 }
 
-.post-user{
-  flex:1;
-}
+.post-user{flex:1}
 
-.post-user strong{
-  display:block;
-}
+.post-user strong{display:block}
 
 .post-time{
   font-size:11px;
@@ -326,14 +294,12 @@ header{
 .post-actions button{
   flex:1;
   border:0;
-  background:white;
-  padding:12px 5px;
-  font-size:14px;
+  background:#fff;
+  padding:12px 4px;
+  font-size:13px;
 }
 
-.post-actions button:active{
-  background:#eee;
-}
+.post-actions button:active{background:#eee}
 
 .comment-box{
   display:none;
@@ -369,113 +335,41 @@ header{
   font-size:14px;
 }
 
-/* PROFILE */
+/* LIVE */
 
-.profile-card{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  text-align:center;
-}
-
-.profile-avatar{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
-  border:4px solid #eee;
-}
-
-.profile-name{
-  font-size:21px;
-  font-weight:bold;
-  margin:10px 0 3px;
-}
-
-.profile-email{
-  color:#777;
-  font-size:13px;
-}
-
-.profile-edit{
-  margin-top:18px;
-  text-align:left;
-}
-
-.logout{
-  margin-top:12px;
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:12px;
-  background:#e53935;
-  color:white;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  background:#fff;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:center;
-  z-index:200;
-}
-
-.nav-inner{
-  width:100%;
-  max-width:650px;
-  display:flex;
-  justify-content:space-around;
-}
-
-.nav-btn{
-  flex:1;
-  border:0;
-  background:white;
-  font-size:11px;
-  color:#777;
-}
-
-.nav-btn span{
-  display:block;
-  font-size:22px;
-  margin-bottom:2px;
-}
-
-.nav-btn.active{
-  color:#111;
-  font-weight:bold;
-}
-
-.plus{
-  width:48px;
-  height:48px;
-  border-radius:50%;
+.live-card{
   background:#111;
   color:#fff;
-  font-size:28px;
-  line-height:48px;
-  margin-top:-12px;
-}
-
-/* EMPTY */
-
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:#888;
-  background:#fff;
   border-radius:18px;
+  overflow:hidden;
+  margin-bottom:15px;
 }
 
-/* CAMERA */
+.live-top{
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.live-badge{
+  background:#e53935;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.live-bottom{padding:14px}
+
+.start-live{
+  background:#e53935;
+  color:#fff;
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:12px;
+}
 
 .camera-box{
   background:#111;
@@ -521,35 +415,177 @@ header{
   color:#fff;
 }
 
-.stop-camera{
+.stop-camera{background:#fff}
+
+/* PROFILE */
+
+.profile-card{
   background:#fff;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
 }
 
-/* RESPONSIVE */
+.profile-avatar{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+  border:4px solid #eee;
+}
+
+.profile-name{
+  font-size:21px;
+  font-weight:bold;
+  margin:10px 0 3px;
+}
+
+.profile-email{
+  color:#777;
+  font-size:13px;
+}
+
+.profile-stats{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin:16px 0;
+}
+
+.profile-stats strong{
+  display:block;
+  font-size:18px;
+}
+
+.profile-stats span{
+  color:#777;
+  font-size:12px;
+}
+
+.profile-edit{
+  margin-top:18px;
+  text-align:left;
+}
+
+.logout{
+  margin-top:12px;
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#e53935;
+  color:#fff;
+}
+
+.follow-btn{
+  border:0;
+  border-radius:10px;
+  padding:9px 15px;
+  background:#111;
+  color:#fff;
+  font-weight:bold;
+}
+
+.follow-btn.following{
+  background:#eee;
+  color:#111;
+}
+
+/* NOTIFICATIONS */
+
+.notification{
+  background:#fff;
+  padding:13px;
+  border-radius:14px;
+  margin-bottom:8px;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:35px 15px;
+  color:#888;
+  background:#fff;
+  border-radius:18px;
+}
+
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:200;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:650px;
+  display:flex;
+  justify-content:space-around;
+}
+
+.nav-btn{
+  flex:1;
+  border:0;
+  background:#fff;
+  font-size:11px;
+  color:#777;
+}
+
+.nav-btn span{
+  display:block;
+  font-size:22px;
+  margin-bottom:2px;
+}
+
+.nav-btn.active{
+  color:#111;
+  font-weight:bold;
+}
+
+.plus{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:28px;
+  line-height:48px;
+  margin-top:-12px;
+}
 
 @media(max-width:420px){
-  .logo{
-    font-size:18px;
-  }
-
-  .page{
-    padding:10px;
-  }
+  .logo{font-size:18px}
+  .page{padding:10px}
 }
 </style>
 </head>
 
 <body>
 
-<header id="appHeader" style="display:none;">
+<header id="appHeader" style="display:none">
+
   <div class="logo">
     social <span>live.IF</span>
   </div>
 
   <div class="header-right">
-    <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
-    <button class="icon-btn" onclick="showPage('profile')">👤</button>
+    <button class="icon-btn"
+      onclick="showPage('notifications')">🔔</button>
+
+    <button class="icon-btn"
+      onclick="showPage('profile')">👤</button>
   </div>
+
 </header>
 
 
@@ -563,34 +599,28 @@ header{
 
     <p>Masuk untuk menggunakan aplikasi</p>
 
-    <input
-      id="email"
+    <input id="email"
       class="field"
       type="email"
       placeholder="Email">
 
-    <input
-      id="password"
+    <input id="password"
       class="field"
       type="password"
       placeholder="Password">
 
-    <button
-      class="main-btn"
+    <button class="main-btn"
       onclick="loginUser()">
       MASUK
     </button>
 
-    <button
-      class="secondary-btn"
+    <button class="secondary-btn"
       onclick="registerUser()">
       DAFTAR AKUN
     </button>
 
-    <div
-      id="loginMessage"
-      class="message">
-    </div>
+    <div id="loginMessage"
+      class="message"></div>
 
   </div>
 
@@ -599,327 +629,329 @@ header{
 
 <!-- APP -->
 
-<div id="app" class="app" style="display:none;">
+<div id="app" class="app" style="display:none">
 
-  <!-- HOME -->
+<!-- HOME -->
 
-  <section id="home" class="page active">
+<section id="home" class="page active">
 
-    <div class="section-title">
-      <h2>Beranda</h2>
-    </div>
+  <div class="section-title">
+    <h2>Beranda</h2>
+  </div>
 
-    <div class="create-card">
+  <!-- SEARCH USER -->
 
-      <div class="create-top">
+  <div class="search-card">
 
-        <img
-          id="homeAvatar"
-          class="avatar-small"
-          src=""
-          alt="avatar">
+    <strong>🔎 Cari Pengguna</strong>
 
-        <input
-          id="statusInput"
-          class="create-text"
-          placeholder="Apa yang ingin kamu bagikan?">
+    <div class="search-row" style="margin-top:10px">
 
-      </div>
+      <input id="searchUserInput"
+        placeholder="Cari nama pengguna">
 
-      <div class="create-options">
-
-        <label>
-          📷 Foto
-          <input
-            id="postPhoto"
-            type="file"
-            accept="image/*">
-        </label>
-
-        <button
-          class="post-btn"
-          onclick="addPost()">
-          POST
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="live-card">
-
-      <div class="live-top">
-        <strong>🔴 Live sekarang</strong>
-        <span class="live-badge">LIVE</span>
-      </div>
-
-      <div
-        style="
-        padding:25px;
-        text-align:center;
-        color:#bbb;">
-        Mulai siaran langsung dari menu Live
-      </div>
-
-      <div class="live-bottom">
-        <button
-          class="start-live"
-          style="
-          width:100%;
-          border:0;
-          border-radius:10px;
-          padding:12px;"
-          onclick="showPage('live')">
-          📹 Buka Live
-        </button>
-      </div>
-
-    </div>
-
-
-    <div class="section-title">
-      <h2>Postingan</h2>
-    </div>
-
-    <div id="posts"></div>
-
-  </section>
-
-
-  <!-- LIVE -->
-
-  <section id="live" class="page">
-
-    <div class="section-title">
-      <h2>🔴 Live Streaming</h2>
-    </div>
-
-    <div class="camera-box">
-
-      <video
-        id="camera"
-        autoplay
-        muted
-        playsinline>
-      </video>
-
-      <div class="camera-info">
-
-        <strong>social live.IF</strong>
-
-        <div class="viewer-count">
-          👁 0 penonton
-        </div>
-
-        <div class="camera-buttons">
-
-          <button
-            class="start-camera"
-            onclick="startCamera()">
-            🔴 MULAI LIVE
-          </button>
-
-          <button
-            class="stop-camera"
-            onclick="stopCamera()">
-            ⏹ AKHIRI
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div
-      id="liveStatus"
-      class="empty"
-      style="margin-top:12px;">
-      Kamera belum dimulai.
-    </div>
-
-  </section>
-
-
-  <!-- CREATE -->
-
-  <section id="create" class="page">
-
-    <div class="section-title">
-      <h2>➕ Buat Postingan</h2>
-    </div>
-
-    <div class="create-card">
-
-      <img
-        id="createAvatar"
-        class="avatar-small"
-        src=""
-        alt="avatar">
-
-      <textarea
-        id="bigStatus"
-        class="field"
-        style="
-        height:130px;
-        margin-top:12px;"
-        placeholder="Tulis sesuatu..."></textarea>
-
-      <label
-        style="
-        display:block;
-        background:#f1f3f5;
-        padding:13px;
-        border-radius:12px;
-        text-align:center;
-        margin-bottom:10px;">
-
-        📷 Pilih Foto
-
-        <input
-          id="bigPhoto"
-          type="file"
-          accept="image/*"
-          style="display:none;">
-
-      </label>
-
-      <button
-        class="main-btn"
-        onclick="addBigPost()">
-        TERBITKAN POSTINGAN
+      <button onclick="searchUsers()">
+        CARI
       </button>
 
     </div>
 
-  </section>
+    <div id="searchResults"></div>
+
+  </div>
 
 
-  <!-- NOTIFICATIONS -->
+  <!-- CREATE POST -->
 
-  <section id="notifications" class="page">
+  <div class="create-card">
 
-    <div class="section-title">
-      <h2>🔔 Notifikasi</h2>
-    </div>
+    <div class="create-top">
 
-    <div class="empty">
-      Belum ada notifikasi.
-    </div>
-
-  </section>
-
-
-  <!-- PROFILE -->
-
-  <section id="profile" class="page">
-
-    <div class="profile-card">
-
-      <img
-        id="profileAvatar"
-        class="profile-avatar"
+      <img id="homeAvatar"
+        class="avatar-small"
         src=""
-        alt="profile">
+        alt="avatar">
 
-      <div
-        id="profileName"
-        class="profile-name">
-        Ifan
+      <input id="statusInput"
+        class="create-text"
+        placeholder="Apa yang ingin kamu bagikan?">
+
+    </div>
+
+    <div class="create-options">
+
+      <label>
+        📷 Foto
+        <input id="postPhoto"
+          type="file"
+          accept="image/*">
+      </label>
+
+      <button class="post-btn"
+        onclick="addPost()">
+        POST
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- LIVE -->
+
+  <div class="live-card">
+
+    <div class="live-top">
+      <strong>🔴 Live sekarang</strong>
+      <span class="live-badge">LIVE</span>
+    </div>
+
+    <div style="
+      padding:25px;
+      text-align:center;
+      color:#bbb">
+      Mulai siaran langsung dari menu Live
+    </div>
+
+    <div class="live-bottom">
+
+      <button class="start-live"
+        onclick="showPage('live')">
+        📹 Buka Live
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="section-title">
+    <h2>Postingan</h2>
+  </div>
+
+  <div id="posts"></div>
+
+</section>
+
+
+<!-- LIVE -->
+
+<section id="live" class="page">
+
+  <div class="section-title">
+    <h2>🔴 Live Streaming</h2>
+  </div>
+
+  <div class="camera-box">
+
+    <video id="camera"
+      autoplay
+      muted
+      playsinline></video>
+
+    <div class="camera-info">
+
+      <strong>social live.IF</strong>
+
+      <div class="viewer-count">
+        👁 <span id="viewerCount">0</span> penonton
       </div>
 
-      <div
-        id="profileEmail"
-        class="profile-email">
-      </div>
+      <div class="camera-buttons">
 
-      <div class="profile-edit">
-
-        <input
-          id="nameInput"
-          class="field"
-          placeholder="Nama">
-
-        <label
-          style="
-          display:block;
-          border:1px solid #ddd;
-          padding:12px;
-          border-radius:12px;
-          text-align:center;
-          margin-bottom:10px;">
-
-          📷 Ganti foto profil
-
-          <input
-            id="avatarInput"
-            type="file"
-            accept="image/*"
-            style="display:none;">
-
-        </label>
-
-        <button
-          class="main-btn"
-          onclick="saveProfile()">
-          SIMPAN PROFIL
+        <button class="start-camera"
+          onclick="startCamera()">
+          🔴 MULAI LIVE
         </button>
 
-        <button
-          class="logout"
-          onclick="logoutUser()">
-          KELUAR
+        <button class="stop-camera"
+          onclick="stopCamera()">
+          ⏹ AKHIRI
         </button>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+  <div id="liveStatus"
+    class="empty"
+    style="margin-top:12px">
+    Kamera belum dimulai.
+  </div>
+
+</section>
+
+
+<!-- CREATE -->
+
+<section id="create" class="page">
+
+  <div class="section-title">
+    <h2>➕ Buat Postingan</h2>
+  </div>
+
+  <div class="create-card">
+
+    <img id="createAvatar"
+      class="avatar-small"
+      src=""
+      alt="avatar">
+
+    <textarea id="bigStatus"
+      class="field"
+      style="height:130px;margin-top:12px"
+      placeholder="Tulis sesuatu..."></textarea>
+
+    <label style="
+      display:block;
+      background:#f1f3f5;
+      padding:13px;
+      border-radius:12px;
+      text-align:center;
+      margin-bottom:10px">
+
+      📷 Pilih Foto
+
+      <input id="bigPhoto"
+        type="file"
+        accept="image/*"
+        style="display:none">
+
+    </label>
+
+    <button class="main-btn"
+      onclick="addBigPost()">
+      TERBITKAN POSTINGAN
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section id="notifications" class="page">
+
+  <div class="section-title">
+    <h2>🔔 Notifikasi</h2>
+  </div>
+
+  <div id="notificationList"></div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+  <div class="profile-card">
+
+    <img id="profileAvatar"
+      class="profile-avatar"
+      src=""
+      alt="profile">
+
+    <div id="profileName"
+      class="profile-name">
+      Pengguna
+    </div>
+
+    <div id="profileEmail"
+      class="profile-email"></div>
+
+    <div class="profile-stats">
+
+      <div>
+        <strong id="followersCount">0</strong>
+        <span>Pengikut</span>
+      </div>
+
+      <div>
+        <strong id="followingCount">0</strong>
+        <span>Mengikuti</span>
+      </div>
+
+    </div>
+
+    <div class="profile-edit">
+
+      <input id="nameInput"
+        class="field"
+        placeholder="Nama pengguna">
+
+      <label style="
+        display:block;
+        border:1px solid #ddd;
+        padding:12px;
+        border-radius:12px;
+        text-align:center;
+        margin-bottom:10px">
+
+        📷 Ganti foto profil
+
+        <input id="avatarInput"
+          type="file"
+          accept="image/*"
+          style="display:none">
+
+      </label>
+
+      <button class="main-btn"
+        onclick="saveProfile()">
+        SIMPAN PROFIL
+      </button>
+
+      <button class="logout"
+        onclick="logoutUser()">
+        KELUAR
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
 </div>
 
 
-<!-- BOTTOM NAV -->
+<!-- NAV -->
 
-<div
-  id="bottomNav"
+<div id="bottomNav"
   class="bottom-nav"
-  style="display:none;">
+  style="display:none">
 
   <div class="nav-inner">
 
-    <button
-      class="nav-btn active"
+    <button class="nav-btn active"
       onclick="showPage('home')">
       <span>🏠</span>
       Beranda
     </button>
 
-    <button
-      class="nav-btn"
+    <button class="nav-btn"
       onclick="showPage('live')">
       <span>🔴</span>
       Live
     </button>
 
-    <button
-      class="nav-btn"
+    <button class="nav-btn"
       onclick="showPage('create')">
       <span class="plus">+</span>
       Buat
     </button>
 
-    <button
-      class="nav-btn"
+    <button class="nav-btn"
       onclick="showPage('notifications')">
       <span>💬</span>
       Pesan
     </button>
 
-    <button
-      class="nav-btn"
+    <button class="nav-btn"
       onclick="showPage('profile')">
       <span>👤</span>
       Saya
@@ -949,10 +981,18 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   doc,
-  serverTimestamp
+  query,
+  where,
+  orderBy,
+  serverTimestamp,
+  arrayUnion,
+  arrayRemove,
+  increment
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -961,15 +1001,13 @@ import {
 ========================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
-  authDomain: "ifan-social-web.firebaseapp.com",
-  projectId: "ifan-social-web"
+  apiKey:"AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
+  authDomain:"ifan-social-web.firebaseapp.com",
+  projectId:"ifan-social-web"
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const db = getFirestore(app);
 
 
@@ -977,13 +1015,12 @@ const db = getFirestore(app);
    DATA
 ========================= */
 
-let posts = [];
-
 let profile = {
-  name:"Ifan",
+  name:"Pengguna",
   avatar:""
 };
 
+let posts = [];
 let cameraStream = null;
 
 
@@ -1011,9 +1048,8 @@ function readImage(file){
 
     const reader = new FileReader();
 
-    reader.onload = e => resolve(e.target.result);
-
-    reader.onerror = reject;
+    reader.onload=e=>resolve(e.target.result);
+    reader.onerror=reject;
 
     reader.readAsDataURL(file);
 
@@ -1023,7 +1059,7 @@ function readImage(file){
 
 
 /* =========================
-   ESCAPE TEXT
+   ESCAPE
 ========================= */
 
 function esc(text){
@@ -1042,63 +1078,102 @@ function esc(text){
    NAVIGATION
 ========================= */
 
-window.showPage = function(page){
+window.showPage=function(page){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
 
-  const target = $(page);
+  const target=$(page);
 
   if(target){
     target.classList.add("active");
   }
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".nav-btn")
+    .forEach(b=>b.classList.remove("active"));
 
-  if(page === "home"){
-    document.querySelectorAll(".nav-btn")[0].classList.add("active");
+  const index={
+    home:0,
+    live:1,
+    create:2,
+    notifications:3,
+    profile:4
+  }[page];
+
+  if(index!==undefined){
+    document.querySelectorAll(".nav-btn")[index]
+      ?.classList.add("active");
   }
 
-  if(page === "live"){
-    document.querySelectorAll(".nav-btn")[1].classList.add("active");
+  if(page==="notifications"){
+    loadNotifications();
   }
 
-  if(page === "create"){
-    document.querySelectorAll(".nav-btn")[2].classList.add("active");
-  }
-
-  if(page === "notifications"){
-    document.querySelectorAll(".nav-btn")[3].classList.add("active");
-  }
-
-  if(page === "profile"){
-    document.querySelectorAll(".nav-btn")[4].classList.add("active");
+  if(page==="profile"){
+    loadFollowCounts();
   }
 
 };
 
 
 /* =========================
-   PROFILE LOCAL
+   PROFILE
 ========================= */
 
-function loadLocalProfile(){
+async function loadProfile(){
+
+  const user=auth.currentUser;
+
+  if(!user)return;
 
   try{
 
-    const saved =
-      localStorage.getItem("social_live_if_profile");
+    const ref=doc(db,"users",user.uid);
 
-    if(saved){
-      profile = JSON.parse(saved);
+    const snap=await getDoc(ref);
+
+    if(snap.exists()){
+
+      const data=snap.data();
+
+      profile={
+        name:data.name || "Pengguna",
+        avatar:data.avatar || ""
+      };
+
+    }else{
+
+      profile={
+        name:"Pengguna",
+        avatar:""
+      };
+
+      await setDoc(ref,{
+        uid:user.uid,
+        name:"Pengguna",
+        avatar:"",
+        email:user.email || "",
+        createdAt:serverTimestamp()
+      });
+
     }
 
-  }catch(e){
+  }catch(error){
 
-    console.log(e);
+    console.error(error);
+
+    const local=
+      localStorage.getItem(
+        "social_live_if_profile_"+user.uid
+      );
+
+    if(local){
+
+      try{
+        profile=JSON.parse(local);
+      }catch(e){}
+
+    }
 
   }
 
@@ -1107,30 +1182,30 @@ function loadLocalProfile(){
 }
 
 
+/* =========================
+   PROFILE UI
+========================= */
+
 function updateProfileUI(){
 
-  $("profileName").textContent =
-    profile.name || "Ifan";
+  const user=auth.currentUser;
 
-  $("nameInput").value =
-    profile.name || "Ifan";
+  $("profileName").textContent=
+    profile.name || "Pengguna";
 
-  if(auth.currentUser){
+  $("nameInput").value=
+    profile.name || "";
 
-    $("profileEmail").textContent =
-      auth.currentUser.email || "";
+  $("profileEmail").textContent=
+    user?.email || "";
 
-  }
-
-  const avatar =
+  const avatar=
     profile.avatar ||
     "https://via.placeholder.com/150";
 
-  $("profileAvatar").src = avatar;
-
-  $("homeAvatar").src = avatar;
-
-  $("createAvatar").src = avatar;
+  $("profileAvatar").src=avatar;
+  $("homeAvatar").src=avatar;
+  $("createAvatar").src=avatar;
 
 }
 
@@ -1139,29 +1214,45 @@ function updateProfileUI(){
    SAVE PROFILE
 ========================= */
 
-window.saveProfile = async function(){
+window.saveProfile=async function(){
 
-  const name =
-    $("nameInput").value.trim() || "Ifan";
+  const user=auth.currentUser;
 
-  const file =
+  if(!user)return;
+
+  const name=
+    $("nameInput").value.trim() || "Pengguna";
+
+  const file=
     $("avatarInput").files[0];
 
   try{
 
-    let avatar = profile.avatar;
+    let avatar=profile.avatar || "";
 
     if(file){
-      avatar = await readImage(file);
+      avatar=await readImage(file);
     }
 
-    profile = {
+    profile={
       name,
       avatar
     };
 
+    await setDoc(
+      doc(db,"users",user.uid),
+      {
+        uid:user.uid,
+        name:name,
+        avatar:avatar,
+        email:user.email || "",
+        updatedAt:serverTimestamp()
+      },
+      {merge:true}
+    );
+
     localStorage.setItem(
-      "social_live_if_profile",
+      "social_live_if_profile_"+user.uid,
       JSON.stringify(profile)
     );
 
@@ -1174,7 +1265,7 @@ window.saveProfile = async function(){
     console.error(error);
 
     alert(
-      "Gagal menyimpan profil: " +
+      "Gagal menyimpan profil:\n"+
       error.message
     );
 
@@ -1187,50 +1278,54 @@ window.saveProfile = async function(){
    REGISTER
 ========================= */
 
-window.registerUser = async function(){
+window.registerUser=async function(){
 
-  const email =
-    $("email").value.trim();
+  const email=$("email").value.trim();
+  const password=$("password").value;
 
-  const password =
-    $("password").value;
-
-  $("loginMessage").textContent = "";
+  $("loginMessage").textContent="";
 
   if(!email || !password){
 
-    $("loginMessage").textContent =
+    $("loginMessage").textContent=
       "Isi email dan password.";
 
     return;
-
   }
 
-  if(password.length < 6){
+  if(password.length<6){
 
-    $("loginMessage").textContent =
+    $("loginMessage").textContent=
       "Password minimal 6 karakter.";
 
     return;
-
   }
 
   try{
 
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const result=
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    $("loginMessage").textContent =
-      "Akun berhasil dibuat.";
+    await setDoc(
+      doc(db,"users",result.user.uid),
+      {
+        uid:result.user.uid,
+        name:"Pengguna",
+        avatar:"",
+        email:email,
+        createdAt:serverTimestamp()
+      }
+    );
 
   }catch(error){
 
     console.error(error);
 
-    $("loginMessage").textContent =
+    $("loginMessage").textContent=
       error.message;
 
   }
@@ -1242,23 +1337,19 @@ window.registerUser = async function(){
    LOGIN
 ========================= */
 
-window.loginUser = async function(){
+window.loginUser=async function(){
 
-  const email =
-    $("email").value.trim();
+  const email=$("email").value.trim();
+  const password=$("password").value;
 
-  const password =
-    $("password").value;
-
-  $("loginMessage").textContent = "";
+  $("loginMessage").textContent="";
 
   if(!email || !password){
 
-    $("loginMessage").textContent =
+    $("loginMessage").textContent=
       "Isi email dan password.";
 
     return;
-
   }
 
   try{
@@ -1273,7 +1364,7 @@ window.loginUser = async function(){
 
     console.error(error);
 
-    $("loginMessage").textContent =
+    $("loginMessage").textContent=
       error.message;
 
   }
@@ -1285,7 +1376,7 @@ window.loginUser = async function(){
    LOGOUT
 ========================= */
 
-window.logoutUser = async function(){
+window.logoutUser=async function(){
 
   stopCamera();
 
@@ -1298,40 +1389,39 @@ window.logoutUser = async function(){
    ADD POST
 ========================= */
 
-window.addPost = async function(){
+window.addPost=async function(){
 
-  const text =
+  const user=auth.currentUser;
+
+  if(!user){
+
+    alert("Silakan login terlebih dahulu.");
+    return;
+
+  }
+
+  const text=
     $("statusInput").value.trim();
 
-  const file =
+  const file=
     $("postPhoto").files[0];
 
   if(!text && !file){
 
     alert("Tulis status atau pilih foto.");
-
-    return;
-
-  }
-
-  if(!auth.currentUser){
-
-    alert("Silakan login terlebih dahulu.");
-
     return;
 
   }
 
   try{
 
-    const image =
-      await readImage(file);
+    const image=await readImage(file);
 
-    const post = {
+    const post={
 
-      uid:auth.currentUser.uid,
+      uid:user.uid,
 
-      name:profile.name || "Ifan",
+      name:profile.name || "Pengguna",
 
       avatar:profile.avatar || "",
 
@@ -1341,6 +1431,10 @@ window.addPost = async function(){
 
       likes:0,
 
+      likedBy:[],
+
+      savedBy:[],
+
       comments:[],
 
       time:new Date().toLocaleString("id-ID"),
@@ -1349,36 +1443,24 @@ window.addPost = async function(){
 
     };
 
-    const ref =
-      await addDoc(
-        collection(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts"
-        ),
-        post
-      );
+    await addDoc(
+      collection(db,"posts"),
+      post
+    );
 
-    posts.unshift({
-      ...post,
-      id:ref.id
-    });
+    $("statusInput").value="";
+    $("postPhoto").value="";
 
-    $("statusInput").value = "";
+    await loadPosts();
 
-    $("postPhoto").value = "";
-
-    renderPosts();
-
-    alert("Postingan berhasil disimpan.");
+    alert("Postingan berhasil dibuat.");
 
   }catch(error){
 
     console.error(error);
 
     alert(
-      "Gagal menyimpan postingan:\n" +
+      "Gagal membuat postingan:\n"+
       error.message
     );
 
@@ -1391,40 +1473,37 @@ window.addPost = async function(){
    BIG POST
 ========================= */
 
-window.addBigPost = async function(){
+window.addBigPost=async function(){
 
-  const text =
+  const text=
     $("bigStatus").value.trim();
 
-  const file =
+  const file=
     $("bigPhoto").files[0];
 
   if(!text && !file){
 
     alert("Tulis sesuatu atau pilih foto.");
-
     return;
 
   }
 
-  $("statusInput").value = text;
-
-  const temp =
-    $("postPhoto");
-
-  const dataTransfer =
-    new DataTransfer();
+  $("statusInput").value=text;
 
   if(file){
-    dataTransfer.items.add(file);
-    temp.files = dataTransfer.files;
+
+    const dt=new DataTransfer();
+
+    dt.items.add(file);
+
+    $("postPhoto").files=dt.files;
+
   }
 
   await addPost();
 
-  $("bigStatus").value = "";
-
-  $("bigPhoto").value = "";
+  $("bigStatus").value="";
+  $("bigPhoto").value="";
 
 };
 
@@ -1435,25 +1514,16 @@ window.addBigPost = async function(){
 
 async function loadPosts(){
 
-  if(!auth.currentUser){
-    return;
-  }
-
   try{
 
-    const snap =
+    const snap=
       await getDocs(
-        collection(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts"
-        )
+        collection(db,"posts")
       );
 
-    posts = [];
+    posts=[];
 
-    snap.forEach(item => {
+    snap.forEach(item=>{
 
       posts.push({
         id:item.id,
@@ -1464,10 +1534,10 @@ async function loadPosts(){
 
     posts.sort((a,b)=>{
 
-      const aa =
+      const aa=
         a.createdAt?.seconds || 0;
 
-      const bb =
+      const bb=
         b.createdAt?.seconds || 0;
 
       return bb-aa;
@@ -1480,7 +1550,7 @@ async function loadPosts(){
 
     console.error(error);
 
-    $("posts").innerHTML = `
+    $("posts").innerHTML=`
       <div class="empty">
         Gagal memuat postingan.
         <br>
@@ -1499,15 +1569,11 @@ async function loadPosts(){
 
 function renderPosts(){
 
-  const box =
-    $("posts");
-
   if(!posts.length){
 
-    box.innerHTML = `
+    $("posts").innerHTML=`
       <div class="empty">
-        Belum ada postingan.<br>
-        Buat postingan pertama kamu.
+        Belum ada postingan.
       </div>
     `;
 
@@ -1515,27 +1581,42 @@ function renderPosts(){
 
   }
 
-  box.innerHTML =
+  const uid=auth.currentUser?.uid;
+
+  $("posts").innerHTML=
     posts.map((p,index)=>{
 
-      const avatar =
+      const avatar=
         p.avatar ||
         "https://via.placeholder.com/100";
 
-      const comments =
+      const comments=
         Array.isArray(p.comments)
-          ? p.comments
-          : [];
+          ?p.comments
+          :[];
 
-      const commentsHtml =
-        comments.map(c => `
+      const liked=
+        Array.isArray(p.likedBy) &&
+        uid &&
+        p.likedBy.includes(uid);
+
+      const saved=
+        Array.isArray(p.savedBy) &&
+        uid &&
+        p.savedBy.includes(uid);
+
+      const commentsHtml=
+        comments.map(c=>`
           <div class="comment-text">
             <strong>${esc(c.name)}</strong><br>
             ${esc(c.text)}
           </div>
         `).join("");
 
-      return `
+      const own=
+        uid===p.uid;
+
+      return`
 
         <article class="post">
 
@@ -1548,7 +1629,7 @@ function renderPosts(){
             <div class="post-user">
 
               <strong>
-                ${esc(p.name || "Ifan")}
+                ${esc(p.name || "Pengguna")}
               </strong>
 
               <div class="post-time">
@@ -1557,11 +1638,17 @@ function renderPosts(){
 
             </div>
 
-            <button
-              class="post-menu"
-              onclick="postMenu(${index})">
-              ⋮
-            </button>
+            ${
+              own
+              ?
+              `<button
+                class="post-menu"
+                onclick="postMenu(${index})">
+                ⋮
+              </button>`
+              :
+              ""
+            }
 
           </div>
 
@@ -1589,15 +1676,20 @@ function renderPosts(){
           <div class="post-actions">
 
             <button onclick="likePost(${index})">
-              ❤️ ${p.likes || 0}
+              ${liked?"❤️":"🤍"}
+              ${Number(p.likes||0)}
             </button>
 
             <button onclick="toggleComments(${index})">
-              💬 Komentar
+              💬 ${comments.length}
+            </button>
+
+            <button onclick="savePost(${index})">
+              ${saved?"🔖":"🔖"}
             </button>
 
             <button onclick="sharePost(${index})">
-              📤 Bagikan
+              📤
             </button>
 
           </div>
@@ -1638,39 +1730,74 @@ function renderPosts(){
    LIKE
 ========================= */
 
-window.likePost = async function(index){
+window.likePost=async function(index){
 
-  const p = posts[index];
+  const user=auth.currentUser;
+  const p=posts[index];
 
-  if(!p) return;
+  if(!user || !p)return;
 
-  p.likes =
-    Number(p.likes || 0) + 1;
+  const liked=
+    Array.isArray(p.likedBy) &&
+    p.likedBy.includes(user.uid);
 
-  renderPosts();
+  try{
 
-  if(p.id && auth.currentUser){
-
-    try{
+    if(liked){
 
       await updateDoc(
-        doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts",
-          p.id
-        ),
+        doc(db,"posts",p.id),
         {
-          likes:p.likes
+          likedBy:arrayRemove(user.uid),
+          likes:increment(-1)
         }
       );
 
-    }catch(error){
+    }else{
 
-      console.error(error);
+      await updateDoc(
+        doc(db,"posts",p.id),
+        {
+          likedBy:arrayUnion(user.uid),
+          likes:increment(1)
+        }
+      );
+
+      if(p.uid!==user.uid){
+
+        await addDoc(
+          collection(
+            db,
+            "users",
+            p.uid,
+            "notifications"
+          ),
+          {
+            type:"like",
+            fromUid:user.uid,
+            fromName:profile.name,
+            postId:p.id,
+            text:
+              profile.name+
+              " menyukai postingan kamu.",
+            createdAt:serverTimestamp()
+          }
+        );
+
+      }
 
     }
+
+    await loadPosts();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Like gagal:\n"+
+      error.message
+    );
 
   }
 
@@ -1681,82 +1808,135 @@ window.likePost = async function(index){
    COMMENTS
 ========================= */
 
-window.toggleComments = function(index){
+window.toggleComments=function(index){
 
-  const box =
-    $("comments-" + index);
+  const box=$("comments-"+index);
 
-  if(!box) return;
+  if(!box)return;
 
-  box.style.display =
-    box.style.display === "block"
-      ? "none"
-      : "block";
+  box.style.display=
+    box.style.display==="block"
+      ?"none"
+      :"block";
 
 };
 
 
-window.addComment = async function(index){
+window.addComment=async function(index){
 
-  const input =
-    $("comment-" + index);
+  const user=auth.currentUser;
+  const p=posts[index];
 
-  const text =
-    input.value.trim();
+  if(!user || !p)return;
 
-  if(!text) return;
+  const input=$("comment-"+index);
 
-  const p = posts[index];
+  const text=input.value.trim();
 
-  if(!p) return;
+  if(!text)return;
 
-  if(!Array.isArray(p.comments)){
-    p.comments = [];
-  }
+  const comment={
 
-  p.comments.push({
+    uid:user.uid,
 
-    name:profile.name || "Ifan",
+    name:profile.name || "Pengguna",
 
     text:text,
 
     time:new Date().toLocaleString("id-ID")
 
-  });
+  };
 
-  input.value = "";
+  try{
 
-  renderPosts();
+    await updateDoc(
+      doc(db,"posts",p.id),
+      {
+        comments:arrayUnion(comment)
+      }
+    );
 
-  const box =
-    $("comments-" + index);
+    if(p.uid!==user.uid){
 
-  if(box){
-    box.style.display = "block";
-  }
-
-  if(p.id && auth.currentUser){
-
-    try{
-
-      await updateDoc(
-        doc(
+      await addDoc(
+        collection(
           db,
           "users",
-          auth.currentUser.uid,
-          "posts",
-          p.id
+          p.uid,
+          "notifications"
         ),
         {
-          comments:p.comments
+          type:"comment",
+          fromUid:user.uid,
+          fromName:profile.name,
+          postId:p.id,
+          text:
+            profile.name+
+            " mengomentari postingan kamu.",
+          createdAt:serverTimestamp()
         }
       );
 
-    }catch(error){
-
-      console.error(error);
-
     }
+
+    await loadPosts();
+
+    const box=$("comments-"+index);
+
+    if(box){
+      box.style.display="block";
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Komentar gagal:\n"+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   SAVE POST
+========================= */
+
+window.savePost=async function(index){
+
+  const user=auth.currentUser;
+  const p=posts[index];
+
+  if(!user || !p)return;
+
+  const saved=
+    Array.isArray(p.savedBy) &&
+    p.savedBy.includes(user.uid);
+
+  try{
+
+    await updateDoc(
+      doc(db,"posts",p.id),
+      {
+        savedBy:saved
+          ?arrayRemove(user.uid)
+          :arrayUnion(user.uid)
+      }
+    );
+
+    await loadPosts();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Gagal menyimpan postingan:\n"+
+      error.message
+    );
 
   }
 
@@ -1767,14 +1947,16 @@ window.addComment = async function(index){
    SHARE
 ========================= */
 
-window.sharePost = async function(index){
+window.sharePost=async function(index){
 
-  const p = posts[index];
+  const p=posts[index];
 
-  const text =
-    (p.name || "IFAN") +
-    ": " +
-    (p.text || "Postingan di social live.IF");
+  if(!p)return;
+
+  const text=
+    (p.name||"Pengguna")+
+    ": "+
+    (p.text||"Postingan di social live.IF");
 
   try{
 
@@ -1806,51 +1988,78 @@ window.sharePost = async function(index){
    POST MENU
 ========================= */
 
-window.postMenu = async function(index){
+window.postMenu=async function(index){
 
-  const p = posts[index];
+  const user=auth.currentUser;
+  const p=posts[index];
 
-  if(!p) return;
+  if(!user || !p)return;
 
-  const action =
+  if(p.uid!==user.uid){
+
+    alert("Kamu hanya bisa mengelola postingan sendiri.");
+    return;
+
+  }
+
+  const action=
     prompt(
-      "Pilih:\n" +
-      "1 = Hapus\n" +
-      "2 = Batalkan"
+      "Pilih tindakan:\n\n"+
+      "1 = Edit\n"+
+      "2 = Hapus\n"+
+      "3 = Batal"
     );
 
-  if(action !== "1"){
-    return;
+  if(action==="1"){
+
+    const newText=
+      prompt(
+        "Edit isi postingan:",
+        p.text || ""
+      );
+
+    if(newText===null)return;
+
+    try{
+
+      await updateDoc(
+        doc(db,"posts",p.id),
+        {
+          text:newText
+        }
+      );
+
+      await loadPosts();
+
+    }catch(error){
+
+      alert(
+        "Gagal edit:\n"+
+        error.message
+      );
+
+    }
+
   }
 
-  if(!confirm("Hapus postingan ini?")){
-    return;
-  }
+  if(action==="2"){
 
-  posts.splice(index,1);
-
-  renderPosts();
-
-  if(p.id && auth.currentUser){
+    if(!confirm("Hapus postingan ini?")){
+      return;
+    }
 
     try{
 
       await deleteDoc(
-        doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts",
-          p.id
-        )
+        doc(db,"posts",p.id)
       );
+
+      await loadPosts();
 
     }catch(error){
 
-      console.error(error);
-
       alert(
-        "Gagal menghapus:\n" +
+        "Gagal menghapus:\n"+
         error.message
       );
 
@@ -1862,10 +2071,357 @@ window.postMenu = async function(index){
 
 
 /* =========================
+   SEARCH USERS
+========================= */
+
+window.searchUsers=async function(){
+
+  const keyword=
+    $("searchUserInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const box=$("searchResults");
+
+  if(!keyword){
+
+    box.innerHTML="";
+    return;
+
+  }
+
+  try{
+
+    const snap=
+      await getDocs(
+        collection(db,"users")
+      );
+
+    const users=[];
+
+    snap.forEach(item=>{
+
+      const data=item.data();
+
+      if(
+        item.id!==auth.currentUser?.uid &&
+        String(data.name||"")
+          .toLowerCase()
+          .includes(keyword)
+      ){
+
+        users.push({
+          uid:item.id,
+          ...data
+        });
+
+      }
+
+    });
+
+    if(!users.length){
+
+      box.innerHTML=`
+        <div class="empty"
+          style="margin-top:10px">
+          Pengguna tidak ditemukan.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    box.innerHTML=
+      users.map(u=>`
+
+        <div class="user-result">
+
+          <img
+            class="avatar-small"
+            src="${
+              u.avatar ||
+              "https://via.placeholder.com/100"
+            }">
+
+          <div class="user-info">
+
+            <strong>
+              ${esc(u.name||"Pengguna")}
+            </strong>
+
+            <span class="small-text">
+              ${esc(u.email||"")}
+            </span>
+
+          </div>
+
+          <button
+            class="follow-btn"
+            onclick="toggleFollow('${u.uid}')">
+
+            IKUTI
+
+          </button>
+
+        </div>
+
+      `).join("");
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML=`
+      <div class="empty">
+        Gagal mencari pengguna.
+        <br>
+        <small>${esc(error.message)}</small>
+      </div>
+    `;
+
+  }
+
+};
+
+
+/* =========================
+   FOLLOW
+========================= */
+
+window.toggleFollow=async function(targetUid){
+
+  const user=auth.currentUser;
+
+  if(!user || !targetUid)return;
+
+  if(user.uid===targetUid)return;
+
+  try{
+
+    const followingRef=
+      doc(
+        db,
+        "users",
+        user.uid,
+        "following",
+        targetUid
+      );
+
+    const followerRef=
+      doc(
+        db,
+        "users",
+        targetUid,
+        "followers",
+        user.uid
+      );
+
+    const followingSnap=
+      await getDoc(followingRef);
+
+    if(followingSnap.exists()){
+
+      await deleteDoc(followingRef);
+      await deleteDoc(followerRef);
+
+    }else{
+
+      await setDoc(
+        followingRef,
+        {
+          uid:targetUid,
+          createdAt:serverTimestamp()
+        }
+      );
+
+      await setDoc(
+        followerRef,
+        {
+          uid:user.uid,
+          name:profile.name,
+          avatar:profile.avatar || "",
+          createdAt:serverTimestamp()
+        }
+      );
+
+      await addDoc(
+        collection(
+          db,
+          "users",
+          targetUid,
+          "notifications"
+        ),
+        {
+          type:"follow",
+          fromUid:user.uid,
+          fromName:profile.name,
+          text:
+            profile.name+
+            " mulai mengikuti kamu.",
+          createdAt:serverTimestamp()
+        }
+      );
+
+    }
+
+    await loadFollowCounts();
+    await searchUsers();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Follow gagal:\n"+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   FOLLOW COUNTS
+========================= */
+
+async function loadFollowCounts(){
+
+  const user=auth.currentUser;
+
+  if(!user)return;
+
+  try{
+
+    const followers=
+      await getDocs(
+        collection(
+          db,
+          "users",
+          user.uid,
+          "followers"
+        )
+      );
+
+    const following=
+      await getDocs(
+        collection(
+          db,
+          "users",
+          user.uid,
+          "following"
+        )
+      );
+
+    $("followersCount").textContent=
+      followers.size;
+
+    $("followingCount").textContent=
+      following.size;
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+async function loadNotifications(){
+
+  const user=auth.currentUser;
+
+  if(!user)return;
+
+  try{
+
+    const snap=
+      await getDocs(
+        collection(
+          db,
+          "users",
+          user.uid,
+          "notifications"
+        )
+      );
+
+    const list=[];
+
+    snap.forEach(item=>{
+
+      list.push({
+        id:item.id,
+        ...item.data()
+      });
+
+    });
+
+    list.sort((a,b)=>{
+
+      const aa=
+        a.createdAt?.seconds || 0;
+
+      const bb=
+        b.createdAt?.seconds || 0;
+
+      return bb-aa;
+
+    });
+
+    if(!list.length){
+
+      $("notificationList").innerHTML=`
+        <div class="empty">
+          Belum ada notifikasi.
+        </div>
+      `;
+
+      return;
+
+    }
+
+    $("notificationList").innerHTML=
+      list.map(n=>`
+
+        <div class="notification">
+
+          🔔 ${esc(
+            n.text || "Aktivitas baru."
+          )}
+
+        </div>
+
+      `).join("");
+
+  }catch(error){
+
+    console.error(error);
+
+    $("notificationList").innerHTML=`
+      <div class="empty">
+        Gagal memuat notifikasi.
+        <br>
+        <small>${esc(error.message)}</small>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
    CAMERA
 ========================= */
 
-window.startCamera = async function(){
+window.startCamera=async function(){
 
   try{
 
@@ -1873,7 +2429,7 @@ window.startCamera = async function(){
       stopCamera();
     }
 
-    cameraStream =
+    cameraStream=
       await navigator.mediaDevices.getUserMedia({
 
         video:{
@@ -1884,21 +2440,21 @@ window.startCamera = async function(){
 
       });
 
-    $("camera").srcObject =
+    $("camera").srcObject=
       cameraStream;
 
-    $("liveStatus").innerHTML =
-      "🔴 <strong>LIVE AKTIF</strong><br>" +
+    $("liveStatus").innerHTML=
+      "🔴 <strong>LIVE AKTIF</strong><br>"+
       "Kamera sedang digunakan.";
 
   }catch(error){
 
     console.error(error);
 
-    $("liveStatus").innerHTML =
-      "Kamera tidak dapat dibuka.<br>" +
-      "<small>" +
-      esc(error.message) +
+    $("liveStatus").innerHTML=
+      "Kamera tidak dapat dibuka.<br>"+
+      "<small>"+
+      esc(error.message)+
       "</small>";
 
   }
@@ -1906,21 +2462,21 @@ window.startCamera = async function(){
 };
 
 
-window.stopCamera = function(){
+window.stopCamera=function(){
 
   if(cameraStream){
 
     cameraStream
       .getTracks()
-      .forEach(track => track.stop());
+      .forEach(track=>track.stop());
 
-    cameraStream = null;
+    cameraStream=null;
 
   }
 
-  $("camera").srcObject = null;
+  $("camera").srcObject=null;
 
-  $("liveStatus").innerHTML =
+  $("liveStatus").innerHTML=
     "Kamera belum dimulai.";
 
 };
@@ -1932,41 +2488,33 @@ window.stopCamera = function(){
 
 onAuthStateChanged(
   auth,
-  async user => {
+  async user=>{
 
     if(user){
 
-      $("loginScreen").style.display =
-        "none";
+      $("loginScreen").style.display="none";
 
-      $("app").style.display =
-        "block";
+      $("app").style.display="block";
 
-      $("appHeader").style.display =
-        "flex";
+      $("appHeader").style.display="flex";
 
-      $("bottomNav").style.display =
-        "flex";
+      $("bottomNav").style.display="flex";
 
-      loadLocalProfile();
+      await loadProfile();
 
-      updateProfileUI();
+      await loadFollowCounts();
 
       await loadPosts();
 
     }else{
 
-      $("loginScreen").style.display =
-        "block";
+      $("loginScreen").style.display="block";
 
-      $("app").style.display =
-        "none";
+      $("app").style.display="none";
 
-      $("appHeader").style.display =
-        "none";
+      $("appHeader").style.display="none";
 
-      $("bottomNav").style.display =
-        "none";
+      $("bottomNav").style.display="none";
 
       stopCamera();
 
@@ -1974,13 +2522,6 @@ onAuthStateChanged(
 
   }
 );
-
-
-/* =========================
-   START
-========================= */
-
-loadLocalProfile();
 
 </script>
 
