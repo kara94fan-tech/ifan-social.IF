@@ -1,0 +1,1988 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>social live.IF</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f4f7;
+  color:#18202a;
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:62px;
+  background:#ffffff;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#e53935;
+}
+
+.header-right{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#f0f2f5;
+  font-size:19px;
+}
+
+.app{
+  max-width:650px;
+  margin:auto;
+  padding-bottom:85px;
+}
+
+.page{
+  display:none;
+  padding:14px;
+}
+
+.page.active{
+  display:block;
+}
+
+/* LOGIN */
+
+.login-box{
+  margin:60px 14px;
+  background:#fff;
+  padding:24px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.login-box h1{
+  text-align:center;
+  margin-top:0;
+}
+
+.login-box p{
+  text-align:center;
+  color:#777;
+}
+
+.field{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:10px;
+  outline:none;
+}
+
+.field:focus{
+  border-color:#777;
+}
+
+.main-btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.secondary-btn{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:13px;
+  background:white;
+  margin-top:8px;
+}
+
+.message{
+  text-align:center;
+  margin-top:10px;
+  color:#d32f2f;
+}
+
+/* LIVE CARD */
+
+.live-card{
+  background:#111;
+  color:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+
+.live-top{
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.live-badge{
+  background:#e53935;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.live-video{
+  width:100%;
+  aspect-ratio:16/10;
+  background:#222;
+  object-fit:cover;
+  display:block;
+}
+
+.live-bottom{
+  padding:14px;
+}
+
+.live-actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.live-actions button{
+  flex:1;
+  border:0;
+  border-radius:10px;
+  padding:11px;
+  font-weight:bold;
+}
+
+.start-live{
+  background:#e53935;
+  color:white;
+}
+
+.stop-live{
+  background:#fff;
+  color:#111;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 12px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:18px;
+}
+
+/* CREATE POST */
+
+.create-card{
+  background:#fff;
+  padding:14px;
+  border-radius:18px;
+  margin-bottom:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.create-top{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.avatar-small{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+}
+
+.create-text{
+  flex:1;
+  border:0;
+  background:#f1f3f5;
+  border-radius:20px;
+  padding:12px;
+  outline:none;
+}
+
+.create-options{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.create-options label,
+.create-options button{
+  flex:1;
+  border:0;
+  background:#f1f3f5;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+}
+
+.create-options input{
+  display:none;
+}
+
+.post-btn{
+  background:#111 !important;
+  color:white;
+}
+
+/* POST */
+
+.post{
+  background:#fff;
+  border-radius:18px;
+  margin-bottom:14px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.post-head{
+  padding:13px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.post-user{
+  flex:1;
+}
+
+.post-user strong{
+  display:block;
+}
+
+.post-time{
+  font-size:11px;
+  color:#888;
+  margin-top:3px;
+}
+
+.post-menu{
+  border:0;
+  background:none;
+  font-size:20px;
+}
+
+.post-body{
+  padding:0 14px 12px;
+}
+
+.post-image{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  display:block;
+}
+
+.post-actions{
+  display:flex;
+  border-top:1px solid #eee;
+}
+
+.post-actions button{
+  flex:1;
+  border:0;
+  background:white;
+  padding:12px 5px;
+  font-size:14px;
+}
+
+.post-actions button:active{
+  background:#eee;
+}
+
+.comment-box{
+  display:none;
+  padding:10px;
+  border-top:1px solid #eee;
+}
+
+.comment-row{
+  display:flex;
+  gap:7px;
+}
+
+.comment-input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:18px;
+  padding:9px 12px;
+}
+
+.comment-send{
+  border:0;
+  border-radius:18px;
+  padding:0 15px;
+  background:#111;
+  color:#fff;
+}
+
+.comment-text{
+  padding:8px 10px;
+  background:#f2f3f5;
+  border-radius:12px;
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* PROFILE */
+
+.profile-card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+}
+
+.profile-avatar{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+  border:4px solid #eee;
+}
+
+.profile-name{
+  font-size:21px;
+  font-weight:bold;
+  margin:10px 0 3px;
+}
+
+.profile-email{
+  color:#777;
+  font-size:13px;
+}
+
+.profile-edit{
+  margin-top:18px;
+  text-align:left;
+}
+
+.logout{
+  margin-top:12px;
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+  background:#e53935;
+  color:white;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:200;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:650px;
+  display:flex;
+  justify-content:space-around;
+}
+
+.nav-btn{
+  flex:1;
+  border:0;
+  background:white;
+  font-size:11px;
+  color:#777;
+}
+
+.nav-btn span{
+  display:block;
+  font-size:22px;
+  margin-bottom:2px;
+}
+
+.nav-btn.active{
+  color:#111;
+  font-weight:bold;
+}
+
+.plus{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:28px;
+  line-height:48px;
+  margin-top:-12px;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:35px 15px;
+  color:#888;
+  background:#fff;
+  border-radius:18px;
+}
+
+/* CAMERA */
+
+.camera-box{
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+#camera{
+  width:100%;
+  display:block;
+  aspect-ratio:9/16;
+  max-height:70vh;
+  object-fit:cover;
+  background:#000;
+}
+
+.camera-info{
+  color:#fff;
+  padding:14px;
+}
+
+.viewer-count{
+  color:#bbb;
+  font-size:13px;
+}
+
+.camera-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.camera-buttons button{
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.start-camera{
+  background:#e53935;
+  color:#fff;
+}
+
+.stop-camera{
+  background:#fff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:420px){
+  .logo{
+    font-size:18px;
+  }
+
+  .page{
+    padding:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header id="appHeader" style="display:none;">
+  <div class="logo">
+    social <span>live.IF</span>
+  </div>
+
+  <div class="header-right">
+    <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
+    <button class="icon-btn" onclick="showPage('profile')">👤</button>
+  </div>
+</header>
+
+
+<!-- LOGIN -->
+
+<div id="loginScreen">
+
+  <div class="login-box">
+
+    <h1>social live.IF</h1>
+
+    <p>Masuk untuk menggunakan aplikasi</p>
+
+    <input
+      id="email"
+      class="field"
+      type="email"
+      placeholder="Email">
+
+    <input
+      id="password"
+      class="field"
+      type="password"
+      placeholder="Password">
+
+    <button
+      class="main-btn"
+      onclick="loginUser()">
+      MASUK
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="registerUser()">
+      DAFTAR AKUN
+    </button>
+
+    <div
+      id="loginMessage"
+      class="message">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app" class="app" style="display:none;">
+
+  <!-- HOME -->
+
+  <section id="home" class="page active">
+
+    <div class="section-title">
+      <h2>Beranda</h2>
+    </div>
+
+    <div class="create-card">
+
+      <div class="create-top">
+
+        <img
+          id="homeAvatar"
+          class="avatar-small"
+          src=""
+          alt="avatar">
+
+        <input
+          id="statusInput"
+          class="create-text"
+          placeholder="Apa yang ingin kamu bagikan?">
+
+      </div>
+
+      <div class="create-options">
+
+        <label>
+          📷 Foto
+          <input
+            id="postPhoto"
+            type="file"
+            accept="image/*">
+        </label>
+
+        <button
+          class="post-btn"
+          onclick="addPost()">
+          POST
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="live-card">
+
+      <div class="live-top">
+        <strong>🔴 Live sekarang</strong>
+        <span class="live-badge">LIVE</span>
+      </div>
+
+      <div
+        style="
+        padding:25px;
+        text-align:center;
+        color:#bbb;">
+        Mulai siaran langsung dari menu Live
+      </div>
+
+      <div class="live-bottom">
+        <button
+          class="start-live"
+          style="
+          width:100%;
+          border:0;
+          border-radius:10px;
+          padding:12px;"
+          onclick="showPage('live')">
+          📹 Buka Live
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="section-title">
+      <h2>Postingan</h2>
+    </div>
+
+    <div id="posts"></div>
+
+  </section>
+
+
+  <!-- LIVE -->
+
+  <section id="live" class="page">
+
+    <div class="section-title">
+      <h2>🔴 Live Streaming</h2>
+    </div>
+
+    <div class="camera-box">
+
+      <video
+        id="camera"
+        autoplay
+        muted
+        playsinline>
+      </video>
+
+      <div class="camera-info">
+
+        <strong>social live.IF</strong>
+
+        <div class="viewer-count">
+          👁 0 penonton
+        </div>
+
+        <div class="camera-buttons">
+
+          <button
+            class="start-camera"
+            onclick="startCamera()">
+            🔴 MULAI LIVE
+          </button>
+
+          <button
+            class="stop-camera"
+            onclick="stopCamera()">
+            ⏹ AKHIRI
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      id="liveStatus"
+      class="empty"
+      style="margin-top:12px;">
+      Kamera belum dimulai.
+    </div>
+
+  </section>
+
+
+  <!-- CREATE -->
+
+  <section id="create" class="page">
+
+    <div class="section-title">
+      <h2>➕ Buat Postingan</h2>
+    </div>
+
+    <div class="create-card">
+
+      <img
+        id="createAvatar"
+        class="avatar-small"
+        src=""
+        alt="avatar">
+
+      <textarea
+        id="bigStatus"
+        class="field"
+        style="
+        height:130px;
+        margin-top:12px;"
+        placeholder="Tulis sesuatu..."></textarea>
+
+      <label
+        style="
+        display:block;
+        background:#f1f3f5;
+        padding:13px;
+        border-radius:12px;
+        text-align:center;
+        margin-bottom:10px;">
+
+        📷 Pilih Foto
+
+        <input
+          id="bigPhoto"
+          type="file"
+          accept="image/*"
+          style="display:none;">
+
+      </label>
+
+      <button
+        class="main-btn"
+        onclick="addBigPost()">
+        TERBITKAN POSTINGAN
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTIFICATIONS -->
+
+  <section id="notifications" class="page">
+
+    <div class="section-title">
+      <h2>🔔 Notifikasi</h2>
+    </div>
+
+    <div class="empty">
+      Belum ada notifikasi.
+    </div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+
+  <section id="profile" class="page">
+
+    <div class="profile-card">
+
+      <img
+        id="profileAvatar"
+        class="profile-avatar"
+        src=""
+        alt="profile">
+
+      <div
+        id="profileName"
+        class="profile-name">
+        Ifan
+      </div>
+
+      <div
+        id="profileEmail"
+        class="profile-email">
+      </div>
+
+      <div class="profile-edit">
+
+        <input
+          id="nameInput"
+          class="field"
+          placeholder="Nama">
+
+        <label
+          style="
+          display:block;
+          border:1px solid #ddd;
+          padding:12px;
+          border-radius:12px;
+          text-align:center;
+          margin-bottom:10px;">
+
+          📷 Ganti foto profil
+
+          <input
+            id="avatarInput"
+            type="file"
+            accept="image/*"
+            style="display:none;">
+
+        </label>
+
+        <button
+          class="main-btn"
+          onclick="saveProfile()">
+          SIMPAN PROFIL
+        </button>
+
+        <button
+          class="logout"
+          onclick="logoutUser()">
+          KELUAR
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<div
+  id="bottomNav"
+  class="bottom-nav"
+  style="display:none;">
+
+  <div class="nav-inner">
+
+    <button
+      class="nav-btn active"
+      onclick="showPage('home')">
+      <span>🏠</span>
+      Beranda
+    </button>
+
+    <button
+      class="nav-btn"
+      onclick="showPage('live')">
+      <span>🔴</span>
+      Live
+    </button>
+
+    <button
+      class="nav-btn"
+      onclick="showPage('create')">
+      <span class="plus">+</span>
+      Buat
+    </button>
+
+    <button
+      class="nav-btn"
+      onclick="showPage('notifications')">
+      <span>💬</span>
+      Pesan
+    </button>
+
+    <button
+      class="nav-btn"
+      onclick="showPage('profile')">
+      <span>👤</span>
+      Saya
+    </button>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =========================
+   FIREBASE
+========================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
+  authDomain: "ifan-social-web.firebaseapp.com",
+  projectId: "ifan-social-web"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* =========================
+   DATA
+========================= */
+
+let posts = [];
+
+let profile = {
+  name:"Ifan",
+  avatar:""
+};
+
+let cameraStream = null;
+
+
+/* =========================
+   ELEMENT
+========================= */
+
+function $(id){
+  return document.getElementById(id);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+function readImage(file){
+
+  return new Promise((resolve,reject)=>{
+
+    if(!file){
+      resolve("");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = e => resolve(e.target.result);
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
+}
+
+
+/* =========================
+   ESCAPE TEXT
+========================= */
+
+function esc(text){
+
+  return String(text || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+window.showPage = function(page){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
+
+  const target = $(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(b => b.classList.remove("active"));
+
+  if(page === "home"){
+    document.querySelectorAll(".nav-btn")[0].classList.add("active");
+  }
+
+  if(page === "live"){
+    document.querySelectorAll(".nav-btn")[1].classList.add("active");
+  }
+
+  if(page === "create"){
+    document.querySelectorAll(".nav-btn")[2].classList.add("active");
+  }
+
+  if(page === "notifications"){
+    document.querySelectorAll(".nav-btn")[3].classList.add("active");
+  }
+
+  if(page === "profile"){
+    document.querySelectorAll(".nav-btn")[4].classList.add("active");
+  }
+
+};
+
+
+/* =========================
+   PROFILE LOCAL
+========================= */
+
+function loadLocalProfile(){
+
+  try{
+
+    const saved =
+      localStorage.getItem("social_live_if_profile");
+
+    if(saved){
+      profile = JSON.parse(saved);
+    }
+
+  }catch(e){
+
+    console.log(e);
+
+  }
+
+  updateProfileUI();
+
+}
+
+
+function updateProfileUI(){
+
+  $("profileName").textContent =
+    profile.name || "Ifan";
+
+  $("nameInput").value =
+    profile.name || "Ifan";
+
+  if(auth.currentUser){
+
+    $("profileEmail").textContent =
+      auth.currentUser.email || "";
+
+  }
+
+  const avatar =
+    profile.avatar ||
+    "https://via.placeholder.com/150";
+
+  $("profileAvatar").src = avatar;
+
+  $("homeAvatar").src = avatar;
+
+  $("createAvatar").src = avatar;
+
+}
+
+
+/* =========================
+   SAVE PROFILE
+========================= */
+
+window.saveProfile = async function(){
+
+  const name =
+    $("nameInput").value.trim() || "Ifan";
+
+  const file =
+    $("avatarInput").files[0];
+
+  try{
+
+    let avatar = profile.avatar;
+
+    if(file){
+      avatar = await readImage(file);
+    }
+
+    profile = {
+      name,
+      avatar
+    };
+
+    localStorage.setItem(
+      "social_live_if_profile",
+      JSON.stringify(profile)
+    );
+
+    updateProfileUI();
+
+    alert("Profil berhasil disimpan.");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Gagal menyimpan profil: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   REGISTER
+========================= */
+
+window.registerUser = async function(){
+
+  const email =
+    $("email").value.trim();
+
+  const password =
+    $("password").value;
+
+  $("loginMessage").textContent = "";
+
+  if(!email || !password){
+
+    $("loginMessage").textContent =
+      "Isi email dan password.";
+
+    return;
+
+  }
+
+  if(password.length < 6){
+
+    $("loginMessage").textContent =
+      "Password minimal 6 karakter.";
+
+    return;
+
+  }
+
+  try{
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    $("loginMessage").textContent =
+      "Akun berhasil dibuat.";
+
+  }catch(error){
+
+    console.error(error);
+
+    $("loginMessage").textContent =
+      error.message;
+
+  }
+
+};
+
+
+/* =========================
+   LOGIN
+========================= */
+
+window.loginUser = async function(){
+
+  const email =
+    $("email").value.trim();
+
+  const password =
+    $("password").value;
+
+  $("loginMessage").textContent = "";
+
+  if(!email || !password){
+
+    $("loginMessage").textContent =
+      "Isi email dan password.";
+
+    return;
+
+  }
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    $("loginMessage").textContent =
+      error.message;
+
+  }
+
+};
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+window.logoutUser = async function(){
+
+  stopCamera();
+
+  await signOut(auth);
+
+};
+
+
+/* =========================
+   ADD POST
+========================= */
+
+window.addPost = async function(){
+
+  const text =
+    $("statusInput").value.trim();
+
+  const file =
+    $("postPhoto").files[0];
+
+  if(!text && !file){
+
+    alert("Tulis status atau pilih foto.");
+
+    return;
+
+  }
+
+  if(!auth.currentUser){
+
+    alert("Silakan login terlebih dahulu.");
+
+    return;
+
+  }
+
+  try{
+
+    const image =
+      await readImage(file);
+
+    const post = {
+
+      uid:auth.currentUser.uid,
+
+      name:profile.name || "Ifan",
+
+      avatar:profile.avatar || "",
+
+      text:text,
+
+      image:image,
+
+      likes:0,
+
+      comments:[],
+
+      time:new Date().toLocaleString("id-ID"),
+
+      createdAt:serverTimestamp()
+
+    };
+
+    const ref =
+      await addDoc(
+        collection(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts"
+        ),
+        post
+      );
+
+    posts.unshift({
+      ...post,
+      id:ref.id
+    });
+
+    $("statusInput").value = "";
+
+    $("postPhoto").value = "";
+
+    renderPosts();
+
+    alert("Postingan berhasil disimpan.");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Gagal menyimpan postingan:\n" +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================
+   BIG POST
+========================= */
+
+window.addBigPost = async function(){
+
+  const text =
+    $("bigStatus").value.trim();
+
+  const file =
+    $("bigPhoto").files[0];
+
+  if(!text && !file){
+
+    alert("Tulis sesuatu atau pilih foto.");
+
+    return;
+
+  }
+
+  $("statusInput").value = text;
+
+  const temp =
+    $("postPhoto");
+
+  const dataTransfer =
+    new DataTransfer();
+
+  if(file){
+    dataTransfer.items.add(file);
+    temp.files = dataTransfer.files;
+  }
+
+  await addPost();
+
+  $("bigStatus").value = "";
+
+  $("bigPhoto").value = "";
+
+};
+
+
+/* =========================
+   LOAD POSTS
+========================= */
+
+async function loadPosts(){
+
+  if(!auth.currentUser){
+    return;
+  }
+
+  try{
+
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts"
+        )
+      );
+
+    posts = [];
+
+    snap.forEach(item => {
+
+      posts.push({
+        id:item.id,
+        ...item.data()
+      });
+
+    });
+
+    posts.sort((a,b)=>{
+
+      const aa =
+        a.createdAt?.seconds || 0;
+
+      const bb =
+        b.createdAt?.seconds || 0;
+
+      return bb-aa;
+
+    });
+
+    renderPosts();
+
+  }catch(error){
+
+    console.error(error);
+
+    $("posts").innerHTML = `
+      <div class="empty">
+        Gagal memuat postingan.
+        <br>
+        <small>${esc(error.message)}</small>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   RENDER POSTS
+========================= */
+
+function renderPosts(){
+
+  const box =
+    $("posts");
+
+  if(!posts.length){
+
+    box.innerHTML = `
+      <div class="empty">
+        Belum ada postingan.<br>
+        Buat postingan pertama kamu.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  box.innerHTML =
+    posts.map((p,index)=>{
+
+      const avatar =
+        p.avatar ||
+        "https://via.placeholder.com/100";
+
+      const comments =
+        Array.isArray(p.comments)
+          ? p.comments
+          : [];
+
+      const commentsHtml =
+        comments.map(c => `
+          <div class="comment-text">
+            <strong>${esc(c.name)}</strong><br>
+            ${esc(c.text)}
+          </div>
+        `).join("");
+
+      return `
+
+        <article class="post">
+
+          <div class="post-head">
+
+            <img
+              class="avatar-small"
+              src="${avatar}">
+
+            <div class="post-user">
+
+              <strong>
+                ${esc(p.name || "Ifan")}
+              </strong>
+
+              <div class="post-time">
+                ${esc(p.time || "")}
+              </div>
+
+            </div>
+
+            <button
+              class="post-menu"
+              onclick="postMenu(${index})">
+              ⋮
+            </button>
+
+          </div>
+
+          ${
+            p.text
+            ?
+            `<div class="post-body">
+              ${esc(p.text)}
+            </div>`
+            :
+            ""
+          }
+
+          ${
+            p.image
+            ?
+            `<img
+              class="post-image"
+              src="${p.image}">
+            `
+            :
+            ""
+          }
+
+          <div class="post-actions">
+
+            <button onclick="likePost(${index})">
+              ❤️ ${p.likes || 0}
+            </button>
+
+            <button onclick="toggleComments(${index})">
+              💬 Komentar
+            </button>
+
+            <button onclick="sharePost(${index})">
+              📤 Bagikan
+            </button>
+
+          </div>
+
+          <div
+            id="comments-${index}"
+            class="comment-box">
+
+            <div class="comment-row">
+
+              <input
+                id="comment-${index}"
+                class="comment-input"
+                placeholder="Tulis komentar...">
+
+              <button
+                class="comment-send"
+                onclick="addComment(${index})">
+                Kirim
+              </button>
+
+            </div>
+
+            ${commentsHtml}
+
+          </div>
+
+        </article>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   LIKE
+========================= */
+
+window.likePost = async function(index){
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  p.likes =
+    Number(p.likes || 0) + 1;
+
+  renderPosts();
+
+  if(p.id && auth.currentUser){
+
+    try{
+
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
+        ),
+        {
+          likes:p.likes
+        }
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+  }
+
+};
+
+
+/* =========================
+   COMMENTS
+========================= */
+
+window.toggleComments = function(index){
+
+  const box =
+    $("comments-" + index);
+
+  if(!box) return;
+
+  box.style.display =
+    box.style.display === "block"
+      ? "none"
+      : "block";
+
+};
+
+
+window.addComment = async function(index){
+
+  const input =
+    $("comment-" + index);
+
+  const text =
+    input.value.trim();
+
+  if(!text) return;
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  if(!Array.isArray(p.comments)){
+    p.comments = [];
+  }
+
+  p.comments.push({
+
+    name:profile.name || "Ifan",
+
+    text:text,
+
+    time:new Date().toLocaleString("id-ID")
+
+  });
+
+  input.value = "";
+
+  renderPosts();
+
+  const box =
+    $("comments-" + index);
+
+  if(box){
+    box.style.display = "block";
+  }
+
+  if(p.id && auth.currentUser){
+
+    try{
+
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
+        ),
+        {
+          comments:p.comments
+        }
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+  }
+
+};
+
+
+/* =========================
+   SHARE
+========================= */
+
+window.sharePost = async function(index){
+
+  const p = posts[index];
+
+  const text =
+    (p.name || "IFAN") +
+    ": " +
+    (p.text || "Postingan di social live.IF");
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+        title:"social live.IF",
+        text:text
+      });
+
+    }else{
+
+      await navigator.clipboard.writeText(text);
+
+      alert("Teks postingan disalin.");
+
+    }
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+};
+
+
+/* =========================
+   POST MENU
+========================= */
+
+window.postMenu = async function(index){
+
+  const p = posts[index];
+
+  if(!p) return;
+
+  const action =
+    prompt(
+      "Pilih:\n" +
+      "1 = Hapus\n" +
+      "2 = Batalkan"
+    );
+
+  if(action !== "1"){
+    return;
+  }
+
+  if(!confirm("Hapus postingan ini?")){
+    return;
+  }
+
+  posts.splice(index,1);
+
+  renderPosts();
+
+  if(p.id && auth.currentUser){
+
+    try{
+
+      await deleteDoc(
+        doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "posts",
+          p.id
+        )
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "Gagal menghapus:\n" +
+        error.message
+      );
+
+    }
+
+  }
+
+};
+
+
+/* =========================
+   CAMERA
+========================= */
+
+window.startCamera = async function(){
+
+  try{
+
+    if(cameraStream){
+      stopCamera();
+    }
+
+    cameraStream =
+      await navigator.mediaDevices.getUserMedia({
+
+        video:{
+          facingMode:"environment"
+        },
+
+        audio:true
+
+      });
+
+    $("camera").srcObject =
+      cameraStream;
+
+    $("liveStatus").innerHTML =
+      "🔴 <strong>LIVE AKTIF</strong><br>" +
+      "Kamera sedang digunakan.";
+
+  }catch(error){
+
+    console.error(error);
+
+    $("liveStatus").innerHTML =
+      "Kamera tidak dapat dibuka.<br>" +
+      "<small>" +
+      esc(error.message) +
+      "</small>";
+
+  }
+
+};
+
+
+window.stopCamera = function(){
+
+  if(cameraStream){
+
+    cameraStream
+      .getTracks()
+      .forEach(track => track.stop());
+
+    cameraStream = null;
+
+  }
+
+  $("camera").srcObject = null;
+
+  $("liveStatus").innerHTML =
+    "Kamera belum dimulai.";
+
+};
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(user){
+
+      $("loginScreen").style.display =
+        "none";
+
+      $("app").style.display =
+        "block";
+
+      $("appHeader").style.display =
+        "flex";
+
+      $("bottomNav").style.display =
+        "flex";
+
+      loadLocalProfile();
+
+      updateProfileUI();
+
+      await loadPosts();
+
+    }else{
+
+      $("loginScreen").style.display =
+        "block";
+
+      $("app").style.display =
+        "none";
+
+      $("appHeader").style.display =
+        "none";
+
+      $("bottomNav").style.display =
+        "none";
+
+      stopCamera();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   START
+========================= */
+
+loadLocalProfile();
+
+</script>
+
+</body>
+</html>
