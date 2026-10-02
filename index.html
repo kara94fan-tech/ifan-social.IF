@@ -5669,7 +5669,20 @@ function(){
 loadLocalProfile();
 
 updateOverlay();
-
+  
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) => {
+        console.log("social live.IF Service Worker aktif");
+      })
+      .catch((error) => {
+        console.error("Service Worker gagal:", error);
+      });
+  });
+}
 </script>
 
 </body>
