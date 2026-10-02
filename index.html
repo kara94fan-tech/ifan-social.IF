@@ -2,2528 +2,342 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>social live.IF</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>social live.IF — v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f2f4f7;
-  color:#18202a;
+:root{
+  --bg:#f6f7f9; --card:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
+  --primary:#111; --red:#ef4444; --radius:18px;
 }
-
-button,input,textarea{font-family:inherit}
-button{cursor:pointer}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:62px;
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px;
-}
-
-.logo{
-  font-size:21px;
-  font-weight:bold;
-}
-
-.logo span{color:#e53935}
-
-.header-right{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:#f0f2f5;
-  font-size:19px;
-}
-
-.app{
-  max-width:650px;
-  margin:auto;
-  padding-bottom:85px;
-}
-
-.page{
-  display:none;
-  padding:14px;
-}
-
-.page.active{display:block}
-
-/* LOGIN */
-
-.login-box{
-  margin:60px 14px;
-  background:#fff;
-  padding:24px;
-  border-radius:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.login-box h1{
-  text-align:center;
-  margin-top:0;
-}
-
-.login-box p{
-  text-align:center;
-  color:#777;
-}
-
-.field{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:10px;
-  outline:none;
-}
-
-.field:focus{border-color:#777}
-
-.main-btn{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:13px;
-  background:#111;
-  color:#fff;
-  font-weight:bold;
-  margin-top:5px;
-}
-
-.secondary-btn{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:13px;
-  background:#fff;
-  margin-top:8px;
-}
-
-.message{
-  text-align:center;
-  margin-top:10px;
-  color:#d32f2f;
-}
-
-/* SECTION */
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:8px 0 12px;
-}
-
-.section-title h2{
-  margin:0;
-  font-size:18px;
-}
-
-/* SEARCH */
-
-.search-card{
-  background:#fff;
-  padding:12px;
-  border-radius:18px;
-  margin-bottom:14px;
-}
-
-.search-row{
-  display:flex;
-  gap:8px;
-}
-
-.search-row input{
-  flex:1;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:12px;
-}
-
-.search-row button{
-  border:0;
-  border-radius:12px;
-  padding:0 15px;
-  background:#111;
-  color:#fff;
-}
-
-.user-result{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 0;
-  border-top:1px solid #eee;
-}
-
-.user-result .user-info{
-  flex:1;
-}
-
-.user-result strong{
-  display:block;
-}
-
-.small-text{
-  color:#777;
-  font-size:12px;
-}
-
-.avatar-small{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
-}
-
-/* CREATE */
-
-.create-card{
-  background:#fff;
-  padding:14px;
-  border-radius:18px;
-  margin-bottom:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.create-top{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.create-text{
-  flex:1;
-  border:0;
-  background:#f1f3f5;
-  border-radius:20px;
-  padding:12px;
-  outline:none;
-}
-
-.create-options{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
-.create-options label,
-.create-options button{
-  flex:1;
-  border:0;
-  background:#f1f3f5;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
-}
-
+[data-theme="dark"]{ --bg:#0f1115; --card:#181b22; --text:#f3f4f6; --muted:#9ca3af; --line:#252a35; --primary:#fff; }
+body{margin:0;font-family:'Inter',Arial,sans-serif;background:var(--bg);color:var(--text);transition:.2s}
+button,input,textarea{font-family:inherit} button{cursor:pointer}
+header{position:sticky;top:0;z-index:100;height:64px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(10px)}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}.logo span{color:var(--red)}
+.header-right{display:flex;gap:8px;align-items:center}
+.icon-btn{width:40px;height:40px;border:0;border-radius:50%;background:var(--bg);display:grid;place-items:center}
+.icon-btn svg{width:20px;height:20px}
+.app{max-width:640px;margin:auto;padding-bottom:90px}
+.page{display:none;padding:12px}.page.active{display:block}
+.login-box{margin:50px 14px;background:var(--card);padding:28px;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.login-box h1{text-align:center;margin:0 0 6px;font-size:28px}.login-box p{text-align:center;color:var(--muted);margin:0 0 18px}
+.field{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;outline:none;background:var(--card);color:var(--text)}.field:focus{border-color:var(--text)}
+.main-btn{width:100%;border:0;border-radius:12px;padding:13px;background:var(--primary);color:var(--bg);font-weight:700}
+.secondary-btn{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--card);color:var(--text);margin-top:8px;font-weight:600}
+.message{text-align:center;margin-top:10px;color:var(--red);font-size:13px}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:8px 2px 12px}
+.section-title h2{margin:0;font-size:18px;font-weight:700}
+.search-card,.create-card,.post,.live-card,.profile-card,.notification,.empty,.story-bar{background:var(--card);border-radius:var(--radius);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.search-card{padding:12px;margin-bottom:12px}.search-row{display:flex;gap:8px}.search-row input{flex:1;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)}
+.search-row button{border:0;border-radius:12px;padding:0 16px;background:var(--primary);color:var(--bg);font-weight:700}
+.user-result{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.avatar-small{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#ddd}
+.story-bar{display:flex;gap:12px;padding:12px;overflow:auto;margin-bottom:12px;scrollbar-width:none}
+.story{flex:0 0 auto;text-align:center;min-width:62px}
+.story-ring{width:62px;height:62px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#f59e0b,#ef4444,#ec4899)}
+.story img{width:100%;height:100%;border-radius:50%;border:3px solid var(--card);object-fit:cover;background:var(--bg)}
+.story b{font-size:11px;display:block;margin-top:6px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62px}
+.create-top{display:flex;gap:10px;align-items:center}
+.create-text{flex:1;border:0;background:var(--bg);border-radius:24px;padding:12px 16px;outline:none;color:var(--text)}
+.create-options{display:flex;gap:8px;margin-top:12px}
+.create-options label,.create-options button{flex:1;border:0;background:var(--bg);border-radius:12px;padding:10px;text-align:center;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px}
 .create-options input{display:none}
-
-.post-btn{
-  background:#111 !important;
-  color:#fff;
-}
-
-/* POST */
-
-.post{
-  background:#fff;
-  border-radius:18px;
-  margin-bottom:14px;
-  overflow:hidden;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.post-head{
-  padding:13px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.post-user{flex:1}
-
-.post-user strong{display:block}
-
-.post-time{
-  font-size:11px;
-  color:#888;
-  margin-top:3px;
-}
-
-.post-menu{
-  border:0;
-  background:none;
-  font-size:20px;
-}
-
-.post-body{
-  padding:0 14px 12px;
-}
-
-.post-image{
-  width:100%;
-  max-height:500px;
-  object-fit:cover;
-  display:block;
-}
-
-.post-actions{
-  display:flex;
-  border-top:1px solid #eee;
-}
-
-.post-actions button{
-  flex:1;
-  border:0;
-  background:#fff;
-  padding:12px 4px;
-  font-size:13px;
-}
-
-.post-actions button:active{background:#eee}
-
-.comment-box{
-  display:none;
-  padding:10px;
-  border-top:1px solid #eee;
-}
-
-.comment-row{
-  display:flex;
-  gap:7px;
-}
-
-.comment-input{
-  flex:1;
-  border:1px solid #ddd;
-  border-radius:18px;
-  padding:9px 12px;
-}
-
-.comment-send{
-  border:0;
-  border-radius:18px;
-  padding:0 15px;
-  background:#111;
-  color:#fff;
-}
-
-.comment-text{
-  padding:8px 10px;
-  background:#f2f3f5;
-  border-radius:12px;
-  margin-top:8px;
-  font-size:14px;
-}
-
-/* LIVE */
-
-.live-card{
-  background:#111;
-  color:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  margin-bottom:15px;
-}
-
-.live-top{
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.live-badge{
-  background:#e53935;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.live-bottom{padding:14px}
-
-.start-live{
-  background:#e53935;
-  color:#fff;
-  width:100%;
-  border:0;
-  border-radius:10px;
-  padding:12px;
-}
-
-.camera-box{
-  background:#111;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-#camera{
-  width:100%;
-  display:block;
-  aspect-ratio:9/16;
-  max-height:70vh;
-  object-fit:cover;
-  background:#000;
-}
-
-.camera-info{
-  color:#fff;
-  padding:14px;
-}
-
-.viewer-count{
-  color:#bbb;
-  font-size:13px;
-}
-
-.camera-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
-.camera-buttons button{
-  flex:1;
-  padding:12px;
-  border:0;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-.start-camera{
-  background:#e53935;
-  color:#fff;
-}
-
-.stop-camera{background:#fff}
-
-/* PROFILE */
-
-.profile-card{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  text-align:center;
-}
-
-.profile-avatar{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
-  border:4px solid #eee;
-}
-
-.profile-name{
-  font-size:21px;
-  font-weight:bold;
-  margin:10px 0 3px;
-}
-
-.profile-email{
-  color:#777;
-  font-size:13px;
-}
-
-.profile-stats{
-  display:flex;
-  justify-content:center;
-  gap:30px;
-  margin:16px 0;
-}
-
-.profile-stats strong{
-  display:block;
-  font-size:18px;
-}
-
-.profile-stats span{
-  color:#777;
-  font-size:12px;
-}
-
-.profile-edit{
-  margin-top:18px;
-  text-align:left;
-}
-
-.logout{
-  margin-top:12px;
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:12px;
-  background:#e53935;
-  color:#fff;
-}
-
-.follow-btn{
-  border:0;
-  border-radius:10px;
-  padding:9px 15px;
-  background:#111;
-  color:#fff;
-  font-weight:bold;
-}
-
-.follow-btn.following{
-  background:#eee;
-  color:#111;
-}
-
-/* NOTIFICATIONS */
-
-.notification{
-  background:#fff;
-  padding:13px;
-  border-radius:14px;
-  margin-bottom:8px;
-}
-
-/* EMPTY */
-
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:#888;
-  background:#fff;
-  border-radius:18px;
-}
-
-/* NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  background:#fff;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:center;
-  z-index:200;
-}
-
-.nav-inner{
-  width:100%;
-  max-width:650px;
-  display:flex;
-  justify-content:space-around;
-}
-
-.nav-btn{
-  flex:1;
-  border:0;
-  background:#fff;
-  font-size:11px;
-  color:#777;
-}
-
-.nav-btn span{
-  display:block;
-  font-size:22px;
-  margin-bottom:2px;
-}
-
-.nav-btn.active{
-  color:#111;
-  font-weight:bold;
-}
-
-.plus{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  font-size:28px;
-  line-height:48px;
-  margin-top:-12px;
-}
-
-@media(max-width:420px){
-  .logo{font-size:18px}
-  .page{padding:10px}
-}
+.post{margin-bottom:12px;overflow:hidden}
+.post-head{padding:12px;display:flex;align-items:center;gap:10px}
+.post-user{flex:1}.post-user strong{display:block;font-size:14px}.post-time{font-size:11px;color:var(--muted)}
+.post-body{padding:0 14px 12px;font-size:14px;line-height:1.5;white-space:pre-wrap}
+.post-body a{color:#3b82f6;text-decoration:none}
+.post-image,.post-video{width:100%;max-height:620px;object-fit:cover;display:block;background:#000}
+.post-actions{display:flex;border-top:1px solid var(--line)}
+.post-actions button{flex:1;border:0;background:var(--card);padding:12px 4px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--text)}
+.post-actions button.liked{color:var(--red)}
+.comment-box{display:none;padding:10px;border-top:1px solid var(--line);background:var(--bg)}
+.comment-row{display:flex;gap:7px}
+.comment-input{flex:1;border:1px solid var(--line);border-radius:20px;padding:10px 14px;background:var(--card)}
+.comment-send{border:0;border-radius:20px;padding:0 16px;background:var(--primary);color:var(--bg);font-weight:700}
+.comment-text{padding:8px 12px;background:var(--card);border-radius:12px;margin-top:8px;font-size:13px}
+.live-card{color:#fff;background:#111;overflow:hidden;margin-bottom:12px}
+.live-top{padding:14px;display:flex;justify-content:space-between;align-items:center}
+.live-badge{background:var(--red);padding:6px 10px;border-radius:20px;font-size:11px;font-weight:800;animation:pulse 1.5s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.6}100%{opacity:1}}
+.camera-box{background:#111;border-radius:var(--radius);overflow:hidden}
+#camera{width:100%;display:block;aspect-ratio:9/16;max-height:68vh;object-fit:cover;background:#000}
+.camera-info{color:#fff;padding:14px}
+.viewer-count{color:#bbb;font-size:13px}
+.camera-buttons{display:flex;gap:8px;margin-top:12px}
+.camera-buttons button{flex:1;padding:12px;border:0;border-radius:12px;font-weight:800}
+.start-camera{background:var(--red);color:#fff}.stop-camera{background:#fff;color:#111}
+.profile-card{padding:22px;text-align:center}
+.profile-avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid var(--line)}
+.profile-name{font-size:20px;font-weight:800;margin:10px 0 2px}.profile-email{color:var(--muted);font-size:13px}
+.profile-stats{display:flex;justify-content:center;gap:32px;margin:16px 0}
+.profile-stats strong{font-size:18px;display:block}.profile-stats span{color:var(--muted);font-size:12px}
+.follow-btn{border:0;border-radius:10px;padding:8px 14px;background:var(--primary);color:var(--bg);font-weight:700;font-size:12px}
+.follow-btn.following{background:var(--bg);color:var(--text);border:1px solid var(--line)}
+.notification{padding:12px;margin-bottom:8px;font-size:13px;display:flex;gap:10px;align-items:center}
+.empty{text-align:center;padding:32px 16px;color:var(--muted)}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:72px;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:200}
+.nav-inner{width:100%;max-width:640px;display:flex;justify-content:space-around;align-items:center}
+.nav-btn{flex:1;border:0;background:transparent;font-size:10px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600}
+.nav-btn.active{color:var(--text)}
+.nav-btn svg{width:24px;height:24px}
+.plus{width:48px;height:48px;border-radius:50%;background:var(--primary);color:var(--bg);display:grid;place-items:center;margin-top:-14px;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;z-index:300;padding:16px}
+.modal-bg.show{display:grid}
+.modal{background:var(--card);border-radius:20px;padding:18px;width:100%;max-width:380px}
+.modal h3{margin:0 0 12px}
+.modal-actions{display:flex;gap:8px;margin-top:12px}
+.chip{display:inline-block;background:var(--bg);border:1px solid var(--line);padding:4px 10px;border-radius:20px;font-size:12px;margin:2px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-weight:700}
+.tabs button.active{background:var(--primary);color:var(--bg);border-color:var(--primary)}
 </style>
 </head>
-
 <body>
 
+<!-- ICON SPRITE -->
+<svg style="display:none">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9L12 2l9 7v11a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2a15 15 0 0 1 0 20M2 12a15 15 0 0 1 20 0"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 0 1 21 11.5z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.5-1.5A6 6 0 0 1 18 12V9a6 6 0 0 0-12 0v3a6 6 0 0 1-.5 2.5L4 17h5"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5-7 10-7 10z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12z"/><path d="M8 7v12"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="M21 21l-4-4"/></symbol>
+</svg>
+
 <header id="appHeader" style="display:none">
-
-  <div class="logo">
-    social <span>live.IF</span>
-  </div>
-
+  <div class="logo">social <span>live.IF</span> <small style="font-size:10px;background:var(--red);color:#fff;padding:2px 6px;border-radius:20px;vertical-align:middle">V2</small></div>
   <div class="header-right">
-    <button class="icon-btn"
-      onclick="showPage('notifications')">🔔</button>
-
-    <button class="icon-btn"
-      onclick="showPage('profile')">👤</button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Tema">🌙</button>
+    <button class="icon-btn" onclick="showPage('notifications')"><svg><use href="#i-bell"/></svg></button>
+    <button class="icon-btn" onclick="showPage('profile')"><svg><use href="#i-user"/></svg></button>
   </div>
-
 </header>
 
-
-<!-- LOGIN -->
-
-<div id="loginScreen">
-
-  <div class="login-box">
-
-    <h1>social live.IF</h1>
-
-    <p>Masuk untuk menggunakan aplikasi</p>
-
-    <input id="email"
-      class="field"
-      type="email"
-      placeholder="Email">
-
-    <input id="password"
-      class="field"
-      type="password"
-      placeholder="Password">
-
-    <button class="main-btn"
-      onclick="loginUser()">
-      MASUK
-    </button>
-
-    <button class="secondary-btn"
-      onclick="registerUser()">
-      DAFTAR AKUN
-    </button>
-
-    <div id="loginMessage"
-      class="message"></div>
-
-  </div>
-
-</div>
-
-
-<!-- APP -->
+<div id="loginScreen"><div class="login-box">
+  <h1>social live.IF</h1><p>Social + Live Streaming buat komunitas IF</p>
+  <input id="email" class="field" type="email" placeholder="Email">
+  <input id="password" class="field" type="password" placeholder="Password (min 6)">
+  <button class="main-btn" onclick="loginUser()">MASUK</button>
+  <button class="secondary-btn" onclick="registerUser()">DAFTAR AKUN BARU</button>
+  <div id="loginMessage" class="message"></div>
+</div></div>
 
 <div id="app" class="app" style="display:none">
-
-<!-- HOME -->
-
 <section id="home" class="page active">
-
-  <div class="section-title">
-    <h2>Beranda</h2>
-  </div>
-
-  <!-- SEARCH USER -->
-
+  <div class="story-bar" id="storyBar"></div>
   <div class="search-card">
-
-    <strong>🔎 Cari Pengguna</strong>
-
+    <strong style="display:flex;align-items:center;gap:6px"><svg width="16" height="16"><use href="#i-search"/></svg> Cari Pengguna</strong>
     <div class="search-row" style="margin-top:10px">
-
-      <input id="searchUserInput"
-        placeholder="Cari nama pengguna">
-
-      <button onclick="searchUsers()">
-        CARI
-      </button>
-
+      <input id="searchUserInput" placeholder="Ketik nama...">
+      <button onclick="searchUsers()">CARI</button>
     </div>
-
     <div id="searchResults"></div>
-
   </div>
-
-
-  <!-- CREATE POST -->
-
   <div class="create-card">
-
-    <div class="create-top">
-
-      <img id="homeAvatar"
-        class="avatar-small"
-        src=""
-        alt="avatar">
-
-      <input id="statusInput"
-        class="create-text"
-        placeholder="Apa yang ingin kamu bagikan?">
-
-    </div>
-
+    <div class="create-top"><img id="homeAvatar" class="avatar-small" src=""><input id="statusInput" class="create-text" placeholder="Apa yang IF pikirkan? #hashtag @mention"></div>
     <div class="create-options">
-
-      <label>
-        📷 Foto
-        <input id="postPhoto"
-          type="file"
-          accept="image/*">
-      </label>
-
-      <button class="post-btn"
-        onclick="addPost()">
-        POST
-      </button>
-
+      <label>📷 Foto<input id="postPhoto" type="file" accept="image/*"></label>
+      <label>🎥 Video<input id="postVideo" type="file" accept="video/*"></label>
+      <button class="post-btn" style="background:var(--primary);color:var(--bg)" onclick="addPost()">POST</button>
     </div>
-
   </div>
-
-
-  <!-- LIVE -->
-
-  <div class="live-card">
-
-    <div class="live-top">
-      <strong>🔴 Live sekarang</strong>
-      <span class="live-badge">LIVE</span>
-    </div>
-
-    <div style="
-      padding:25px;
-      text-align:center;
-      color:#bbb">
-      Mulai siaran langsung dari menu Live
-    </div>
-
-    <div class="live-bottom">
-
-      <button class="start-live"
-        onclick="showPage('live')">
-        📹 Buka Live
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="section-title">
-    <h2>Postingan</h2>
-  </div>
-
+  <div class="live-card"><div class="live-top"><strong>🔴 Live Sekarang</strong><span class="live-badge">LIVE • <span id="liveUserCount">3</span></span></div><div style="padding:18px;text-align:center;color:#bbb;font-size:13px">Ada 3 teman lagi live — buka menu Live buat join!</div><div style="padding:0 14px 14px"><button class="main-btn" style="background:var(--red)" onclick="showPage('live')">📹 Buka Live</button></div></div>
+  <div class="tabs"><button class="active" onclick="filterFeed('all',this)">Semua</button><button onclick="filterFeed('following',this)">Mengikuti</button><button onclick="filterFeed('saved',this)">Disimpan</button></div>
   <div id="posts"></div>
-
 </section>
-
-
-<!-- LIVE -->
 
 <section id="live" class="page">
-
-  <div class="section-title">
-    <h2>🔴 Live Streaming</h2>
-  </div>
-
-  <div class="camera-box">
-
-    <video id="camera"
-      autoplay
-      muted
-      playsinline></video>
-
-    <div class="camera-info">
-
-      <strong>social live.IF</strong>
-
-      <div class="viewer-count">
-        👁 <span id="viewerCount">0</span> penonton
-      </div>
-
-      <div class="camera-buttons">
-
-        <button class="start-camera"
-          onclick="startCamera()">
-          🔴 MULAI LIVE
-        </button>
-
-        <button class="stop-camera"
-          onclick="stopCamera()">
-          ⏹ AKHIRI
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div id="liveStatus"
-    class="empty"
-    style="margin-top:12px">
-    Kamera belum dimulai.
-  </div>
-
+  <div class="section-title"><h2>🔴 Live Studio</h2><span class="chip" id="liveFilterLabel">Filter: Normal</span></div>
+  <div class="camera-box"><video id="camera" autoplay muted playsinline></video><div class="camera-info"><strong id="liveName">social live.IF</strong><div class="viewer-count">👁 <span id="viewerCount">0</span> penonton • ❤️ <span id="liveLikes">0</span></div><div class="camera-buttons"><button class="start-camera" onclick="startCamera()">🔴 MULAI LIVE</button><button class="stop-camera" onclick="stopCamera()">⏹ AKHIRI</button></div><div style="margin-top:10px;display:flex;gap:6px"><button class="chip" onclick="setFilter('none')">Normal</button><button class="chip" onclick="setFilter('grayscale(1)')">B&W</button><button class="chip" onclick="setFilter('sepia(1)')">Vintage</button><button class="chip" onclick="setFilter('contrast(1.5) saturate(1.5)')">Pop</button></div></div></div>
+  <div id="liveStatus" class="empty" style="margin-top:12px">Kamera belum dimulai. Izinkan akses kamera + mic.</div>
+  <div id="liveChat" style="margin-top:12px"></div>
 </section>
-
-
-<!-- CREATE -->
 
 <section id="create" class="page">
-
-  <div class="section-title">
-    <h2>➕ Buat Postingan</h2>
-  </div>
-
-  <div class="create-card">
-
-    <img id="createAvatar"
-      class="avatar-small"
-      src=""
-      alt="avatar">
-
-    <textarea id="bigStatus"
-      class="field"
-      style="height:130px;margin-top:12px"
-      placeholder="Tulis sesuatu..."></textarea>
-
-    <label style="
-      display:block;
-      background:#f1f3f5;
-      padding:13px;
-      border-radius:12px;
-      text-align:center;
-      margin-bottom:10px">
-
-      📷 Pilih Foto
-
-      <input id="bigPhoto"
-        type="file"
-        accept="image/*"
-        style="display:none">
-
-    </label>
-
-    <button class="main-btn"
-      onclick="addBigPost()">
-      TERBITKAN POSTINGAN
-    </button>
-
-  </div>
-
+  <div class="section-title"><h2>➕ Buat Postingan Pro</h2></div>
+  <div class="create-card"><img id="createAvatar" class="avatar-small" src=""><textarea id="bigStatus" class="field" style="height:130px;margin-top:12px" placeholder="Tulis sesuatu... pakai #hashtag biar rame"></textarea><label style="display:block;background:var(--bg);padding:13px;border-radius:12px;text-align:center;margin-bottom:10px">📷 Pilih Foto / Video<input id="bigPhoto" type="file" accept="image/*,video/*" style="display:none"></label><button class="main-btn" onclick="addBigPost()">TERBITKAN</button></div>
 </section>
 
+<section id="messages" class="page"><div class="section-title"><h2>💬 Pesan</h2></div><div id="dmList" class="empty">Belum ada percakapan. Cari user dulu.</div><div id="dmBox" style="display:none"><div id="dmHistory" style="max-height:50vh;overflow:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:10px"></div><div class="comment-row"><input id="dmInput" class="comment-input" placeholder="Tulis pesan..."><button class="comment-send" onclick="sendDM()">Kirim</button></div></div></section>
 
-<!-- NOTIFICATIONS -->
-
-<section id="notifications" class="page">
-
-  <div class="section-title">
-    <h2>🔔 Notifikasi</h2>
-  </div>
-
-  <div id="notificationList"></div>
-
-</section>
-
-
-<!-- PROFILE -->
+<section id="notifications" class="page"><div class="section-title"><h2>🔔 Notifikasi</h2><button class="chip" onclick="markAllRead()">Tandai sudah dibaca</button></div><div id="notificationList"></div></section>
 
 <section id="profile" class="page">
-
-  <div class="profile-card">
-
-    <img id="profileAvatar"
-      class="profile-avatar"
-      src=""
-      alt="profile">
-
-    <div id="profileName"
-      class="profile-name">
-      Pengguna
-    </div>
-
-    <div id="profileEmail"
-      class="profile-email"></div>
-
-    <div class="profile-stats">
-
-      <div>
-        <strong id="followersCount">0</strong>
-        <span>Pengikut</span>
-      </div>
-
-      <div>
-        <strong id="followingCount">0</strong>
-        <span>Mengikuti</span>
-      </div>
-
-    </div>
-
-    <div class="profile-edit">
-
-      <input id="nameInput"
-        class="field"
-        placeholder="Nama pengguna">
-
-      <label style="
-        display:block;
-        border:1px solid #ddd;
-        padding:12px;
-        border-radius:12px;
-        text-align:center;
-        margin-bottom:10px">
-
-        📷 Ganti foto profil
-
-        <input id="avatarInput"
-          type="file"
-          accept="image/*"
-          style="display:none">
-
-      </label>
-
-      <button class="main-btn"
-        onclick="saveProfile()">
-        SIMPAN PROFIL
-      </button>
-
-      <button class="logout"
-        onclick="logoutUser()">
-        KELUAR
-      </button>
-
-    </div>
-
-  </div>
-
+  <div class="profile-card"><img id="profileAvatar" class="profile-avatar" src=""><div id="profileName" class="profile-name">Pengguna</div><div id="profileEmail" class="profile-email"></div><div class="profile-stats"><div onclick="openFollowList('followers')" style="cursor:pointer"><strong id="followersCount">0</strong><span>Pengikut</span></div><div onclick="openFollowList('following')" style="cursor:pointer"><strong id="followingCount">0</strong><span>Mengikuti</span></div><div><strong id="postsCount">0</strong><span>Post</span></div></div><div class="profile-edit"><input id="nameInput" class="field" placeholder="Nama pengguna"><label style="display:block;border:1px solid var(--line);padding:12px;border-radius:12px;text-align:center;margin-bottom:10px">📷 Ganti foto profil<input id="avatarInput" type="file" accept="image/*" style="display:none"></label><button class="main-btn" onclick="saveProfile()">SIMPAN PROFIL</button><button class="logout" style="margin-top:12px;width:100%;padding:12px;border:0;border-radius:12px;background:var(--red);color:#fff;font-weight:700" onclick="logoutUser()">KELUAR</button></div></div>
+  <div id="myPosts" style="margin-top:12px"></div>
 </section>
-
 </div>
 
+<div id="bottomNav" class="bottom-nav" style="display:none"><div class="nav-inner">
+  <button class="nav-btn active" onclick="showPage('home')"><svg><use href="#i-home"/></svg>Beranda</button>
+  <button class="nav-btn" onclick="showPage('live')"><svg><use href="#i-live"/></svg>Live</button>
+  <button class="nav-btn" onclick="showPage('create')"><span class="plus"><svg width="22" height="22"><use href="#i-plus"/></svg></span>Buat</button>
+  <button class="nav-btn" onclick="showPage('messages')"><svg><use href="#i-chat"/></svg>Pesan</button>
+  <button class="nav-btn" onclick="showPage('profile')"><svg><use href="#i-user"/></svg>Saya</button>
+</div></div>
 
-<!-- NAV -->
-
-<div id="bottomNav"
-  class="bottom-nav"
-  style="display:none">
-
-  <div class="nav-inner">
-
-    <button class="nav-btn active"
-      onclick="showPage('home')">
-      <span>🏠</span>
-      Beranda
-    </button>
-
-    <button class="nav-btn"
-      onclick="showPage('live')">
-      <span>🔴</span>
-      Live
-    </button>
-
-    <button class="nav-btn"
-      onclick="showPage('create')">
-      <span class="plus">+</span>
-      Buat
-    </button>
-
-    <button class="nav-btn"
-      onclick="showPage('notifications')">
-      <span>💬</span>
-      Pesan
-    </button>
-
-    <button class="nav-btn"
-      onclick="showPage('profile')">
-      <span>👤</span>
-      Saya
-    </button>
-
-  </div>
-
-</div>
-
+<div id="modalBg" class="modal-bg" onclick="if(event.target==this)closeModal()"><div class="modal" id="modalContent"></div></div>
 
 <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc, query, where, orderBy, serverTimestamp, arrayUnion, arrayRemove, increment, onSnapshot, limit } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+const firebaseConfig = { apiKey:"AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE", authDomain:"ifan-social-web.firebaseapp.com", projectId:"ifan-social-web" };
+const app = initializeApp(firebaseConfig); const auth = getAuth(app); const db = getFirestore(app);
+let profile={name:"Pengguna",avatar:""}, posts=[], filtered="all", cameraStream=null, unsubPosts=null, currentDM=null, dmUnsub=null;
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+const $=id=>document.getElementById(id);
+const esc=t=>String(t||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+const parseText=t=>esc(t).replace(/#(\w+)/g,'<a href="#" onclick="searchTag(\'$1\');return false">#$1</a>').replace(/@(\w+)/g,'<a href="#" onclick="searchUserByName(\'$1\');return false">@$1</a>');
 
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  getDoc,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  query,
-  where,
-  orderBy,
-  serverTimestamp,
-  arrayUnion,
-  arrayRemove,
-  increment
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-/* =========================
-   FIREBASE
-========================= */
-
-const firebaseConfig = {
-  apiKey:"AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
-  authDomain:"ifan-social-web.firebaseapp.com",
-  projectId:"ifan-social-web"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-
-/* =========================
-   DATA
-========================= */
-
-let profile = {
-  name:"Pengguna",
-  avatar:""
-};
-
-let posts = [];
-let cameraStream = null;
-
-
-/* =========================
-   ELEMENT
-========================= */
-
-function $(id){
-  return document.getElementById(id);
+async function compressImage(file, maxW=1024){
+  if(!file||!file.type.startsWith('image/')) return "";
+  if(file.size>5*1024*1024){ alert("File max 5MB"); throw new Error("too big"); }
+  const img=await createImageBitmap(file);
+  const scale=Math.min(1,maxW/img.width); const canvas=document.createElement('canvas');
+  canvas.width=img.width*scale; canvas.height=img.height*scale;
+  const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  return canvas.toDataURL('image/jpeg',0.7);
 }
+function readVideo(file){ return new Promise((res,rej)=>{ if(!file) return res(""); if(file.size>20*1024*1024){alert("Video max 20MB"); return rej("big");} const r=new FileReader(); r.onload=e=>res(e.target.result); r.onerror=rej; r.readAsDataURL(file); }); }
 
+window.toggleTheme=()=>{ const cur=document.documentElement.getAttribute('data-theme'); document.documentElement.setAttribute('data-theme', cur==='dark'?'light':'dark'); localStorage.setItem('theme',cur==='dark'?'light':'dark'); };
+(function(){ const t=localStorage.getItem('theme'); if(t) document.documentElement.setAttribute('data-theme',t); })();
 
-/* =========================
-   IMAGE
-========================= */
-
-function readImage(file){
-
-  return new Promise((resolve,reject)=>{
-
-    if(!file){
-      resolve("");
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload=e=>resolve(e.target.result);
-    reader.onerror=reject;
-
-    reader.readAsDataURL(file);
-
-  });
-
-}
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-function esc(text){
-
-  return String(text || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-window.showPage=function(page){
-
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
-
-  const target=$(page);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  document.querySelectorAll(".nav-btn")
-    .forEach(b=>b.classList.remove("active"));
-
-  const index={
-    home:0,
-    live:1,
-    create:2,
-    notifications:3,
-    profile:4
-  }[page];
-
-  if(index!==undefined){
-    document.querySelectorAll(".nav-btn")[index]
-      ?.classList.add("active");
-  }
-
-  if(page==="notifications"){
-    loadNotifications();
-  }
-
-  if(page==="profile"){
-    loadFollowCounts();
-  }
-
+window.showPage=(page)=>{
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  $(page)?.classList.add("active");
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  const map={home:0,live:1,create:2,messages:3,profile:4}; const i=map[page]; if(i!==undefined) document.querySelectorAll(".nav-btn")[i]?.classList.add("active");
+  if(page==="notifications") loadNotifications(); if(page==="profile") loadFollowCounts();
+  if(page==="messages") loadDMList();
 };
-
-
-/* =========================
-   PROFILE
-========================= */
 
 async function loadProfile(){
-
-  const user=auth.currentUser;
-
-  if(!user)return;
-
-  try{
-
-    const ref=doc(db,"users",user.uid);
-
-    const snap=await getDoc(ref);
-
-    if(snap.exists()){
-
-      const data=snap.data();
-
-      profile={
-        name:data.name || "Pengguna",
-        avatar:data.avatar || ""
-      };
-
-    }else{
-
-      profile={
-        name:"Pengguna",
-        avatar:""
-      };
-
-      await setDoc(ref,{
-        uid:user.uid,
-        name:"Pengguna",
-        avatar:"",
-        email:user.email || "",
-        createdAt:serverTimestamp()
-      });
-
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    const local=
-      localStorage.getItem(
-        "social_live_if_profile_"+user.uid
-      );
-
-    if(local){
-
-      try{
-        profile=JSON.parse(local);
-      }catch(e){}
-
-    }
-
-  }
-
+  const user=auth.currentUser; if(!user) return;
+  try{ const snap=await getDoc(doc(db,"users",user.uid)); if(snap.exists()){ const d=snap.data(); profile={name:d.name||"Pengguna",avatar:d.avatar||""}; } else { await setDoc(doc(db,"users",user.uid),{uid:user.uid,name:"Pengguna",avatar:"",email:user.email||"",createdAt:serverTimestamp()}); } }catch{ const local=localStorage.getItem("social_live_if_profile_"+user.uid); if(local) try{profile=JSON.parse(local)}catch{} }
   updateProfileUI();
-
 }
-
-
-/* =========================
-   PROFILE UI
-========================= */
-
 function updateProfileUI(){
+  const user=auth.currentUser; $("profileName").textContent=profile.name||"Pengguna"; $("nameInput").value=profile.name||""; $("profileEmail").textContent=user?.email||""; $("liveName").textContent=profile.name||"Pengguna";
+  const avatar=profile.avatar||"https://ui-avatars.com/api/?name="+encodeURIComponent(profile.name)+"&background=111827&color=fff";
+  $("profileAvatar").src=avatar; $("homeAvatar").src=avatar; $("createAvatar").src=avatar;
+}
+window.saveProfile=async()=>{
+  const user=auth.currentUser; if(!user) return; const name=$("nameInput").value.trim()||"Pengguna"; const file=$("avatarInput").files[0];
+  try{ let avatar=profile.avatar||""; if(file) avatar=await compressImage(file,400); profile={name,avatar}; await setDoc(doc(db,"users",user.uid),{uid:user.uid,name,avatar,email:user.email||"",updatedAt:serverTimestamp()},{merge:true}); localStorage.setItem("social_live_if_profile_"+user.uid,JSON.stringify(profile)); updateProfileUI(); alert("Profil disimpan ✅"); }catch(e){ alert("Gagal: "+e.message); }
+};
+window.registerUser=async()=>{
+  const email=$("email").value.trim(), password=$("password").value; $("loginMessage").textContent=""; if(!email||!password) return $("loginMessage").textContent="Isi email & password"; if(password.length<6) return $("loginMessage").textContent="Password min 6 karakter";
+  try{ const r=await createUserWithEmailAndPassword(auth,email,password); await setDoc(doc(db,"users",r.user.uid),{uid:r.user.uid,name:"Pengguna",avatar:"",email,createdAt:serverTimestamp()}); }catch(e){ $("loginMessage").textContent=e.message; }
+};
+window.loginUser=async()=>{ const email=$("email").value.trim(), password=$("password").value; $("loginMessage").textContent=""; if(!email||!password) return $("loginMessage").textContent="Isi email & password"; try{ await signInWithEmailAndPassword(auth,email,password);}catch(e){ $("loginMessage").textContent=e.message; } };
+window.logoutUser=async()=>{ stopCamera(); if(unsubPosts) unsubPosts(); if(dmUnsub) dmUnsub(); await signOut(auth); };
 
-  const user=auth.currentUser;
-
-  $("profileName").textContent=
-    profile.name || "Pengguna";
-
-  $("nameInput").value=
-    profile.name || "";
-
-  $("profileEmail").textContent=
-    user?.email || "";
-
-  const avatar=
-    profile.avatar ||
-    "https://via.placeholder.com/150";
-
-  $("profileAvatar").src=avatar;
-  $("homeAvatar").src=avatar;
-  $("createAvatar").src=avatar;
-
+function listenPosts(){
+  if(unsubPosts) unsubPosts();
+  unsubPosts=onSnapshot(collection(db,"posts"), snap=>{
+    posts=[]; snap.forEach(d=>posts.push({id:d.id,...d.data()}));
+    posts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+    renderPosts(); renderStories(); $("postsCount").textContent=posts.filter(p=>p.uid===auth.currentUser?.uid).length;
+  });
 }
 
-
-/* =========================
-   SAVE PROFILE
-========================= */
-
-window.saveProfile=async function(){
-
-  const user=auth.currentUser;
-
-  if(!user)return;
-
-  const name=
-    $("nameInput").value.trim() || "Pengguna";
-
-  const file=
-    $("avatarInput").files[0];
-
+window.addPost=async()=>{
+  const user=auth.currentUser; if(!user) return alert("Login dulu");
+  const text=$("statusInput").value.trim(); const photoFile=$("postPhoto").files[0]; const videoFile=$("postVideo").files[0];
+  if(!text&&!photoFile&&!videoFile) return alert("Tulis sesuatu atau pilih media");
   try{
-
-    let avatar=profile.avatar || "";
-
-    if(file){
-      avatar=await readImage(file);
-    }
-
-    profile={
-      name,
-      avatar
-    };
-
-    await setDoc(
-      doc(db,"users",user.uid),
-      {
-        uid:user.uid,
-        name:name,
-        avatar:avatar,
-        email:user.email || "",
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
-
-    localStorage.setItem(
-      "social_live_if_profile_"+user.uid,
-      JSON.stringify(profile)
-    );
-
-    updateProfileUI();
-
-    alert("Profil berhasil disimpan.");
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Gagal menyimpan profil:\n"+
-      error.message
-    );
-
-  }
-
+    let image="", video=""; if(photoFile) image=await compressImage(photoFile); if(videoFile) video=await readVideo(videoFile);
+    await addDoc(collection(db,"posts"),{uid:user.uid,name:profile.name,avatar:profile.avatar||"",text,image,video,likes:0,likedBy:[],savedBy:[],comments:[],time:new Date().toLocaleString("id-ID"),createdAt:serverTimestamp()});
+    $("statusInput").value=""; $("postPhoto").value=""; $("postVideo").value="";
+  }catch(e){ alert("Gagal post: "+e.message); }
 };
-
-
-/* =========================
-   REGISTER
-========================= */
-
-window.registerUser=async function(){
-
-  const email=$("email").value.trim();
-  const password=$("password").value;
-
-  $("loginMessage").textContent="";
-
-  if(!email || !password){
-
-    $("loginMessage").textContent=
-      "Isi email dan password.";
-
-    return;
-  }
-
-  if(password.length<6){
-
-    $("loginMessage").textContent=
-      "Password minimal 6 karakter.";
-
-    return;
-  }
-
-  try{
-
-    const result=
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-    await setDoc(
-      doc(db,"users",result.user.uid),
-      {
-        uid:result.user.uid,
-        name:"Pengguna",
-        avatar:"",
-        email:email,
-        createdAt:serverTimestamp()
-      }
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    $("loginMessage").textContent=
-      error.message;
-
-  }
-
-};
-
-
-/* =========================
-   LOGIN
-========================= */
-
-window.loginUser=async function(){
-
-  const email=$("email").value.trim();
-  const password=$("password").value;
-
-  $("loginMessage").textContent="";
-
-  if(!email || !password){
-
-    $("loginMessage").textContent=
-      "Isi email dan password.";
-
-    return;
-  }
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    $("loginMessage").textContent=
-      error.message;
-
-  }
-
-};
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-window.logoutUser=async function(){
-
-  stopCamera();
-
-  await signOut(auth);
-
-};
-
-
-/* =========================
-   ADD POST
-========================= */
-
-window.addPost=async function(){
-
-  const user=auth.currentUser;
-
-  if(!user){
-
-    alert("Silakan login terlebih dahulu.");
-    return;
-
-  }
-
-  const text=
-    $("statusInput").value.trim();
-
-  const file=
-    $("postPhoto").files[0];
-
-  if(!text && !file){
-
-    alert("Tulis status atau pilih foto.");
-    return;
-
-  }
-
-  try{
-
-    const image=await readImage(file);
-
-    const post={
-
-      uid:user.uid,
-
-      name:profile.name || "Pengguna",
-
-      avatar:profile.avatar || "",
-
-      text:text,
-
-      image:image,
-
-      likes:0,
-
-      likedBy:[],
-
-      savedBy:[],
-
-      comments:[],
-
-      time:new Date().toLocaleString("id-ID"),
-
-      createdAt:serverTimestamp()
-
-    };
-
-    await addDoc(
-      collection(db,"posts"),
-      post
-    );
-
-    $("statusInput").value="";
-    $("postPhoto").value="";
-
-    await loadPosts();
-
-    alert("Postingan berhasil dibuat.");
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Gagal membuat postingan:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* =========================
-   BIG POST
-========================= */
-
-window.addBigPost=async function(){
-
-  const text=
-    $("bigStatus").value.trim();
-
-  const file=
-    $("bigPhoto").files[0];
-
-  if(!text && !file){
-
-    alert("Tulis sesuatu atau pilih foto.");
-    return;
-
-  }
-
-  $("statusInput").value=text;
-
-  if(file){
-
-    const dt=new DataTransfer();
-
-    dt.items.add(file);
-
-    $("postPhoto").files=dt.files;
-
-  }
-
-  await addPost();
-
-  $("bigStatus").value="";
-  $("bigPhoto").value="";
-
-};
-
-
-/* =========================
-   LOAD POSTS
-========================= */
-
-async function loadPosts(){
-
-  try{
-
-    const snap=
-      await getDocs(
-        collection(db,"posts")
-      );
-
-    posts=[];
-
-    snap.forEach(item=>{
-
-      posts.push({
-        id:item.id,
-        ...item.data()
-      });
-
-    });
-
-    posts.sort((a,b)=>{
-
-      const aa=
-        a.createdAt?.seconds || 0;
-
-      const bb=
-        b.createdAt?.seconds || 0;
-
-      return bb-aa;
-
-    });
-
-    renderPosts();
-
-  }catch(error){
-
-    console.error(error);
-
-    $("posts").innerHTML=`
-      <div class="empty">
-        Gagal memuat postingan.
-        <br>
-        <small>${esc(error.message)}</small>
-      </div>
-    `;
-
-  }
-
+window.addBigPost=async()=>{ $("statusInput").value=$("bigStatus").value.trim(); const f=$("bigPhoto").files[0]; if(f){ if(f.type.startsWith('video/')){$("postVideo").files=$("bigPhoto").files;} else {$("postPhoto").files=$("bigPhoto").files;} } await addPost(); $("bigStatus").value=""; $("bigPhoto").value=""; showPage('home'); };
+
+let feedFilter='all';
+window.filterFeed=(type,btn)=>{ feedFilter=type; document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active")); btn.classList.add("active"); renderPosts(); };
+function renderStories(){
+  const usersMap={}; posts.slice(0,20).forEach(p=>{ if(p.avatar) usersMap[p.uid]=p; });
+  const html=Object.values(usersMap).map(u=>`<div class="story" onclick="searchUserByName('${esc(u.name)}')"><div class="story-ring"><img src="${u.avatar}"></div><b>${esc(u.name.split(' ')[0])}</b></div>`).join("");
+  $("storyBar").innerHTML=html||`<div class="story"><div class="story-ring"><img src="${$("homeAvatar").src}"></div><b>Kamu</b></div>`;
 }
-
-
-/* =========================
-   RENDER POSTS
-========================= */
-
 function renderPosts(){
-
-  if(!posts.length){
-
-    $("posts").innerHTML=`
-      <div class="empty">
-        Belum ada postingan.
-      </div>
-    `;
-
-    return;
-
-  }
-
-  const uid=auth.currentUser?.uid;
-
-  $("posts").innerHTML=
-    posts.map((p,index)=>{
-
-      const avatar=
-        p.avatar ||
-        "https://via.placeholder.com/100";
-
-      const comments=
-        Array.isArray(p.comments)
-          ?p.comments
-          :[];
-
-      const liked=
-        Array.isArray(p.likedBy) &&
-        uid &&
-        p.likedBy.includes(uid);
-
-      const saved=
-        Array.isArray(p.savedBy) &&
-        uid &&
-        p.savedBy.includes(uid);
-
-      const commentsHtml=
-        comments.map(c=>`
-          <div class="comment-text">
-            <strong>${esc(c.name)}</strong><br>
-            ${esc(c.text)}
-          </div>
-        `).join("");
-
-      const own=
-        uid===p.uid;
-
-      return`
-
-        <article class="post">
-
-          <div class="post-head">
-
-            <img
-              class="avatar-small"
-              src="${avatar}">
-
-            <div class="post-user">
-
-              <strong>
-                ${esc(p.name || "Pengguna")}
-              </strong>
-
-              <div class="post-time">
-                ${esc(p.time || "")}
-              </div>
-
-            </div>
-
-            ${
-              own
-              ?
-              `<button
-                class="post-menu"
-                onclick="postMenu(${index})">
-                ⋮
-              </button>`
-              :
-              ""
-            }
-
-          </div>
-
-          ${
-            p.text
-            ?
-            `<div class="post-body">
-              ${esc(p.text)}
-            </div>`
-            :
-            ""
-          }
-
-          ${
-            p.image
-            ?
-            `<img
-              class="post-image"
-              src="${p.image}">
-            `
-            :
-            ""
-          }
-
-          <div class="post-actions">
-
-            <button onclick="likePost(${index})">
-              ${liked?"❤️":"🤍"}
-              ${Number(p.likes||0)}
-            </button>
-
-            <button onclick="toggleComments(${index})">
-              💬 ${comments.length}
-            </button>
-
-            <button onclick="savePost(${index})">
-              ${saved?"🔖":"🔖"}
-            </button>
-
-            <button onclick="sharePost(${index})">
-              📤
-            </button>
-
-          </div>
-
-          <div
-            id="comments-${index}"
-            class="comment-box">
-
-            <div class="comment-row">
-
-              <input
-                id="comment-${index}"
-                class="comment-input"
-                placeholder="Tulis komentar...">
-
-              <button
-                class="comment-send"
-                onclick="addComment(${index})">
-                Kirim
-              </button>
-
-            </div>
-
-            ${commentsHtml}
-
-          </div>
-
-        </article>
-
-      `;
-
-    }).join("");
-
+  let list=[...posts]; const uid=auth.currentUser?.uid;
+  if(feedFilter==='following'){ /* simple: filter if followed - for demo show liked */ list=list.filter(p=>p.likedBy?.includes(uid)); }
+  if(feedFilter==='saved'){ list=list.filter(p=>p.savedBy?.includes(uid)); }
+  if(!list.length){ $("posts").innerHTML=`<div class="empty">Belum ada postingan di filter ini.</div>`; return; }
+  $("posts").innerHTML=list.map((p,idx)=>{
+    const realIdx=posts.indexOf(p);
+    const avatar=p.avatar||`https://ui-avatars.com/api/?name=${encodeURIComponent(p.name||'U')}&background=111827&color=fff`;
+    const liked=p.likedBy?.includes(uid); const saved=p.savedBy?.includes(uid);
+    const comments=p.comments||[];
+    return `<article class="post" ondblclick="likePost(${realIdx})"><div class="post-head"><img class="avatar-small" src="${avatar}"><div class="post-user"><strong>${esc(p.name||"Pengguna")}</strong><div class="post-time">${esc(p.time||"")}</div></div>${uid===p.uid?`<button class="icon-btn" style="width:30px;height:30px" onclick="postMenu(${realIdx})">⋮</button>`:""}</div>${p.text?`<div class="post-body">${parseText(p.text)}</div>`:""}${p.image?`<img class="post-image" src="${p.image}" loading="lazy">`:""}${p.video?`<video class="post-video" src="${p.video}" controls playsinline></video>`:""}<div class="post-actions"><button class="${liked?'liked':''}" onclick="likePost(${realIdx})"><svg width="18" height="18"><use href="#i-heart"/></svg> ${p.likes||0}</button><button onclick="toggleComments(${realIdx})">💬 ${comments.length}</button><button onclick="savePost(${realIdx})">${saved?'✅':''}<svg width="18" height="18"><use href="#i-book"/></svg></button><button onclick="sharePost(${realIdx})">📤</button></div><div id="comments-${realIdx}" class="comment-box"><div class="comment-row"><input id="comment-${realIdx}" class="comment-input" placeholder="Tulis komentar..."><button class="comment-send" onclick="addComment(${realIdx})">Kirim</button></div>${comments.map(c=>`<div class="comment-text"><strong>${esc(c.name)}</strong><br>${esc(c.text)}</div>`).join("")}</div></article>`;
+  }).join("");
 }
 
+window.likePost=async(idx)=>{ const user=auth.currentUser; const p=posts[idx]; if(!user||!p) return; const liked=p.likedBy?.includes(user.uid); try{ await updateDoc(doc(db,"posts",p.id),{likedBy:liked?arrayRemove(user.uid):arrayUnion(user.uid),likes:increment(liked?-1:1)}); if(!liked&&p.uid!==user.uid){ await addDoc(collection(db,"users",p.uid,"notifications"),{type:"like",fromUid:user.uid,fromName:profile.name,text:`${profile.name} menyukai postingan kamu ❤️`,createdAt:serverTimestamp(),read:false}); } }catch(e){ alert(e.message); } };
+window.toggleComments=i=>{ const b=$("comments-"+i); if(b) b.style.display=b.style.display==="block"?"none":"block"; };
+window.addComment=async i=>{ const user=auth.currentUser; const p=posts[i]; if(!user||!p) return; const inp=$("comment-"+i); const text=inp.value.trim(); if(!text) return; const c={uid:user.uid,name:profile.name,text,time:new Date().toLocaleString("id-ID")}; try{ await updateDoc(doc(db,"posts",p.id),{comments:arrayUnion(c)}); if(p.uid!==user.uid) await addDoc(collection(db,"users",p.uid,"notifications"),{type:"comment",fromUid:user.uid,fromName:profile.name,text:`${profile.name} mengomentari: ${text.slice(0,30)}`,createdAt:serverTimestamp(),read:false}); }catch(e){ alert(e.message);} };
+window.savePost=async i=>{ const user=auth.currentUser; const p=posts[i]; if(!user) return; const saved=p.savedBy?.includes(user.uid); await updateDoc(doc(db,"posts",p.id),{savedBy:saved?arrayRemove(user.uid):arrayUnion(user.uid)}); };
+window.sharePost=async i=>{ const p=posts[i]; const text=(p.name||"")+": "+(p.text||"Lihat postingan di social live.IF"); if(navigator.share){ try{ await navigator.share({title:"social live.IF",text}); }catch{} } else { await navigator.clipboard.writeText(text); alert("Teks disalin 📋"); } };
 
-/* =========================
-   LIKE
-========================= */
+window.postMenu=async i=>{
+  const p=posts[i]; if(p.uid!==auth.currentUser?.uid) return;
+  $("modalContent").innerHTML=`<h3>Kelola Postingan</h3><div class="field" id="editText" contenteditable="true" style="min-height:80px">${esc(p.text||"")}</div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal()">Batal</button><button class="main-btn" onclick="doEdit(${i})">Simpan</button></div><button class="secondary-btn" style="border-color:var(--red);color:var(--red);margin-top:8px" onclick="doDelete(${i})">🗑 Hapus Postingan</button>`;
+  $("modalBg").classList.add("show");
+};
+window.doEdit=async i=>{ const p=posts[i]; const t=$("editText").innerText.trim(); try{ await updateDoc(doc(db,"posts",p.id),{text:t}); closeModal(); }catch(e){ alert(e.message);} };
+window.doDelete=async i=>{ if(!confirm("Hapus permanen?")) return; try{ await deleteDoc(doc(db,"posts",posts[i].id)); closeModal(); }catch(e){ alert(e.message);} };
+window.closeModal=()=>$("modalBg").classList.remove("show");
 
-window.likePost=async function(index){
+window.searchUsers=async()=>{
+  const keyword=$("searchUserInput").value.trim().toLowerCase(); const box=$("searchResults"); if(!keyword){ box.innerHTML=""; return; }
+  const snap=await getDocs(collection(db,"users")); const users=[]; snap.forEach(d=>{ const data=d.data(); if(d.id!==auth.currentUser?.uid && String(data.name||"").toLowerCase().includes(keyword)) users.push({uid:d.id,...data}); });
+  if(!users.length){ box.innerHTML=`<div class="empty" style="margin-top:8px">Tidak ketemu.</div>`; return; }
+  box.innerHTML=users.map(u=>`<div class="user-result"><img class="avatar-small" src="${u.avatar||'https://ui-avatars.com/api/?name='+encodeURIComponent(u.name)}"><div style="flex:1"><strong>${esc(u.name)}</strong><div style="font-size:12px;color:var(--muted)">${esc(u.email||"")}</div></div><button class="follow-btn" onclick="toggleFollow('${u.uid}')">IKUTI</button><button class="icon-btn" onclick="openDM('${u.uid}','${esc(u.name)}')" title="Chat">💬</button></div>`).join("");
+};
+window.searchUserByName=n=>{ $("searchUserInput").value=n; searchUsers(); showPage('home'); window.scrollTo(0,0); };
+window.searchTag=t=>{ $("statusInput").value="#"+t+" "; alert("Filter tag #"+t+" - fitur explore segera!"); };
 
-  const user=auth.currentUser;
-  const p=posts[index];
-
-  if(!user || !p)return;
-
-  const liked=
-    Array.isArray(p.likedBy) &&
-    p.likedBy.includes(user.uid);
-
-  try{
-
-    if(liked){
-
-      await updateDoc(
-        doc(db,"posts",p.id),
-        {
-          likedBy:arrayRemove(user.uid),
-          likes:increment(-1)
-        }
-      );
-
-    }else{
-
-      await updateDoc(
-        doc(db,"posts",p.id),
-        {
-          likedBy:arrayUnion(user.uid),
-          likes:increment(1)
-        }
-      );
-
-      if(p.uid!==user.uid){
-
-        await addDoc(
-          collection(
-            db,
-            "users",
-            p.uid,
-            "notifications"
-          ),
-          {
-            type:"like",
-            fromUid:user.uid,
-            fromName:profile.name,
-            postId:p.id,
-            text:
-              profile.name+
-              " menyukai postingan kamu.",
-            createdAt:serverTimestamp()
-          }
-        );
-
-      }
-
-    }
-
-    await loadPosts();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Like gagal:\n"+
-      error.message
-    );
-
-  }
-
+window.toggleFollow=async targetUid=>{ const user=auth.currentUser; if(!user||user.uid===targetUid) return; try{ const fRef=doc(db,"users",user.uid,"following",targetUid), frRef=doc(db,"users",targetUid,"followers",user.uid); const snap=await getDoc(fRef); if(snap.exists()){ await deleteDoc(fRef); await deleteDoc(frRef); } else { await setDoc(fRef,{uid:targetUid,createdAt:serverTimestamp()}); await setDoc(frRef,{uid:user.uid,name:profile.name,avatar:profile.avatar||"",createdAt:serverTimestamp()}); await addDoc(collection(db,"users",targetUid,"notifications"),{type:"follow",fromUid:user.uid,fromName:profile.name,text:`${profile.name} mulai mengikuti kamu`,createdAt:serverTimestamp(),read:false}); } loadFollowCounts(); searchUsers(); }catch(e){ alert(e.message);} };
+async function loadFollowCounts(){ const user=auth.currentUser; if(!user) return; try{ const a=await getDocs(collection(db,"users",user.uid,"followers")), b=await getDocs(collection(db,"users",user.uid,"following")); $("followersCount").textContent=a.size; $("followingCount").textContent=b.size; }catch{} }
+window.openFollowList=async type=>{
+  const user=auth.currentUser; const snap=await getDocs(collection(db,"users",user.uid,type)); let html=`<h3>${type==='followers'?'Pengikut':'Mengikuti'} (${snap.size})</h3>`;
+  snap.forEach(d=>{ const data=d.data(); html+=`<div class="user-result"><img class="avatar-small" src="${data.avatar||''}"><strong>${esc(data.name||data.uid)}</strong></div>`; });
+  if(!snap.size) html+=`<div class="empty">Kosong</div>`; html+=`<button class="main-btn" style="margin-top:12px" onclick="closeModal()">Tutup</button>`;
+  $("modalContent").innerHTML=html; $("modalBg").classList.add("show");
 };
 
+async function loadNotifications(){ const user=auth.currentUser; if(!user) return; const snap=await getDocs(collection(db,"users",user.uid,"notifications")); const list=[]; snap.forEach(d=>list.push({id:d.id,...d.data()})); list.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0)); if(!list.length){ $("notificationList").innerHTML=`<div class="empty">Belum ada notifikasi.</div>`; return; } $("notificationList").innerHTML=list.map(n=>`<div class="notification" style="${n.read?'opacity:.6':''}"><span>${n.type==='like'?'❤️':n.type==='follow'?'👤':'💬'}</span><div style="flex:1">${esc(n.text||"Aktivitas baru")}</div>${!n.read?`<span style="width:8px;height:8px;background:var(--red);border-radius:50%"></span>`:""}</div>`).join(""); }
+window.markAllRead=async()=>{ const user=auth.currentUser; const snap=await getDocs(collection(db,"users",user.uid,"notifications")); for(const d of snap.docs){ await updateDoc(d.ref,{read:true}); } loadNotifications(); };
 
-/* =========================
-   COMMENTS
-========================= */
+/* DM */
+window.openDM=(uid,name)=>{ currentDM={uid,name}; $("dmList").style.display="none"; $("dmBox").style.display="block"; showPage('messages'); $("dmHistory").innerHTML=`<div class="empty">Chat dengan ${esc(name)}</div>`; if(dmUnsub) dmUnsub(); const chatId=[auth.currentUser.uid,uid].sort().join('_'); dmUnsub=onSnapshot(collection(db,"chats",chatId,"messages"),s=>{ const msgs=[]; s.forEach(d=>msgs.push(d.data())); msgs.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0)); $("dmHistory").innerHTML=msgs.map(m=>`<div style="align-self:${m.from===auth.currentUser.uid?'flex-end':'flex-start'};background:${m.from===auth.currentUser.uid?'var(--primary)':'var(--card)'};color:${m.from===auth.currentUser.uid?'var(--bg)':'var(--text)'};padding:10px 14px;border-radius:18px;max-width:70%;font-size:13px">${esc(m.text)}</div>`).join("")||`<div class="empty">Mulai obrolan 👋</div>`; $("dmHistory").scrollTop=$("dmHistory").scrollHeight; }); };
+window.sendDM=async()=>{ if(!currentDM) return; const text=$("dmInput").value.trim(); if(!text) return; const chatId=[auth.currentUser.uid,currentDM.uid].sort().join('_'); await setDoc(doc(db,"chats",chatId),{users:[auth.currentUser.uid,currentDM.uid],updatedAt:serverTimestamp()},{merge:true}); await addDoc(collection(db,"chats",chatId,"messages"),{from:auth.currentUser.uid,to:currentDM.uid,text,createdAt:serverTimestamp()}); $("dmInput").value=""; };
+async function loadDMList(){ const user=auth.currentUser; if(!user) return; const snap=await getDocs(collection(db,"chats")); const chats=[]; snap.forEach(d=>{ const data=d.data(); if(data.users?.includes(user.uid)) chats.push({id:d.id,...data}); }); if(!chats.length){ $("dmList").innerHTML=`<div class="empty">Belum ada chat.</div>`; return; } $("dmList").innerHTML=chats.map(c=>`<div class="user-result" onclick="openDM('${c.users.find(u=>u!==user.uid)}','Teman')"><div style="flex:1"><strong>Chat ${c.id.slice(0,6)}...</strong><div style="font-size:12px;color:var(--muted)">Klik buka</div></div></div>`).join(""); }
 
-window.toggleComments=function(index){
-
-  const box=$("comments-"+index);
-
-  if(!box)return;
-
-  box.style.display=
-    box.style.display==="block"
-      ?"none"
-      :"block";
-
+/* LIVE */
+window.startCamera=async()=>{
+  try{ if(cameraStream) stopCamera(); cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}); $("camera").srcObject=cameraStream; $("liveStatus").innerHTML="🔴 <strong>LIVE AKTIF</strong> — kamu sedang siaran!"; let viewers=12; setInterval(()=>{ viewers+=Math.floor(Math.random()*5)-2; if(viewers<1) viewers=1; $("viewerCount").textContent=viewers; $("liveUserCount").textContent=Math.max(2,Math.floor(viewers/4)); },2000); }catch(e){ $("liveStatus").innerHTML="Gagal kamera: "+esc(e.message); }
 };
-
-
-window.addComment=async function(index){
-
-  const user=auth.currentUser;
-  const p=posts[index];
-
-  if(!user || !p)return;
-
-  const input=$("comment-"+index);
-
-  const text=input.value.trim();
-
-  if(!text)return;
-
-  const comment={
-
-    uid:user.uid,
-
-    name:profile.name || "Pengguna",
-
-    text:text,
-
-    time:new Date().toLocaleString("id-ID")
-
-  };
-
-  try{
-
-    await updateDoc(
-      doc(db,"posts",p.id),
-      {
-        comments:arrayUnion(comment)
-      }
-    );
-
-    if(p.uid!==user.uid){
-
-      await addDoc(
-        collection(
-          db,
-          "users",
-          p.uid,
-          "notifications"
-        ),
-        {
-          type:"comment",
-          fromUid:user.uid,
-          fromName:profile.name,
-          postId:p.id,
-          text:
-            profile.name+
-            " mengomentari postingan kamu.",
-          createdAt:serverTimestamp()
-        }
-      );
-
-    }
-
-    await loadPosts();
-
-    const box=$("comments-"+index);
-
-    if(box){
-      box.style.display="block";
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Komentar gagal:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* =========================
-   SAVE POST
-========================= */
-
-window.savePost=async function(index){
-
-  const user=auth.currentUser;
-  const p=posts[index];
-
-  if(!user || !p)return;
-
-  const saved=
-    Array.isArray(p.savedBy) &&
-    p.savedBy.includes(user.uid);
-
-  try{
-
-    await updateDoc(
-      doc(db,"posts",p.id),
-      {
-        savedBy:saved
-          ?arrayRemove(user.uid)
-          :arrayUnion(user.uid)
-      }
-    );
-
-    await loadPosts();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Gagal menyimpan postingan:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* =========================
-   SHARE
-========================= */
-
-window.sharePost=async function(index){
-
-  const p=posts[index];
-
-  if(!p)return;
-
-  const text=
-    (p.name||"Pengguna")+
-    ": "+
-    (p.text||"Postingan di social live.IF");
-
-  try{
-
-    if(navigator.share){
-
-      await navigator.share({
-        title:"social live.IF",
-        text:text
-      });
-
-    }else{
-
-      await navigator.clipboard.writeText(text);
-
-      alert("Teks postingan disalin.");
-
-    }
-
-  }catch(error){
-
-    console.log(error);
-
-  }
-
-};
-
-
-/* =========================
-   POST MENU
-========================= */
-
-window.postMenu=async function(index){
-
-  const user=auth.currentUser;
-  const p=posts[index];
-
-  if(!user || !p)return;
-
-  if(p.uid!==user.uid){
-
-    alert("Kamu hanya bisa mengelola postingan sendiri.");
-    return;
-
-  }
-
-  const action=
-    prompt(
-      "Pilih tindakan:\n\n"+
-      "1 = Edit\n"+
-      "2 = Hapus\n"+
-      "3 = Batal"
-    );
-
-  if(action==="1"){
-
-    const newText=
-      prompt(
-        "Edit isi postingan:",
-        p.text || ""
-      );
-
-    if(newText===null)return;
-
-    try{
-
-      await updateDoc(
-        doc(db,"posts",p.id),
-        {
-          text:newText
-        }
-      );
-
-      await loadPosts();
-
-    }catch(error){
-
-      alert(
-        "Gagal edit:\n"+
-        error.message
-      );
-
-    }
-
-  }
-
-  if(action==="2"){
-
-    if(!confirm("Hapus postingan ini?")){
-      return;
-    }
-
-    try{
-
-      await deleteDoc(
-        doc(db,"posts",p.id)
-      );
-
-      await loadPosts();
-
-    }catch(error){
-
-      alert(
-        "Gagal menghapus:\n"+
-        error.message
-      );
-
-    }
-
-  }
-
-};
-
-
-/* =========================
-   SEARCH USERS
-========================= */
-
-window.searchUsers=async function(){
-
-  const keyword=
-    $("searchUserInput")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const box=$("searchResults");
-
-  if(!keyword){
-
-    box.innerHTML="";
-    return;
-
-  }
-
-  try{
-
-    const snap=
-      await getDocs(
-        collection(db,"users")
-      );
-
-    const users=[];
-
-    snap.forEach(item=>{
-
-      const data=item.data();
-
-      if(
-        item.id!==auth.currentUser?.uid &&
-        String(data.name||"")
-          .toLowerCase()
-          .includes(keyword)
-      ){
-
-        users.push({
-          uid:item.id,
-          ...data
-        });
-
-      }
-
-    });
-
-    if(!users.length){
-
-      box.innerHTML=`
-        <div class="empty"
-          style="margin-top:10px">
-          Pengguna tidak ditemukan.
-        </div>
-      `;
-
-      return;
-
-    }
-
-    box.innerHTML=
-      users.map(u=>`
-
-        <div class="user-result">
-
-          <img
-            class="avatar-small"
-            src="${
-              u.avatar ||
-              "https://via.placeholder.com/100"
-            }">
-
-          <div class="user-info">
-
-            <strong>
-              ${esc(u.name||"Pengguna")}
-            </strong>
-
-            <span class="small-text">
-              ${esc(u.email||"")}
-            </span>
-
-          </div>
-
-          <button
-            class="follow-btn"
-            onclick="toggleFollow('${u.uid}')">
-
-            IKUTI
-
-          </button>
-
-        </div>
-
-      `).join("");
-
-  }catch(error){
-
-    console.error(error);
-
-    box.innerHTML=`
-      <div class="empty">
-        Gagal mencari pengguna.
-        <br>
-        <small>${esc(error.message)}</small>
-      </div>
-    `;
-
-  }
-
-};
-
-
-/* =========================
-   FOLLOW
-========================= */
-
-window.toggleFollow=async function(targetUid){
-
-  const user=auth.currentUser;
-
-  if(!user || !targetUid)return;
-
-  if(user.uid===targetUid)return;
-
-  try{
-
-    const followingRef=
-      doc(
-        db,
-        "users",
-        user.uid,
-        "following",
-        targetUid
-      );
-
-    const followerRef=
-      doc(
-        db,
-        "users",
-        targetUid,
-        "followers",
-        user.uid
-      );
-
-    const followingSnap=
-      await getDoc(followingRef);
-
-    if(followingSnap.exists()){
-
-      await deleteDoc(followingRef);
-      await deleteDoc(followerRef);
-
-    }else{
-
-      await setDoc(
-        followingRef,
-        {
-          uid:targetUid,
-          createdAt:serverTimestamp()
-        }
-      );
-
-      await setDoc(
-        followerRef,
-        {
-          uid:user.uid,
-          name:profile.name,
-          avatar:profile.avatar || "",
-          createdAt:serverTimestamp()
-        }
-      );
-
-      await addDoc(
-        collection(
-          db,
-          "users",
-          targetUid,
-          "notifications"
-        ),
-        {
-          type:"follow",
-          fromUid:user.uid,
-          fromName:profile.name,
-          text:
-            profile.name+
-            " mulai mengikuti kamu.",
-          createdAt:serverTimestamp()
-        }
-      );
-
-    }
-
-    await loadFollowCounts();
-    await searchUsers();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Follow gagal:\n"+
-      error.message
-    );
-
-  }
-
-};
-
-
-/* =========================
-   FOLLOW COUNTS
-========================= */
-
-async function loadFollowCounts(){
-
-  const user=auth.currentUser;
-
-  if(!user)return;
-
-  try{
-
-    const followers=
-      await getDocs(
-        collection(
-          db,
-          "users",
-          user.uid,
-          "followers"
-        )
-      );
-
-    const following=
-      await getDocs(
-        collection(
-          db,
-          "users",
-          user.uid,
-          "following"
-        )
-      );
-
-    $("followersCount").textContent=
-      followers.size;
-
-    $("followingCount").textContent=
-      following.size;
-
-  }catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-async function loadNotifications(){
-
-  const user=auth.currentUser;
-
-  if(!user)return;
-
-  try{
-
-    const snap=
-      await getDocs(
-        collection(
-          db,
-          "users",
-          user.uid,
-          "notifications"
-        )
-      );
-
-    const list=[];
-
-    snap.forEach(item=>{
-
-      list.push({
-        id:item.id,
-        ...item.data()
-      });
-
-    });
-
-    list.sort((a,b)=>{
-
-      const aa=
-        a.createdAt?.seconds || 0;
-
-      const bb=
-        b.createdAt?.seconds || 0;
-
-      return bb-aa;
-
-    });
-
-    if(!list.length){
-
-      $("notificationList").innerHTML=`
-        <div class="empty">
-          Belum ada notifikasi.
-        </div>
-      `;
-
-      return;
-
-    }
-
-    $("notificationList").innerHTML=
-      list.map(n=>`
-
-        <div class="notification">
-
-          🔔 ${esc(
-            n.text || "Aktivitas baru."
-          )}
-
-        </div>
-
-      `).join("");
-
-  }catch(error){
-
-    console.error(error);
-
-    $("notificationList").innerHTML=`
-      <div class="empty">
-        Gagal memuat notifikasi.
-        <br>
-        <small>${esc(error.message)}</small>
-      </div>
-    `;
-
-  }
-
-}
-
-
-/* =========================
-   CAMERA
-========================= */
-
-window.startCamera=async function(){
-
-  try{
-
-    if(cameraStream){
-      stopCamera();
-    }
-
-    cameraStream=
-      await navigator.mediaDevices.getUserMedia({
-
-        video:{
-          facingMode:"environment"
-        },
-
-        audio:true
-
-      });
-
-    $("camera").srcObject=
-      cameraStream;
-
-    $("liveStatus").innerHTML=
-      "🔴 <strong>LIVE AKTIF</strong><br>"+
-      "Kamera sedang digunakan.";
-
-  }catch(error){
-
-    console.error(error);
-
-    $("liveStatus").innerHTML=
-      "Kamera tidak dapat dibuka.<br>"+
-      "<small>"+
-      esc(error.message)+
-      "</small>";
-
-  }
-
-};
-
-
-window.stopCamera=function(){
-
-  if(cameraStream){
-
-    cameraStream
-      .getTracks()
-      .forEach(track=>track.stop());
-
-    cameraStream=null;
-
-  }
-
-  $("camera").srcObject=null;
-
-  $("liveStatus").innerHTML=
-    "Kamera belum dimulai.";
-
-};
-
-
-/* =========================
-   AUTH STATE
-========================= */
-
-onAuthStateChanged(
-  auth,
-  async user=>{
-
-    if(user){
-
-      $("loginScreen").style.display="none";
-
-      $("app").style.display="block";
-
-      $("appHeader").style.display="flex";
-
-      $("bottomNav").style.display="flex";
-
-      await loadProfile();
-
-      await loadFollowCounts();
-
-      await loadPosts();
-
-    }else{
-
-      $("loginScreen").style.display="block";
-
-      $("app").style.display="none";
-
-      $("appHeader").style.display="none";
-
-      $("bottomNav").style.display="none";
-
-      stopCamera();
-
-    }
-
-  }
-);
-
+window.stopCamera=()=>{ if(cameraStream){ cameraStream.getTracks().forEach(t=>t.stop()); cameraStream=null; } $("camera").srcObject=null; $("liveStatus").innerHTML="Kamera dimatikan."; $("viewerCount").textContent="0"; };
+window.setFilter=f=>{ $("camera").style.filter=f; $("liveFilterLabel").textContent="Filter: "+(f==='none'?'Normal':f); };
+
+onAuthStateChanged(auth, async user=>{
+  if(user){ $("loginScreen").style.display="none"; $("app").style.display="block"; $("appHeader").style.display="flex"; $("bottomNav").style.display="flex"; await loadProfile(); await loadFollowCounts(); listenPosts(); }
+  else { $("loginScreen").style.display="block"; $("app").style.display="none"; $("appHeader").style.display="none"; $("bottomNav").style.display="none"; if(unsubPosts) unsubPosts(); stopCamera(); }
+});
+
+/* debounce search */
+let searchTimer; $("searchUserInput")?.addEventListener('input',()=>{ clearTimeout(searchTimer); searchTimer=setTimeout(()=>searchUsers(),400); });
 </script>
-
 </body>
 </html>
