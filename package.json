@@ -1,12 +1,1 @@
-{
-  "name": "ifan-btc-analysis-server",
-  "version": "1.0.0",
-  "description": "IFAN BTC Analysis server perantara untuk data market BTC Binance",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18"
-  }
-}
+
