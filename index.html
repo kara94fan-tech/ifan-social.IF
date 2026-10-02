@@ -24,10 +24,8 @@
 </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>social live.IF - Tarkam MVP</title>
-
-<!-- ICON APK HITAM social live.IF -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIHJ4PSIyNiIgZmlsbD0iIzAwMCIvPjx0ZXh0IHg9IjY0IiB5PSI0OSIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjIxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zb2NpYWw8L3RleHQ+PHRleHQgeD0iNjQiIHk9Ijc4IiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmxpdmUuPHRzcGFuIGZpbGw9IiNlNTM5MzUiPklGPC90c3Bhbj48L3RleHQ+PC9zdmc+">
+<title>social live.IF - Tarkam MVP FULL</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiIgdmlld0JveD0iMCAwIDQyIDQyIj48cmVjdCB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHJ4PSIxMSIgZmlsbD0iIzAwMCIvPjx0ZXh0IHg9IjIxIiB5PSIxNiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiPkZBTjwvdGV4dD48dGV4dCB4PSIyMSIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2U1MzkzNSI+TElWRS5JRjwvdGV4dD48L3N2Zz4=">
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f4f7;color:#18202a}
@@ -43,13 +41,11 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
 .page{display:none;padding:14px}.page.active{display:block}
 .login-box{margin:50px 14px;background:#fff;padding:24px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
 .login-box h1{text-align:center;margin:10px 0 4px}.login-box p{text-align:center;color:#777;margin-top:0}
-.field{width:100%;padding:13px;border:1px solid #ddd;border-radius:12px;margin-bottom:10px;outline:none}
+.field{width:100%;padding:13px;border:1px solid #ddd;border-radius:12px;margin-bottom:10px;outline:none;background:#fff}
 .field:focus{border-color:#111}
 .main-btn{width:100%;border:0;border-radius:12px;padding:13px;background:#111;color:white;font-weight:bold;margin-top:5px}
 .secondary-btn{width:100%;border:1px solid #ddd;border-radius:12px;padding:13px;background:white;margin-top:8px}
 .message{text-align:center;margin-top:10px;color:#d32f2f}
-
-/* LIVE CARD */
 .live-card{background:#111;color:#fff;border-radius:18px;overflow:hidden;margin-bottom:15px}
 .live-top{padding:15px;display:flex;justify-content:space-between;align-items:center}
 .live-badge{background:#e53935;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:bold}
@@ -80,25 +76,15 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
 .profile-name{font-size:21px;font-weight:bold;margin:10px 0 3px}.profile-email{color:#777;font-size:13px}
 .profile-edit{margin-top:18px;text-align:left}
 .logout{margin-top:12px;width:100%;padding:12px;border:0;border-radius:12px;background:#e53935;color:white}
-
-/* CAMERA & SCOREBOARD PRO */
 .camera-box{background:#111;border-radius:18px;overflow:hidden;position:relative}
 #camera{width:100%;display:block;aspect-ratio:9/16;max-height:68vh;object-fit:cover;background:#000}
-
-/* PAPAN SKOR PRO - EDITABLE */
 .scoreboard-pro{position:absolute;top:12px;left:12px;right:12px;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.75));color:#fff;border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;z-index:5;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px)}
-.sb-team{flex:1;text-align:center;min-width:0;cursor:pointer}
-.sb-team-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;border-radius:6px;padding:2px 4px}
-.sb-team-name:hover{background:rgba(255,255,255,.15)}
-.sb-team-name[contenteditable="true"]{background:#fff;color:#111;outline:2px solid #e53935}
+.sb-team{flex:1;text-align:center;min-width:0}
+.sb-team-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .sb-team-sub{font-size:10px;color:#bbb;margin-top:2px}
-.sb-center{text-align:center;min-width:92px;cursor:pointer}
-.sb-skor{font-size:22px;font-weight:900;background:#e53935;padding:6px 12px;border-radius:10px;display:inline-block;letter-spacing:1px;cursor:pointer;user-select:none}
-.sb-skor:hover{filter:brightness(1.15)}
-.sb-time{margin-top:6px;background:#fff;color:#111;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:800;display:inline-block;cursor:pointer}
-.sb-time[contenteditable="true"]{outline:2px solid #111}
-.sb-edit-hint{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:10px;color:#fff;opacity:.7}
-
+.sb-center{text-align:center;min-width:92px}
+.sb-skor{font-size:22px;font-weight:900;background:#e53935;padding:6px 12px;border-radius:10px;display:inline-block;letter-spacing:1px}
+.sb-time{margin-top:6px;background:#fff;color:#111;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:800;display:inline-block}
 .camera-info{color:#fff;padding:14px}
 .viewer-count{color:#bbb;font-size:13px}
 .camera-buttons{display:flex;gap:8px;margin-top:12px}
@@ -109,34 +95,33 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
 .skor-control{display:flex;gap:8px;margin-top:10px}
 .skor-control button{flex:1;padding:14px;border:0;border-radius:12px;font-weight:bold;font-size:16px}
 .skor-A{background:#e3f2fd}.skor-B{background:#ffebee}
-.skor-input{width:72px;text-align:center;font-weight:900;font-size:18px}
 .gift-row{display:flex;gap:8px;margin-top:12px}
 .gift-btn{flex:1;border:0;border-radius:12px;padding:12px;background:#fff;color:#111;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .gift-btn small{display:block;font-size:11px;color:#666}
 .dompet-card{background:#fff;border-radius:18px;padding:14px;margin-top:12px;border:1px dashed #ccc}
 .dompet-row{display:flex;justify-content:space-between;margin:6px 0;font-size:14px}
 .dompet-total{font-weight:bold;font-size:16px;border-top:1px solid #eee;padding-top:8px;margin-top:8px}
-
 .score-panel{background:#fff;border-radius:18px;padding:14px;margin-top:12px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .score-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.score-big{display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff;border-radius:14px;padding:14px;gap:10px}
+.score-big{display:flex;justify-content:space-between;align-items:center;background:#111;color:#fff;border-radius:14px;padding:14px}
 .score-big .team{flex:1;text-align:center}
-.score-big .num{font-size:32px;font-weight:900;margin-top:4px}
-.team-name-input{width:100%;background:#222;color:#fff;border:1px solid #333;border-radius:8px;padding:6px;text-align:center;font-weight:bold}
-.score-input-big{width:70px;background:#fff;color:#111;border:0;border-radius:10px;padding:8px;text-align:center;font-weight:900;font-size:22px}
-
+.score-big .num{font-size:28px;font-weight:900}
+.edit-score-box{background:#fffbe6;border:1.5px solid #ffe082;border-radius:14px;padding:14px;margin-top:14px}
+.edit-score-box h4{margin:0 0 10px;font-size:14px}
+.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.edit-grid label{font-size:11px;color:#666;font-weight:bold;display:block;margin-bottom:4px}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;height:68px;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:center;z-index:200}
 .nav-inner{width:100%;max-width:650px;display:flex;justify-content:space-around}
 .nav-btn{flex:1;border:0;background:white;font-size:11px;color:#777}.nav-btn span{display:block;font-size:22px;margin-bottom:2px}.nav-btn.active{color:#111;font-weight:bold}
 .plus{width:48px;height:48px;border-radius:50%;background:#111;color:#fff;font-size:28px;line-height:48px;margin-top:-12px}
 .empty{text-align:center;padding:35px 15px;color:#888;background:#fff;border-radius:18px}
-.badge-edit{font-size:10px;background:#e53935;color:#fff;padding:2px 6px;border-radius:10px;margin-left:6px}
+.badge-edit{font-size:10px;background:#ffecb3;color:#7a5a00;padding:3px 8px;border-radius:20px;font-weight:bold;margin-left:6px}
 </style>
 </head>
 <body>
 
 <header id="appHeader" style="display:none;">
-  <div class="logo"><div class="logo-icon">social<br>live.<b>IF</b></div>social <span>live.IF</span></div>
+  <div class="logo"><div class="logo-icon">social<br>live.<b>IF</b></div> social <span>live.IF</span></div>
   <div class="header-right">
     <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
     <button class="icon-btn" onclick="showPage('profile')">👤</button>
@@ -157,92 +142,63 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
 </div>
 
 <div id="app" class="app" style="display:none;">
-
   <section id="home" class="page active">
     <div class="create-card">
       <div class="create-top"><img id="homeAvatar" class="avatar-small" src=""><input id="statusInput" class="create-text" placeholder="Apa yang ingin kamu bagikan?"></div>
       <div class="create-options"><label>📷 Foto<input id="postPhoto" type="file" accept="image/*"></label><button class="post-btn" onclick="addPost()">POST</button></div>
     </div>
-    <div class="live-card">
-      <div class="live-top"><strong>🔴 Live Tarkam Aktif</strong><span class="live-badge">LIVE</span></div>
-      <div id="activeLivesHome" style="padding:0 14px 14px;color:#bbb">Memuat live...</div>
-      <div class="live-bottom"><button style="width:100%;border:0;border-radius:10px;padding:12px;background:#e53935;color:#fff;font-weight:bold" onclick="showPage('live')">📹 BUKA LIVE BOLA</button></div>
-    </div>
+    <div class="live-card"><div class="live-top"><strong>🔴 Live Tarkam Aktif</strong><span class="live-badge">LIVE</span></div><div id="activeLivesHome" style="padding:0 14px 14px;color:#bbb">Memuat live...</div><div class="live-bottom"><button style="width:100%;border:0;border-radius:10px;padding:12px;background:#e53935;color:#fff;font-weight:bold" onclick="showPage('live')">📹 BUKA LIVE BOLA</button></div></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px"><h2 style="margin:0;font-size:18px">Postingan</h2></div>
     <div id="posts"></div>
   </section>
 
   <section id="live" class="page">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px"><h2 style="margin:0">🔴 Live Bola Tarkam <span class="badge-edit">TAP UNTUK EDIT</span></h2><span id="liveIndicator" style="font-size:12px;background:#e53935;color:#fff;padding:5px 10px;border-radius:20px;display:none">● LIVE</span></div>
-
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px"><h2 style="margin:0">🔴 Live Bola Tarkam</h2><span id="liveIndicator" style="font-size:12px;background:#e53935;color:#fff;padding:5px 10px;border-radius:20px;display:none">● LIVE</span></div>
     <div class="match-setup" id="matchSetup">
-      <h3>Setup Pertandingan <small style="color:#888">- bisa diedit kapan saja</small></h3>
-      <div style="display:flex;gap:8px">
-        <input id="teamA" class="field" placeholder="Nama Tim A (RW 05)">
-        <input id="teamB" class="field" placeholder="Nama Tim B (RW 06)">
-      </div>
+      <h3>Setup Pertandingan</h3>
+      <input id="teamA" class="field" placeholder="Nama Tim A (contoh: RW 05)">
+      <input id="teamB" class="field" placeholder="Nama Tim B (contoh: RW 06)">
       <input id="matchTitle" class="field" placeholder="Judul Live (Final Tarkam Lapangan Merdeka)">
-      <div style="display:flex;gap:8px">
-        <input id="skorAInput" class="field skor-input" type="number" min="0" value="0" placeholder="Skor A">
-        <input id="skorBInput" class="field skor-input" type="number" min="0" value="0" placeholder="Skor B">
-        <input id="timerInput" class="field" type="text" value="00:00" placeholder="MM:SS">
-      </div>
-      <small style="color:#888">💡 Tip: Klik langsung nama tim / skor / waktu di papan skor video untuk edit cepat!</small>
     </div>
 
     <div class="camera-box">
       <video id="camera" autoplay muted playsinline></video>
-
-      <!-- PAPAN SKOR PRO - EDITABLE LANGSUNG -->
       <div class="scoreboard-pro" id="scoreOverlay">
-        <div class="sb-team" onclick="editTeamName('A')">
-          <span class="sb-team-name" id="overlayTeamA" title="Klik untuk edit">TIM A</span>
-          <span class="sb-team-sub">HOME</span>
-        </div>
-        <div class="sb-center">
-          <div class="sb-skor" id="overlaySkor" onclick="editScoreOverlay()" title="Klik untuk edit skor">0 - 0</div>
-          <div class="sb-time" id="overlayTimer" onclick="editTimerOverlay()" title="Klik untuk edit waktu">00:00</div>
-        </div>
-        <div class="sb-team" onclick="editTeamName('B')">
-          <span class="sb-team-name" id="overlayTeamB" title="Klik untuk edit">TIM B</span>
-          <span class="sb-team-sub">AWAY</span>
-        </div>
-        <div class="sb-edit-hint">tap nama/skor/waktu untuk edit</div>
+        <div class="sb-team"><span class="sb-team-name" id="overlayTeamA">TIM A</span><span class="sb-team-sub">HOME</span></div>
+        <div class="sb-center"><div class="sb-skor" id="overlaySkor">0 - 0</div><div class="sb-time" id="overlayTimer">00:00</div></div>
+        <div class="sb-team"><span class="sb-team-name" id="overlayTeamB">TIM B</span><span class="sb-team-sub">AWAY</span></div>
       </div>
-
       <div class="camera-info">
         <strong id="liveTitleDisplay">social live.IF - Kamera Lapangan</strong>
         <div class="viewer-count">👁 <span id="viewerCount">0</span> penonton • ⏱ <span id="timerDisplay">00:00</span> • <span id="liveStatusMini">Standby</span></div>
-        <div class="camera-buttons">
-          <button class="start-camera" onclick="startCamera()">🔴 MULAI LIVE</button>
-          <button class="stop-camera" onclick="stopCamera()">⏹ AKHIRI</button>
-        </div>
+        <div class="camera-buttons"><button class="start-camera" onclick="startCamera()">🔴 MULAI LIVE</button><button class="stop-camera" onclick="stopCamera()">⏹ AKHIRI</button></div>
       </div>
     </div>
 
-    <!-- PANEL KONTROL SKOR BESAR + EDITABLE -->
     <div id="skorControl" style="display:none">
       <div class="score-panel">
-        <div class="score-panel-head"><strong>🎛️ Papan Skor Kontrol (Editable)</strong><button onclick="toggleTimer()" id="btnTimer" style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-weight:bold;font-size:12px">⏸ JEDA</button></div>
-        <div class="score-big">
-          <div class="team">
-            <input id="bigTeamAInput" class="team-name-input" value="TIM A" oninput="syncFromBigInputs()">
-            <input id="bigSkorAInput" class="score-input-big" type="number" min="0" value="0" oninput="syncFromBigInputs()">
+        <div class="score-panel-head"><strong>🎛️ Papan Skor Kontrol</strong><button onclick="toggleTimer()" id="btnTimer" style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-weight:bold;font-size:12px">⏸ JEDA</button></div>
+        <div class="score-big"><div class="team"><div id="bigTeamA">TIM A</div><div class="num" id="bigSkorA">0</div></div><div style="text-align:center;color:#888">VS<br><small id="bigTimer">00:00</small></div><div class="team"><div id="bigTeamB">TIM B</div><div class="num" id="bigSkorB">0</div></div></div>
+        <div class="skor-control"><button class="skor-A" onclick="changeSkor('A',1)">TIM A + GOL ⚽</button><button class="skor-B" onclick="changeSkor('B',1)">TIM B + GOL ⚽</button></div>
+        <div class="skor-control"><button onclick="changeSkor('A',-1)" style="background:#eee">A -1</button><button onclick="resetSkor()" style="background:#fff;border:1px solid #ddd">Reset 0-0</button><button onclick="changeSkor('B',-1)" style="background:#eee">B -1</button></div>
+
+        <!-- FITUR EDIT SCORE DI KOLOM EDIT -->
+        <div class="edit-score-box">
+          <h4>✏️ Kolom Edit Score <span class="badge-edit">BARU</span></h4>
+          <p style="margin:0 0 10px;font-size:12px;color:#8d6e00">Kalau salah input gol / nama tim, edit di sini. Langsung update di overlay kamera & live.</p>
+          <div class="edit-grid">
+            <div><label>Nama Tim A</label><input id="editTeamA" class="field" placeholder="TIM A"></div>
+            <div><label>Nama Tim B</label><input id="editTeamB" class="field" placeholder="TIM B"></div>
+            <div><label>Skor Tim A</label><input id="editSkorA" class="field" type="number" min="0" value="0"></div>
+            <div><label>Skor Tim B</label><input id="editSkorB" class="field" type="number" min="0" value="0"></div>
+            <div><label>Timer (MM:SS)</label><input id="editTimer" class="field" placeholder="00:00" value="00:00"></div>
+            <div><label>Babak</label><input id="editBabak" class="field" placeholder="Babak 1 / Babak 2"></div>
           </div>
-          <div style="text-align:center;color:#888">VS<br><small id="bigTimer">00:00</small><br><input id="bigTimerInput" class="team-name-input" style="width:70px;margin-top:6px" value="00:00" oninput="syncTimerFromInput(this.value)"></div>
-          <div class="team">
-            <input id="bigTeamBInput" class="team-name-input" value="TIM B" oninput="syncFromBigInputs()">
-            <input id="bigSkorBInput" class="score-input-big" type="number" min="0" value="0" oninput="syncFromBigInputs()">
+          <div style="margin-top:8px"><label>Judul Live</label><input id="editTitle" class="field" placeholder="Final Tarkam..."></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="main-btn" style="margin:0" onclick="applyEditScore()">💾 SIMPAN EDIT SCORE</button>
+            <button class="secondary-btn" style="margin:0;width:auto;padding:13px 18px" onclick="resetSkor()">↺ Reset</button>
           </div>
-        </div>
-        <div class="skor-control">
-          <button class="skor-A" onclick="changeSkor('A',1)">TIM A + GOL ⚽</button>
-          <button class="skor-B" onclick="changeSkor('B',1)">TIM B + GOL ⚽</button>
-        </div>
-        <div class="skor-control">
-          <button onclick="changeSkor('A',-1)" style="background:#eee">A -1</button>
-          <button onclick="resetSkor()" style="background:#fff;border:1px solid #ddd">Reset 0-0</button>
-          <button onclick="changeSkor('B',-1)" style="background:#eee">B -1</button>
         </div>
       </div>
 
@@ -264,20 +220,19 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
       </div>
       <div id="giftFeed" style="margin-top:10px;font-size:13px;color:#555"></div>
     </div>
-
-    <div id="liveStatus" class="empty" style="margin-top:12px;">Isi nama Tim A & Tim B dulu, lalu tekan MULAI LIVE. Klik skor di atas untuk edit langsung!</div>
+    <div id="liveStatus" class="empty" style="margin-top:12px;">Isi nama Tim A & Tim B dulu, lalu tekan MULAI LIVE.</div>
   </section>
 
   <section id="create" class="page">
-    <h2>➕ Buat Postingan</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px"><h2>➕ Buat Postingan</h2></div>
     <div class="create-card"><img id="createAvatar" class="avatar-small" src=""><textarea id="bigStatus" class="field" style="height:130px;margin-top:12px;" placeholder="Tulis sesuatu..."></textarea><label style="display:block;background:#f1f3f5;padding:13px;border-radius:12px;text-align:center;margin-bottom:10px;">📷 Pilih Foto<input id="bigPhoto" type="file" accept="image/*" style="display:none;"></label><button class="main-btn" onclick="addBigPost()">TERBITKAN POSTINGAN</button></div>
   </section>
 
-  <section id="notifications" class="page"><h2>🔔 Notifikasi Saweran</h2><div id="notifList" class="empty">Belum ada saweran.</div></section>
+  <section id="notifications" class="page"><div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px"><h2>🔔 Notifikasi Saweran</h2></div><div id="notifList" class="empty">Belum ada saweran.</div></section>
 
   <section id="profile" class="page">
     <div class="profile-card"><img id="profileAvatar" class="profile-avatar" src=""><div id="profileName" class="profile-name">Ifan</div><div id="profileEmail" class="profile-email"></div><div class="profile-edit"><input id="nameInput" class="field" placeholder="Nama"><label style="display:block;border:1px solid #ddd;padding:12px;border-radius:12px;text-align:center;margin-bottom:10px;">📷 Ganti foto profil<input id="avatarInput" type="file" accept="image/*" style="display:none;"></label><button class="main-btn" onclick="saveProfile()">SIMPAN PROFIL</button><button class="logout" onclick="logoutUser()">KELUAR</button></div></div>
-    <div class="dompet-card"><strong>💳 Riwayat Dompet Platform (70%)</strong><div class="dompet-row"><span>Total Pendapatan Platform</span><span id="platformTotal">Rp 0</span></div><small style="color:#888">Data tersimpan di local + Firestore `tarkam_gifts`</small></div>
+    <div class="dompet-card"><strong>💳 Riwayat Dompet Platform (70%)</strong><div class="dompet-row"><span>Total Pendapatan Platform</span><span id="platformTotal">Rp 0</span></div><small style="color:#888">Data tersimpan di local + Firestore collection `tarkam_gifts`</small></div>
   </section>
 </div>
 
@@ -287,177 +242,73 @@ header{position:sticky;top:0;z-index:100;height:62px;background:#ffffff;border-b
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
 const firebaseConfig = { apiKey: "AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE", authDomain: "ifan-social-web.firebaseapp.com", projectId: "ifan-social-web" };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-let posts = [];
-let profile = { name:"Ifan", avatar:"" };
-let cameraStream = null;
-let liveState = { teamA:"TIM A", teamB:"TIM B", skorA:0, skorB:0, seconds:0, timerInterval:null, isTimerRunning:false, totalMasuk:0, saldoKameramen:0, saldoPlatform:0, isLive:false, liveDocId:null };
-
+let posts = []; let profile = { name:"Ifan", avatar:"" }; let cameraStream = null;
+let liveState = { teamA:"TIM A", teamB:"TIM B", skorA:0, skorB:0, seconds:0, timerInterval:null, isTimerRunning:false, totalMasuk:0, saldoKameramen:0, saldoPlatform:0, isLive:false, liveDocId:null, babak:"Babak 1" };
 function $(id){ return document.getElementById(id); }
 function readImage(file){ return new Promise((res,rej)=>{ if(!file){res("");return;} const r=new FileReader(); r.onload=e=>res(e.target.result); r.onerror=rej; r.readAsDataURL(file); }); }
 function esc(t){ return String(t||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"); }
-window.showPage = function(page){ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active")); const tgt=$(page); if(tgt) tgt.classList.add("active"); document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active")); const map={home:0,live:1,create:2,notifications:3,profile:4}; if(map[page]!==undefined) document.querySelectorAll(".nav-btn")[map[page]].classList.add("active"); };
-
+window.showPage = function(page){ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active")); const target=$(page); if(target) target.classList.add("active"); document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active")); const map={home:0,live:1,create:2,notifications:3,profile:4}; if(map[page]!==undefined) document.querySelectorAll(".nav-btn")[map[page]].classList.add("active"); };
 function loadLocalProfile(){ try{ const s=localStorage.getItem("social_live_if_profile"); if(s) profile=JSON.parse(s);}catch(e){} updateProfileUI(); }
 function updateProfileUI(){ $("profileName").textContent=profile.name||"Ifan"; $("nameInput").value=profile.name||"Ifan"; if(auth.currentUser) $("profileEmail").textContent=auth.currentUser.email||""; const av=profile.avatar||"https://via.placeholder.com/150"; $("profileAvatar").src=av; $("homeAvatar").src=av; $("createAvatar").src=av; }
-window.saveProfile = async function(){ const name=$("nameInput").value.trim()||"Ifan"; const file=$("avatarInput").files[0]; try{ let avatar=profile.avatar; if(file) avatar=await readImage(file); profile={name,avatar}; localStorage.setItem("social_live_if_profile",JSON.stringify(profile)); updateProfileUI(); alert("Profil disimpan."); }catch(e){alert(e.message);} };
-window.registerUser = async function(){ const email=$("email").value.trim(); const pw=$("password").value; if(!email||!pw){$("loginMessage").textContent="Isi email & password";return;} if(pw.length<6){$("loginMessage").textContent="Password min 6";return;} try{await createUserWithEmailAndPassword(auth,email,pw);}catch(e){$("loginMessage").textContent=e.message;} };
-window.loginUser = async function(){ const email=$("email").value.trim(); const pw=$("password").value; if(!email||!pw){$("loginMessage").textContent="Isi email & password";return;} try{await signInWithEmailAndPassword(auth,email,pw);}catch(e){$("loginMessage").textContent=e.message;} };
-window.logoutUser = async function(){ stopCamera(); await signOut(auth); };
-
-window.addPost = async function(){ const text=$("statusInput").value.trim(); const file=$("postPhoto").files[0]; if(!text&&!file){alert("Tulis status atau pilih foto");return;} if(!auth.currentUser){alert("Login dulu");return;} const image=await readImage(file); const post={uid:auth.currentUser.uid,name:profile.name||"Ifan",avatar:profile.avatar||"",text,image,likes:0,comments:[],time:new Date().toLocaleString("id-ID"),createdAt:serverTimestamp()}; const ref=await addDoc(collection(db,"users",auth.currentUser.uid,"posts"),post); posts.unshift({...post,id:ref.id}); $("statusInput").value=""; $("postPhoto").value=""; renderPosts(); };
-window.addBigPost = async function(){ const text=$("bigStatus").value.trim(); const file=$("bigPhoto").files[0]; if(!text&&!file){alert("Tulis sesuatu");return;} $("statusInput").value=text; const temp=$("postPhoto"); const dt=new DataTransfer(); if(file){dt.items.add(file); temp.files=dt.files;} await addPost(); $("bigStatus").value=""; $("bigPhoto").value=""; };
-async function loadPosts(){ if(!auth.currentUser) return; try{ const snap=await getDocs(collection(db,"users",auth.currentUser.uid,"posts")); posts=[]; snap.forEach(i=>posts.push({id:i.id,...i.data()})); posts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0)); renderPosts(); }catch(e){$("posts").innerHTML=`<div class="empty">Gagal memuat<br><small>${esc(e.message)}</small></div>`;} }
-function renderPosts(){ const box=$("posts"); if(!posts.length){box.innerHTML=`<div class="empty">Belum ada postingan.</div>`;return;} box.innerHTML=posts.map((p,i)=>{ const av=p.avatar||"https://via.placeholder.com/100"; const cm=Array.isArray(p.comments)?p.comments:[]; const htmlCm=cm.map(c=>`<div class="comment-text"><strong>${esc(c.name)}</strong><br>${esc(c.text)}</div>`).join(""); return `<article class="post"><div class="post-head"><img class="avatar-small" src="${av}"><div class="post-user"><strong>${esc(p.name)}</strong><div class="post-time">${esc(p.time)}</div></div><button class="post-menu" onclick="postMenu(${i})">⋮</button></div>${p.text?`<div class="post-body">${esc(p.text)}</div>`:""}${p.image?`<img class="post-image" src="${p.image}">`:""}<div class="post-actions"><button onclick="likePost(${i})">❤️ ${p.likes||0}</button><button onclick="toggleComments(${i})">💬 Komentar</button><button onclick="sharePost(${i})">📤 Bagikan</button></div><div id="comments-${i}" class="comment-box"><div class="comment-row"><input id="comment-${i}" class="comment-input" placeholder="Tulis komentar..."><button class="comment-send" onclick="addComment(${i})">Kirim</button></div>${htmlCm}</div></article>`; }).join(""); }
-window.likePost = async function(i){ const p=posts[i]; p.likes=(p.likes||0)+1; renderPosts(); if(p.id) try{await updateDoc(doc(db,"users",auth.currentUser.uid,"posts",p.id),{likes:p.likes});}catch(e){} };
-window.toggleComments = function(i){ const b=$("comments-"+i); b.style.display=b.style.display==="block"?"none":"block"; };
-window.addComment = async function(i){ const inp=$("comment-"+i); const t=inp.value.trim(); if(!t) return; if(!Array.isArray(posts[i].comments)) posts[i].comments=[]; posts[i].comments.push({name:profile.name,text:t}); inp.value=""; renderPosts(); $("comments-"+i).style.display="block"; if(posts[i].id) try{await updateDoc(doc(db,"users",auth.currentUser.uid,"posts",posts[i].id),{comments:posts[i].comments});}catch(e){} };
-window.sharePost = async function(i){ const p=posts[i]; const txt=(p.name||"")+": "+(p.text||""); try{ if(navigator.share) await navigator.share({title:"social live.IF",text:txt}); else {await navigator.clipboard.writeText(txt); alert("Disalin");} }catch(e){} };
-window.postMenu = async function(i){ if(prompt("1=Hapus")!=="1") return; if(!confirm("Hapus?")) return; const p=posts[i]; posts.splice(i,1); renderPosts(); if(p.id) try{await deleteDoc(doc(db,"users",auth.currentUser.uid,"posts",p.id));}catch(e){} };
-
-// ===== SCORE EDITABLE LOGIC =====
+window.saveProfile=async function(){ const name=$("nameInput").value.trim()||"Ifan"; const file=$("avatarInput").files[0]; try{ let av=profile.avatar; if(file) av=await readImage(file); profile={name,avatar:av}; localStorage.setItem("social_live_if_profile",JSON.stringify(profile)); updateProfileUI(); alert("Profil disimpan."); }catch(e){ alert("Gagal: "+e.message);} };
+window.registerUser=async function(){ const email=$("email").value.trim(); const pw=$("password").value; if(!email||!pw){$("loginMessage").textContent="Isi email dan password.";return;} if(pw.length<6){$("loginMessage").textContent="Password minimal 6 karakter.";return;} try{ await createUserWithEmailAndPassword(auth,email,pw);}catch(e){$("loginMessage").textContent=e.message;} };
+window.loginUser=async function(){ const email=$("email").value.trim(); const pw=$("password").value; if(!email||!pw){$("loginMessage").textContent="Isi email dan password.";return;} try{ await signInWithEmailAndPassword(auth,email,pw);}catch(e){$("loginMessage").textContent=e.message;} };
+window.logoutUser=async function(){ stopCamera(); await signOut(auth); };
+window.addPost=async function(){ const text=$("statusInput").value.trim(); const file=$("postPhoto").files[0]; if(!text&&!file){alert("Tulis status atau pilih foto.");return;} if(!auth.currentUser){alert("Login dulu.");return;} const image=await readImage(file); const post={uid:auth.currentUser.uid,name:profile.name||"Ifan",avatar:profile.avatar||"",text,image,likes:0,comments:[],time:new Date().toLocaleString("id-ID"),createdAt:serverTimestamp()}; const ref=await addDoc(collection(db,"users",auth.currentUser.uid,"posts"),post); posts.unshift({...post,id:ref.id}); $("statusInput").value=""; $("postPhoto").value=""; renderPosts(); };
+window.addBigPost=async function(){ const text=$("bigStatus").value.trim(); const file=$("bigPhoto").files[0]; if(!text&&!file){alert("Tulis sesuatu.");return;} $("statusInput").value=text; const temp=$("postPhoto"); const dt=new DataTransfer(); if(file){dt.items.add(file); temp.files=dt.files;} await addPost(); $("bigStatus").value=""; $("bigPhoto").value=""; };
+async function loadPosts(){ if(!auth.currentUser) return; try{ const snap=await getDocs(collection(db,"users",auth.currentUser.uid,"posts")); posts=[]; snap.forEach(i=>{posts.push({id:i.id,...i.data()});}); posts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0)); renderPosts(); }catch(e){$("posts").innerHTML=`<div class="empty">Gagal memuat.<br><small>${esc(e.message)}</small></div>`;} }
+function renderPosts(){ const box=$("posts"); if(!posts.length){box.innerHTML=`<div class="empty">Belum ada postingan.</div>`;return;} box.innerHTML=posts.map((p,i)=>{ const av=p.avatar||"https://via.placeholder.com/100"; const cm=Array.isArray(p.comments)?p.comments:[]; const cmHtml=cm.map(c=>`<div class="comment-text"><strong>${esc(c.name)}</strong><br>${esc(c.text)}</div>`).join(""); return `<article class="post"><div class="post-head"><img class="avatar-small" src="${av}"><div class="post-user"><strong>${esc(p.name)}</strong><div class="post-time">${esc(p.time)}</div></div><button class="post-menu" onclick="postMenu(${i})">⋮</button></div>${p.text?`<div class="post-body">${esc(p.text)}</div>`:""}${p.image?`<img class="post-image" src="${p.image}">`:""}<div class="post-actions"><button onclick="likePost(${i})">❤️ ${p.likes||0}</button><button onclick="toggleComments(${i})">💬 Komentar</button><button onclick="sharePost(${i})">📤 Bagikan</button></div><div id="comments-${i}" class="comment-box"><div class="comment-row"><input id="comment-${i}" class="comment-input" placeholder="Tulis komentar..."><button class="comment-send" onclick="addComment(${i})">Kirim</button></div>${cmHtml}</div></article>`;}).join(""); }
+window.likePost=async function(i){ const p=posts[i]; p.likes=(p.likes||0)+1; renderPosts(); if(p.id) try{await updateDoc(doc(db,"users",auth.currentUser.uid,"posts",p.id),{likes:p.likes});}catch(e){} };
+window.toggleComments=function(i){ const b=$("comments-"+i); b.style.display=b.style.display==="block"?"none":"block"; };
+window.addComment=async function(i){ const inp=$("comment-"+i); const t=inp.value.trim(); if(!t) return; if(!Array.isArray(posts[i].comments)) posts[i].comments=[]; posts[i].comments.push({name:profile.name,text:t}); inp.value=""; renderPosts(); $("comments-"+i).style.display="block"; if(posts[i].id) try{await updateDoc(doc(db,"users",auth.currentUser.uid,"posts",posts[i].id),{comments:posts[i].comments});}catch(e){} };
+window.sharePost=async function(i){ const p=posts[i]; const txt=(p.name||"")+": "+(p.text||""); try{ if(navigator.share) await navigator.share({title:"social live.IF",text:txt}); else {await navigator.clipboard.writeText(txt); alert("Disalin.");}}catch(e){} };
+window.postMenu=async function(i){ if(prompt("Ketik 1 untuk hapus")!=="1") return; if(!confirm("Hapus postingan?")) return; const p=posts[i]; posts.splice(i,1); renderPosts(); if(p.id) try{await deleteDoc(doc(db,"users",auth.currentUser.uid,"posts",p.id));}catch(e){} };
 function formatTimer(sec){ const m=Math.floor(sec/60).toString().padStart(2,'0'); const s=(sec%60).toString().padStart(2,'0'); return `${m}:${s}`; }
-function parseTimer(str){ const parts=String(str).split(":"); if(parts.length!==2) return 0; const m=parseInt(parts[0])||0; const s=parseInt(parts[1])||0; return m*60+s; }
-
+function parseTimer(str){ const parts=String(str).trim().split(":"); if(parts.length!==2) return null; const m=parseInt(parts[0]); const s=parseInt(parts[1]); if(isNaN(m)||isNaN(s)||m<0||s<0||s>=60) return null; return m*60+s; }
 function updateOverlay(){
-  $("overlayTeamA").textContent=liveState.teamA;
-  $("overlayTeamB").textContent=liveState.teamB;
-  $("overlaySkor").textContent=`${liveState.skorA} - ${liveState.skorB}`;
-  $("overlayTimer").textContent=formatTimer(liveState.seconds);
-  $("timerDisplay").textContent=formatTimer(liveState.seconds);
-  $("bigTeamAInput").value=liveState.teamA; $("bigTeamBInput").value=liveState.teamB;
-  $("bigSkorAInput").value=liveState.skorA; $("bigSkorBInput").value=liveState.skorB;
-  $("bigTimer").textContent=formatTimer(liveState.seconds);
-  $("bigTimerInput").value=formatTimer(liveState.seconds);
-  $("skorAInput").value=liveState.skorA; $("skorBInput").value=liveState.skorB;
-  $("timerInput").value=formatTimer(liveState.seconds);
-  $("teamA").value=liveState.teamA; $("teamB").value=liveState.teamB;
+  $("overlayTeamA").textContent=liveState.teamA; $("overlayTeamB").textContent=liveState.teamB;
+  $("overlaySkor").textContent=`${liveState.skorA} - ${liveState.skorB}`; $("overlayTimer").textContent=formatTimer(liveState.seconds);
+  $("timerDisplay").textContent=formatTimer(liveState.seconds); $("bigTeamA").textContent=liveState.teamA; $("bigTeamB").textContent=liveState.teamB;
+  $("bigSkorA").textContent=liveState.skorA; $("bigSkorB").textContent=liveState.skorB; $("bigTimer").textContent=formatTimer(liveState.seconds);
   $("liveTitleDisplay").textContent=$("matchTitle").value.trim()||`${liveState.teamA} vs ${liveState.teamB}`;
+  if($("skorControl").style.display!=="none"){
+    $("editTeamA").value=liveState.teamA; $("editTeamB").value=liveState.teamB;
+    $("editSkorA").value=liveState.skorA; $("editSkorB").value=liveState.skorB;
+    $("editTimer").value=formatTimer(liveState.seconds); $("editTitle").value=$("matchTitle").value;
+    $("editBabak").value=liveState.babak||"";
+  }
 }
-
-window.editTeamName = function(side){
-  const current = side==='A'? liveState.teamA : liveState.teamB;
-  const baru = prompt(`Edit Nama Tim ${side}:`, current);
-  if(baru===null) return;
-  if(side==='A') liveState.teamA = baru.trim() || "TIM A";
-  else liveState.teamB = baru.trim() || "TIM B";
+window.changeSkor=function(team,delta){ if(team==='A') liveState.skorA=Math.max(0,liveState.skorA+delta); else liveState.skorB=Math.max(0,liveState.skorB+delta); updateOverlay(); if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{skorA:liveState.skorA,skorB:liveState.skorB}).catch(()=>{}); };
+window.resetSkor=function(){ liveState.skorA=0; liveState.skorB=0; liveState.seconds=0; updateOverlay(); if(confirm("Reset skor ke 0-0?")){ if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{skorA:0,skorB:0}).catch(()=>{}); } };
+window.toggleTimer=function(){ if(liveState.isTimerRunning){ clearInterval(liveState.timerInterval); liveState.isTimerRunning=false; $("btnTimer").textContent="▶ LANJUT"; $("liveStatusMini").textContent="Jeda"; } else { liveState.timerInterval=setInterval(()=>{ liveState.seconds++; updateOverlay(); },1000); liveState.isTimerRunning=true; $("btnTimer").textContent="⏸ JEDA"; $("liveStatusMini").textContent="Live"; } };
+window.applyEditScore=function(){
+  const newTeamA=$("editTeamA").value.trim()||"TIM A"; const newTeamB=$("editTeamB").value.trim()||"TIM B";
+  const newSkorA=parseInt($("editSkorA").value); const newSkorB=parseInt($("editSkorB").value);
+  const newTimer=parseTimer($("editTimer").value); const newTitle=$("editTitle").value.trim();
+  const newBabak=$("editBabak").value.trim()||"Babak 1";
+  if(isNaN(newSkorA)||isNaN(newSkorB)||newSkorA<0||newSkorB<0){ alert("Skor harus angka 0 atau lebih"); return; }
+  liveState.teamA=newTeamA; liveState.teamB=newTeamB; liveState.skorA=newSkorA; liveState.skorB=newSkorB;
+  liveState.babak=newBabak;
+  if(newTimer!==null) liveState.seconds=newTimer; if(newTitle){ $("matchTitle").value=newTitle; }
+  $("teamA").value=newTeamA; $("teamB").value=newTeamB;
   updateOverlay();
-  if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{teamA:liveState.teamA, teamB:liveState.teamB}).catch(()=>{});
+  if(liveState.liveDocId){ updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{teamA:liveState.teamA,teamB:liveState.teamB,skorA:liveState.skorA,skorB:liveState.skorB,babak:newBabak,title:newTitle||`${newTeamA} vs ${newTeamB}`}).catch(()=>{}); }
+  alert("✅ Berhasil edit!\n"+newTeamA+" "+newSkorA+" - "+newSkorB+" "+newTeamB+" | "+formatTimer(liveState.seconds)+" | "+newBabak);
 };
-window.editScoreOverlay = function(){
-  const baru = prompt(`Edit Skor format "A - B" contoh "2 - 1"`, `${liveState.skorA} - ${liveState.skorB}`);
-  if(!baru) return;
-  const parts=baru.split("-"); if(parts.length!==2) return alert("Format harus 1 - 0");
-  const a=parseInt(parts[0].trim()); const b=parseInt(parts[1].trim());
-  if(isNaN(a)||isNaN(b)) return alert("Skor harus angka");
-  liveState.skorA=Math.max(0,a); liveState.skorB=Math.max(0,b);
-  updateOverlay();
-  if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{skorA:liveState.skorA, skorB:liveState.skorB}).catch(()=>{});
-};
-window.editTimerOverlay = function(){
-  const baru = prompt(`Edit Waktu MM:SS`, formatTimer(liveState.seconds));
-  if(!baru) return;
-  liveState.seconds=parseTimer(baru);
-  updateOverlay();
-};
-
-window.syncFromBigInputs = function(){
-  liveState.teamA = $("bigTeamAInput").value || "TIM A";
-  liveState.teamB = $("bigTeamBInput").value || "TIM B";
-  liveState.skorA = Math.max(0, parseInt($("bigSkorAInput").value)||0);
-  liveState.skorB = Math.max(0, parseInt($("bigSkorBInput").value)||0);
-  updateOverlay();
-};
-window.syncTimerFromInput = function(val){
-  liveState.seconds = parseTimer(val);
-  $("overlayTimer").textContent=formatTimer(liveState.seconds);
-  $("timerDisplay").textContent=formatTimer(liveState.seconds);
-  $("bigTimer").textContent=formatTimer(liveState.seconds);
-  $("timerInput").value=formatTimer(liveState.seconds);
-};
-
-window.changeSkor = function(team,delta){ if(team==='A') liveState.skorA=Math.max(0,liveState.skorA+delta); else liveState.skorB=Math.max(0,liveState.skorB+delta); updateOverlay(); if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{skorA:liveState.skorA,skorB:liveState.skorB}).catch(()=>{}); };
-window.resetSkor = function(){ liveState.skorA=0; liveState.skorB=0; updateOverlay(); };
-
-window.toggleTimer = function(){
-  if(liveState.isTimerRunning){ clearInterval(liveState.timerInterval); liveState.isTimerRunning=false; $("btnTimer").textContent="▶ LANJUT"; $("liveStatusMini").textContent="Jeda"; }
-  else { liveState.timerInterval=setInterval(()=>{ liveState.seconds++; updateOverlay(); },1000); liveState.isTimerRunning=true; $("btnTimer").textContent="⏸ JEDA"; $("liveStatusMini").textContent="Live"; }
-};
-
-window.startCamera = async function(){
+window.startCamera=async function(){
   liveState.teamA=$("teamA").value.trim()||"TIM A"; liveState.teamB=$("teamB").value.trim()||"TIM B";
-  liveState.skorA=parseInt($("skorAInput").value)||0; liveState.skorB=parseInt($("skorBInput").value)||0;
-  liveState.seconds=parseTimer($("timerInput").value);
-  const title=$("matchTitle").value.trim()||`${liveState.teamA} vs ${liveState.teamB}`;
-  if(!liveState.teamA||!liveState.teamB){alert("Isi nama Tim A & B");return;}
-  try{
-    if(cameraStream) stopCamera();
-    cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:true});
-    $("camera").srcObject=cameraStream;
-    if(!liveState.isTimerRunning) toggleTimer();
-    const ref=await addDoc(collection(db,"tarkam_lives"),{title,teamA:liveState.teamA,teamB:liveState.teamB,skorA:liveState.skorA,skorB:liveState.skorB,isLive:true,hostName:profile.name,createdAt:serverTimestamp()});
-    liveState.liveDocId=ref.id; liveState.isLive=true;
-    $("liveIndicator").style.display="inline-block"; $("skorControl").style.display="block";
-    $("liveStatus").innerHTML=`🔴 <strong>LIVE AKTIF</strong><br>${esc(title)}<br>${esc(liveState.teamA)} ${liveState.skorA} - ${liveState.skorB} ${esc(liveState.teamB)}<br><small>Klik skor di video untuk edit cepat!</small>`;
-    $("liveStatusMini").textContent="Live"; updateOverlay();
-  }catch(e){$("liveStatus").innerHTML="Kamera gagal: <small>"+esc(e.message)+"</small>";}
+  const title=$("matchTitle").value.trim()||`${liveState.teamA} vs ${liveState.teamB}`; if(!liveState.teamA||!liveState.teamB){alert("Isi nama Tim A dan B dulu!");return;}
+  try{ if(cameraStream) stopCamera(); cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:true}); $("camera").srcObject=cameraStream; if(!liveState.isTimerRunning) toggleTimer(); const ref=await addDoc(collection(db,"tarkam_lives"),{title,teamA:liveState.teamA,teamB:liveState.teamB,skorA:liveState.skorA,skorB:liveState.skorB,babak:liveState.babak,isLive:true,hostName:profile.name,createdAt:serverTimestamp()}); liveState.liveDocId=ref.id; liveState.isLive=true; $("liveIndicator").style.display="inline-block"; $("skorControl").style.display="block"; $("liveStatus").innerHTML=`🔴 <strong>LIVE AKTIF</strong><br>${esc(title)}<br>${esc(liveState.teamA)} ${liveState.skorA} - ${liveState.skorB} ${esc(liveState.teamB)}`; $("liveStatusMini").textContent="Live"; updateOverlay(); }catch(e){$("liveStatus").innerHTML="Kamera gagal: <small>"+esc(e.message)+"</small>";}
 };
-window.stopCamera = function(){
-  if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop()); cameraStream=null;}
-  $("camera").srcObject=null; clearInterval(liveState.timerInterval); liveState.isTimerRunning=false;
-  $("liveIndicator").style.display="none"; $("liveStatusMini").textContent="Standby";
-  $("liveStatus").innerHTML="Kamera belum dimulai.";
-  if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{isLive:false}).catch(()=>{});
-};
-
-window.sendGift = async function(type,price){
-  const untukKameramen=Math.floor(price*0.3); const untukPlatform=price-untukKameramen;
-  liveState.totalMasuk+=price; liveState.saldoKameramen+=untukKameramen; liveState.saldoPlatform+=untukPlatform;
-  $("totalMasuk").textContent="Rp "+liveState.totalMasuk.toLocaleString("id-ID");
-  $("bagiKameramen").textContent="Rp "+liveState.saldoKameramen.toLocaleString("id-ID");
-  $("bagiPlatform").textContent="Rp "+liveState.saldoPlatform.toLocaleString("id-ID");
-  $("saldoTarik").textContent="Rp "+liveState.saldoKameramen.toLocaleString("id-ID");
-  $("platformTotal").textContent="Rp "+liveState.saldoPlatform.toLocaleString("id-ID");
-  $("giftFeed").innerHTML=`<div>🎁 ${esc(profile.name)} kirim ${esc(type.toUpperCase())} Rp${price.toLocaleString("id-ID")}</div>`+$("giftFeed").innerHTML;
-  $("notifList").innerHTML=`<div style="background:#fff;padding:12px;border-radius:12px;margin-bottom:8px;text-align:left">🎁 <strong>${esc(type)}</strong> Rp${price.toLocaleString("id-ID")}</div>`+$("notifList").innerHTML;
-  $("viewerCount").textContent=Math.floor(Math.random()*80)+5;
-  try{ if(auth.currentUser) await addDoc(collection(db,"tarkam_gifts"),{liveId:liveState.liveDocId||"local",type,price,bagiKameramen:untukKameramen,bagiPlatform:untukPlatform,sender:profile.name,createdAt:serverTimestamp()}); }catch(e){}
-};
-
-function listenActiveLives(){
-  try{
-    const q=query(collection(db,"tarkam_lives"), where("isLive","==",true));
-    onSnapshot(q,snap=>{
-      const box=$("activeLivesHome");
-      if(snap.empty){ box.innerHTML="Belum ada live tarkam. Jadilah yang pertama!"; return; }
-      let html=""; snap.forEach(d=>{ const v=d.data(); html+=`<div style="background:#222;padding:10px;border-radius:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><strong>${esc(v.teamA)} vs ${esc(v.teamB)}</strong><br><small>${esc(v.title)} • ${v.skorA} - ${v.skorB}</small></div><span style="background:#e53935;padding:4px 8px;border-radius:20px;font-size:11px">LIVE</span></div>`; });
-      box.innerHTML=html;
-    });
-  }catch(e){}
-}
-
-onAuthStateChanged(auth, async user=>{
-  if(user){ $("loginScreen").style.display="none"; $("app").style.display="block"; $("appHeader").style.display="flex"; $("bottomNav").style.display="flex"; loadLocalProfile(); await loadPosts(); listenActiveLives(); }
-  else { $("loginScreen").style.display="block"; $("app").style.display="none"; $("appHeader").style.display="none"; $("bottomNav").style.display="none"; stopCamera(); }
-});
-loadLocalProfile();
-["teamA","teamB","matchTitle","skorAInput","skorBInput","timerInput"].forEach(id=>{
-  const el=$(id); if(!el) return;
-  el.addEventListener("input", e=>{
-    if(id==="teamA") liveState.teamA=e.target.value||"TIM A";
-    if(id==="teamB") liveState.teamB=e.target.value||"TIM B";
-    if(id==="skorAInput") liveState.skorA=Math.max(0,parseInt(e.target.value)||0);
-    if(id==="skorBInput") liveState.skorB=Math.max(0,parseInt(e.target.value)||0);
-    if(id==="timerInput") liveState.seconds=parseTimer(e.target.value);
-    updateOverlay();
-  });
-});
-updateOverlay();
+window.stopCamera=function(){ if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop()); cameraStream=null;} $("camera").srcObject=null; clearInterval(liveState.timerInterval); liveState.isTimerRunning=false; $("liveIndicator").style.display="none"; $("liveStatusMini").textContent="Standby"; $("liveStatus").innerHTML="Kamera belum dimulai."; if(liveState.liveDocId) updateDoc(doc(db,"tarkam_lives",liveState.liveDocId),{isLive:false}).catch(()=>{}); };
+window.sendGift=async function(type,price){ const untukKameramen=Math.floor(price*0.3); const untukPlatform=price-untukKameramen; liveState.totalMasuk+=price; liveState.saldoKameramen+=untukKameramen; liveState.saldoPlatform+=untukPlatform; $("totalMasuk").textContent="Rp "+liveState.totalMasuk.toLocaleString("id-ID"); $("bagiKameramen").textContent="Rp "+liveState.saldoKameramen.toLocaleString("id-ID"); $("bagiPlatform").textContent="Rp "+liveState.saldoPlatform.toLocaleString("id-ID"); $("saldoTarik").textContent="Rp "+liveState.saldoKameramen.toLocaleString("id-ID"); const pTotal=$("platformTotal"); if(pTotal) pTotal.textContent="Rp "+liveState.saldoPlatform.toLocaleString("id-ID"); $("giftFeed").innerHTML=`<div>🎁 ${esc(profile.name)} kirim ${esc(type.toUpperCase())} Rp${price.toLocaleString("id-ID")}</div>`+ $("giftFeed").innerHTML; $("notifList").innerHTML=`<div style="background:#fff;padding:12px;border-radius:12px;margin-bottom:8px;text-align:left">🎁 <strong>${esc(type)}</strong> Rp${price.toLocaleString("id-ID")} - ${new Date().toLocaleTimeString("id-ID")}</div>`+ $("notifList").innerHTML; $("viewerCount").textContent=Math.floor(Math.random()*80)+5; try{ if(auth.currentUser) await addDoc(collection(db,"tarkam_gifts"),{liveId:liveState.liveDocId||"local",type,price,bagiKameramen:untukKameramen,bagiPlatform:untukPlatform,sender:profile.name,createdAt:serverTimestamp()}); }catch(e){} };
+function listenActiveLives(){ try{ const q=query(collection(db,"tarkam_lives"),where("isLive","==",true)); onSnapshot(q,snap=>{ const box=$("activeLivesHome"); if(snap.empty){box.innerHTML="Belum ada live tarkam. Jadilah yang pertama!";return;} let html=""; snap.forEach(d=>{ const v=d.data(); html+=`<div style="background:#222;padding:10px;border-radius:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><strong>${esc(v.teamA)} vs ${esc(v.teamB)}</strong><br><small>${esc(v.title)} • ${v.skorA} - ${v.skorB} ${esc(v.babak||"")}</small></div><span style="background:#e53935;padding:4px 8px;border-radius:20px;font-size:11px">LIVE</span></div>`; }); box.innerHTML=html; }); }catch(e){} }
+onAuthStateChanged(auth, async user=>{ if(user){$("loginScreen").style.display="none";$("app").style.display="block";$("appHeader").style.display="flex";$("bottomNav").style.display="flex";loadLocalProfile();await loadPosts();listenActiveLives();} else {$("loginScreen").style.display="block";$("app").style.display="none";$("appHeader").style.display="none";$("bottomNav").style.display="none";stopCamera();} });
+loadLocalProfile(); ["teamA","teamB","matchTitle"].forEach(id=>{ $(id).addEventListener("input", e=>{ if(id==="teamA") liveState.teamA=e.target.value||"TIM A"; if(id==="teamB") liveState.teamB=e.target.value||"TIM B"; updateOverlay(); }); }); updateOverlay();
 </script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
