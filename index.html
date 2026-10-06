@@ -1,5688 +1,3518 @@
 <!doctype html>
 <html lang="id">
 <head>
-
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>social live.IF</title>
-
-<link rel="icon" type="image/svg+xml"
-href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiIgdmlld0JveD0iMCAwIDQyIDQyIj48cmVjdCB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHJ4PSIxMSIgZmlsbD0iIzAwMCIvPjx0ZXh0IHg9IjIxIiB5PSIxNiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiPkZBTjwvdGV4dD48dGV4dCB4PSIyMSIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2U1MzkzNSI+TElWRS5JRjwvdGV4dD48L3N2Zz4=">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-status-bar-style" content="black">
 
 <style>
-
-@font-face{
-  font-family:"Optimistic";
-  font-style:normal;
-  font-weight:400 600;
-  font-display:swap;
-  src:url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-
-@font-face{
-  font-family:"Optimistic Mono";
-  font-style:normal;
-  font-weight:400;
-  font-display:swap;
-  src:url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f2f4f7;
-  color:#18202a;
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#f2f4f7;color:#18202a}
 button,input,textarea{font-family:inherit}
 button{cursor:pointer}
 
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:62px;
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px;
+position:sticky;top:0;z-index:100;height:62px;background:#fff;
+border-bottom:1px solid #ddd;display:flex;align-items:center;
+justify-content:space-between;padding:0 15px
 }
-
-.logo{
-  font-size:21px;
-  font-weight:bold;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.logo{font-size:21px;font-weight:bold}
 .logo span{color:#e53935}
+.header-right{display:flex;gap:8px}
+.icon-btn{width:40px;height:40px;border:0;border-radius:50%;background:#f0f2f5;font-size:19px}
 
-.logo-icon{
-  width:42px;
-  height:42px;
-  border-radius:11px;
-  background:#000;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  font-weight:900;
-  line-height:1;
-  text-align:center;
-  font-size:10px;
-}
-
-.logo-icon b{color:#e53935}
-
-.header-right{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:#f0f2f5;
-  font-size:19px;
-}
-
-.app{
-  max-width:650px;
-  margin:auto;
-  padding-bottom:85px;
-}
-
-.page{
-  display:none;
-  padding:14px;
-}
-
+.app{max-width:650px;margin:auto;padding-bottom:85px}
+.page{display:none;padding:14px}
 .page.active{display:block}
 
 .login-box{
-  margin:50px 14px;
-  background:#fff;
-  padding:24px;
-  border-radius:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+margin:60px 14px;background:#fff;padding:24px;border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08)
 }
-
-.login-box h1{
-  text-align:center;
-  margin:10px 0 4px;
-}
-
-.login-box p{
-  text-align:center;
-  color:#777;
-  margin-top:0;
-}
+.login-box h1{text-align:center;margin-top:0}
+.login-box p{text-align:center;color:#777}
 
 .field{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:10px;
-  outline:none;
-  background:#fff;
+width:100%;padding:13px;border:1px solid #ddd;border-radius:12px;
+margin-bottom:10px;outline:none
 }
-
-.field:focus{
-  border-color:#111;
-}
+.field:focus{border-color:#777}
 
 .main-btn{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:13px;
-  background:#111;
-  color:#fff;
-  font-weight:bold;
-  margin-top:5px;
+width:100%;border:0;border-radius:12px;padding:13px;
+background:#111;color:#fff;font-weight:bold;margin-top:5px
 }
-
 .secondary-btn{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:13px;
-  background:#fff;
-  margin-top:8px;
+width:100%;border:1px solid #ddd;border-radius:12px;
+padding:13px;background:#fff;margin-top:8px
 }
-
-.message{
-  text-align:center;
-  margin-top:10px;
-  color:#d32f2f;
-}
+.message{text-align:center;margin-top:10px;color:#d32f2f}
 
 .live-card{
-  background:#111;
-  color:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  margin-bottom:15px;
+background:#111;color:#fff;border-radius:18px;overflow:hidden;margin-bottom:15px
 }
-
 .live-top{
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+padding:15px;display:flex;justify-content:space-between;align-items:center
 }
-
 .live-badge{
-  background:#e53935;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+background:#e53935;padding:6px 10px;border-radius:20px;
+font-size:12px;font-weight:bold
 }
+.live-bottom{padding:14px}
 
-.live-bottom{
-  padding:14px;
+.section-title{
+display:flex;justify-content:space-between;align-items:center;
+margin:8px 0 12px
 }
+.section-title h2{margin:0;font-size:18px}
 
 .create-card{
-  background:#fff;
-  padding:14px;
-  border-radius:18px;
-  margin-bottom:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+background:#fff;padding:14px;border-radius:18px;margin-bottom:14px;
+box-shadow:0 2px 8px rgba(0,0,0,.04)
 }
-
-.create-top{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
+.create-top{display:flex;gap:10px;align-items:center}
 .avatar-small{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
+width:42px;height:42px;border-radius:50%;object-fit:cover;background:#ddd
 }
-
 .create-text{
-  flex:1;
-  border:0;
-  background:#f1f3f5;
-  border-radius:20px;
-  padding:12px;
-  outline:none;
+flex:1;border:0;background:#f1f3f5;border-radius:20px;
+padding:12px;outline:none
 }
-
-.create-options{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
+.create-options{display:flex;gap:8px;margin-top:12px}
+.create-options label,.create-options button{
+flex:1;border:0;background:#f1f3f5;border-radius:10px;
+padding:10px;text-align:center
 }
-
-.create-options label,
-.create-options button{
-  flex:1;
-  border:0;
-  background:#f1f3f5;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
-}
-
 .create-options input{display:none}
-
-.post-btn{
-  background:#111!important;
-  color:white;
-}
+.post-btn{background:#111!important;color:#fff}
 
 .post{
-  background:#fff;
-  border-radius:18px;
-  margin-bottom:14px;
-  overflow:hidden;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+background:#fff;border-radius:18px;margin-bottom:14px;
+overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)
 }
-
 .post-head{
-  padding:13px;
-  display:flex;
-  align-items:center;
-  gap:10px;
+padding:13px;display:flex;align-items:center;gap:10px
 }
-
 .post-user{flex:1}
-
 .post-user strong{display:block}
-
-.post-time{
-  font-size:11px;
-  color:#888;
-  margin-top:3px;
-}
-
-.post-menu{
-  border:0;
-  background:none;
-  font-size:20px;
-}
-
-.post-body{
-  padding:0 14px 12px;
-}
-
-.post-image{
-  width:100%;
-  max-height:500px;
-  object-fit:cover;
-  display:block;
-}
-
-.post-actions{
-  display:flex;
-  border-top:1px solid #eee;
-}
-
+.post-time{font-size:11px;color:#888;margin-top:3px}
+.post-menu{border:0;background:none;font-size:20px}
+.post-body{padding:0 14px 12px}
+.post-image{width:100%;max-height:500px;object-fit:cover;display:block}
+.post-actions{display:flex;border-top:1px solid #eee}
 .post-actions button{
-  flex:1;
-  border:0;
-  background:#fff;
-  padding:12px 5px;
-  font-size:14px;
+flex:1;border:0;background:#fff;padding:12px 5px;font-size:14px
 }
+.post-actions button:active{background:#eee}
 
-.comment-box{
-  display:none;
-  padding:10px;
-  border-top:1px solid #eee;
-}
-
-.comment-row{
-  display:flex;
-  gap:7px;
-}
-
+.comment-box{display:none;padding:10px;border-top:1px solid #eee}
+.comment-row{display:flex;gap:7px}
 .comment-input{
-  flex:1;
-  border:1px solid #ddd;
-  border-radius:18px;
-  padding:9px 12px;
+flex:1;border:1px solid #ddd;border-radius:18px;padding:9px 12px
 }
-
 .comment-send{
-  border:0;
-  border-radius:18px;
-  padding:0 15px;
-  background:#111;
-  color:#fff;
+border:0;border-radius:18px;padding:0 15px;background:#111;color:#fff
 }
-
 .comment-text{
-  padding:8px 10px;
-  background:#f2f3f5;
-  border-radius:12px;
-  margin-top:8px;
-  font-size:14px;
+padding:8px 10px;background:#f2f3f5;border-radius:12px;
+margin-top:8px;font-size:14px
 }
 
 .profile-card{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  text-align:center;
+background:#fff;border-radius:20px;padding:20px;text-align:center
 }
-
 .profile-avatar{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#ddd;
-  border:4px solid #eee;
+width:105px;height:105px;border-radius:50%;object-fit:cover;
+background:#ddd;border:4px solid #eee
 }
-
-.profile-name{
-  font-size:21px;
-  font-weight:bold;
-  margin:10px 0 3px;
-}
-
-.profile-email{
-  color:#777;
-  font-size:13px;
-}
-
-.profile-edit{
-  margin-top:18px;
-  text-align:left;
-}
-
+.profile-name{font-size:21px;font-weight:bold;margin:10px 0 3px}
+.profile-email{color:#777;font-size:13px}
+.profile-edit{margin-top:18px;text-align:left}
 .logout{
-  margin-top:12px;
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:12px;
-  background:#e53935;
-  color:white;
+margin-top:12px;width:100%;padding:12px;border:0;border-radius:12px;
+background:#e53935;color:#fff
 }
-
-/* =========================
-   LIVE
-========================= */
-
-.camera-box{
-  background:#111;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
-}
-
-#camera,
-#viewerVideo{
-  width:100%;
-  display:block;
-  aspect-ratio:9/16;
-  max-height:68vh;
-  object-fit:cover;
-  background:#000;
-}
-
-#viewerVideo{
-  display:none;
-}
-
-.scoreboard-pro{
-  position:absolute;
-  top:12px;
-  left:12px;
-  right:12px;
-  background:linear-gradient(
-    180deg,
-    rgba(0,0,0,.92),
-    rgba(0,0,0,.75)
-  );
-  color:#fff;
-  border-radius:14px;
-  padding:10px 12px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  z-index:5;
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(6px);
-}
-
-.sb-team{
-  flex:1;
-  text-align:center;
-  min-width:0;
-}
-
-.sb-team-name{
-  font-size:13px;
-  font-weight:800;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  display:block;
-}
-
-.sb-team-sub{
-  font-size:10px;
-  color:#bbb;
-  margin-top:2px;
-}
-
-.sb-center{
-  text-align:center;
-  min-width:92px;
-}
-
-.sb-skor{
-  font-size:22px;
-  font-weight:900;
-  background:#e53935;
-  padding:6px 12px;
-  border-radius:10px;
-  display:inline-block;
-  letter-spacing:1px;
-}
-
-.sb-time{
-  margin-top:6px;
-  background:#fff;
-  color:#111;
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:800;
-  display:inline-block;
-}
-
-.camera-info{
-  color:#fff;
-  padding:14px;
-}
-
-.viewer-count{
-  color:#bbb;
-  font-size:13px;
-}
-
-.camera-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
-.camera-buttons button{
-  flex:1;
-  padding:12px;
-  border:0;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-.start-camera{
-  background:#e53935;
-  color:#fff;
-}
-
-.stop-camera{
-  background:#fff;
-}
-
-.camera-switch{
-  margin-top:8px;
-  width:100%;
-  padding:10px;
-  border:1px solid #444;
-  border-radius:10px;
-  background:#222;
-  color:#fff;
-}
-
-.match-setup{
-  background:#fff;
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:12px;
-}
-
-.match-setup h3{
-  margin:0 0 10px;
-  font-size:16px;
-}
-
-.skor-control{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.skor-control button{
-  flex:1;
-  padding:14px;
-  border:0;
-  border-radius:12px;
-  font-weight:bold;
-  font-size:16px;
-}
-
-.skor-A{background:#e3f2fd}
-.skor-B{background:#ffebee}
-
-.gift-row{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
-.gift-btn{
-  flex:1;
-  border:0;
-  border-radius:12px;
-  padding:12px;
-  background:#fff;
-  color:#111;
-  font-weight:bold;
-  box-shadow:0 2px 6px rgba(0,0,0,.08);
-}
-
-.gift-btn small{
-  display:block;
-  font-size:11px;
-  color:#666;
-}
-
-.dompet-card{
-  background:#fff;
-  border-radius:18px;
-  padding:14px;
-  margin-top:12px;
-  border:1px dashed #ccc;
-}
-
-.dompet-row{
-  display:flex;
-  justify-content:space-between;
-  margin:6px 0;
-  font-size:14px;
-}
-
-.dompet-total{
-  font-weight:bold;
-  font-size:16px;
-  border-top:1px solid #eee;
-  padding-top:8px;
-  margin-top:8px;
-}
-
-.score-panel{
-  background:#fff;
-  border-radius:18px;
-  padding:14px;
-  margin-top:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.score-panel-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
-}
-
-.score-big{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#111;
-  color:#fff;
-  border-radius:14px;
-  padding:14px;
-}
-
-.score-big .team{
-  flex:1;
-  text-align:center;
-}
-
-.score-big .num{
-  font-size:28px;
-  font-weight:900;
-}
-
-.edit-score-box{
-  background:#fffbe6;
-  border:1.5px solid #ffe082;
-  border-radius:14px;
-  padding:14px;
-  margin-top:14px;
-}
-
-.edit-score-box h4{
-  margin:0 0 10px;
-  font-size:14px;
-}
-
-.edit-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.edit-grid label{
-  font-size:11px;
-  color:#666;
-  font-weight:bold;
-  display:block;
-  margin-bottom:4px;
-}
-
-.badge-edit{
-  font-size:10px;
-  background:#ffecb3;
-  color:#7a5a00;
-  padding:3px 8px;
-  border-radius:20px;
-  font-weight:bold;
-  margin-left:6px;
-}
-
-/* =========================
-   LIVE COMMENTS
-========================= */
-
-.live-comments-card{
-  background:#fff;
-  border-radius:18px;
-  padding:14px;
-  margin-top:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.live-comments-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
-}
-
-.live-comments-count{
-  font-size:11px;
-  background:#f1f3f5;
-  padding:5px 9px;
-  border-radius:20px;
-  color:#666;
-}
-
-.live-comments-list{
-  max-height:280px;
-  overflow-y:auto;
-}
-
-.live-comment{
-  background:#f2f3f5;
-  border-radius:12px;
-  padding:9px 10px;
-  margin-bottom:8px;
-}
-
-.live-comment-meta{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  font-size:11px;
-  color:#777;
-  margin-bottom:3px;
-}
-
-.live-comment-name{
-  color:#111;
-  font-weight:bold;
-}
-
-.live-comment-text{
-  font-size:14px;
-  line-height:1.35;
-  word-break:break-word;
-}
-
-.live-comment-form{
-  display:flex;
-  gap:7px;
-  margin-top:10px;
-}
-
-.live-comment-form input{
-  flex:1;
-  min-width:0;
-  border:1px solid #ddd;
-  border-radius:20px;
-  padding:10px 12px;
-  outline:none;
-}
-
-.live-comment-form button{
-  border:0;
-  background:#111;
-  color:#fff;
-  border-radius:20px;
-  padding:0 16px;
-  font-weight:bold;
-}
-
-/* =========================
-   VIEWER
-========================= */
-
-.viewer-mode{
-  background:#111;
-  color:#fff;
-  border-radius:18px;
-  padding:12px;
-  margin-bottom:12px;
-}
-
-.viewer-mode button{
-  border:0;
-  border-radius:10px;
-  padding:10px 14px;
-  background:#fff;
-  color:#111;
-  font-weight:bold;
-}
-
-.viewer-info{
-  padding:10px 2px 2px;
-}
-
-.viewer-title{
-  font-weight:bold;
-  font-size:15px;
-}
-
-.viewer-sub{
-  color:#bbb;
-  font-size:12px;
-  margin-top:4px;
-}
-
-/* =========================
-   NAV
-========================= */
 
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  background:#fff;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:center;
-  z-index:200;
+position:fixed;bottom:0;left:0;right:0;height:68px;background:#fff;
+border-top:1px solid #ddd;display:flex;justify-content:center;z-index:200
 }
-
 .nav-inner{
-  width:100%;
-  max-width:650px;
-  display:flex;
-  justify-content:space-around;
+width:100%;max-width:650px;display:flex;justify-content:space-around
 }
-
 .nav-btn{
-  flex:1;
-  border:0;
-  background:white;
-  font-size:11px;
-  color:#777;
+flex:1;border:0;background:#fff;font-size:11px;color:#777
 }
-
-.nav-btn span{
-  display:block;
-  font-size:22px;
-  margin-bottom:2px;
-}
-
-.nav-btn.active{
-  color:#111;
-  font-weight:bold;
-}
-
+.nav-btn span{display:block;font-size:22px;margin-bottom:2px}
+.nav-btn.active{color:#111;font-weight:bold}
 .plus{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#111;
-  color:#fff;
-  font-size:28px;
-  line-height:48px;
-  margin-top:-12px;
+width:48px;height:48px;border-radius:50%;background:#111;color:#fff;
+font-size:28px;line-height:48px;margin-top:-12px
 }
 
 .empty{
-  text-align:center;
-  padding:35px 15px;
-  color:#888;
-  background:#fff;
-  border-radius:18px;
+text-align:center;padding:35px 15px;color:#888;
+background:#fff;border-radius:18px
 }
 
-.live-home-item{
-  background:#222;
-  padding:11px;
-  border-radius:12px;
-  margin-bottom:8px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  cursor:pointer;
+/* CAMERA */
+.camera-box{
+background:#111;border-radius:18px;overflow:hidden;
+position:relative;display:flex;flex-direction:column
+}
+.video-wrap{
+position:relative;flex:1;background:#000
+}
+#camera{
+width:100%;display:block;aspect-ratio:9/16;
+max-height:70vh;object-fit:cover;background:#000
+}
+.camera-info{color:#fff;padding:14px}
+.viewer-count{color:#bbb;font-size:13px}
+.camera-buttons{display:flex;gap:8px;margin-top:12px}
+.camera-buttons button{
+flex:1;padding:12px;border:0;border-radius:10px;font-weight:bold
+}
+.start-camera{background:#e53935;color:#fff}
+.stop-camera{background:#fff}
+
+.fs-btn{
+position:absolute;right:10px;bottom:10px;z-index:8;
+width:44px;height:44px;border:0;border-radius:50%;
+background:rgba(0,0,0,.6);color:#fff;font-size:22px;
+backdrop-filter:blur(6px);
+border:1px solid rgba(255,255,255,.25)
+}
+.fs-btn:active{background:rgba(229,57,53,.9)}
+.flip-btn{right:62px}
+
+.camera-box:fullscreen{
+border-radius:0;width:100vw;height:100vh;background:#000
+}
+.camera-box:-webkit-full-screen{
+border-radius:0;width:100vw;height:100vh;background:#000
+}
+.camera-box:fullscreen .video-wrap{height:100%}
+.camera-box:fullscreen #camera,
+.camera-box:-webkit-full-screen #camera{
+width:100%;height:100%;max-height:none;
+aspect-ratio:auto;object-fit:cover
+}
+.camera-box:fullscreen .camera-info,
+.camera-box:-webkit-full-screen .camera-info{display:none}
+
+.camera-box.pseudo-fs{
+position:fixed;z-index:9999;top:0;left:0;
+border-radius:0;background:#000;width:100vw;height:100vh;height:100dvh
+}
+.camera-box.pseudo-fs .video-wrap{height:100%}
+.camera-box.pseudo-fs #camera{
+width:100%;height:100%;max-height:none;
+aspect-ratio:auto;object-fit:cover
+}
+.camera-box.pseudo-fs .camera-info{display:none}
+
+.camera-box.rotate-fs,
+.camera-box.rotate-fs:fullscreen,
+.camera-box.rotate-fs:-webkit-full-screen{
+position:fixed!important;top:0!important;left:0!important;
+right:auto!important;bottom:auto!important;
+transform-origin:top left;
+transform:rotate(90deg) translateY(-100%)
 }
 
-.live-home-item:active{
-  transform:scale(.99);
+body.fs-lock{overflow:hidden}
+
+.toast{
+position:fixed;left:50%;bottom:90px;
+transform:translateX(-50%);
+background:#111;color:#fff;padding:10px 18px;
+border-radius:22px;font-size:14px;z-index:99999;
+box-shadow:0 4px 14px rgba(0,0,0,.3);
+max-width:90%;text-align:center
 }
 
-.live-home-live{
-  background:#e53935;
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:10px;
-  white-space:nowrap;
+/* FULLSCREEN UI */
+.fs-ui{
+display:none;position:absolute;inset:0;z-index:7;pointer-events:none
+}
+.camera-box.pseudo-fs .fs-ui{display:block}
+
+.camera-box.pseudo-fs .fs-btn{
+bottom:auto;top:76px;right:10px
+}
+.camera-box.pseudo-fs .flip-btn{right:62px}
+
+.fs-chat{
+position:absolute;left:10px;bottom:60px;
+width:min(48%,330px);max-height:40%;overflow:hidden;
+display:flex;flex-direction:column;justify-content:flex-end;
+gap:4px
+}
+.chat-msg{
+background:rgba(0,0,0,.45);color:#fff;border-radius:12px;
+padding:5px 10px;font-size:13px;width:fit-content;
+max-width:100%;word-break:break-word
+}
+.chat-msg b{color:#ffd54f;margin-right:5px}
+.chat-msg.gift{
+background:linear-gradient(90deg,rgba(229,57,53,.88),rgba(255,152,0,.88))
 }
 
-.hidden{
-  display:none!important;
+.fs-bar{
+position:absolute;left:10px;right:10px;bottom:10px;
+display:flex;gap:6px;pointer-events:auto
+}
+.fs-bar input{
+flex:1;min-width:0;height:40px;
+border:1px solid rgba(255,255,255,.3);
+background:rgba(0,0,0,.55);color:#fff;border-radius:22px;
+padding:0 14px;outline:none;font-size:14px
+}
+.fs-bar button{
+width:40px;height:40px;flex:none;border-radius:50%;
+background:rgba(0,0,0,.6);color:#fff;font-size:18px;
+border:1px solid rgba(255,255,255,.25)
 }
 
+/* SCORE */
+.live-overlay{
+position:absolute;top:0;left:0;right:0;z-index:5;pointer-events:none
+}
+.scoreboard{
+margin:10px;background:rgba(0,0,0,.82);
+backdrop-filter:blur(8px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:14px;padding:10px 12px;
+display:flex;align-items:center;justify-content:space-between;
+color:#fff
+}
+.sb-left,.sb-right{
+display:flex;align-items:center;gap:8px;flex:1
+}
+.sb-right{justify-content:flex-end}
+.team-name{
+font-weight:900;font-size:14px;text-transform:uppercase;
+letter-spacing:.5px;max-width:90px;white-space:nowrap;
+overflow:hidden;text-overflow:ellipsis
+}
+.score-num{
+font-weight:900;font-size:22px;min-width:28px;text-align:center;
+background:#fff;color:#111;border-radius:8px;padding:2px 6px
+}
+.sb-center{text-align:center;flex:0 0 110px}
+.match-time{font-weight:900;font-size:20px;letter-spacing:1px}
+.match-label{
+font-size:10px;color:#ff6b6b;font-weight:bold;letter-spacing:1px
+}
+.vs{font-size:11px;color:#aaa;margin:0 4px}
+.sb-live-badge{
+background:#e53935;color:#fff;font-size:10px;font-weight:900;
+padding:3px 7px;border-radius:20px;animation:pulse 1s infinite
+}
+@keyframes pulse{
+0%{opacity:1}50%{opacity:.6}100%{opacity:1}
+}
+
+.score-controls{
+background:#fff;border-radius:18px;padding:14px;margin-top:12px
+}
+.score-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.score-input{
+padding:10px;border:1px solid #ddd;border-radius:10px;width:100%
+}
+.score-btn-row{display:flex;gap:6px;margin-top:8px}
+.score-btn-row button{
+flex:1;border:0;border-radius:10px;padding:10px;
+font-weight:bold;background:#111;color:#fff
+}
+.score-btn-row .minus{background:#eee;color:#111}
+.time-controls{display:flex;gap:8px;margin-top:12px}
+.time-controls button{
+flex:1;border:0;border-radius:10px;padding:11px;font-weight:bold
+}
+.time-start{background:#e53935;color:#fff}
+.time-pause{background:#111;color:#fff}
+.time-reset{background:#eee}
+
+/* PANEL FULLSCREEN */
+.fs-panel{
+position:absolute;right:10px;bottom:60px;
+width:min(310px,70%);max-height:70%;overflow:auto;
+background:rgba(0,0,0,.88);
+backdrop-filter:blur(10px);
+color:#fff;border-radius:14px;padding:11px;
+pointer-events:auto;
+border:1px solid rgba(255,255,255,.15)
+}
+.sp-title{
+font-size:12px;font-weight:bold;margin-bottom:9px;color:#ffd54f
+}
+.sp-row{
+display:flex;align-items:center;gap:6px;margin-bottom:8px
+}
+.sp-row input{
+flex:1;min-width:0;padding:8px;border-radius:8px;
+border:0;background:rgba(255,255,255,.15);
+color:#fff;font-size:13px
+}
+.sp-row button{
+width:34px;height:34px;flex:none;border:0;border-radius:8px;
+background:#fff;color:#111;font-weight:bold;font-size:15px
+}
+.sp-row .sp-num{
+min-width:26px;text-align:center;font-weight:900;font-size:18px
+}
+.sp-time{display:flex;gap:6px}
+.sp-time button{
+flex:1;border:0;border-radius:8px;padding:8px 0;
+font-weight:bold;font-size:12px;background:#fff;color:#111
+}
+
+/* GIFT */
+.gift-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:7px
+}
+.gift-item{
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.08);
+border-radius:10px;color:#fff;
+padding:7px 2px;font-size:11px
+}
+.gift-item span{display:block;font-size:27px}
+.gift-item small{
+display:block;color:#ffd54f;font-weight:bold;margin-top:2px
+}
+.gift-item:active{transform:scale(.96)}
+
+.gift-wallet{
+background:rgba(255,255,255,.09);
+border-radius:10px;padding:9px;margin-bottom:9px
+}
+.gift-wallet-top{
+display:flex;justify-content:space-between;align-items:center
+}
+.coin-value{
+font-size:18px;font-weight:900;color:#ffd54f
+}
+.demo-btn{
+margin-top:7px;width:100%;border:0;border-radius:8px;
+padding:8px;background:#fff;color:#111;font-weight:bold
+}
+
+.gift-total{
+margin-top:8px;padding:8px;border-radius:9px;
+background:rgba(255,255,255,.08);font-size:12px
+}
+.gift-total strong{color:#ffd54f}
+
+.gift-history{
+margin-top:8px;max-height:130px;overflow:auto
+}
+.gift-history-item{
+padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08);
+font-size:11px
+}
+.gift-history-item:last-child{border-bottom:0}
+
+.gift-fx{
+position:absolute;inset:0;overflow:hidden;pointer-events:none
+}
+.gift-pop{
+position:absolute;bottom:80px;font-size:56px;
+animation:giftUp 2.4s ease-out forwards;
+filter:drop-shadow(0 5px 8px rgba(0,0,0,.4))
+}
+.gift-value-pop{
+position:absolute;bottom:145px;
+font-size:18px;font-weight:900;color:#ffd54f;
+animation:valueUp 2.4s ease-out forwards;
+text-shadow:0 2px 5px #000
+}
+@keyframes giftUp{
+0%{transform:translateY(0) scale(.4);opacity:0}
+15%{opacity:1;transform:translateY(-30px) scale(1.2)}
+100%{transform:translateY(-230px) scale(1);opacity:0}
+}
+@keyframes valueUp{
+0%{transform:translateY(0) scale(.7);opacity:0}
+20%{opacity:1}
+100%{transform:translateY(-230px) scale(1.1);opacity:0}
+}
+
+/* ROTATE */
+.rot-btn{display:none}
+.camera-box.pseudo-fs .rot-btn{
+display:block;right:114px
+}
+#camera.vrot{
+position:absolute;top:50%;left:50%;
+max-height:none;aspect-ratio:auto;object-fit:cover
+}
+
+@media(max-width:420px){
+.logo{font-size:18px}
+.page{padding:10px}
+.scoreboard{padding:8px}
+.team-name{font-size:11px}
+.score-num{font-size:19px}
+.sb-center{flex-basis:80px}
+.match-time{font-size:17px}
+}
 </style>
 </head>
 
 <body>
 
-<header id="appHeader" style="display:none">
-
-  <div class="logo">
-    <div class="logo-icon">
-      social<br>live.<b>IF</b>
-    </div>
-    social <span>live.IF</span>
-  </div>
-
-  <div class="header-right">
-    <button class="icon-btn" onclick="showPage('notifications')">🔔</button>
-    <button class="icon-btn" onclick="showPage('profile')">👤</button>
-  </div>
-
+<header id="appHeader" style="display:none;">
+<div class="logo">social <span>live.IF</span></div>
+<div class="header-right">
+<button class="icon-btn" onclick="showPage('notifications')">🔔</button>
+<button class="icon-btn" onclick="showPage('profile')">👤</button>
+</div>
 </header>
 
-
-<!-- =========================
-     LOGIN
-========================= -->
-
 <div id="loginScreen">
+<div class="login-box">
+<h1>social live.IF</h1>
+<p>Masuk untuk menggunakan aplikasi</p>
 
-  <div class="login-box">
+<input id="email" class="field" type="email" placeholder="Email">
+<input id="password" class="field" type="password" placeholder="Password">
 
-    <div style="text-align:center;margin-bottom:14px">
+<button class="main-btn" onclick="loginUser()">MASUK</button>
+<button class="secondary-btn" onclick="registerUser()">DAFTAR AKUN</button>
 
-      <div style="
-        width:90px;
-        height:90px;
-        border-radius:18px;
-        background:#000;
-        display:grid;
-        place-items:center;
-        margin:auto;
-        color:#fff;
-        font-weight:900;
-        line-height:1.1;
-        text-align:center
-      ">
-        social<br>
-        live.<span style="color:#e53935">IF</span>
-      </div>
+<div id="loginMessage" class="message"></div>
+</div>
+</div>
 
-    </div>
+<div id="app" class="app" style="display:none;">
 
-    <h1>social live.IF</h1>
+<section id="home" class="page active">
 
-    <p>
-      Live bola + kamera HP + komentar + Ifan Giv
-    </p>
+<div class="section-title">
+<h2>Beranda</h2>
+</div>
 
-    <input
-      id="email"
-      class="field"
-      type="email"
-      placeholder="Email">
+<div class="create-card">
+<div class="create-top">
+<img id="homeAvatar" class="avatar-small" alt="avatar">
+<input id="statusInput" class="create-text" placeholder="Apa yang ingin kamu bagikan?">
+</div>
 
-    <input
-      id="password"
-      class="field"
-      type="password"
-      placeholder="Password">
+<div class="create-options">
+<label>
+📷 Foto
+<input id="postPhoto" type="file" accept="image/*">
+</label>
+<button class="post-btn" onclick="addPost()">POST</button>
+</div>
+</div>
 
-    <button
-      class="main-btn"
-      onclick="loginUser()">
-      MASUK
-    </button>
+<div class="live-card">
+<div class="live-top">
+<strong>🔴 Live sekarang</strong>
+<span class="live-badge">LIVE</span>
+</div>
 
-    <button
-      class="secondary-btn"
-      onclick="registerUser()">
-      DAFTAR AKUN
-    </button>
+<div style="padding:25px;text-align:center;color:#bbb;">
+Mulai siaran langsung dari menu Live
+</div>
 
-    <div
-      id="loginMessage"
-      class="message">
-    </div>
+<div class="live-bottom">
+<button
+class="start-live"
+style="width:100%;border:0;border-radius:10px;padding:12px;background:#e53935;color:#fff;font-weight:bold"
+onclick="showPage('live')">
+📹 Buka Live
+</button>
+</div>
+</div>
 
-  </div>
+<div class="section-title">
+<h2>Postingan</h2>
+</div>
+
+<div id="posts"></div>
+
+</section>
+
+
+<section id="live" class="page">
+
+<div class="section-title">
+<h2>🔴 Live Streaming</h2>
+
+<button
+onclick="toggleScoreboard()"
+style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px">
+⚙️ Atur Score
+</button>
+</div>
+
+<div class="camera-box" id="cameraBox">
+
+<div class="video-wrap">
+
+<video id="camera" autoplay muted playsinline></video>
+
+<div class="live-overlay">
+
+<div class="scoreboard">
+
+<div class="sb-left">
+<span class="sb-live-badge">LIVE</span>
+<span class="team-name" id="overlayTeamA">TIM A</span>
+<span class="score-num" id="overlayScoreA">0</span>
+</div>
+
+<div class="sb-center">
+<div class="match-label">WAKTU</div>
+<div class="match-time" id="overlayTime">00:00</div>
+</div>
+
+<div class="sb-right">
+<span class="score-num" id="overlayScoreB">0</span>
+<span class="team-name" id="overlayTeamB">TIM B</span>
+<span class="vs">IF</span>
+</div>
+
+</div>
+</div>
+
+
+<button id="fsBtn" class="fs-btn" onclick="toggleFullscreen()" title="Layar penuh">⛶</button>
+
+<button
+class="fs-btn flip-btn"
+onclick="flipCamera()"
+title="Ganti kamera depan/belakang">
+🔄
+</button>
+
+<button
+class="fs-btn rot-btn"
+onclick="rotateVideo()"
+title="Putar gambar kamera 90°">
+↻
+</button>
+
+
+<div class="fs-ui">
+
+<div id="giftFx" class="gift-fx"></div>
+
+<div id="fsChat" class="fs-chat"></div>
+
+
+<!-- PANEL SKOR -->
+<div id="fsScorePanel" class="fs-panel" style="display:none">
+
+<div class="sp-title">
+⚙️ EDIT SKOR &amp; WAKTU
+</div>
+
+<div class="sp-row">
+<input
+id="fsTeamA"
+placeholder="Tim A"
+oninput="setTeamName('A',this.value)">
+<button onclick="changeScore('A',-1)">−</button>
+<span id="fsScoreA" class="sp-num">0</span>
+<button onclick="changeScore('A',1)">+</button>
+</div>
+
+<div class="sp-row">
+<input
+id="fsTeamB"
+placeholder="Tim B"
+oninput="setTeamName('B',this.value)">
+<button onclick="changeScore('B',-1)">−</button>
+<span id="fsScoreB" class="sp-num">0</span>
+<button onclick="changeScore('B',1)">+</button>
+</div>
+
+<div class="sp-time">
+<button onclick="startMatchTimer()">▶ Mulai</button>
+<button onclick="pauseMatchTimer()">⏸ Jeda</button>
+<button onclick="resetMatchTimer()">🔄 Reset</button>
+</div>
 
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- PANEL GIFT -->
+<div id="fsGiftPanel" class="fs-panel" style="display:none">
 
-<div
-  id="app"
-  class="app"
-  style="display:none">
+<div class="sp-title">
+🎁 GIFT LIVE
+</div>
 
+<div class="gift-wallet">
 
-<!-- =========================
-     HOME
-========================= -->
+<div class="gift-wallet-top">
+<span>🪙 Saldo demo</span>
+<span id="coinBalance" class="coin-value">1.000</span>
+</div>
 
-<section
-  id="home"
-  class="page active">
+<button class="demo-btn" onclick="addDemoCoins()">
+＋ Tambah 1.000 Koin Demo
+</button>
 
-  <div class="create-card">
+</div>
 
-    <div class="create-top">
+<div class="gift-total">
+Total gift:
+<strong><span id="giftTotalCoins">0</span> koin</strong>
+</div>
 
-      <img
-        id="homeAvatar"
-        class="avatar-small"
-        src="">
+<div class="gift-total">
+Host 50%:
+<strong><span id="hostGiftCoins">0</span> koin</strong>
+</div>
 
-      <input
-        id="statusInput"
-        class="create-text"
-        placeholder="Apa yang ingin kamu bagikan?">
+<div class="gift-total">
+Platform 50%:
+<strong><span id="platformGiftCoins">0</span> koin</strong>
+</div>
 
-    </div>
+<div id="giftGrid" class="gift-grid"></div>
 
-    <div class="create-options">
+<div class="gift-history" id="giftHistory"></div>
 
-      <label>
-        📷 Foto
-        <input
-          id="postPhoto"
-          type="file"
-          accept="image/*">
-      </label>
-
-      <button
-        class="post-btn"
-        onclick="addPost()">
-        POST
-      </button>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="live-card">
+<!-- BAR CHAT -->
+<div class="fs-bar">
 
-    <div class="live-top">
-      <strong>🔴 Live Aktif</strong>
-      <span class="live-badge">LIVE</span>
-    </div>
+<input
+id="fsChatInput"
+placeholder="Tulis komentar..."
+onkeydown="if(event.key==='Enter')sendChat()">
 
-    <div
-      id="activeLivesHome"
-      style="padding:0 14px 14px;color:#bbb">
+<button onclick="sendChat()" title="Kirim">➤</button>
 
-      Memuat Live...
+<button onclick="togglePanel('score')" title="Edit skor">⚙️</button>
 
-    </div>
+<button onclick="togglePanel('gift')" title="Gift">🎁</button>
 
-    <div class="live-bottom">
+</div>
 
-      <button
-        style="
-          width:100%;
-          border:0;
-          border-radius:10px;
-          padding:12px;
-          background:#e53935;
-          color:#fff;
-          font-weight:bold
-        "
-        onclick="openHostLive()">
-
-        📹 BUKA LIVE
-
-      </button>
-
-    </div>
-
-  </div>
+</div>
+</div>
 
 
-  <div
-    style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin:8px 0 12px
-    ">
+<div class="camera-info">
 
-    <h2 style="margin:0;font-size:18px">
-      Postingan
-    </h2>
+<strong>social live.IF</strong>
 
-  </div>
+<div class="viewer-count">
+👁 <span id="viewerNum">0</span>
+penonton •
+<span id="liveTimerStatus">Siap</span>
+</div>
 
-  <div id="posts"></div>
+<div class="camera-buttons">
+
+<button
+class="start-camera"
+onclick="startCamera()">
+🔴 MULAI LIVE
+</button>
+
+<button
+class="stop-camera"
+onclick="stopCamera()">
+⏹ AKHIRI
+</button>
+
+</div>
+</div>
+
+</div>
+
+
+<div id="scoreControls" class="score-controls">
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+<strong>🏆 Kontrol Pertandingan Live</strong>
+<span style="font-size:11px;color:#888;">
+Tampil di layar kamera
+</span>
+</div>
+
+<div class="score-grid">
+
+<div>
+<label style="font-size:12px;font-weight:bold;">TIM A</label>
+
+<input
+id="teamAInput"
+class="score-input"
+value="TIM A"
+oninput="updateScoreboard()">
+
+<div class="score-btn-row">
+<button class="minus" onclick="changeScore('A',-1)">-1</button>
+<button onclick="changeScore('A',1)">+1</button>
+</div>
+</div>
+
+
+<div>
+<label style="font-size:12px;font-weight:bold;">TIM B</label>
+
+<input
+id="teamBInput"
+class="score-input"
+value="TIM B"
+oninput="updateScoreboard()">
+
+<div class="score-btn-row">
+<button class="minus" onclick="changeScore('B',-1)">-1</button>
+<button onclick="changeScore('B',1)">+1</button>
+</div>
+</div>
+
+</div>
+
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+
+<div>
+<label style="font-size:12px;font-weight:bold;">Skor A</label>
+<input
+id="scoreAInput"
+class="score-input"
+type="number"
+value="0"
+oninput="updateScoreboard()">
+</div>
+
+<div>
+<label style="font-size:12px;font-weight:bold;">Skor B</label>
+<input
+id="scoreBInput"
+class="score-input"
+type="number"
+value="0"
+oninput="updateScoreboard()">
+</div>
+
+</div>
+
+
+<div class="time-controls">
+
+<button
+class="time-start"
+onclick="startMatchTimer()">
+▶️ Mulai Waktu
+</button>
+
+<button
+class="time-pause"
+onclick="pauseMatchTimer()">
+⏸ Jeda
+</button>
+
+<button
+class="time-reset"
+onclick="resetMatchTimer()">
+🔄 Reset
+</button>
+
+</div>
+
+</div>
+
+<div id="liveStatus" class="empty" style="margin-top:12px;">
+Kamera belum dimulai.
+</div>
 
 </section>
 
 
-<!-- =========================
-     LIVE
-========================= -->
-
-<section
-  id="live"
-  class="page">
-
-  <div
-    style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin:8px 0 12px
-    ">
-
-    <h2 style="margin:0">
-      🔴 Live Bola
-    </h2>
-
-    <span
-      id="liveIndicator"
-      style="
-        font-size:12px;
-        background:#e53935;
-        color:#fff;
-        padding:5px 10px;
-        border-radius:20px;
-        display:none
-      ">
-      ● LIVE
-    </span>
-
-  </div>
-
-
-  <!-- HOST SETUP -->
-
-  <div
-    id="hostSetup"
-    class="match-setup">
-
-    <h3>
-      Setup Pertandingan
-    </h3>
-
-    <input
-      id="teamA"
-      class="field"
-      placeholder="Nama Tim A">
-
-    <input
-      id="teamB"
-      class="field"
-      placeholder="Nama Tim B">
-
-    <input
-      id="matchTitle"
-      class="field"
-      placeholder="Judul Live">
-
-  </div>
-
-
-  <!-- VIEWER INFO -->
-
-  <div
-    id="viewerMode"
-    class="viewer-mode hidden">
-
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:8px
-      ">
-
-      <strong>
-        👁 Kamu sedang menonton Live
-      </strong>
-
-      <button onclick="leaveViewer()">
-        Keluar
-      </button>
-
-    </div>
-
-    <div class="viewer-info">
-
-      <div
-        id="viewerTitle"
-        class="viewer-title">
-        -
-      </div>
-
-      <div
-        id="viewerSub"
-        class="viewer-sub">
-        -
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- CAMERA -->
-
-  <div
-    class="camera-box">
-
-    <video
-      id="camera"
-      autoplay
-      muted
-      playsinline>
-    </video>
-
-    <video
-      id="viewerVideo"
-      autoplay
-      playsinline>
-    </video>
-
-
-    <div
-      class="scoreboard-pro">
-
-      <div class="sb-team">
-
-        <span
-          class="sb-team-name"
-          id="overlayTeamA">
-          TIM A
-        </span>
-
-        <span class="sb-team-sub">
-          HOME
-        </span>
-
-      </div>
-
-
-      <div class="sb-center">
-
-        <div
-          class="sb-skor"
-          id="overlaySkor">
-          0 - 0
-        </div>
-
-        <div
-          class="sb-time"
-          id="overlayTimer">
-          00:00
-        </div>
-
-      </div>
-
-
-      <div class="sb-team">
-
-        <span
-          class="sb-team-name"
-          id="overlayTeamB">
-          TIM B
-        </span>
-
-        <span class="sb-team-sub">
-          AWAY
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="camera-info">
-
-      <strong
-        id="liveTitleDisplay">
-        social live.IF - Kamera Lapangan
-      </strong>
-
-      <div class="viewer-count">
-
-        👁
-        <span id="viewerCount">0</span>
-        penonton
-
-        • ⏱
-        <span id="timerDisplay">
-          00:00
-        </span>
-
-        •
-        <span id="liveStatusMini">
-          Standby
-        </span>
-
-      </div>
-
-
-      <div
-        id="hostCameraButtons"
-        class="camera-buttons">
-
-        <button
-          class="start-camera"
-          onclick="startCamera()">
-          🔴 MULAI LIVE
-        </button>
-
-        <button
-          class="stop-camera"
-          onclick="stopCamera()">
-          ⏹ AKHIRI
-        </button>
-
-      </div>
-
-
-      <button
-        id="switchCameraBtn"
-        class="camera-switch"
-        onclick="switchCamera()">
-
-        🔄 GANTI KAMERA
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- SCORE CONTROL -->
-
-  <div
-    id="skorControl"
-    style="display:none">
-
-    <div class="score-panel">
-
-      <div class="score-panel-head">
-
-        <strong>
-          🎛️ Papan Skor Kontrol
-        </strong>
-
-        <button
-          onclick="toggleTimer()"
-          id="btnTimer"
-          style="
-            border:0;
-            background:#111;
-            color:#fff;
-            padding:8px 12px;
-            border-radius:20px;
-            font-weight:bold;
-            font-size:12px
-          ">
-
-          ▶ MULAI
-
-        </button>
-
-      </div>
-
-
-      <div class="score-big">
-
-        <div class="team">
-
-          <div id="bigTeamA">
-            TIM A
-          </div>
-
-          <div
-            class="num"
-            id="bigSkorA">
-            0
-          </div>
-
-        </div>
-
-
-        <div
-          style="
-            text-align:center;
-            color:#888
-          ">
-
-          VS
-
-          <br>
-
-          <small id="bigTimer">
-            00:00
-          </small>
-
-        </div>
-
-
-        <div class="team">
-
-          <div id="bigTeamB">
-            TIM B
-          </div>
-
-          <div
-            class="num"
-            id="bigSkorB">
-            0
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="skor-control">
-
-        <button
-          class="skor-A"
-          onclick="changeSkor('A',1)">
-          TIM A + GOL ⚽
-        </button>
-
-        <button
-          class="skor-B"
-          onclick="changeSkor('B',1)">
-          TIM B + GOL ⚽
-        </button>
-
-      </div>
-
-
-      <div class="skor-control">
-
-        <button
-          onclick="changeSkor('A',-1)"
-          style="background:#eee">
-          A -1
-        </button>
-
-        <button
-          onclick="resetSkor()"
-          style="
-            background:#fff;
-            border:1px solid #ddd
-          ">
-          Reset 0-0
-        </button>
-
-        <button
-          onclick="changeSkor('B',-1)"
-          style="background:#eee">
-          B -1
-        </button>
-
-      </div>
-
-
-      <!-- EDIT SCORE -->
-
-      <div class="edit-score-box">
-
-        <h4>
-          ✏️ Edit Score
-          <span class="badge-edit">
-            LIVE
-          </span>
-        </h4>
-
-        <p
-          style="
-            margin:0 0 10px;
-            font-size:12px;
-            color:#8d6e00
-          ">
-
-          Perubahan akan diteruskan ke penonton secara realtime.
-
-        </p>
-
-
-        <div class="edit-grid">
-
-          <div>
-
-            <label>
-              Nama Tim A
-            </label>
-
-            <input
-              id="editTeamA"
-              class="field"
-              placeholder="TIM A">
-
-          </div>
-
-
-          <div>
-
-            <label>
-              Nama Tim B
-            </label>
-
-            <input
-              id="editTeamB"
-              class="field"
-              placeholder="TIM B">
-
-          </div>
-
-
-          <div>
-
-            <label>
-              Skor Tim A
-            </label>
-
-            <input
-              id="editSkorA"
-              class="field"
-              type="number"
-              min="0"
-              value="0">
-
-          </div>
-
-
-          <div>
-
-            <label>
-              Skor Tim B
-            </label>
-
-            <input
-              id="editSkorB"
-              class="field"
-              type="number"
-              min="0"
-              value="0">
-
-          </div>
-
-
-          <div>
-
-            <label>
-              Timer
-            </label>
-
-            <input
-              id="editTimer"
-              class="field"
-              placeholder="00:00"
-              value="00:00">
-
-          </div>
-
-
-          <div>
-
-            <label>
-              Babak
-            </label>
-
-            <input
-              id="editBabak"
-              class="field"
-              placeholder="Babak 1">
-
-          </div>
-
-        </div>
-
-
-        <div style="margin-top:8px">
-
-          <label
-            style="
-              font-size:11px;
-              color:#666;
-              font-weight:bold
-            ">
-            Judul Live
-          </label>
-
-          <input
-            id="editTitle"
-            class="field"
-            placeholder="Final Tarkam">
-
-        </div>
-
-
-        <div
-          style="
-            display:flex;
-            gap:8px;
-            margin-top:10px
-          ">
-
-          <button
-            class="main-btn"
-            style="margin:0"
-            onclick="applyEditScore()">
-
-            💾 SIMPAN EDIT
-
-          </button>
-
-          <button
-            class="secondary-btn"
-            style="
-              margin:0;
-              width:auto;
-              padding:13px 18px
-            "
-            onclick="resetSkor()">
-
-            ↺ Reset
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- IFAN GIV -->
-
-    <div class="dompet-card">
-
-      <strong>
-        💰 Dompet Ifan Giv
-      </strong>
-
-      <div class="dompet-row">
-
-        <span>
-          Total Ifan Giv
-        </span>
-
-        <span id="totalMasuk">
-          Rp 0
-        </span>
-
-      </div>
-
-      <div class="dompet-row">
-
-        <span>
-          Kameramen 30%
-        </span>
-
-        <span
-          id="bagiKameramen"
-          style="
-            color:#2e7d32;
-            font-weight:bold
-          ">
-          Rp 0
-        </span>
-
-      </div>
-
-      <div class="dompet-row">
-
-        <span>
-          Platform 70%
-        </span>
-
-        <span
-          id="bagiPlatform"
-          style="
-            color:#111;
-            font-weight:bold
-          ">
-          Rp 0
-        </span>
-
-      </div>
-
-      <div class="dompet-total">
-
-        Saldo kameramen:
-        <span id="saldoTarik">
-          Rp 0
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- IFAN GIV BUTTON -->
-
-  <div
-    class="create-card"
-    style="margin-top:12px">
-
-    <strong>
-      🎁 Ifan Giv Penonton
-    </strong>
-
-    <div class="gift-row">
-
-      <button
-        class="gift-btn"
-        onclick="sendGift('Mawar',2000)">
-
-        🌹
-        <br>
-        Mawar
-        <small>
-          Rp 2.000
-        </small>
-
-      </button>
-
-
-      <button
-        class="gift-btn"
-        onclick="sendGift('Bola',10000)">
-
-        ⚽
-        <br>
-        Bola
-        <small>
-          Rp 10.000
-        </small>
-
-      </button>
-
-
-      <button
-        class="gift-btn"
-        onclick="sendGift('Piala',50000)">
-
-        🏆
-        <br>
-        Piala
-        <small>
-          Rp 50.000
-        </small>
-
-      </button>
-
-    </div>
-
-    <div
-      style="
-        font-size:11px;
-        color:#888;
-        margin-top:8px
-      ">
-
-      Simulasi Ifan Giv 30/70.
-
-    </div>
-
-    <div
-      id="giftFeed"
-      style="
-        margin-top:10px;
-        font-size:13px;
-        color:#555
-      ">
-    </div>
-
-  </div>
-
-
-  <!-- LIVE COMMENTS -->
-
-  <div class="live-comments-card">
-
-    <div class="live-comments-head">
-
-      <strong>
-        💬 Komentar Live
-      </strong>
-
-      <span
-        id="liveCommentCount"
-        class="live-comments-count">
-        0
-      </span>
-
-    </div>
-
-
-    <div
-      id="liveComments"
-      class="live-comments-list">
-
-      <div class="empty">
-        Komentar Live akan muncul di sini.
-      </div>
-
-    </div>
-
-
-    <div class="live-comment-form">
-
-      <input
-        id="liveCommentInput"
-        placeholder="Tulis komentar Live...">
-
-      <button
-        onclick="sendLiveComment()">
-        Kirim
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="liveStatus"
-    class="empty"
-    style="margin-top:12px">
-
-    Pilih Live atau buat Live baru.
-
-  </div>
+<section id="create" class="page">
+
+<div class="section-title">
+<h2>➕ Buat Postingan</h2>
+</div>
+
+<div class="create-card">
+
+<img id="createAvatar" class="avatar-small" alt="avatar">
+
+<textarea
+id="bigStatus"
+class="field"
+style="height:130px;margin-top:12px;"
+placeholder="Tulis sesuatu..."></textarea>
+
+<label
+style="display:block;background:#f1f3f5;padding:13px;border-radius:12px;text-align:center;margin-bottom:10px;">
+📷 Pilih Foto
+<input
+id="bigPhoto"
+type="file"
+accept="image/*"
+style="display:none;">
+</label>
+
+<button class="main-btn" onclick="addBigPost()">
+TERBITKAN POSTINGAN
+</button>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     CREATE
-========================= -->
+<section id="notifications" class="page">
 
-<section
-  id="create"
-  class="page">
+<div class="section-title">
+<h2>🔔 Notifikasi</h2>
+</div>
 
-  <h2>
-    ➕ Buat Postingan
-  </h2>
-
-  <div class="create-card">
-
-    <img
-      id="createAvatar"
-      class="avatar-small"
-      src="">
-
-    <textarea
-      id="bigStatus"
-      class="field"
-      style="height:130px;margin-top:12px"
-      placeholder="Tulis sesuatu...">
-    </textarea>
-
-    <label
-      style="
-        display:block;
-        background:#f1f3f5;
-        padding:13px;
-        border-radius:12px;
-        text-align:center;
-        margin-bottom:10px
-      ">
-
-      📷 Pilih Foto
-
-      <input
-        id="bigPhoto"
-        type="file"
-        accept="image/*"
-        style="display:none">
-
-    </label>
-
-    <button
-      class="main-btn"
-      onclick="addBigPost()">
-
-      TERBITKAN POSTINGAN
-
-    </button>
-
-  </div>
+<div class="empty">
+Belum ada notifikasi.
+</div>
 
 </section>
 
 
-<!-- =========================
-     NOTIFICATIONS
-========================= -->
+<section id="profile" class="page">
 
-<section
-  id="notifications"
-  class="page">
+<div class="profile-card">
 
-  <h2>
-    🔔 Notifikasi Ifan Giv
-  </h2>
+<img
+id="profileAvatar"
+class="profile-avatar"
+alt="profile">
 
-  <div
-    id="notifList"
-    class="empty">
+<div id="profileName" class="profile-name">
+Ifan
+</div>
 
-    Belum ada Ifan Giv.
+<div id="profileEmail" class="profile-email"></div>
 
-  </div>
+<div class="profile-edit">
 
-</section>
+<input
+id="nameInput"
+class="field"
+placeholder="Nama"
+onchange="saveProfile(true)">
 
+<label
+style="display:block;border:1px solid #ddd;padding:12px;border-radius:12px;text-align:center;margin-bottom:10px;">
+📷 Ganti foto profil
+<input
+id="avatarInput"
+type="file"
+accept="image/*"
+style="display:none;"
+onchange="autoSaveAvatar(this)">
+</label>
 
-<!-- =========================
-     PROFILE
-========================= -->
+<button class="main-btn" onclick="saveProfile()">
+SIMPAN PROFIL
+</button>
 
-<section
-  id="profile"
-  class="page">
+<button class="logout" onclick="logoutUser()">
+KELUAR
+</button>
 
-  <div class="profile-card">
-
-    <img
-      id="profileAvatar"
-      class="profile-avatar"
-      src="">
-
-    <div
-      id="profileName"
-      class="profile-name">
-      Ifan
-    </div>
-
-    <div
-      id="profileEmail"
-      class="profile-email">
-    </div>
-
-
-    <div class="profile-edit">
-
-      <input
-        id="nameInput"
-        class="field"
-        placeholder="Nama">
-
-
-      <label
-        style="
-          display:block;
-          border:1px solid #ddd;
-          padding:12px;
-          border-radius:12px;
-          text-align:center;
-          margin-bottom:10px
-        ">
-
-        📷 Ganti foto profil
-
-        <input
-          id="avatarInput"
-          type="file"
-          accept="image/*"
-          style="display:none">
-
-      </label>
-
-
-      <button
-        class="main-btn"
-        onclick="saveProfile()">
-
-        SIMPAN PROFIL
-
-      </button>
-
-
-      <button
-        class="logout"
-        onclick="logoutUser()">
-
-        KELUAR
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="dompet-card">
-
-    <strong>
-      💳 Riwayat Dompet Platform 70%
-    </strong>
-
-    <div class="dompet-row">
-
-      <span>
-        Total Pendapatan Platform
-      </span>
-
-      <span id="platformTotal">
-        Rp 0
-      </span>
-
-    </div>
-
-    <small style="color:#888">
-      Ifan Giv pada versi ini masih berupa simulasi.
-    </small>
-
-  </div>
+</div>
+</div>
 
 </section>
 
 </div>
 
 
-<!-- =========================
-     BOTTOM NAV
-========================= -->
+<div id="bottomNav" class="bottom-nav" style="display:none;">
 
-<div
-  id="bottomNav"
-  class="bottom-nav"
-  style="display:none">
+<div class="nav-inner">
 
-  <div class="nav-inner">
+<button class="nav-btn active" onclick="showPage('home')">
+<span>🏠</span>Beranda
+</button>
 
-    <button
-      class="nav-btn active"
-      onclick="showPage('home')">
+<button class="nav-btn" onclick="showPage('live')">
+<span>🔴</span>Live
+</button>
 
-      <span>🏠</span>
-      Beranda
+<button class="nav-btn" onclick="showPage('create')">
+<span class="plus">+</span>Buat
+</button>
 
-    </button>
+<button class="nav-btn" onclick="showPage('notifications')">
+<span>💬</span>Pesan
+</button>
 
+<button class="nav-btn" onclick="showPage('profile')">
+<span>👤</span>Saya
+</button>
 
-    <button
-      class="nav-btn"
-      onclick="showPage('live')">
-
-      <span>🔴</span>
-      Live
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('create')">
-
-      <span class="plus">
-        +
-      </span>
-
-      Buat
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('notifications')">
-
-      <span>💬</span>
-      Pesan
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('profile')">
-
-      <span>👤</span>
-      Saya
-
-    </button>
-
-  </div>
-
+</div>
 </div>
 
 
 <script type="module">
 
-/* =========================================================
-   FIREBASE
-========================================================= */
-
 import {
-  initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  updateDoc,
-  deleteDoc,
-  doc,
-  getDoc,
-  serverTimestamp,
-  query,
-  where,
-  onSnapshot,
-  setDoc
+getFirestore,
+collection,
+addDoc,
+getDocs,
+updateDoc,
+deleteDoc,
+doc,
+serverTimestamp,
+onSnapshot,
+query,
+orderBy,
+limit,
+setDoc,
+getDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-const firebaseConfig = {
+/* FIREBASE */
 
-  apiKey:
-    "AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
-
-  authDomain:
-    "ifan-social-web.firebaseapp.com",
-
-  projectId:
-    "ifan-social-web"
-
+const firebaseConfig={
+apiKey:"AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
+authDomain:"ifan-social-web.firebaseapp.com",
+projectId:"ifan-social-web"
 };
 
-
-const app =
-  initializeApp(firebaseConfig);
-
-const auth =
-  getAuth(app);
-
-const db =
-  getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
 
-/* =========================================================
-   STATE
-========================================================= */
+/* GLOBAL */
 
-let posts = [];
+let posts=[];
+let profile={name:"Ifan",avatar:""};
 
-let profile = {
-  name:"Ifan",
-  avatar:""
-};
+let cameraStream=null;
 
-let cameraStream = null;
+let matchSeconds=0;
+let matchInterval=null;
+let isMatchRunning=false;
 
-let currentFacing =
-  "environment";
-
-let liveMode =
-  "none";
-
-let activeLiveUnsub = null;
-
-let liveDocUnsub = null;
-
-let liveCommentsUnsub = null;
-
-let liveViewersUnsub = null;
-
-let liveGiftsUnsub = null;
-
-let viewerDocUnsub = null;
-
-let viewerHostIceUnsub = null;
-
-let viewerPC = null;
-
-let currentViewerId = null;
-
-let hostPeers = new Map();
-
-let liveState = {
-
-  teamA:"TIM A",
-  teamB:"TIM B",
-
-  skorA:0,
-  skorB:0,
-
-  seconds:0,
-
-  timerInterval:null,
-
-  isTimerRunning:false,
-
-  totalMasuk:0,
-
-  saldoKameramen:0,
-
-  saldoPlatform:0,
-
-  isLive:false,
-
-  liveDocId:null,
-
-  babak:"Babak 1",
-
-  title:""
-
-};
+let viewerCount=0;
+let viewerInterval=null;
 
 
-/* =========================================================
-   UTIL
-========================================================= */
+/* GIFT */
+
+const START_COINS=1000;
+
+let coinBalance=START_COINS;
+let giftTotal=0;
+let hostGift=0;
+let platformGift=0;
+let giftHistory=[];
+
+
+/* PLACEHOLDER */
+
+const PLACEHOLDER=
+"data:image/svg+xml;utf8="+
+encodeURIComponent(
+'<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150">'+
+'<rect width="150" height="150" fill="#ddd"/>'+
+'<circle cx="75" cy="58" r="26" fill="#aaa"/>'+
+'<rect x="30" y="95" width="90" height="55" rx="30" fill="#aaa"/>'+
+'</svg>'
+);
+
 
 function $(id){
-  return document.getElementById(id);
+return document.getElementById(id);
 }
 
 
 function esc(t){
+return String(t||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+}
 
-  return String(t || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+
+function showToast(msg){
+
+const t=document.createElement("div");
+
+t.className="toast";
+t.textContent=msg;
+
+document.body.appendChild(t);
+
+setTimeout(()=>{
+t.remove();
+},2200);
 
 }
 
 
-function readImage(file){
+/* =========================
+NAVIGASI
+========================= */
 
-  return new Promise((resolve,reject)=>{
+window.showPage=function(page){
 
-    if(!file){
-      resolve("");
-      return;
-    }
-
-    const reader =
-      new FileReader();
-
-    reader.onload =
-      e => resolve(e.target.result);
-
-    reader.onerror =
-      reject;
-
-    reader.readAsDataURL(file);
-
-  });
-
+if(page!=="live"){
+exitFullscreen();
 }
 
+document
+.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
 
-function formatTimer(sec){
+const target=$(page);
 
-  const m =
-    Math.floor(sec / 60)
-    .toString()
-    .padStart(2,"0");
-
-  const s =
-    (sec % 60)
-    .toString()
-    .padStart(2,"0");
-
-  return `${m}:${s}`;
-
+if(target){
+target.classList.add("active");
 }
 
+document
+.querySelectorAll(".nav-btn")
+.forEach(b=>b.classList.remove("active"));
 
-function parseTimer(value){
+const map={
+home:0,
+live:1,
+create:2,
+notifications:3,
+profile:4
+};
 
-  const parts =
-    String(value || "")
-    .trim()
-    .split(":");
-
-  if(parts.length !== 2){
-    return null;
-  }
-
-  const m =
-    parseInt(parts[0]);
-
-  const s =
-    parseInt(parts[1]);
-
-  if(
-    Number.isNaN(m) ||
-    Number.isNaN(s) ||
-    m < 0 ||
-    s < 0 ||
-    s > 59
-  ){
-
-    return null;
-
-  }
-
-  return m * 60 + s;
-
+if(map[page]!=null){
+document
+.querySelectorAll(".nav-btn")[map[page]]
+.classList.add("active");
 }
-
-
-function profileKey(){
-
-  return auth.currentUser
-    ? "social_live_if_profile_" +
-      auth.currentUser.uid
-    : "social_live_if_profile";
-
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-window.showPage =
-function(page){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(p =>
-      p.classList.remove("active")
-    );
-
-  const target =
-    $(page);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(b =>
-      b.classList.remove("active")
-    );
-
-  const map = {
-    home:0,
-    live:1,
-    create:2,
-    notifications:3,
-    profile:4
-  };
-
-  if(map[page] !== undefined){
-
-    const buttons =
-      document.querySelectorAll(".nav-btn");
-
-    if(buttons[map[page]]){
-      buttons[map[page]]
-        .classList.add("active");
-    }
-
-  }
 
 };
 
 
-/* =========================================================
-   PROFILE
-========================================================= */
+/* =========================
+FULLSCREEN
+========================= */
+
+const box=$("cameraBox");
+const fsBtn=$("fsBtn");
+
+let usedDocFs=false;
+
+function isFs(){
+return box.classList.contains("pseudo-fs");
+}
+
+let vRot=0;
+
+function applyVideoRot(){
+
+const v=$("camera");
+const wrap=v.parentElement;
+
+if(!vRot||!isFs()){
+
+v.classList.remove("vrot");
+v.style.width="";
+v.style.height="";
+v.style.transform="";
+
+return;
+}
+
+const W=wrap.clientWidth;
+const H=wrap.clientHeight;
+
+const swap=vRot%180!==0;
+
+v.classList.add("vrot");
+
+v.style.width=(swap?H:W)+"px";
+v.style.height=(swap?W:H)+"px";
+
+v.style.transform=
+"translate(-50%,-50%) rotate("+vRot+"deg)";
+
+}
+
+
+window.rotateVideo=function(){
+
+vRot=(vRot+90)%360;
+
+applyVideoRot();
+
+showToast(
+"Gambar kamera diputar "+vRot+"°"
+);
+
+};
+
+
+function setFsUI(on){
+
+fsBtn.textContent=on?"✕":"⛶";
+
+fsBtn.title=
+on?"Keluar layar penuh":"Layar penuh";
+
+document.body.classList.toggle(
+"fs-lock",
+on
+);
+
+applyVideoRot();
+
+}
+
+
+function applyRotation(){
+
+if(!isFs()){
+clearRotation();
+return;
+}
+
+const portrait=
+window.innerHeight>window.innerWidth;
+
+if(portrait){
+
+box.classList.add("rotate-fs");
+
+box.style.width=
+window.innerHeight+"px";
+
+box.style.height=
+window.innerWidth+"px";
+
+}else{
+
+clearRotation();
+
+}
+
+applyVideoRot();
+
+}
+
+
+function clearRotation(){
+
+box.classList.remove("rotate-fs");
+
+box.style.width="";
+box.style.height="";
+
+}
+
+
+async function enterFullscreen(){
+
+box.classList.add("pseudo-fs");
+
+setFsUI(true);
+
+try{
+
+const de=document.documentElement;
+
+if(de.requestFullscreen){
+
+await de.requestFullscreen();
+
+usedDocFs=true;
+
+}
+
+else if(de.webkitRequestFullscreen){
+
+de.webkitRequestFullscreen();
+
+usedDocFs=true;
+
+}
+
+}catch(e){}
+
+try{
+
+if(screen.orientation&&screen.orientation.lock){
+
+await screen.orientation.lock("landscape");
+
+}
+
+}catch(e){}
+
+setTimeout(
+applyRotation,
+350
+);
+
+}
+
+
+function exitFullscreen(){
+
+clearRotation();
+
+box.classList.remove("pseudo-fs");
+
+if(
+document.fullscreenElement &&
+document.exitFullscreen
+){
+
+document.exitFullscreen().catch(()=>{});
+
+}
+
+try{
+
+if(screen.orientation&&screen.orientation.unlock){
+
+screen.orientation.unlock();
+
+}
+
+}catch(e){}
+
+setFsUI(false);
+
+}
+
+
+window.toggleFullscreen=function(){
+
+if(isFs()){
+exitFullscreen();
+}else{
+enterFullscreen();
+}
+
+};
+
+
+window.addEventListener(
+"resize",
+()=>{
+if(isFs()){
+setTimeout(applyRotation,150);
+}
+}
+);
+
+window.addEventListener(
+"orientationchange",
+()=>{
+if(isFs()){
+setTimeout(applyRotation,350);
+}
+}
+);
+
+
+/* =========================
+PROFILE
+========================= */
+
+const LEGACY_KEY="social_live_if_profile";
+
+const pKey=()=>
+LEGACY_KEY+
+(auth.currentUser?
+"_"+auth.currentUser.uid:
+"");
+
 
 function loadLocalProfile(){
 
-  try{
+profile={
+name:"Ifan",
+avatar:""
+};
 
-    const current =
-      localStorage.getItem(
-        profileKey()
-      );
+try{
 
-    const old =
-      localStorage.getItem(
-        "social_live_if_profile"
-      );
+const s=
+localStorage.getItem(pKey())||
+localStorage.getItem(LEGACY_KEY);
 
-    if(current){
+if(s){
 
-      profile =
-        JSON.parse(current);
+profile=JSON.parse(s);
 
-    }else if(old){
+}
 
-      profile =
-        JSON.parse(old);
+}catch(e){}
 
-    }
+updateProfileUI();
 
-  }catch(e){}
+}
 
-  updateProfileUI();
+
+async function persistProfile(){
+
+try{
+
+localStorage.setItem(
+pKey(),
+JSON.stringify(profile)
+);
+
+}catch(e){}
+
+if(auth.currentUser){
+
+try{
+
+await setDoc(
+doc(
+db,
+"users",
+auth.currentUser.uid
+),
+{
+profile:{
+name:profile.name||"Ifan",
+avatar:profile.avatar||""
+}
+},
+{merge:true}
+);
+
+}catch(e){}
+
+}
+
+}
+
+
+async function loadRemoteProfile(){
+
+if(!auth.currentUser)return;
+
+try{
+
+const s=
+await getDoc(
+doc(
+db,
+"users",
+auth.currentUser.uid
+)
+);
+
+const p=
+s.exists()?
+s.data().profile:null;
+
+if(p){
+
+profile={
+name:p.name||profile.name||"Ifan",
+avatar:p.avatar||profile.avatar||""
+};
+
+try{
+
+localStorage.setItem(
+pKey(),
+JSON.stringify(profile)
+);
+
+}catch(e){}
+
+updateProfileUI();
+
+}
+
+}catch(e){}
+
+}
+
+
+function compressImage(file,max,q){
+
+return new Promise((res,rej)=>{
+
+if(!file){
+res("");
+return;
+}
+
+const r=new FileReader();
+
+r.onerror=rej;
+
+r.onload=e=>{
+
+const img=new Image();
+
+img.onerror=
+()=>res(e.target.result);
+
+img.onload=()=>{
+
+const k=Math.min(
+1,
+max/
+Math.max(
+img.width,
+img.height
+)
+);
+
+const w=Math.round(img.width*k);
+const h=Math.round(img.height*k);
+
+const c=document.createElement("canvas");
+
+c.width=w;
+c.height=h;
+
+c.getContext("2d")
+.drawImage(img,0,0,w,h);
+
+res(
+c.toDataURL(
+"image/jpeg",
+q
+)
+);
+
+};
+
+img.src=e.target.result;
+
+};
+
+r.readAsDataURL(file);
+
+});
 
 }
 
 
 function updateProfileUI(){
 
-  const name =
-    profile.name || "Ifan";
+$("profileName").textContent=
+profile.name||"Ifan";
 
-  const avatar =
-    profile.avatar ||
-    "https://via.placeholder.com/150";
+$("nameInput").value=
+profile.name||"Ifan";
 
-  $("profileName").textContent =
-    name;
+if(auth.currentUser){
 
-  $("nameInput").value =
-    name;
+$("profileEmail").textContent=
+auth.currentUser.email||"";
 
-  if(auth.currentUser){
+}
 
-    $("profileEmail").textContent =
-      auth.currentUser.email || "";
+const a=
+profile.avatar||
+PLACEHOLDER;
 
-  }
-
-  $("profileAvatar").src =
-    avatar;
-
-  $("homeAvatar").src =
-    avatar;
-
-  $("createAvatar").src =
-    avatar;
+$("profileAvatar").src=a;
+$("homeAvatar").src=a;
+$("createAvatar").src=a;
 
 }
 
 
-window.saveProfile =
-async function(){
+window.saveProfile=async function(silent){
 
-  const name =
-    $("nameInput")
-    .value
-    .trim() || "Ifan";
+try{
 
-  const file =
-    $("avatarInput").files[0];
+const name=
+$("nameInput").value.trim()||
+"Ifan";
 
-  try{
+const file=
+$("avatarInput").files[0];
 
-    let avatar =
-      profile.avatar;
+let avatar=
+profile.avatar;
 
-    if(file){
+if(file){
 
-      avatar =
-        await readImage(file);
+avatar=
+await compressImage(
+file,
+400,
+0.85
+);
 
-    }
+}
 
-    profile = {
-      name,
-      avatar
-    };
+profile={
+name,
+avatar
+};
 
-    localStorage.setItem(
-      profileKey(),
-      JSON.stringify(profile)
-    );
+updateProfileUI();
 
-    updateProfileUI();
+await persistProfile();
 
-    alert(
-      "Profil berhasil disimpan."
-    );
+showToast(
+silent===true?
+"Nama tersimpan ✓":
+"Profil berhasil disimpan ✓"
+);
 
-  }catch(e){
+}catch(e){
 
-    alert(
-      "Gagal menyimpan: " +
-      e.message
-    );
+showToast(
+"Gagal menyimpan profil: "+
+e.message
+);
 
-  }
+}
 
 };
 
 
-/* =========================================================
-   AUTH
-========================================================= */
+window.autoSaveAvatar=
+async function(input){
 
-window.registerUser =
-async function(){
+const file=
+input.files&&
+input.files[0];
 
-  const email =
-    $("email").value.trim();
+if(!file)return;
 
-  const password =
-    $("password").value;
+try{
 
-  if(!email || !password){
+const avatar=
+await compressImage(
+file,
+400,
+0.85
+);
 
-    $("loginMessage").textContent =
-      "Isi email dan password.";
+profile={
+name:
+$("nameInput").value.trim()||
+profile.name||
+"Ifan",
+avatar
+};
 
-    return;
+updateProfileUI();
 
-  }
+await persistProfile();
 
-  if(password.length < 6){
+showToast(
+"Foto profil tersimpan ✓"
+);
 
-    $("loginMessage").textContent =
-      "Password minimal 6 karakter.";
+}catch(e){
 
-    return;
+showToast(
+"Gagal memuat foto: "+
+e.message
+);
 
-  }
+}
 
-  try{
-
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }catch(e){
-
-    $("loginMessage").textContent =
-      e.message;
-
-  }
+input.value="";
 
 };
 
 
-window.loginUser =
+/* =========================
+AUTH
+========================= */
+
+window.registerUser=
 async function(){
 
-  const email =
-    $("email").value.trim();
+const email=
+$("email").value.trim();
 
-  const password =
-    $("password").value;
+const password=
+$("password").value;
 
-  if(!email || !password){
+$("loginMessage").textContent="";
 
-    $("loginMessage").textContent =
-      "Isi email dan password.";
+if(!email||!password){
 
-    return;
+$("loginMessage").textContent=
+"Isi email dan password.";
 
-  }
+return;
+}
 
-  try{
+if(password.length<6){
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+$("loginMessage").textContent=
+"Password minimal 6 karakter.";
 
-  }catch(e){
+return;
+}
 
-    $("loginMessage").textContent =
-      e.message;
+try{
 
-  }
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+$("loginMessage").textContent=
+"Akun berhasil dibuat.";
+
+}catch(e){
+
+$("loginMessage").textContent=
+e.message;
+
+}
 
 };
 
 
-window.logoutUser =
+window.loginUser=
 async function(){
 
-  await stopCamera();
+const email=
+$("email").value.trim();
 
-  await leaveViewer();
+const password=
+$("password").value;
 
-  await signOut(auth);
+if(!email||!password){
+
+$("loginMessage").textContent=
+"Isi email dan password.";
+
+return;
+}
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}catch(e){
+
+$("loginMessage").textContent=
+e.message;
+
+}
 
 };
 
 
-/* =========================================================
-   POSTS
-========================================================= */
-
-window.addPost =
+window.logoutUser=
 async function(){
 
-  if(!auth.currentUser){
+stopCamera();
 
-    alert("Login dulu.");
-    return;
-
-  }
-
-  const text =
-    $("statusInput")
-    .value
-    .trim();
-
-  const file =
-    $("postPhoto").files[0];
-
-  if(!text && !file){
-
-    alert(
-      "Tulis status atau pilih foto."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    const image =
-      await readImage(file);
-
-    const post = {
-
-      uid:
-        auth.currentUser.uid,
-
-      name:
-        profile.name || "Ifan",
-
-      avatar:
-        profile.avatar || "",
-
-      text,
-
-      image,
-
-      likes:0,
-
-      comments:[],
-
-      time:
-        new Date()
-        .toLocaleString("id-ID"),
-
-      createdAt:
-        serverTimestamp()
-
-    };
-
-    const ref =
-      await addDoc(
-        collection(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts"
-        ),
-        post
-      );
-
-    posts.unshift({
-      ...post,
-      id:ref.id
-    });
-
-    $("statusInput").value = "";
-
-    $("postPhoto").value = "";
-
-    renderPosts();
-
-  }catch(e){
-
-    alert(
-      "Gagal membuat postingan: " +
-      e.message
-    );
-
-  }
+await signOut(auth);
 
 };
 
 
-window.addBigPost =
+/* =========================
+SCOREBOARD
+========================= */
+
+window.updateScoreboard=function(){
+
+$("overlayTeamA").textContent=
+$("teamAInput").value||
+"TIM A";
+
+$("overlayTeamB").textContent=
+$("teamBInput").value||
+"TIM B";
+
+$("overlayScoreA").textContent=
+parseInt($("scoreAInput").value)||0;
+
+$("overlayScoreB").textContent=
+parseInt($("scoreBInput").value)||0;
+
+syncFsScore();
+
+};
+
+
+window.changeScore=function(team,delta){
+
+const el=
+$(team==="A"?
+"scoreAInput":
+"scoreBInput");
+
+el.value=
+Math.max(
+0,
+(parseInt(el.value)||0)+delta
+);
+
+updateScoreboard();
+
+};
+
+
+function formatTime(s){
+
+return String(
+Math.floor(s/60)
+).padStart(2,"0")
++
+":"+
+String(
+s%60
+).padStart(2,"0");
+
+}
+
+
+window.startMatchTimer=function(){
+
+if(isMatchRunning)return;
+
+isMatchRunning=true;
+
+$("liveTimerStatus")
+.textContent="Berjalan";
+
+matchInterval=
+setInterval(()=>{
+
+matchSeconds++;
+
+$("overlayTime")
+.textContent=
+formatTime(matchSeconds);
+
+},1000);
+
+};
+
+
+window.pauseMatchTimer=function(){
+
+isMatchRunning=false;
+
+$("liveTimerStatus")
+.textContent="Jeda";
+
+clearInterval(matchInterval);
+
+};
+
+
+window.resetMatchTimer=function(){
+
+pauseMatchTimer();
+
+matchSeconds=0;
+
+$("overlayTime")
+.textContent="00:00";
+
+$("liveTimerStatus")
+.textContent="Reset";
+
+};
+
+
+window.toggleScoreboard=function(){
+
+$("scoreControls").style.display="block";
+
+$("scoreControls")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+
+/* =========================
+POSTINGAN
+========================= */
+
+window.addPost=
 async function(){
 
-  const text =
-    $("bigStatus")
-    .value
-    .trim();
+const text=
+$("statusInput").value.trim();
 
-  const file =
-    $("bigPhoto").files[0];
+const file=
+$("postPhoto").files[0];
 
-  if(!text && !file){
+if(!text&&!file){
 
-    alert("Tulis sesuatu.");
-    return;
+alert(
+"Tulis status atau pilih foto."
+);
 
-  }
+return;
+}
 
-  $("statusInput").value =
-    text;
+if(!auth.currentUser){
 
-  const input =
-    $("postPhoto");
+alert(
+"Silakan login terlebih dahulu."
+);
 
-  if(file){
+return;
+}
 
-    const data =
-      new DataTransfer();
+try{
 
-    data.items.add(file);
+const image=
+await compressImage(
+file,
+1024,
+0.8
+);
 
-    input.files =
-      data.files;
+const post={
+uid:auth.currentUser.uid,
+name:profile.name||"Ifan",
+avatar:profile.avatar||"",
+text,
+image,
+likes:0,
+comments:[],
+time:new Date()
+.toLocaleString("id-ID"),
+createdAt:serverTimestamp()
+};
 
-  }
+const ref=
+await addDoc(
+collection(
+db,
+"users",
+auth.currentUser.uid,
+"posts"
+),
+post
+);
 
-  await addPost();
+posts.unshift({
+...post,
+id:ref.id
+});
 
-  $("bigStatus").value = "";
+$("statusInput").value="";
+$("postPhoto").value="";
 
-  $("bigPhoto").value = "";
+renderPosts();
+
+alert(
+"Postingan berhasil disimpan."
+);
+
+}catch(e){
+
+alert(
+"Gagal menyimpan postingan:\n"+
+e.message
+);
+
+}
+
+};
+
+
+window.addBigPost=
+async function(){
+
+const text=
+$("bigStatus").value.trim();
+
+const file=
+$("bigPhoto").files[0];
+
+if(!text&&!file){
+
+alert(
+"Tulis sesuatu atau pilih foto."
+);
+
+return;
+}
+
+$("statusInput").value=text;
+
+if(file){
+
+const dt=
+new DataTransfer();
+
+dt.items.add(file);
+
+$("postPhoto").files=
+dt.files;
+
+}
+
+await addPost();
+
+$("bigStatus").value="";
+$("bigPhoto").value="";
 
 };
 
 
 async function loadPosts(){
 
-  if(!auth.currentUser){
-    return;
-  }
+if(!auth.currentUser)return;
 
-  try{
+try{
 
-    const snap =
-      await getDocs(
-        collection(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts"
-        )
-      );
+const snap=
+await getDocs(
+collection(
+db,
+"users",
+auth.currentUser.uid,
+"posts"
+)
+);
 
-    posts = [];
+posts=[];
 
-    snap.forEach(item=>{
+snap.forEach(i=>
+posts.push({
+id:i.id,
+...i.data()
+})
+);
 
-      posts.push({
-        id:item.id,
-        ...item.data()
-      });
+posts.sort(
+(a,b)=>
+(b.createdAt?.seconds||0)-
+(a.createdAt?.seconds||0)
+);
 
-    });
+renderPosts();
 
-    posts.sort(
-      (a,b)=>
-        (b.createdAt?.seconds || 0) -
-        (a.createdAt?.seconds || 0)
-    );
+}catch(e){
 
-    renderPosts();
+$("posts").innerHTML=
+`<div class="empty">
+Gagal memuat postingan.<br>
+<small>${esc(e.message)}</small>
+</div>`;
 
-  }catch(e){
-
-    $("posts").innerHTML =
-      `<div class="empty">
-        Gagal memuat postingan.
-        <br>
-        <small>${esc(e.message)}</small>
-      </div>`;
-
-  }
+}
 
 }
 
 
 function renderPosts(){
 
-  const box =
-    $("posts");
+const boxEl=$("posts");
 
-  if(!posts.length){
+if(!posts.length){
 
-    box.innerHTML =
-      `<div class="empty">
-        Belum ada postingan.
-      </div>`;
+boxEl.innerHTML=
+`<div class="empty">
+Belum ada postingan.<br>
+Buat postingan pertama kamu.
+</div>`;
 
-    return;
+return;
+}
 
-  }
+boxEl.innerHTML=
+posts.map((p,i)=>{
 
-  box.innerHTML =
-    posts.map((p,i)=>{
+const avatar=
+p.avatar||
+PLACEHOLDER;
 
-      const avatar =
-        p.avatar ||
-        "https://via.placeholder.com/100";
+const comments=
+Array.isArray(p.comments)?
+p.comments:[];
 
-      const comments =
-        Array.isArray(p.comments)
-        ? p.comments
-        : [];
+const ch=
+comments.map(c=>
+`<div class="comment-text">
+<strong>${esc(c.name)}</strong><br>
+${esc(c.text)}
+</div>`
+).join("");
 
-      const commentsHTML =
-        comments.map(c=>
-          `<div class="comment-text">
-            <strong>${esc(c.name)}</strong>
-            <br>
-            ${esc(c.text)}
-          </div>`
-        ).join("");
+return `
+<article class="post">
 
-      return `
+<div class="post-head">
 
-        <article class="post">
+<img
+class="avatar-small"
+src="${avatar}">
 
-          <div class="post-head">
+<div class="post-user">
 
-            <img
-              class="avatar-small"
-              src="${avatar}">
+<strong>
+${esc(p.name||"Ifan")}
+</strong>
 
-            <div class="post-user">
+<div class="post-time">
+${esc(p.time||"")}
+</div>
 
-              <strong>
-                ${esc(p.name)}
-              </strong>
+</div>
 
-              <div class="post-time">
-                ${esc(p.time)}
-              </div>
+<button
+class="post-menu"
+onclick="postMenu(${i})">
+⋮
+</button>
 
-            </div>
+</div>
 
-            <button
-              class="post-menu"
-              onclick="postMenu(${i})">
-              ⋮
-            </button>
+${p.text?
+`<div class="post-body">
+${esc(p.text)}
+</div>`:""}
 
-          </div>
+${p.image?
+`<img class="post-image" src="${p.image}">`:""}
 
-          ${
-            p.text
-            ? `<div class="post-body">
-                ${esc(p.text)}
-              </div>`
-            : ""
-          }
+<div class="post-actions">
 
-          ${
-            p.image
-            ? `<img
-                class="post-image"
-                src="${p.image}">`
-            : ""
-          }
+<button onclick="likePost(${i})">
+❤️ ${p.likes||0}
+</button>
 
-          <div class="post-actions">
+<button onclick="toggleComments(${i})">
+💬 Komentar
+</button>
 
-            <button onclick="likePost(${i})">
-              ❤️ ${p.likes || 0}
-            </button>
+<button onclick="sharePost(${i})">
+📤 Bagikan
+</button>
 
-            <button
-              onclick="toggleComments(${i})">
-              💬 Komentar
-            </button>
+</div>
 
-            <button
-              onclick="sharePost(${i})">
-              📤 Bagikan
-            </button>
+<div
+id="comments-${i}"
+class="comment-box">
 
-          </div>
+<div class="comment-row">
 
-          <div
-            id="comments-${i}"
-            class="comment-box">
+<input
+id="comment-${i}"
+class="comment-input"
+placeholder="Tulis komentar...">
 
-            <div class="comment-row">
+<button
+class="comment-send"
+onclick="addComment(${i})">
+Kirim
+</button>
 
-              <input
-                id="comment-${i}"
-                class="comment-input"
-                placeholder="Tulis komentar...">
+</div>
 
-              <button
-                class="comment-send"
-                onclick="addComment(${i})">
-                Kirim
-              </button>
+${ch}
 
-            </div>
+</div>
 
-            ${commentsHTML}
+</article>
+`;
 
-          </div>
-
-        </article>
-
-      `;
-
-    }).join("");
+}).join("");
 
 }
 
 
-window.likePost =
+window.likePost=
 async function(i){
 
-  const p =
-    posts[i];
+const p=posts[i];
 
-  if(!p){
-    return;
-  }
+if(!p)return;
 
-  p.likes =
-    (p.likes || 0) + 1;
+p.likes=
+Number(p.likes||0)+1;
 
-  renderPosts();
+renderPosts();
 
-  if(p.id){
+if(p.id&&auth.currentUser){
 
-    try{
+try{
 
-      await updateDoc(
-        doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts",
-          p.id
-        ),
-        {
-          likes:p.likes
-        }
-      );
+await updateDoc(
+doc(
+db,
+"users",
+auth.currentUser.uid,
+"posts",
+p.id
+),
+{
+likes:p.likes
+}
+);
 
-    }catch(e){}
+}catch(e){}
 
-  }
+}
 
 };
 
 
-window.toggleComments =
+window.toggleComments=
 function(i){
 
-  const box =
-    $("comments-" + i);
+const b=
+$("comments-"+i);
 
-  if(!box){
-    return;
-  }
+if(b){
 
-  box.style.display =
-    box.style.display === "block"
-    ? "none"
-    : "block";
+b.style.display=
+b.style.display==="block"?
+"none":
+"block";
+
+}
 
 };
 
 
-window.addComment =
+window.addComment=
 async function(i){
 
-  const input =
-    $("comment-" + i);
+const input=
+$("comment-"+i);
 
-  const text =
-    input.value.trim();
+const text=
+input.value.trim();
 
-  if(!text){
-    return;
-  }
+if(!text)return;
 
-  if(!Array.isArray(posts[i].comments)){
+const p=posts[i];
 
-    posts[i].comments = [];
+if(!p)return;
 
-  }
+if(!Array.isArray(p.comments))
+p.comments=[];
 
-  posts[i].comments.push({
+p.comments.push({
+name:profile.name||"Ifan",
+text,
+time:new Date()
+.toLocaleString("id-ID")
+});
 
-    name:
-      profile.name || "Ifan",
+renderPosts();
 
-    text
+const b=
+$("comments-"+i);
 
-  });
+if(b)b.style.display="block";
 
-  input.value = "";
+if(p.id&&auth.currentUser){
 
-  renderPosts();
+try{
 
-  $("comments-" + i)
-    .style.display =
-    "block";
+await updateDoc(
+doc(
+db,
+"users",
+auth.currentUser.uid,
+"posts",
+p.id
+),
+{
+comments:p.comments
+}
+);
 
-  if(posts[i].id){
+}catch(e){}
 
-    try{
-
-      await updateDoc(
-        doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts",
-          posts[i].id
-        ),
-        {
-          comments:
-            posts[i].comments
-        }
-      );
-
-    }catch(e){}
-
-  }
+}
 
 };
 
 
-window.sharePost =
+window.sharePost=
 async function(i){
 
-  const p =
-    posts[i];
+const p=posts[i];
 
-  const text =
-    (p.name || "") +
-    ": " +
-    (p.text || "");
+if(!p)return;
 
-  try{
+const text=
+(p.name||"IFAN")+
+": "+
+(p.text||"Postingan di social live.IF");
 
-    if(navigator.share){
+try{
 
-      await navigator.share({
-        title:"social live.IF",
-        text
-      });
+if(navigator.share){
 
-    }else{
+await navigator.share({
+title:"social live.IF",
+text
+});
 
-      await navigator.clipboard
-        .writeText(text);
+}else{
 
-      alert("Teks disalin.");
+await navigator.clipboard.writeText(text);
 
-    }
+alert(
+"Teks postingan disalin."
+);
 
-  }catch(e){}
+}
+
+}catch(e){}
 
 };
 
 
-window.postMenu =
+window.postMenu=
 async function(i){
 
-  if(
-    prompt(
-      "Ketik 1 untuk hapus postingan"
-    ) !== "1"
-  ){
+const p=posts[i];
 
-    return;
+if(!p)return;
 
-  }
+if(
+prompt(
+"Pilih:\n1 = Hapus\n2 = Batalkan"
+)!=="1"
+)return;
 
-  if(
-    !confirm(
-      "Hapus postingan?"
-    )
-  ){
+if(
+!confirm(
+"Hapus postingan ini?"
+)
+)return;
 
-    return;
+posts.splice(i,1);
 
-  }
+renderPosts();
 
-  const p =
-    posts[i];
+if(p.id&&auth.currentUser){
 
-  posts.splice(i,1);
+try{
 
-  renderPosts();
+await deleteDoc(
+doc(
+db,
+"users",
+auth.currentUser.uid,
+"posts",
+p.id
+)
+);
 
-  if(p.id){
+}catch(e){
 
-    try{
+alert(
+"Gagal menghapus:\n"+
+e.message
+);
 
-      await deleteDoc(
-        doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "posts",
-          p.id
-        )
-      );
+}
 
-    }catch(e){}
-
-  }
+}
 
 };
 
 
-/* =========================================================
-   LIVE UI
-========================================================= */
+/* =========================
+FULLSCREEN SCORE
+========================= */
 
-function updateOverlay(){
+function syncFsScore(){
 
-  $("overlayTeamA").textContent =
-    liveState.teamA;
+const a=$("fsScoreA");
+const b=$("fsScoreB");
 
-  $("overlayTeamB").textContent =
-    liveState.teamB;
+if(!a||!b)return;
 
-  $("overlaySkor").textContent =
-    `${liveState.skorA} - ${liveState.skorB}`;
+a.textContent=
+parseInt($("scoreAInput").value)||0;
 
-  $("overlayTimer").textContent =
-    formatTimer(
-      liveState.seconds
-    );
-
-  $("timerDisplay").textContent =
-    formatTimer(
-      liveState.seconds
-    );
-
-  $("bigTeamA").textContent =
-    liveState.teamA;
-
-  $("bigTeamB").textContent =
-    liveState.teamB;
-
-  $("bigSkorA").textContent =
-    liveState.skorA;
-
-  $("bigSkorB").textContent =
-    liveState.skorB;
-
-  $("bigTimer").textContent =
-    formatTimer(
-      liveState.seconds
-    );
-
-  $("liveTitleDisplay").textContent =
-    liveState.title ||
-    `${liveState.teamA} vs ${liveState.teamB}`;
-
-  if(
-    liveMode === "host" &&
-    $("skorControl").style.display !== "none"
-  ){
-
-    $("editTeamA").value =
-      liveState.teamA;
-
-    $("editTeamB").value =
-      liveState.teamB;
-
-    $("editSkorA").value =
-      liveState.skorA;
-
-    $("editSkorB").value =
-      liveState.skorB;
-
-    $("editTimer").value =
-      formatTimer(
-        liveState.seconds
-      );
-
-    $("editTitle").value =
-      liveState.title;
-
-    $("editBabak").value =
-      liveState.babak;
-
-  }
+b.textContent=
+parseInt($("scoreBInput").value)||0;
 
 }
 
 
-async function updateLiveData(extra={}){
+window.setTeamName=
+function(t,v){
 
-  if(
-    !liveState.liveDocId ||
-    liveMode !== "host"
-  ){
+$(t==="A"?
+"teamAInput":
+"teamBInput").value=v;
 
-    return;
-
-  }
-
-  try{
-
-    await updateDoc(
-      doc(
-        db,
-        "tarkam_lives",
-        liveState.liveDocId
-      ),
-      {
-
-        teamA:
-          liveState.teamA,
-
-        teamB:
-          liveState.teamB,
-
-        skorA:
-          liveState.skorA,
-
-        skorB:
-          liveState.skorB,
-
-        seconds:
-          liveState.seconds,
-
-        babak:
-          liveState.babak,
-
-        title:
-          liveState.title,
-
-        ...extra
-
-      }
-    );
-
-  }catch(e){}
-
-}
-
-
-/* =========================================================
-   TIMER
-========================================================= */
-
-window.toggleTimer =
-function(){
-
-  if(!liveState.isLive){
-
-    alert(
-      "Mulai Live terlebih dahulu."
-    );
-
-    return;
-
-  }
-
-  if(
-    liveState.isTimerRunning
-  ){
-
-    clearInterval(
-      liveState.timerInterval
-    );
-
-    liveState.isTimerRunning =
-      false;
-
-    $("btnTimer").textContent =
-      "▶ LANJUT";
-
-    $("liveStatusMini").textContent =
-      "Jeda";
-
-    updateLiveData();
-
-  }else{
-
-    liveState.timerInterval =
-      setInterval(()=>{
-
-        liveState.seconds++;
-
-        updateOverlay();
-
-        /*
-          Tidak menulis Firestore
-          setiap detik agar hemat.
-        */
-
-        if(
-          liveState.seconds % 5 === 0
-        ){
-
-          updateLiveData();
-
-        }
-
-      },1000);
-
-    liveState.isTimerRunning =
-      true;
-
-    $("btnTimer").textContent =
-      "⏸ JEDA";
-
-    $("liveStatusMini").textContent =
-      "Live";
-
-  }
+updateScoreboard();
 
 };
 
 
-/* =========================================================
-   SCORE
-========================================================= */
+window.togglePanel=
+function(name){
 
-window.changeSkor =
-function(team,delta){
+const sp=$("fsScorePanel");
+const gp=$("fsGiftPanel");
 
-  if(
-    !liveState.isLive ||
-    liveMode !== "host"
-  ){
+const target=
+name==="score"?sp:gp;
 
-    return;
+const other=
+name==="score"?gp:sp;
 
-  }
+other.style.display="none";
 
-  if(team === "A"){
+const show=
+target.style.display==="none";
 
-    liveState.skorA =
-      Math.max(
-        0,
-        liveState.skorA + delta
-      );
+target.style.display=
+show?"block":"none";
 
-  }else{
+if(show&&name==="score"){
 
-    liveState.skorB =
-      Math.max(
-        0,
-        liveState.skorB + delta
-      );
+$("fsTeamA").value=
+$("teamAInput").value;
 
-  }
+$("fsTeamB").value=
+$("teamBInput").value;
 
-  updateOverlay();
+syncFsScore();
 
-  updateLiveData();
+}
+
+if(show&&name==="gift"){
+
+renderGiftPanel();
+
+}
 
 };
 
 
-window.resetSkor =
-function(){
+/* =========================
+CHAT
+========================= */
 
-  if(
-    !confirm(
-      "Reset skor dan timer ke 0?"
-    )
-  ){
+let chatMsgs=[];
+let chatUnsub=null;
+let chatRemote=false;
+let chatFirst=true;
 
-    return;
+function renderChat(){
 
-  }
-
-  liveState.skorA = 0;
-  liveState.skorB = 0;
-  liveState.seconds = 0;
-
-  updateOverlay();
-
-  updateLiveData();
-
-};
-
-
-window.applyEditScore =
-function(){
-
-  if(
-    !liveState.isLive ||
-    liveMode !== "host"
-  ){
-
-    alert(
-      "Tidak ada Live host aktif."
-    );
-
-    return;
-
-  }
-
-  const teamA =
-    $("editTeamA")
-    .value
-    .trim() || "TIM A";
-
-  const teamB =
-    $("editTeamB")
-    .value
-    .trim() || "TIM B";
-
-  const scoreA =
-    parseInt(
-      $("editSkorA").value
-    );
-
-  const scoreB =
-    parseInt(
-      $("editSkorB").value
-    );
-
-  const timer =
-    parseTimer(
-      $("editTimer").value
-    );
-
-  const babak =
-    $("editBabak")
-    .value
-    .trim() || "Babak 1";
-
-  const title =
-    $("editTitle")
-    .value
-    .trim() ||
-    `${teamA} vs ${teamB}`;
-
-  if(
-    Number.isNaN(scoreA) ||
-    Number.isNaN(scoreB) ||
-    scoreA < 0 ||
-    scoreB < 0
-  ){
-
-    alert(
-      "Skor harus 0 atau lebih."
-    );
-
-    return;
-
-  }
-
-  if(timer === null){
-
-    alert(
-      "Format timer harus MM:SS."
-    );
-
-    return;
-
-  }
-
-  liveState.teamA =
-    teamA;
-
-  liveState.teamB =
-    teamB;
-
-  liveState.skorA =
-    scoreA;
-
-  liveState.skorB =
-    scoreB;
-
-  liveState.seconds =
-    timer;
-
-  liveState.babak =
-    babak;
-
-  liveState.title =
-    title;
-
-  $("teamA").value =
-    teamA;
-
-  $("teamB").value =
-    teamB;
-
-  $("matchTitle").value =
-    title;
-
-  updateOverlay();
-
-  updateLiveData();
-
-  alert(
-    "✅ Edit Score berhasil.\n\n" +
-    teamA + " " +
-    scoreA +
-    " - " +
-    scoreB +
-    " " +
-    teamB +
-    "\n" +
-    formatTimer(timer) +
-    " • " +
-    babak
-  );
-
-};
-
-
-/* =========================================================
-   CAMERA
-========================================================= */
-
-async function openCamera(){
-
-  if(
-    !navigator.mediaDevices ||
-    !navigator.mediaDevices.getUserMedia
-  ){
-
-    throw new Error(
-      "Browser tidak mendukung kamera."
-    );
-
-  }
-
-  if(cameraStream){
-
-    cameraStream
-      .getTracks()
-      .forEach(t=>t.stop());
-
-    cameraStream = null;
-
-  }
-
-  cameraStream =
-    await navigator.mediaDevices
-      .getUserMedia({
-
-        video:{
-          facingMode:
-            currentFacing
-        },
-
-        audio:true
-
-      });
-
-  $("camera").srcObject =
-    cameraStream;
+$("fsChat").innerHTML=
+chatMsgs
+.slice(-6)
+.map(m=>
+`<div class="chat-msg${m.gift?" gift":""}">
+<b>${esc(m.name)}</b>
+${esc(m.text)}
+</div>`
+)
+.join("");
 
 }
 
 
-window.switchCamera =
-async function(){
+function showGiftFx(emoji,value){
 
-  if(!cameraStream){
+const s=
+document.createElement("div");
 
-    alert(
-      "Mulai Live terlebih dahulu."
-    );
+s.className="gift-pop";
 
-    return;
+s.textContent=emoji;
 
-  }
+s.style.left=
+(8+Math.random()*70)+"%";
 
-  try{
+$("giftFx").appendChild(s);
 
-    currentFacing =
-      currentFacing === "environment"
-      ? "user"
-      : "environment";
-
-    await openCamera();
-
-    /*
-      Track baru perlu dimasukkan
-      ke koneksi WebRTC host.
-    */
-
-    for(
-      const [viewerId,pc] of
-      hostPeers.entries()
-    ){
-
-      const senders =
-        pc.getSenders();
-
-      const newVideo =
-        cameraStream
-          .getVideoTracks()[0];
-
-      const sender =
-        senders.find(
-          s =>
-            s.track &&
-            s.track.kind === "video"
-        );
-
-      if(sender && newVideo){
-
-        await sender
-          .replaceTrack(
-            newVideo
-          );
-
-      }
-
-      const newAudio =
-        cameraStream
-          .getAudioTracks()[0];
-
-      const audioSender =
-        senders.find(
-          s =>
-            s.track &&
-            s.track.kind === "audio"
-        );
-
-      if(
-        audioSender &&
-        newAudio
-      ){
-
-        await audioSender
-          .replaceTrack(
-            newAudio
-          );
-
-      }
-
-    }
-
-  }catch(e){
-
-    alert(
-      "Gagal mengganti kamera: " +
-      e.message
-    );
-
-  }
-
-};
-
-
-window.startCamera =
-async function(){
-
-  if(!auth.currentUser){
-
-    alert("Login dulu.");
-    return;
-
-  }
-
-  if(
-    liveMode === "viewer"
-  ){
-
-    alert(
-      "Keluar dari Live penonton terlebih dahulu."
-    );
-
-    return;
-
-  }
-
-  const teamA =
-    $("teamA")
-    .value
-    .trim();
-
-  const teamB =
-    $("teamB")
-    .value
-    .trim();
-
-  if(!teamA || !teamB){
-
-    alert(
-      "Isi nama Tim A dan Tim B dulu."
-    );
-
-    return;
-
-  }
-
-  const title =
-    $("matchTitle")
-    .value
-    .trim() ||
-    `${teamA} vs ${teamB}`;
-
-  try{
-
-    liveMode =
-      "host";
-
-    liveState.teamA =
-      teamA;
-
-    liveState.teamB =
-      teamB;
-
-    liveState.title =
-      title;
-
-    liveState.skorA = 0;
-    liveState.skorB = 0;
-    liveState.seconds = 0;
-    liveState.babak =
-      "Babak 1";
-
-    await openCamera();
-
-    const ref =
-      await addDoc(
-        collection(
-          db,
-          "tarkam_lives"
-        ),
-        {
-
-          title,
-
-          teamA,
-
-          teamB,
-
-          skorA:0,
-
-          skorB:0,
-
-          seconds:0,
-
-          babak:"Babak 1",
-
-          isLive:true,
-
-          hostUid:
-            auth.currentUser.uid,
-
-          hostName:
-            profile.name || "Ifan",
-
-          createdAt:
-            serverTimestamp()
-
-        }
-      );
-
-    liveState.liveDocId =
-      ref.id;
-
-    liveState.isLive =
-      true;
-
-    $("liveIndicator")
-      .style.display =
-      "inline-block";
-
-    $("skorControl")
-      .style.display =
-      "block";
-
-    $("hostSetup")
-      .style.display =
-      "block";
-
-    $("hostCameraButtons")
-      .style.display =
-      "flex";
-
-    $("switchCameraBtn")
-      .style.display =
-      "block";
-
-    $("viewerMode")
-      .classList.add("hidden");
-
-    $("liveStatus").innerHTML =
-      `🔴 <strong>LIVE AKTIF</strong>
-      <br>
-      ${esc(title)}
-      <br>
-      ${esc(teamA)}
-      ${liveState.skorA}
-      -
-      ${liveState.skorB}
-      ${esc(teamB)}`;
-
-    $("liveStatusMini")
-      .textContent =
-      "Live";
-
-    updateOverlay();
-
-    startHostViewersListener();
-
-    listenLiveDoc(
-      liveState.liveDocId,
-      "host"
-    );
-
-    listenLiveComments(
-      liveState.liveDocId
-    );
-
-    listenLiveGifts(
-      liveState.liveDocId
-    );
-
-    /*
-      Timer dimulai setelah
-      Live berhasil dibuat.
-    */
-
-    if(
-      !liveState.isTimerRunning
-    ){
-
-      toggleTimer();
-
-    }
-
-  }catch(e){
-
-    liveMode =
-      "none";
-
-    $("liveStatus").innerHTML =
-      `Kamera/Live gagal:
-      <br>
-      <small>
-      ${esc(e.message)}
-      </small>`;
-
-  }
-
-};
-
-
-window.stopCamera =
-async function(){
-
-  if(
-    liveMode !== "host"
-  ){
-
-    return;
-
-  }
-
-  if(
-    liveState.timerInterval
-  ){
-
-    clearInterval(
-      liveState.timerInterval
-    );
-
-  }
-
-  liveState.timerInterval =
-    null;
-
-  liveState.isTimerRunning =
-    false;
-
-  if(cameraStream){
-
-    cameraStream
-      .getTracks()
-      .forEach(t=>t.stop());
-
-    cameraStream =
-      null;
-
-  }
-
-  $("camera").srcObject =
-    null;
-
-  /*
-    Tutup semua koneksi
-    penonton.
-  */
-
-  for(
-    const [viewerId,pc]
-    of hostPeers.entries()
-  ){
-
-    try{
-      pc.close();
-    }catch(e){}
-
-  }
-
-  hostPeers.clear();
-
-  if(liveState.liveDocId){
-
-    try{
-
-      await updateDoc(
-        doc(
-          db,
-          "tarkam_lives",
-          liveState.liveDocId
-        ),
-        {
-          isLive:false,
-          endedAt:
-            serverTimestamp()
-        }
-      );
-
-    }catch(e){}
-
-  }
-
-  liveState.isLive =
-    false;
-
-  liveState.liveDocId =
-    null;
-
-  liveMode =
-    "none";
-
-  $("liveIndicator")
-    .style.display =
-    "none";
-
-  $("skorControl")
-    .style.display =
-    "none";
-
-  $("liveStatusMini")
-    .textContent =
-    "Standby";
-
-  $("liveStatus").innerHTML =
-    "Live telah diakhiri.";
-
-  $("btnTimer").textContent =
-    "▶ MULAI";
-
-  clearLiveListeners();
-
-};
-
-
-/* =========================================================
-   LIVE DOC REALTIME
-========================================================= */
-
-function listenLiveDoc(
-  liveId,
-  mode
-){
-
-  if(liveDocUnsub){
-
-    liveDocUnsub();
-    liveDocUnsub = null;
-
-  }
-
-  liveDocUnsub =
-    onSnapshot(
-      doc(
-        db,
-        "tarkam_lives",
-        liveId
-      ),
-      snap=>{
-
-        if(!snap.exists()){
-
-          if(mode === "viewer"){
-
-            endViewerBecauseLiveEnded();
-
-          }
-
-          return;
-
-        }
-
-        const data =
-          snap.data();
-
-        /*
-          Jika Live berakhir.
-        */
-
-        if(
-          data.isLive === false &&
-          mode === "viewer"
-        ){
-
-          endViewerBecauseLiveEnded();
-          return;
-
-        }
-
-        liveState.teamA =
-          data.teamA ||
-          "TIM A";
-
-        liveState.teamB =
-          data.teamB ||
-          "TIM B";
-
-        liveState.skorA =
-          Number(data.skorA || 0);
-
-        liveState.skorB =
-          Number(data.skorB || 0);
-
-        liveState.seconds =
-          Number(data.seconds || 0);
-
-        liveState.babak =
-          data.babak ||
-          "Babak 1";
-
-        liveState.title =
-          data.title ||
-          `${liveState.teamA} vs ${liveState.teamB}`;
-
-        updateOverlay();
-
-        $("viewerTitle").textContent =
-          liveState.title;
-
-        $("viewerSub").textContent =
-          `${liveState.teamA}
-          ${liveState.skorA}
-          -
-          ${liveState.skorB}
-          ${liveState.teamB}
-          •
-          ${liveState.babak}`;
-
-        $("liveStatusMini").textContent =
-          data.isLive
-          ? "Live"
-          : "Selesai";
-
-      },
-      error=>{
-
-        console.log(
-          "Live listener:",
-          error
-        );
-
-      }
-    );
-
-}
-
-
-/* =========================================================
-   ACTIVE LIVES
-========================================================= */
-
-function listenActiveLives(){
-
-  if(activeLiveUnsub){
-
-    activeLiveUnsub();
-    activeLiveUnsub = null;
-
-  }
-
-  try{
-
-    const q =
-      query(
-        collection(
-          db,
-          "tarkam_lives"
-        ),
-        where(
-          "isLive",
-          "==",
-          true
-        )
-      );
-
-    activeLiveUnsub =
-      onSnapshot(
-        q,
-        snap=>{
-
-          const box =
-            $("activeLivesHome");
-
-          if(snap.empty){
-
-            box.innerHTML =
-              "Belum ada Live aktif. Jadilah yang pertama!";
-
-            return;
-
-          }
-
-          let html = "";
-
-          snap.forEach(item=>{
-
-            const v =
-              item.data();
-
-            html += `
-
-              <div
-                class="live-home-item"
-                onclick="openViewerLive('${item.id}')">
-
-                <div>
-
-                  <strong>
-                    ${esc(v.teamA)}
-                    vs
-                    ${esc(v.teamB)}
-                  </strong>
-
-                  <br>
-
-                  <small>
-
-                    ${esc(v.title || "Live Bola")}
-
-                    •
-
-                    ${Number(v.skorA || 0)}
-                    -
-                    ${Number(v.skorB || 0)}
-
-                    •
-
-                    ${esc(v.babak || "Babak 1")}
-
-                  </small>
-
-                </div>
-
-                <span class="live-home-live">
-                  LIVE
-                </span>
-
-              </div>
-
-            `;
-
-          });
-
-          box.innerHTML =
-            html;
-
-        },
-        error=>{
-
-          $("activeLivesHome").innerHTML =
-            `<small>
-              Gagal memuat Live:
-              ${esc(error.message)}
-            </small>`;
-
-        }
-      );
-
-  }catch(e){}
-
-}
-
-
-/* =========================================================
-   VIEWER WEBRTC
-========================================================= */
-
-window.openViewerLive =
-async function(liveId){
-
-  if(!auth.currentUser){
-
-    alert(
-      "Login dulu untuk menonton Live."
-    );
-
-    return;
-
-  }
-
-  if(
-    liveState.liveDocId === liveId &&
-    liveMode === "host"
-  ){
-
-    showPage("live");
-    return;
-
-  }
-
-  await leaveViewer();
-
-  showPage("live");
-
-  liveMode =
-    "viewer";
-
-  liveState.liveDocId =
-    liveId;
-
-  liveState.isLive =
-    true;
-
-  $("hostSetup")
-    .style.display =
-    "none";
-
-  $("skorControl")
-    .style.display =
-    "none";
-
-  $("hostCameraButtons")
-    .style.display =
-    "none";
-
-  $("switchCameraBtn")
-    .style.display =
-    "none";
-
-  $("camera")
-    .style.display =
-    "none";
-
-  $("viewerVideo")
-    .style.display =
-    "block";
-
-  $("viewerMode")
-    .classList.remove("hidden");
-
-  $("liveStatus").innerHTML =
-    "🔄 Menghubungkan ke Live...";
-
-  $("liveIndicator")
-    .style.display =
-    "inline-block";
-
-  try{
-
-    const liveRef =
-      doc(
-        db,
-        "tarkam_lives",
-        liveId
-      );
-
-    const liveSnap =
-      await getDoc(liveRef);
-
-    if(
-      !liveSnap.exists() ||
-      liveSnap.data().isLive !== true
-    ){
-
-      alert(
-        "Live sudah berakhir."
-      );
-
-      await leaveViewer();
-
-      return;
-
-    }
-
-    /*
-      Setiap penonton mendapat
-      ID koneksi sendiri.
-    */
-
-    currentViewerId =
-      auth.currentUser.uid +
-      "_" +
-      Date.now();
-
-    const viewerRef =
-      doc(
-        db,
-        "tarkam_lives",
-        liveId,
-        "viewers",
-        currentViewerId
-      );
-
-    await setDoc(
-      viewerRef,
-      {
-
-        uid:
-          auth.currentUser.uid,
-
-        name:
-          profile.name || "Penonton",
-
-        joinedAt:
-          serverTimestamp(),
-
-        active:true
-
-      }
-    );
-
-    /*
-      Listener dokumen penonton.
-      Host akan mengirim offer
-      melalui dokumen ini.
-    */
-
-    viewerDocUnsub =
-      onSnapshot(
-        viewerRef,
-        async snap=>{
-
-          if(!snap.exists()){
-
-            return;
-
-          }
-
-          const data =
-            snap.data();
-
-          if(
-            data.offer &&
-            !viewerPC
-          ){
-
-            await createViewerPeer(
-              liveId,
-              viewerRef,
-              data.offer
-            );
-
-          }
-
-        }
-      );
-
-    /*
-      Live score/status.
-    */
-
-    listenLiveDoc(
-      liveId,
-      "viewer"
-    );
-
-    listenLiveComments(
-      liveId
-    );
-
-    $("liveStatus").innerHTML =
-      "🔴 <strong>LIVE</strong><br>" +
-      "Menunggu video dari kameramen...";
-
-  }catch(e){
-
-    $("liveStatus").innerHTML =
-      `Gagal membuka Live:
-      <br>
-      <small>${esc(e.message)}</small>`;
-
-  }
-
-};
-
-
-async function createViewerPeer(
-  liveId,
-  viewerRef,
-  offer
-){
-
-  viewerPC =
-    new RTCPeerConnection({
-
-      iceServers:[
-        {
-          urls:
-            "stun:stun.l.google.com:19302"
-        },
-        {
-          urls:
-            "stun:stun1.l.google.com:19302"
-        }
-      ]
-
-    });
-
-
-  viewerPC.ontrack =
-    event=>{
-
-      if(
-        event.streams &&
-        event.streams[0]
-      ){
-
-        $("viewerVideo").srcObject =
-          event.streams[0];
-
-        $("liveStatus").innerHTML =
-          "🔴 <strong>LIVE</strong><br>" +
-          "Video Live sedang berjalan.";
-
-      }
-
-    };
-
-
-  viewerPC.onconnectionstatechange =
-    ()=>{
-
-      const state =
-        viewerPC.connectionState;
-
-      if(state === "connected"){
-
-        $("liveStatus").innerHTML =
-          "🔴 <strong>LIVE</strong><br>" +
-          "Terhubung ke kameramen.";
-
-      }
-
-      if(
-        state === "failed" ||
-        state === "disconnected"
-      ){
-
-        $("liveStatus").innerHTML =
-          "⚠️ Koneksi video terputus. Mencoba mempertahankan Live...";
-
-      }
-
-    };
-
-
-  /*
-    ICE dari penonton
-    dikirim ke host.
-  */
-
-  viewerPC.onicecandidate =
-    async event=>{
-
-      if(!event.candidate){
-        return;
-      }
-
-      try{
-
-        await addDoc(
-          collection(
-            viewerRef,
-            "viewerIce"
-          ),
-          event.candidate.toJSON()
-        );
-
-      }catch(e){}
-
-    };
-
-
-  /*
-    ICE dari host.
-  */
-
-  viewerHostIceUnsub =
-    onSnapshot(
-      collection(
-        viewerRef,
-        "hostIce"
-      ),
-      snap=>{
-
-        snap.docChanges()
-          .forEach(change=>{
-
-            if(
-              change.type !== "added"
-            ){
-
-              return;
-
-            }
-
-            const candidate =
-              change.doc.data();
-
-            viewerPC
-              ?.addIceCandidate(
-                new RTCIceCandidate(
-                  candidate
-                )
-              )
-              .catch(()=>{});
-
-          });
-
-      }
-    );
-
-
-  await viewerPC
-    .setRemoteDescription(
-      new RTCSessionDescription(
-        offer
-      )
-    );
-
-
-  const answer =
-    await viewerPC
-      .createAnswer();
-
-
-  await viewerPC
-    .setLocalDescription(
-      answer
-    );
-
-
-  await updateDoc(
-    viewerRef,
-    {
-
-      answer:{
-        type:
-          answer.type,
-
-        sdp:
-          answer.sdp
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   HOST WEBRTC VIEWERS
-========================================================= */
-
-function startHostViewersListener(){
-
-  if(
-    !liveState.liveDocId ||
-    liveMode !== "host"
-  ){
-
-    return;
-
-  }
-
-  if(liveViewersUnsub){
-
-    liveViewersUnsub();
-    liveViewersUnsub = null;
-
-  }
-
-  const viewersRef =
-    collection(
-      db,
-      "tarkam_lives",
-      liveState.liveDocId,
-      "viewers"
-    );
-
-  liveViewersUnsub =
-    onSnapshot(
-      viewersRef,
-      snap=>{
-
-        $("viewerCount").textContent =
-          snap.size;
-
-        snap.docChanges()
-          .forEach(change=>{
-
-            const viewerId =
-              change.doc.id;
-
-            if(
-              change.type === "added"
-            ){
-
-              createHostPeer(
-                viewerId
-              );
-
-            }
-
-            if(
-              change.type === "removed"
-            ){
-
-              const pc =
-                hostPeers.get(
-                  viewerId
-                );
-
-              if(pc){
-
-                try{
-                  pc.close();
-                }catch(e){}
-
-                hostPeers.delete(
-                  viewerId
-                );
-
-              }
-
-            }
-
-          });
-
-      },
-      error=>{
-
-        console.log(
-          "Viewer listener:",
-          error
-        );
-
-      }
-    );
-
-}
-
-
-async function createHostPeer(
-  viewerId
-){
-
-  if(
-    hostPeers.has(viewerId)
-  ){
-
-    return;
-
-  }
-
-  if(
-    !liveState.liveDocId ||
-    !cameraStream
-  ){
-
-    return;
-
-  }
-
-  const viewerRef =
-    doc(
-      db,
-      "tarkam_lives",
-      liveState.liveDocId,
-      "viewers",
-      viewerId
-    );
-
-  const pc =
-    new RTCPeerConnection({
-
-      iceServers:[
-        {
-          urls:
-            "stun:stun.l.google.com:19302"
-        },
-        {
-          urls:
-            "stun:stun1.l.google.com:19302"
-        }
-      ]
-
-    });
-
-  hostPeers.set(
-    viewerId,
-    pc
-  );
-
-
-  /*
-    Masukkan kamera dan audio.
-  */
-
-  cameraStream
-    .getTracks()
-    .forEach(track=>{
-
-      pc.addTrack(
-        track,
-        cameraStream
-      );
-
-    });
-
-
-  /*
-    Kirim ICE host ke penonton.
-  */
-
-  pc.onicecandidate =
-    async event=>{
-
-      if(!event.candidate){
-        return;
-      }
-
-      try{
-
-        await addDoc(
-          collection(
-            viewerRef,
-            "hostIce"
-          ),
-          event.candidate.toJSON()
-        );
-
-      }catch(e){}
-
-    };
-
-
-  /*
-    Terima ICE dari penonton.
-  */
-
-  const viewerIceUnsub =
-    onSnapshot(
-      collection(
-        viewerRef,
-        "viewerIce"
-      ),
-      snap=>{
-
-        snap.docChanges()
-          .forEach(change=>{
-
-            if(
-              change.type !== "added"
-            ){
-
-              return;
-
-            }
-
-            const candidate =
-              change.doc.data();
-
-            pc.addIceCandidate(
-              new RTCIceCandidate(
-                candidate
-              )
-            ).catch(()=>{});
-
-          });
-
-      }
-    );
-
-
-  /*
-    Jika viewer mengirim answer.
-  */
-
-  const answerUnsub =
-    onSnapshot(
-      viewerRef,
-      async snap=>{
-
-        if(!snap.exists()){
-
-          return;
-
-        }
-
-        const data =
-          snap.data();
-
-        if(
-          data.answer &&
-          !pc.currentRemoteDescription
-        ){
-
-          try{
-
-            await pc
-              .setRemoteDescription(
-                new RTCSessionDescription(
-                  data.answer
-                )
-              );
-
-          }catch(e){}
-
-        }
-
-      }
-    );
-
-
-  pc.onconnectionstatechange =
-    ()=>{
-
-      if(
-        pc.connectionState === "failed" ||
-        pc.connectionState === "closed"
-      ){
-
-        try{
-          viewerIceUnsub();
-        }catch(e){}
-
-        try{
-          answerUnsub();
-        }catch(e){}
-
-        hostPeers.delete(
-          viewerId
-        );
-
-        try{
-          pc.close();
-        }catch(e){}
-
-      }
-
-    };
-
-
-  try{
-
-    const offer =
-      await pc.createOffer();
-
-    await pc
-      .setLocalDescription(
-        offer
-      );
-
-    await updateDoc(
-      viewerRef,
-      {
-
-        offer:{
-          type:
-            offer.type,
-
-          sdp:
-            offer.sdp
-        }
-
-      }
-    );
-
-  }catch(e){
-
-    console.log(
-      "Offer gagal:",
-      e
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   VIEWER LEAVE
-========================================================= */
-
-window.leaveViewer =
-async function(){
-
-  if(
-    viewerDocUnsub
-  ){
-
-    viewerDocUnsub();
-    viewerDocUnsub = null;
-
-  }
-
-  if(
-    viewerHostIceUnsub
-  ){
-
-    viewerHostIceUnsub();
-    viewerHostIceUnsub = null;
-
-  }
-
-  if(viewerPC){
-
-    try{
-      viewerPC.close();
-    }catch(e){}
-
-    viewerPC = null;
-
-  }
-
-  if(
-    currentViewerId &&
-    liveState.liveDocId
-  ){
-
-    try{
-
-      await deleteDoc(
-        doc(
-          db,
-          "tarkam_lives",
-          liveState.liveDocId,
-          "viewers",
-          currentViewerId
-        )
-      );
-
-    }catch(e){}
-
-  }
-
-  currentViewerId =
-    null;
-
-  if(
-    $("viewerVideo")
-  ){
-
-    $("viewerVideo").srcObject =
-      null;
-
-  }
-
-  liveMode =
-    "none";
-
-  liveState.isLive =
-    false;
-
-  liveState.liveDocId =
-    null;
-
-  $("camera").style.display =
-    "block";
-
-  $("viewerVideo").style.display =
-    "none";
-
-  $("hostSetup").style.display =
-    "block";
-
-  $("hostCameraButtons").style.display =
-    "flex";
-
-  $("switchCameraBtn").style.display =
-    "block";
-
-  $("viewerMode")
-    .classList.add("hidden");
-
-  $("liveIndicator")
-    .style.display =
-    "none";
-
-  $("liveStatusMini")
-    .textContent =
-    "Standby";
-
-  $("liveStatus").innerHTML =
-    "Pilih Live atau buat Live baru.";
-
-  clearLiveListeners();
-
-};
-
-
-function endViewerBecauseLiveEnded(){
-
-  alert(
-    "Live telah berakhir."
-  );
-
-  leaveViewer();
-
-}
-
-
-function clearLiveListeners(){
-
-  if(liveDocUnsub){
-
-    liveDocUnsub();
-    liveDocUnsub = null;
-
-  }
-
-  if(liveCommentsUnsub){
-
-    liveCommentsUnsub();
-    liveCommentsUnsub = null;
-
-  }
-
-  if(liveViewersUnsub){
-
-    liveViewersUnsub();
-    liveViewersUnsub = null;
-
-  }
-
-  if(liveGiftsUnsub){
-
-    liveGiftsUnsub();
-    liveGiftsUnsub = null;
-
-  }
-
-}
-
-
-/* =========================================================
-   LIVE COMMENTS
-========================================================= */
-
-function listenLiveComments(
-  liveId
-){
-
-  if(liveCommentsUnsub){
-
-    liveCommentsUnsub();
-    liveCommentsUnsub = null;
-
-  }
-
-  if(!liveId){
-
-    return;
-
-  }
-
-  const q =
-    query(
-      collection(
-        db,
-        "tarkam_live_comments"
-      ),
-      where(
-        "liveId",
-        "==",
-        liveId
-      )
-    );
-
-  liveCommentsUnsub =
-    onSnapshot(
-      q,
-      snap=>{
-
-        const comments = [];
-
-        snap.forEach(item=>{
-
-          comments.push({
-            id:item.id,
-            ...item.data()
-          });
-
-        });
-
-        comments.sort(
-          (a,b)=>
-            (a.createdAt?.seconds || 0) -
-            (b.createdAt?.seconds || 0)
-        );
-
-        $("liveCommentCount")
-          .textContent =
-          comments.length;
-
-
-        const box =
-          $("liveComments");
-
-        if(!comments.length){
-
-          box.innerHTML =
-            `<div class="empty">
-              Belum ada komentar.
-            </div>`;
-
-          return;
-
-        }
-
-
-        box.innerHTML =
-          comments
-          .slice(-100)
-          .map(c=>{
-
-            let time = "";
-
-            if(c.createdAt?.seconds){
-
-              time =
-                new Date(
-                  c.createdAt.seconds * 1000
-                ).toLocaleTimeString(
-                  "id-ID",
-                  {
-                    hour:"2-digit",
-                    minute:"2-digit"
-                  }
-                );
-
-            }
-
-            return `
-
-              <div class="live-comment">
-
-                <div class="live-comment-meta">
-
-                  <span
-                    class="live-comment-name">
-
-                    ${esc(
-                      c.name ||
-                      "Penonton"
-                    )}
-
-                  </span>
-
-                  <span>
-                    ${time}
-                  </span>
-
-                </div>
-
-                <div
-                  class="live-comment-text">
-
-                  ${esc(c.text)}
-
-                </div>
-
-              </div>
-
-            `;
-
-          }).join("");
-
-
-        box.scrollTop =
-          box.scrollHeight;
-
-      },
-      error=>{
-
-        $("liveComments").innerHTML =
-          `<div class="empty">
-            Komentar belum dapat dimuat.
-            <br>
-            <small>
-              ${esc(error.message)}
-            </small>
-          </div>`;
-
-      }
-    );
-
-}
-
-
-window.sendLiveComment =
-async function(){
-
-  const input =
-    $("liveCommentInput");
-
-  const text =
-    input.value.trim();
-
-  if(!text){
-    return;
-  }
-
-  if(!auth.currentUser){
-
-    alert(
-      "Login dulu."
-    );
-
-    return;
-
-  }
-
-  if(!liveState.liveDocId){
-
-    alert(
-      "Belum masuk ke Live."
-    );
-
-    return;
-
-  }
-
-  const liveId =
-    liveState.liveDocId;
-
-  input.value = "";
-
-  try{
-
-    await addDoc(
-      collection(
-        db,
-        "tarkam_live_comments"
-      ),
-      {
-
-        liveId,
-
-        uid:
-          auth.currentUser.uid,
-
-        name:
-          profile.name || "Penonton",
-
-        text,
-
-        createdAt:
-          serverTimestamp()
-
-      }
-    );
-
-  }catch(e){
-
-    input.value =
-      text;
-
-    alert(
-      "Komentar gagal dikirim: " +
-      e.message
-    );
-
-  }
-
-};
-
-
-/* Enter untuk komentar */
-
-$("liveCommentInput")
-  .addEventListener(
-    "keydown",
-    e=>{
-
-      if(e.key === "Enter"){
-
-        e.preventDefault();
-
-        sendLiveComment();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   IFAN GIV
-========================================================= */
-
-window.sendGift =
-async function(
-  type,
-  price
-){
-
-  if(
-    !liveState.liveDocId
-  ){
-
-    alert(
-      "Masuk ke Live terlebih dahulu."
-    );
-
-    return;
-
-  }
-
-  /*
-    Ini simulasi Ifan Giv.
-    Belum menggunakan pembayaran
-    uang asli.
-  */
-
-  const kameramen =
-    Math.floor(
-      price * 0.30
-    );
-
-  const platform =
-    price - kameramen;
-
-  /*
-    Jika penonton memberi Giv,
-    data masuk Firestore.
-  */
-
-  try{
-
-    await addDoc(
-      collection(
-        db,
-        "tarkam_gifts"
-      ),
-      {
-
-        liveId:
-          liveState.liveDocId,
-
-        type,
-
-        price,
-
-        bagiKameramen:
-          kameramen,
-
-        bagiPlatform:
-          platform,
-
-        senderUid:
-          auth.currentUser?.uid || "",
-
-        sender:
-          profile.name || "Penonton",
-
-        createdAt:
-          serverTimestamp()
-
-      }
-    );
-
-    $("giftFeed").innerHTML =
-      `<div>
-        🎁
-        <strong>
-          ${esc(profile.name)}
-        </strong>
-        mengirim
-        <strong>
-          ${esc(type)}
-        </strong>
-        Rp ${price.toLocaleString("id-ID")}
-      </div>` +
-      $("giftFeed").innerHTML;
-
-  }catch(e){
-
-    alert(
-      "Ifan Giv gagal: " +
-      e.message
-    );
-
-  }
-
-};
-
-
-function listenLiveGifts(
-  liveId
-){
-
-  if(liveGiftsUnsub){
-
-    liveGiftsUnsub();
-    liveGiftsUnsub = null;
-
-  }
-
-  const q =
-    query(
-      collection(
-        db,
-        "tarkam_gifts"
-      ),
-      where(
-        "liveId",
-        "==",
-        liveId
-      )
-    );
-
-  liveGiftsUnsub =
-    onSnapshot(
-      q,
-      snap=>{
-
-        let total = 0;
-        let kameramen = 0;
-        let platform = 0;
-
-        let feed = "";
-
-        snap.forEach(item=>{
-
-          const g =
-            item.data();
-
-          total +=
-            Number(g.price || 0);
-
-          kameramen +=
-            Number(
-              g.bagiKameramen || 0
-            );
-
-          platform +=
-            Number(
-              g.bagiPlatform || 0
-            );
-
-          feed =
-            `<div>
-              🎁
-              ${esc(
-                g.sender ||
-                "Penonton"
-              )}
-              →
-              ${esc(g.type || "Giv")}
-              Rp ${Number(
-                g.price || 0
-              ).toLocaleString("id-ID")}
-            </div>` +
-            feed;
-
-        });
-
-        liveState.totalMasuk =
-          total;
-
-        liveState.saldoKameramen =
-          kameramen;
-
-        liveState.saldoPlatform =
-          platform;
-
-        $("totalMasuk").textContent =
-          "Rp " +
-          total.toLocaleString(
-            "id-ID"
-          );
-
-        $("bagiKameramen").textContent =
-          "Rp " +
-          kameramen.toLocaleString(
-            "id-ID"
-          );
-
-        $("bagiPlatform").textContent =
-          "Rp " +
-          platform.toLocaleString(
-            "id-ID"
-          );
-
-        $("saldoTarik").textContent =
-          "Rp " +
-          kameramen.toLocaleString(
-            "id-ID"
-          );
-
-        $("platformTotal").textContent =
-          "Rp " +
-          platform.toLocaleString(
-            "id-ID"
-          );
-
-        if(feed){
-
-          $("giftFeed").innerHTML =
-            feed;
-
-        }
-
-      }
-    );
-
-}
-
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-onAuthStateChanged(
-  auth,
-  async user=>{
-
-    if(user){
-
-      $("loginScreen")
-        .style.display =
-        "none";
-
-      $("app")
-        .style.display =
-        "block";
-
-      $("appHeader")
-        .style.display =
-        "flex";
-
-      $("bottomNav")
-        .style.display =
-        "flex";
-
-      loadLocalProfile();
-
-      await loadPosts();
-
-      listenActiveLives();
-
-    }else{
-
-      clearLiveListeners();
-
-      if(activeLiveUnsub){
-
-        activeLiveUnsub();
-        activeLiveUnsub = null;
-
-      }
-
-      if(cameraStream){
-
-        cameraStream
-          .getTracks()
-          .forEach(t=>t.stop());
-
-        cameraStream = null;
-
-      }
-
-      $("loginScreen")
-        .style.display =
-        "block";
-
-      $("app")
-        .style.display =
-        "none";
-
-      $("appHeader")
-        .style.display =
-        "none";
-
-      $("bottomNav")
-        .style.display =
-        "none";
-
-    }
-
-  }
+setTimeout(
+()=>s.remove(),
+2500
 );
 
 
-/* =========================================================
-   HOST LIVE BUTTON
-========================================================= */
+const v=
+document.createElement("div");
 
-window.openHostLive =
-function(){
+v.className="gift-value-pop";
 
-  showPage("live");
+v.textContent=
+"+"+
+Number(value).toLocaleString("id-ID")+
+" koin";
 
-  liveMode =
-    "host";
+v.style.left=
+(10+Math.random()*60)+"%";
 
-  $("hostSetup")
-    .style.display =
-    "block";
+$("giftFx").appendChild(v);
 
-  $("camera")
-    .style.display =
-    "block";
+setTimeout(
+()=>v.remove(),
+2500
+);
 
-  $("viewerVideo")
-    .style.display =
-    "none";
+}
+
+
+function pushLocal(m){
+
+chatMsgs.push(m);
+
+if(chatMsgs.length>50)
+chatMsgs.shift();
+
+renderChat();
+
+if(m.gift)
+showGiftFx(
+m.gift,
+m.giftValue||0
+);
+
+}
+
+
+async function postMsg(m){
+
+if(
+chatRemote&&
+auth.currentUser
+){
+
+try{
+
+await addDoc(
+collection(db,"live_chat"),
+{
+...m,
+uid:auth.currentUser.uid,
+createdAt:serverTimestamp()
+}
+);
+
+return;
+
+}catch(e){
+
+chatRemote=false;
+
+}
+
+}
+
+pushLocal(m);
+
+}
+
+
+window.sendChat=
+async function(){
+
+const inp=
+$("fsChatInput");
+
+const t=
+inp.value.trim();
+
+if(!t)return;
+
+inp.value="";
+
+await postMsg({
+name:profile.name||"Ifan",
+text:t,
+gift:"",
+giftValue:0
+});
 
 };
 
 
-/* =========================================================
-   INPUT SYNC
-========================================================= */
+function startChat(){
 
-["teamA","teamB","matchTitle"]
-.forEach(id=>{
+stopChat();
 
-  $(id)
-    .addEventListener(
-      "input",
-      e=>{
+chatFirst=true;
 
-        if(id === "teamA"){
+try{
 
-          liveState.teamA =
-            e.target.value ||
-            "TIM A";
+chatUnsub=
+onSnapshot(
 
-        }
+query(
+collection(db,"live_chat"),
+orderBy("createdAt","desc"),
+limit(30)
+),
 
-        if(id === "teamB"){
+snap=>{
 
-          liveState.teamB =
-            e.target.value ||
-            "TIM B";
+chatRemote=true;
 
-        }
+if(chatFirst){
 
-        if(id === "matchTitle"){
+chatMsgs=
+snap.docs
+.map(d=>d.data())
+.reverse();
 
-          liveState.title =
-            e.target.value;
+chatFirst=false;
 
-        }
+renderChat();
 
-        updateOverlay();
+return;
 
-      }
-    );
+}
+
+snap.docChanges()
+.forEach(c=>{
+
+if(c.type==="added"){
+
+const m=
+c.doc.data();
+
+chatMsgs.push(m);
+
+if(m.gift){
+
+showGiftFx(
+m.gift,
+m.giftValue||0
+);
+
+}
+
+}
+
+});
+
+chatMsgs=
+chatMsgs.slice(-50);
+
+renderChat();
+
+},
+
+()=>{
+
+chatRemote=false;
+
+}
+
+);
+
+}catch(e){
+
+chatRemote=false;
+
+}
+
+}
+
+
+function stopChat(){
+
+if(chatUnsub){
+
+chatUnsub();
+
+chatUnsub=null;
+
+}
+
+chatRemote=false;
+
+}
+
+
+/* =========================
+GIFT SYSTEM
+========================= */
+
+const GIFTS=[
+
+{
+e:"🌹",
+n:"Mawar",
+value:10
+},
+
+{
+e:"❤️",
+n:"Hati",
+value:25
+},
+
+{
+e:"👏",
+n:"Tepuk",
+value:50
+},
+
+{
+e:"🔥",
+n:"Api",
+value:100
+},
+
+{
+e:"⚽",
+n:"Bola",
+value:250
+},
+
+{
+e:"🏆",
+n:"Piala",
+value:500
+},
+
+{
+e:"🚀",
+n:"Roket",
+value:1000
+},
+
+{
+e:"👑",
+n:"Mahkota",
+value:2500
+},
+
+{
+e:"💎",
+n:"Berlian",
+value:5000
+}
+
+];
+
+
+function formatCoins(n){
+
+return Number(n||0)
+.toLocaleString("id-ID");
+
+}
+
+
+function saveGiftState(){
+
+if(!auth.currentUser)return;
+
+const data={
+coinBalance,
+giftTotal,
+hostGift,
+platformGift,
+updatedAt:Date.now()
+};
+
+try{
+
+localStorage.setItem(
+"social_live_if_gift_"+
+auth.currentUser.uid,
+JSON.stringify(data)
+);
+
+}catch(e){}
+
+}
+
+
+function loadGiftState(){
+
+coinBalance=START_COINS;
+giftTotal=0;
+hostGift=0;
+platformGift=0;
+giftHistory=[];
+
+if(!auth.currentUser)return;
+
+try{
+
+const s=
+localStorage.getItem(
+"social_live_if_gift_"+
+auth.currentUser.uid
+);
+
+if(s){
+
+const d=JSON.parse(s);
+
+coinBalance=
+Number(d.coinBalance??START_COINS);
+
+giftTotal=
+Number(d.giftTotal||0);
+
+hostGift=
+Number(d.hostGift||0);
+
+platformGift=
+Number(d.platformGift||0);
+
+}
+
+}catch(e){}
+
+updateGiftUI();
+
+}
+
+
+function updateGiftUI(){
+
+$("coinBalance").textContent=
+formatCoins(coinBalance);
+
+$("giftTotalCoins").textContent=
+formatCoins(giftTotal);
+
+$("hostGiftCoins").textContent=
+formatCoins(hostGift);
+
+$("platformGiftCoins").textContent=
+formatCoins(platformGift);
+
+renderGiftHistory();
+
+}
+
+
+function renderGiftPanel(){
+
+$("giftGrid").innerHTML=
+GIFTS.map(
+(g,i)=>
+`
+<button
+class="gift-item"
+onclick="sendGift(${i})">
+
+<span>${g.e}</span>
+
+${esc(g.n)}
+
+<small>
+${formatCoins(g.value)} koin
+</small>
+
+</button>
+`
+).join("");
+
+updateGiftUI();
+
+}
+
+
+function renderGiftHistory(){
+
+const el=
+$("giftHistory");
+
+if(!giftHistory.length){
+
+el.innerHTML=
+`<div style="color:#aaa;font-size:11px;">
+Belum ada gift.
+</div>`;
+
+return;
+
+}
+
+el.innerHTML=
+giftHistory
+.slice(-10)
+.reverse()
+.map(g=>
+`
+<div class="gift-history-item">
+${g.emoji}
+<strong>${esc(g.name)}</strong>
++
+${formatCoins(g.value)}
+koin
+</div>
+`
+)
+.join("");
+
+}
+
+
+/*
+Tambah saldo hanya untuk pengujian.
+Tidak melakukan transaksi uang nyata.
+*/
+
+window.addDemoCoins=
+function(){
+
+coinBalance+=1000;
+
+saveGiftState();
+
+updateGiftUI();
+
+showToast(
+"+1.000 koin demo"
+);
+
+};
+
+
+/*
+Tekan gift:
+1. cek saldo
+2. kurangi koin
+3. hitung nilai gift
+4. bagi 50/50
+5. tampilkan animasi
+6. kirim ke Firestore jika tersedia
+*/
+
+window.sendGift=
+async function(i){
+
+const g=GIFTS[i];
+
+if(!g)return;
+
+if(!auth.currentUser){
+
+showToast(
+"Silakan login terlebih dahulu."
+);
+
+return;
+
+}
+
+if(!cameraStream){
+
+showToast(
+"Mulai LIVE terlebih dahulu."
+);
+
+return;
+
+}
+
+if(coinBalance<g.value){
+
+showToast(
+"Saldo koin demo tidak cukup."
+);
+
+return;
+
+}
+
+
+/* potong saldo */
+
+coinBalance-=g.value;
+
+
+/* total */
+
+giftTotal+=g.value;
+
+
+/* pembagian 50/50 */
+
+const hostValue=
+Math.floor(g.value/2);
+
+const platformValue=
+g.value-hostValue;
+
+hostGift+=hostValue;
+platformGift+=platformValue;
+
+
+/* history */
+
+giftHistory.push({
+
+name:profile.name||"Ifan",
+emoji:g.e,
+gift:g.n,
+value:g.value,
+time:new Date().toISOString()
+
+});
+
+if(giftHistory.length>50)
+giftHistory.shift();
+
+
+/* UI */
+
+saveGiftState();
+
+updateGiftUI();
+
+showGiftFx(
+g.e,
+g.value
+);
+
+postMsg({
+
+name:profile.name||"Ifan",
+text:
+"mengirim "+
+g.e+
+" "+
+g.n+
+" • "+
+formatCoins(g.value)+
+" koin",
+
+gift:g.e,
+
+giftValue:g.value
 
 });
 
 
-/* =========================================================
-   INITIAL
-========================================================= */
+/*
+Simpan transaksi gift ke Firestore.
+Ini adalah catatan gift, bukan transaksi pembayaran uang.
+*/
+
+try{
+
+await addDoc(
+collection(db,"live_gifts"),
+{
+
+uid:auth.currentUser.uid,
+
+senderName:
+profile.name||"Ifan",
+
+giftName:g.n,
+
+giftEmoji:g.e,
+
+value:g.value,
+
+hostValue,
+
+platformValue,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}catch(e){
+
+console.log(
+"Gift Firestore belum tersimpan:",
+e.message
+);
+
+}
+
+
+showToast(
+g.e+
+" "+
+g.n+
+" berhasil dikirim • "+
+formatCoins(g.value)+
+" koin"
+);
+
+};
+
+
+/* =========================
+KAMERA
+========================= */
+
+let camFacing="environment";
+
+
+async function openStream(){
+
+if(
+!navigator.mediaDevices||
+!navigator.mediaDevices.getUserMedia
+){
+
+throw new Error(
+"Browser tidak mendukung kamera. Buka lewat HTTPS di Chrome terbaru."
+);
+
+}
+
+const tries=[
+
+{
+video:{
+facingMode:{
+ideal:camFacing
+}
+},
+audio:true
+},
+
+{
+video:true,
+audio:true
+},
+
+{
+video:{
+facingMode:{
+ideal:camFacing
+}
+},
+audio:false
+},
+
+{
+video:true,
+audio:false
+}
+
+];
+
+let last;
+
+for(
+const c of tries
+){
+
+try{
+
+return await
+navigator.mediaDevices
+.getUserMedia(c);
+
+}catch(e){
+
+last=e;
+
+}
+
+}
+
+throw last;
+
+}
+
+
+window.flipCamera=
+async function(){
+
+if(!cameraStream){
+
+showToast(
+"Mulai live dulu"
+);
+
+return;
+
+}
+
+camFacing=
+camFacing==="environment"?
+"user":
+"environment";
+
+try{
+
+cameraStream
+.getTracks()
+.forEach(
+t=>t.stop()
+);
+
+cameraStream=
+await openStream();
+
+const v=
+$("camera");
+
+v.srcObject=
+cameraStream;
+
+try{
+await v.play();
+}catch(err){}
+
+}catch(e){
+
+showToast(
+"Gagal mengganti kamera"
+);
+
+}
+
+};
+
+
+window.startCamera=
+async function(){
+
+try{
+
+if(cameraStream)
+stopCamera();
+
+cameraStream=
+await openStream();
+
+const v=
+$("camera");
+
+v.muted=true;
+
+v.srcObject=
+cameraStream;
+
+try{
+await v.play();
+}catch(err){}
+
+$("liveStatus").innerHTML=
+"🔴 <strong>LIVE AKTIF</strong><br>"+
+"Kamera sedang digunakan. Tekan ⛶ untuk layar penuh.";
+
+viewerCount=
+Math.floor(
+Math.random()*50
+)+5;
+
+$("viewerNum").textContent=
+viewerCount;
+
+clearInterval(
+viewerInterval
+);
+
+viewerInterval=
+setInterval(
+()=>{
+
+$("viewerNum").textContent=
+Math.floor(
+Math.random()*20
+)+viewerCount;
+
+},
+3000
+);
+
+showToast(
+"Live aktif"
+);
+
+}catch(e){
+
+const msg={
+
+NotAllowedError:
+"Izin kamera ditolak. Aktifkan izin kamera untuk situs ini.",
+
+NotFoundError:
+"Kamera tidak ditemukan di perangkat ini.",
+
+NotReadableError:
+"Kamera sedang dipakai aplikasi lain.",
+
+SecurityError:
+"Kamera hanya bisa dipakai lewat HTTPS."
+
+}[e.name]||e.message;
+
+cameraStream=null;
+
+$("liveStatus").innerHTML=
+"Kamera tidak dapat dibuka.<br>"+
+"<small>"+
+esc(msg)+
+"</small>";
+
+}
+
+};
+
+
+window.stopCamera=
+function(){
+
+if(cameraStream){
+
+cameraStream
+.getTracks()
+.forEach(
+t=>t.stop()
+);
+
+cameraStream=null;
+
+}
+
+clearInterval(
+viewerInterval
+);
+
+$("viewerNum").textContent="0";
+
+$("camera").srcObject=null;
+
+$("liveStatus").innerHTML=
+"Kamera belum dimulai.";
+
+pauseMatchTimer();
+
+exitFullscreen();
+
+};
+
+
+/* =========================
+AUTH STATE
+========================= */
+
+onAuthStateChanged(
+auth,
+async user=>{
+
+if(user){
+
+$("loginScreen")
+.style.display="none";
+
+$("app")
+.style.display="block";
+
+$("appHeader")
+.style.display="flex";
+
+$("bottomNav")
+.style.display="flex";
 
 loadLocalProfile();
 
-updateOverlay();
-  
-  <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((registration) => {
-        console.log("social live.IF Service Worker aktif");
-      })
-      .catch((error) => {
-        console.error("Service Worker gagal:", error);
-      });
-  });
+updateProfileUI();
+
+loadGiftState();
+
+renderGiftPanel();
+
+startChat();
+
+loadRemoteProfile();
+
+await loadPosts();
+
+updateScoreboard();
+
+}else{
+
+$("loginScreen")
+.style.display="block";
+
+$("app")
+.style.display="none";
+
+$("appHeader")
+.style.display="none";
+
+$("bottomNav")
+.style.display="none";
+
+stopChat();
+
+stopCamera();
+
 }
+
+});
+
+
+loadLocalProfile();
+
+
+/* =========================
+PWA ICON
+========================= */
+
+(function(){
+
+const c=
+document.createElement("canvas");
+
+c.width=c.height=512;
+
+const x=c.getContext("2d");
+
+x.fillStyle="#111";
+x.fillRect(
+0,
+0,
+512,
+512
+);
+
+x.fillStyle="#e53935";
+
+x.beginPath();
+
+x.arc(
+256,
+190,
+70,
+0,
+Math.PI*2
+);
+
+x.fill();
+
+x.fillStyle="#fff";
+
+x.font=
+"bold 150px Arial";
+
+x.textAlign="center";
+
+x.fillText(
+"IF",
+256,
+410
+);
+
+const icon=
+c.toDataURL("image/png");
+
+const fav=
+document.createElement("link");
+
+fav.rel="icon";
+fav.href=icon;
+
+document.head.appendChild(fav);
+
+
+const ap=
+document.createElement("link");
+
+ap.rel="apple-touch-icon";
+ap.href=icon;
+
+document.head.appendChild(ap);
+
+
+const manifest={
+
+name:"social live.IF",
+
+short_name:"live.IF",
+
+start_url:".",
+
+display:"standalone",
+
+orientation:"any",
+
+background_color:"#111111",
+
+theme_color:"#111111",
+
+icons:[
+{
+src:icon,
+sizes:"512x512",
+type:"image/png"
+}
+]
+
+};
+
+const ml=
+document.createElement("link");
+
+ml.rel="manifest";
+
+ml.href=
+URL.createObjectURL(
+new Blob(
+[
+JSON.stringify(manifest)
+],
+{
+type:"application/json"
+}
+)
+);
+
+document.head.appendChild(ml);
+
+})();
+
 </script>
 
 </body>
