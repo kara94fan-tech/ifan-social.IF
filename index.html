@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#111111">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 <style>
 *{box-sizing:border-box}
@@ -15,11 +15,7 @@ body{margin:0;font-family:Arial,sans-serif;background:#f2f4f7;color:#18202a}
 button,input,textarea{font-family:inherit}
 button{cursor:pointer}
 
-header{
-position:sticky;top:0;z-index:100;height:62px;background:#fff;
-border-bottom:1px solid #ddd;display:flex;align-items:center;
-justify-content:space-between;padding:0 15px
-}
+header{position:sticky;top:0;z-index:100;height:62px;background:#fff;border-bottom:1px solid #ddd;display:flex;align-items:center;justify-content:space-between;padding:0 15px}
 .logo{font-size:21px;font-weight:bold}
 .logo span{color:#e53935}
 .header-right{display:flex;gap:8px}
@@ -29,74 +25,35 @@ justify-content:space-between;padding:0 15px
 .page{display:none;padding:14px}
 .page.active{display:block}
 
-.login-box{
-margin:60px 14px;background:#fff;padding:24px;border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.08)
-}
+.login-box{margin:60px 14px;background:#fff;padding:24px;border-radius:20px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
 .login-box h1{text-align:center;margin-top:0}
 .login-box p{text-align:center;color:#777}
-
-.field{
-width:100%;padding:13px;border:1px solid #ddd;border-radius:12px;
-margin-bottom:10px;outline:none
-}
+.field{width:100%;padding:13px;border:1px solid #ddd;border-radius:12px;margin-bottom:10px;outline:none}
 .field:focus{border-color:#777}
+.main-btn{width:100%;border:0;border-radius:12px;padding:13px;background:#111;color:#fff;font-weight:bold;margin-top:5px}
+.secondary-btn{width:100%;border:1px solid #ddd;border-radius:12px;padding:13px;background:#fff;margin-top:8px}
+.message{text-align:center;margin-top:10px;color:#d32f2f;line-height:1.45}
+.message.ok{color:#16803c}
 
-.main-btn{
-width:100%;border:0;border-radius:12px;padding:13px;
-background:#111;color:#fff;font-weight:bold;margin-top:5px
-}
-.secondary-btn{
-width:100%;border:1px solid #ddd;border-radius:12px;
-padding:13px;background:#fff;margin-top:8px
-}
-.message{text-align:center;margin-top:10px;color:#d32f2f}
-
-.live-card{
-background:#111;color:#fff;border-radius:18px;overflow:hidden;margin-bottom:15px
-}
-.live-top{
-padding:15px;display:flex;justify-content:space-between;align-items:center
-}
-.live-badge{
-background:#e53935;padding:6px 10px;border-radius:20px;
-font-size:12px;font-weight:bold
-}
+.live-card{background:#111;color:#fff;border-radius:18px;overflow:hidden;margin-bottom:15px}
+.live-top{padding:15px;display:flex;justify-content:space-between;align-items:center}
+.live-badge{background:#e53935;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:bold}
 .live-bottom{padding:14px}
 
-.section-title{
-display:flex;justify-content:space-between;align-items:center;
-margin:8px 0 12px
-}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px}
 .section-title h2{margin:0;font-size:18px}
 
-.create-card{
-background:#fff;padding:14px;border-radius:18px;margin-bottom:14px;
-box-shadow:0 2px 8px rgba(0,0,0,.04)
-}
+.create-card{background:#fff;padding:14px;border-radius:18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .create-top{display:flex;gap:10px;align-items:center}
-.avatar-small{
-width:42px;height:42px;border-radius:50%;object-fit:cover;background:#ddd
-}
-.create-text{
-flex:1;border:0;background:#f1f3f5;border-radius:20px;
-padding:12px;outline:none
-}
+.avatar-small{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#ddd}
+.create-text{flex:1;border:0;background:#f1f3f5;border-radius:20px;padding:12px;outline:none}
 .create-options{display:flex;gap:8px;margin-top:12px}
-.create-options label,.create-options button{
-flex:1;border:0;background:#f1f3f5;border-radius:10px;
-padding:10px;text-align:center
-}
+.create-options label,.create-options button{flex:1;border:0;background:#f1f3f5;border-radius:10px;padding:10px;text-align:center}
 .create-options input{display:none}
 .post-btn{background:#111!important;color:#fff}
 
-.post{
-background:#fff;border-radius:18px;margin-bottom:14px;
-overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)
-}
-.post-head{
-padding:13px;display:flex;align-items:center;gap:10px
-}
+.post{background:#fff;border-radius:18px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.post-head{padding:13px;display:flex;align-items:center;gap:10px}
 .post-user{flex:1}
 .post-user strong{display:block}
 .post-time{font-size:11px;color:#888;margin-top:3px}
@@ -104,366 +61,128 @@ padding:13px;display:flex;align-items:center;gap:10px
 .post-body{padding:0 14px 12px}
 .post-image{width:100%;max-height:500px;object-fit:cover;display:block}
 .post-actions{display:flex;border-top:1px solid #eee}
-.post-actions button{
-flex:1;border:0;background:#fff;padding:12px 5px;font-size:14px
-}
+.post-actions button{flex:1;border:0;background:#fff;padding:12px 5px;font-size:14px}
 .post-actions button:active{background:#eee}
-
 .comment-box{display:none;padding:10px;border-top:1px solid #eee}
 .comment-row{display:flex;gap:7px}
-.comment-input{
-flex:1;border:1px solid #ddd;border-radius:18px;padding:9px 12px
-}
-.comment-send{
-border:0;border-radius:18px;padding:0 15px;background:#111;color:#fff
-}
-.comment-text{
-padding:8px 10px;background:#f2f3f5;border-radius:12px;
-margin-top:8px;font-size:14px
-}
+.comment-input{flex:1;border:1px solid #ddd;border-radius:18px;padding:9px 12px}
+.comment-send{border:0;border-radius:18px;padding:0 15px;background:#111;color:#fff}
+.comment-text{padding:8px 10px;background:#f2f3f5;border-radius:12px;margin-top:8px;font-size:14px}
 
-.profile-card{
-background:#fff;border-radius:20px;padding:20px;text-align:center
-}
-.profile-avatar{
-width:105px;height:105px;border-radius:50%;object-fit:cover;
-background:#ddd;border:4px solid #eee
-}
+.profile-card{background:#fff;border-radius:20px;padding:20px;text-align:center}
+.profile-avatar{width:105px;height:105px;border-radius:50%;object-fit:cover;background:#ddd;border:4px solid #eee}
 .profile-name{font-size:21px;font-weight:bold;margin:10px 0 3px}
 .profile-email{color:#777;font-size:13px}
 .profile-edit{margin-top:18px;text-align:left}
-.logout{
-margin-top:12px;width:100%;padding:12px;border:0;border-radius:12px;
-background:#e53935;color:#fff
-}
+.logout{margin-top:12px;width:100%;padding:12px;border:0;border-radius:12px;background:#e53935;color:#fff}
 
-.bottom-nav{
-position:fixed;bottom:0;left:0;right:0;height:68px;background:#fff;
-border-top:1px solid #ddd;display:flex;justify-content:center;z-index:200
-}
-.nav-inner{
-width:100%;max-width:650px;display:flex;justify-content:space-around
-}
-.nav-btn{
-flex:1;border:0;background:#fff;font-size:11px;color:#777
-}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:68px;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:center;z-index:200}
+.nav-inner{width:100%;max-width:650px;display:flex;justify-content:space-around}
+.nav-btn{flex:1;border:0;background:#fff;font-size:11px;color:#777}
 .nav-btn span{display:block;font-size:22px;margin-bottom:2px}
 .nav-btn.active{color:#111;font-weight:bold}
-.plus{
-width:48px;height:48px;border-radius:50%;background:#111;color:#fff;
-font-size:28px;line-height:48px;margin-top:-12px
-}
+.plus{width:48px;height:48px;border-radius:50%;background:#111;color:#fff;font-size:28px;line-height:48px;margin-top:-12px}
+.empty{text-align:center;padding:35px 15px;color:#888;background:#fff;border-radius:18px}
 
-.empty{
-text-align:center;padding:35px 15px;color:#888;
-background:#fff;border-radius:18px
-}
-
-/* CAMERA */
-.camera-box{
-background:#111;border-radius:18px;overflow:hidden;
-position:relative;display:flex;flex-direction:column
-}
-.video-wrap{
-position:relative;flex:1;background:#000
-}
-#camera{
-width:100%;display:block;aspect-ratio:9/16;
-max-height:70vh;object-fit:cover;background:#000
-}
+/* KAMERA */
+.camera-box{background:#111;border-radius:18px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.video-wrap{position:relative;flex:1;background:#000}
+#camera{width:100%;display:block;aspect-ratio:9/16;max-height:70vh;object-fit:cover;background:#000}
 .camera-info{color:#fff;padding:14px}
 .viewer-count{color:#bbb;font-size:13px}
 .camera-buttons{display:flex;gap:8px;margin-top:12px}
-.camera-buttons button{
-flex:1;padding:12px;border:0;border-radius:10px;font-weight:bold
-}
+.camera-buttons button{flex:1;padding:12px;border:0;border-radius:10px;font-weight:bold}
 .start-camera{background:#e53935;color:#fff}
 .stop-camera{background:#fff}
 
-.fs-btn{
-position:absolute;right:10px;bottom:10px;z-index:8;
-width:44px;height:44px;border:0;border-radius:50%;
-background:rgba(0,0,0,.6);color:#fff;font-size:22px;
-backdrop-filter:blur(6px);
-border:1px solid rgba(255,255,255,.25)
-}
+.fs-btn{position:absolute;right:10px;bottom:10px;z-index:8;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:22px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25)}
 .fs-btn:active{background:rgba(229,57,53,.9)}
-.flip-btn{right:62px}
 
-.camera-box:fullscreen{
-border-radius:0;width:100vw;height:100vh;background:#000
-}
-.camera-box:-webkit-full-screen{
-border-radius:0;width:100vw;height:100vh;background:#000
-}
+.camera-box:fullscreen{border-radius:0;width:100vw;height:100vh;background:#000}
+.camera-box:-webkit-full-screen{border-radius:0;width:100vw;height:100vh;background:#000}
 .camera-box:fullscreen .video-wrap{height:100%}
-.camera-box:fullscreen #camera,
-.camera-box:-webkit-full-screen #camera{
-width:100%;height:100%;max-height:none;
-aspect-ratio:auto;object-fit:cover
-}
-.camera-box:fullscreen .camera-info,
-.camera-box:-webkit-full-screen .camera-info{display:none}
+.camera-box:fullscreen #camera,.camera-box:-webkit-full-screen #camera{width:100%;height:100%;max-height:none;aspect-ratio:auto;object-fit:cover}
+.camera-box:fullscreen .camera-info,.camera-box:-webkit-full-screen .camera-info{display:none}
 
-.camera-box.pseudo-fs{
-position:fixed;z-index:9999;top:0;left:0;
-border-radius:0;background:#000;width:100vw;height:100vh;height:100dvh
-}
+.camera-box.pseudo-fs{position:fixed;z-index:9999;top:0;left:0;border-radius:0;background:#000;width:100vw;height:100vh;height:100dvh}
 .camera-box.pseudo-fs .video-wrap{height:100%}
-.camera-box.pseudo-fs #camera{
-width:100%;height:100%;max-height:none;
-aspect-ratio:auto;object-fit:cover
-}
+.camera-box.pseudo-fs #camera{width:100%;height:100%;max-height:none;aspect-ratio:auto;object-fit:cover}
 .camera-box.pseudo-fs .camera-info{display:none}
 
-.camera-box.rotate-fs,
-.camera-box.rotate-fs:fullscreen,
-.camera-box.rotate-fs:-webkit-full-screen{
-position:fixed!important;top:0!important;left:0!important;
-right:auto!important;bottom:auto!important;
-transform-origin:top left;
-transform:rotate(90deg) translateY(-100%)
+.camera-box.rotate-fs,.camera-box.rotate-fs:fullscreen,.camera-box.rotate-fs:-webkit-full-screen{
+position:fixed!important;top:0!important;left:0!important;right:auto!important;bottom:auto!important;
+transform-origin:top left;transform:rotate(90deg) translateY(-100%)
 }
-
 body.fs-lock{overflow:hidden}
 
-.toast{
-position:fixed;left:50%;bottom:90px;
-transform:translateX(-50%);
-background:#111;color:#fff;padding:10px 18px;
-border-radius:22px;font-size:14px;z-index:99999;
-box-shadow:0 4px 14px rgba(0,0,0,.3);
-max-width:90%;text-align:center
-}
-
-/* FULLSCREEN UI */
-.fs-ui{
-display:none;position:absolute;inset:0;z-index:7;pointer-events:none
-}
-.camera-box.pseudo-fs .fs-ui{display:block}
-
-.camera-box.pseudo-fs .fs-btn{
-bottom:auto;top:76px;right:10px
-}
+.flip-btn{right:62px}
 .camera-box.pseudo-fs .flip-btn{right:62px}
 
-.fs-chat{
-position:absolute;left:10px;bottom:60px;
-width:min(48%,330px);max-height:40%;overflow:hidden;
-display:flex;flex-direction:column;justify-content:flex-end;
-gap:4px
-}
-.chat-msg{
-background:rgba(0,0,0,.45);color:#fff;border-radius:12px;
-padding:5px 10px;font-size:13px;width:fit-content;
-max-width:100%;word-break:break-word
-}
+.rot-btn{display:none}
+.camera-box.pseudo-fs .rot-btn{display:block;right:114px}
+#camera.vrot{position:absolute;top:50%;left:50%;max-height:none;aspect-ratio:auto;object-fit:cover}
+
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 18px;border-radius:22px;font-size:14px;z-index:99999;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+
+.fs-ui{display:none;position:absolute;inset:0;z-index:7;pointer-events:none}
+.camera-box.pseudo-fs .fs-ui{display:block}
+.camera-box.pseudo-fs .fs-btn{bottom:auto;top:76px;right:10px}
+
+.fs-chat{position:absolute;left:10px;bottom:60px;width:min(48%,330px);max-height:40%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
+.chat-msg{background:rgba(0,0,0,.45);color:#fff;border-radius:12px;padding:5px 10px;font-size:13px;width:fit-content;max-width:100%;word-break:break-word}
 .chat-msg b{color:#ffd54f;margin-right:5px}
-.chat-msg.gift{
-background:linear-gradient(90deg,rgba(229,57,53,.88),rgba(255,152,0,.88))
-}
-
-.fs-bar{
-position:absolute;left:10px;right:10px;bottom:10px;
-display:flex;gap:6px;pointer-events:auto
-}
-.fs-bar input{
-flex:1;min-width:0;height:40px;
-border:1px solid rgba(255,255,255,.3);
-background:rgba(0,0,0,.55);color:#fff;border-radius:22px;
-padding:0 14px;outline:none;font-size:14px
-}
-.fs-bar button{
-width:40px;height:40px;flex:none;border-radius:50%;
-background:rgba(0,0,0,.6);color:#fff;font-size:18px;
-border:1px solid rgba(255,255,255,.25)
-}
-
-/* SCORE */
-.live-overlay{
-position:absolute;top:0;left:0;right:0;z-index:5;pointer-events:none
-}
-.scoreboard{
-margin:10px;background:rgba(0,0,0,.82);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,255,255,.12);
-border-radius:14px;padding:10px 12px;
-display:flex;align-items:center;justify-content:space-between;
-color:#fff
-}
-.sb-left,.sb-right{
-display:flex;align-items:center;gap:8px;flex:1
-}
-.sb-right{justify-content:flex-end}
-.team-name{
-font-weight:900;font-size:14px;text-transform:uppercase;
-letter-spacing:.5px;max-width:90px;white-space:nowrap;
-overflow:hidden;text-overflow:ellipsis
-}
-.score-num{
-font-weight:900;font-size:22px;min-width:28px;text-align:center;
-background:#fff;color:#111;border-radius:8px;padding:2px 6px
-}
-.sb-center{text-align:center;flex:0 0 110px}
-.match-time{font-weight:900;font-size:20px;letter-spacing:1px}
-.match-label{
-font-size:10px;color:#ff6b6b;font-weight:bold;letter-spacing:1px
-}
-.vs{font-size:11px;color:#aaa;margin:0 4px}
-.sb-live-badge{
-background:#e53935;color:#fff;font-size:10px;font-weight:900;
-padding:3px 7px;border-radius:20px;animation:pulse 1s infinite
-}
-@keyframes pulse{
-0%{opacity:1}50%{opacity:.6}100%{opacity:1}
-}
-
-.score-controls{
-background:#fff;border-radius:18px;padding:14px;margin-top:12px
-}
-.score-grid{
-display:grid;grid-template-columns:1fr 1fr;gap:10px
-}
-.score-input{
-padding:10px;border:1px solid #ddd;border-radius:10px;width:100%
-}
-.score-btn-row{display:flex;gap:6px;margin-top:8px}
-.score-btn-row button{
-flex:1;border:0;border-radius:10px;padding:10px;
-font-weight:bold;background:#111;color:#fff
-}
-.score-btn-row .minus{background:#eee;color:#111}
-.time-controls{display:flex;gap:8px;margin-top:12px}
-.time-controls button{
-flex:1;border:0;border-radius:10px;padding:11px;font-weight:bold
-}
-.time-start{background:#e53935;color:#fff}
-.time-pause{background:#111;color:#fff}
-.time-reset{background:#eee}
-
-/* PANEL FULLSCREEN */
-.fs-panel{
-position:absolute;right:10px;bottom:60px;
-width:min(310px,70%);max-height:70%;overflow:auto;
-background:rgba(0,0,0,.88);
-backdrop-filter:blur(10px);
-color:#fff;border-radius:14px;padding:11px;
-pointer-events:auto;
-border:1px solid rgba(255,255,255,.15)
-}
-.sp-title{
-font-size:12px;font-weight:bold;margin-bottom:9px;color:#ffd54f
-}
-.sp-row{
-display:flex;align-items:center;gap:6px;margin-bottom:8px
-}
-.sp-row input{
-flex:1;min-width:0;padding:8px;border-radius:8px;
-border:0;background:rgba(255,255,255,.15);
-color:#fff;font-size:13px
-}
-.sp-row button{
-width:34px;height:34px;flex:none;border:0;border-radius:8px;
-background:#fff;color:#111;font-weight:bold;font-size:15px
-}
-.sp-row .sp-num{
-min-width:26px;text-align:center;font-weight:900;font-size:18px
-}
+.chat-msg.gift{background:linear-gradient(90deg,rgba(229,57,53,.88),rgba(255,152,0,.88))}
+.fs-bar{position:absolute;left:10px;right:10px;bottom:10px;display:flex;gap:6px;pointer-events:auto}
+.fs-bar input{flex:1;min-width:0;height:40px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.55);color:#fff;border-radius:22px;padding:0 14px;outline:none;font-size:14px}
+.fs-bar button{width:40px;height:40px;flex:none;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:18px;border:1px solid rgba(255,255,255,.25)}
+.fs-panel{position:absolute;right:10px;bottom:60px;width:min(300px,62%);max-height:62%;overflow:auto;background:rgba(0,0,0,.84);backdrop-filter:blur(8px);color:#fff;border-radius:14px;padding:10px;pointer-events:auto;border:1px solid rgba(255,255,255,.15)}
+.sp-title{font-size:12px;font-weight:bold;margin-bottom:8px;color:#ffd54f}
+.sp-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.sp-row input{flex:1;min-width:0;padding:8px;border-radius:8px;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:13px}
+.sp-row button{width:34px;height:34px;flex:none;border:0;border-radius:8px;background:#fff;color:#111;font-weight:bold;font-size:15px}
+.sp-row .sp-num{min-width:26px;text-align:center;font-weight:900;font-size:18px}
 .sp-time{display:flex;gap:6px}
-.sp-time button{
-flex:1;border:0;border-radius:8px;padding:8px 0;
-font-weight:bold;font-size:12px;background:#fff;color:#111
-}
-
-/* GIFT */
-.gift-grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:7px
-}
-.gift-item{
-background:rgba(255,255,255,.12);
-border:1px solid rgba(255,255,255,.08);
-border-radius:10px;color:#fff;
-padding:7px 2px;font-size:11px
-}
-.gift-item span{display:block;font-size:27px}
-.gift-item small{
-display:block;color:#ffd54f;font-weight:bold;margin-top:2px
-}
-.gift-item:active{transform:scale(.96)}
-
-.gift-wallet{
-background:rgba(255,255,255,.09);
-border-radius:10px;padding:9px;margin-bottom:9px
-}
-.gift-wallet-top{
-display:flex;justify-content:space-between;align-items:center
-}
-.coin-value{
-font-size:18px;font-weight:900;color:#ffd54f
-}
-.demo-btn{
-margin-top:7px;width:100%;border:0;border-radius:8px;
-padding:8px;background:#fff;color:#111;font-weight:bold
-}
-
-.gift-total{
-margin-top:8px;padding:8px;border-radius:9px;
-background:rgba(255,255,255,.08);font-size:12px
-}
-.gift-total strong{color:#ffd54f}
-
-.gift-history{
-margin-top:8px;max-height:130px;overflow:auto
-}
-.gift-history-item{
-padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08);
-font-size:11px
-}
-.gift-history-item:last-child{border-bottom:0}
-
-.gift-fx{
-position:absolute;inset:0;overflow:hidden;pointer-events:none
-}
-.gift-pop{
-position:absolute;bottom:80px;font-size:56px;
-animation:giftUp 2.4s ease-out forwards;
-filter:drop-shadow(0 5px 8px rgba(0,0,0,.4))
-}
-.gift-value-pop{
-position:absolute;bottom:145px;
-font-size:18px;font-weight:900;color:#ffd54f;
-animation:valueUp 2.4s ease-out forwards;
-text-shadow:0 2px 5px #000
-}
+.sp-time button{flex:1;border:0;border-radius:8px;padding:8px 0;font-weight:bold;font-size:12px;background:#fff;color:#111}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gift-item{background:rgba(255,255,255,.12);border:0;border-radius:10px;color:#fff;padding:6px 2px;font-size:11px}
+.gift-item span{display:block;font-size:26px}
+.gift-fx{position:absolute;inset:0;overflow:hidden}
+.gift-pop{position:absolute;bottom:80px;font-size:56px;animation:giftUp 2.4s ease-out forwards}
 @keyframes giftUp{
 0%{transform:translateY(0) scale(.4);opacity:0}
 15%{opacity:1;transform:translateY(-30px) scale(1.2)}
 100%{transform:translateY(-230px) scale(1);opacity:0}
 }
-@keyframes valueUp{
-0%{transform:translateY(0) scale(.7);opacity:0}
-20%{opacity:1}
-100%{transform:translateY(-230px) scale(1.1);opacity:0}
-}
 
-/* ROTATE */
-.rot-btn{display:none}
-.camera-box.pseudo-fs .rot-btn{
-display:block;right:114px
-}
-#camera.vrot{
-position:absolute;top:50%;left:50%;
-max-height:none;aspect-ratio:auto;object-fit:cover
-}
+/* SCOREBOARD */
+.live-overlay{position:absolute;top:0;left:0;right:0;z-index:5;pointer-events:none}
+.scoreboard{margin:10px;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;color:#fff}
+.sb-left,.sb-right{display:flex;align-items:center;gap:8px;flex:1}
+.sb-right{justify-content:flex-end}
+.team-name{font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.5px;max-width:90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-num{font-weight:900;font-size:22px;min-width:28px;text-align:center;background:#fff;color:#111;border-radius:8px;padding:2px 6px}
+.sb-center{text-align:center;flex:0 0 110px}
+.match-time{font-weight:900;font-size:20px;letter-spacing:1px}
+.match-label{font-size:10px;color:#ff6b6b;font-weight:bold;letter-spacing:1px}
+.vs{font-size:11px;color:#aaa;margin:0 4px}
+.sb-live-badge{background:#e53935;color:#fff;font-size:10px;font-weight:900;padding:3px 7px;border-radius:20px;animation:pulse 1s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.6}100%{opacity:1}}
+
+.score-controls{background:#fff;border-radius:18px;padding:14px;margin-top:12px}
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.score-input{padding:10px;border:1px solid #ddd;border-radius:10px;width:100%}
+.score-btn-row{display:flex;gap:6px;margin-top:8px}
+.score-btn-row button{flex:1;border:0;border-radius:10px;padding:10px;font-weight:bold;background:#111;color:#fff}
+.score-btn-row .minus{background:#eee;color:#111}
+.time-controls{display:flex;gap:8px;margin-top:12px}
+.time-controls button{flex:1;border:0;border-radius:10px;padding:11px;font-weight:bold}
+.time-start{background:#e53935;color:#fff}
+.time-pause{background:#111;color:#fff}
+.time-reset{background:#eee}
 
 @media(max-width:420px){
 .logo{font-size:18px}
 .page{padding:10px}
-.scoreboard{padding:8px}
-.team-name{font-size:11px}
-.score-num{font-size:19px}
-.sb-center{flex-basis:80px}
-.match-time{font-size:17px}
 }
 </style>
 </head>
@@ -483,11 +202,13 @@ max-height:none;aspect-ratio:auto;object-fit:cover
 <h1>social live.IF</h1>
 <p>Masuk untuk menggunakan aplikasi</p>
 
-<input id="email" class="field" type="email" placeholder="Email">
-<input id="password" class="field" type="password" placeholder="Password">
+<input id="email" class="field" type="email" autocomplete="email" placeholder="Email">
 
-<button class="main-btn" onclick="loginUser()">MASUK</button>
-<button class="secondary-btn" onclick="registerUser()">DAFTAR AKUN</button>
+<input id="password" class="field" type="password" autocomplete="current-password" placeholder="Password">
+
+<button id="loginBtn" class="main-btn" onclick="loginUser()">MASUK</button>
+
+<button id="registerBtn" class="secondary-btn" onclick="registerUser()">DAFTAR AKUN</button>
 
 <div id="loginMessage" class="message"></div>
 </div>
@@ -508,10 +229,7 @@ max-height:none;aspect-ratio:auto;object-fit:cover
 </div>
 
 <div class="create-options">
-<label>
-📷 Foto
-<input id="postPhoto" type="file" accept="image/*">
-</label>
+<label>📷 Foto<input id="postPhoto" type="file" accept="image/*"></label>
 <button class="post-btn" onclick="addPost()">POST</button>
 </div>
 </div>
@@ -527,10 +245,7 @@ Mulai siaran langsung dari menu Live
 </div>
 
 <div class="live-bottom">
-<button
-class="start-live"
-style="width:100%;border:0;border-radius:10px;padding:12px;background:#e53935;color:#fff;font-weight:bold"
-onclick="showPage('live')">
+<button style="width:100%;border:0;border-radius:10px;padding:12px;background:#e53935;color:#fff;font-weight:bold;" onclick="showPage('live')">
 📹 Buka Live
 </button>
 </div>
@@ -544,17 +259,11 @@ onclick="showPage('live')">
 
 </section>
 
-
 <section id="live" class="page">
 
 <div class="section-title">
 <h2>🔴 Live Streaming</h2>
-
-<button
-onclick="toggleScoreboard()"
-style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px">
-⚙️ Atur Score
-</button>
+<button onclick="toggleScoreboard()" style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px;">⚙️ Atur Score</button>
 </div>
 
 <div class="camera-box" id="cameraBox">
@@ -564,7 +273,6 @@ style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;f
 <video id="camera" autoplay muted playsinline></video>
 
 <div class="live-overlay">
-
 <div class="scoreboard">
 
 <div class="sb-left">
@@ -587,23 +295,9 @@ style="border:0;background:#111;color:#fff;padding:8px 12px;border-radius:20px;f
 </div>
 </div>
 
-
 <button id="fsBtn" class="fs-btn" onclick="toggleFullscreen()" title="Layar penuh">⛶</button>
-
-<button
-class="fs-btn flip-btn"
-onclick="flipCamera()"
-title="Ganti kamera depan/belakang">
-🔄
-</button>
-
-<button
-class="fs-btn rot-btn"
-onclick="rotateVideo()"
-title="Putar gambar kamera 90°">
-↻
-</button>
-
+<button class="fs-btn flip-btn" onclick="flipCamera()" title="Ganti kamera depan/belakang">🔄</button>
+<button class="fs-btn rot-btn" onclick="rotateVideo()" title="Putar gambar kamera 90°">↻</button>
 
 <div class="fs-ui">
 
@@ -611,29 +305,19 @@ title="Putar gambar kamera 90°">
 
 <div id="fsChat" class="fs-chat"></div>
 
-
-<!-- PANEL SKOR -->
 <div id="fsScorePanel" class="fs-panel" style="display:none">
 
-<div class="sp-title">
-⚙️ EDIT SKOR &amp; WAKTU
-</div>
+<div class="sp-title">⚙️ EDIT SKOR &amp; WAKTU</div>
 
 <div class="sp-row">
-<input
-id="fsTeamA"
-placeholder="Tim A"
-oninput="setTeamName('A',this.value)">
+<input id="fsTeamA" placeholder="Tim A" oninput="setTeamName('A',this.value)">
 <button onclick="changeScore('A',-1)">−</button>
 <span id="fsScoreA" class="sp-num">0</span>
 <button onclick="changeScore('A',1)">+</button>
 </div>
 
 <div class="sp-row">
-<input
-id="fsTeamB"
-placeholder="Tim B"
-oninput="setTeamName('B',this.value)">
+<input id="fsTeamB" placeholder="Tim B" oninput="setTeamName('B',this.value)">
 <button onclick="changeScore('B',-1)">−</button>
 <span id="fsScoreB" class="sp-num">0</span>
 <button onclick="changeScore('B',1)">+</button>
@@ -647,135 +331,57 @@ oninput="setTeamName('B',this.value)">
 
 </div>
 
-
-<!-- PANEL GIFT -->
 <div id="fsGiftPanel" class="fs-panel" style="display:none">
-
-<div class="sp-title">
-🎁 GIFT LIVE
-</div>
-
-<div class="gift-wallet">
-
-<div class="gift-wallet-top">
-<span>🪙 Saldo demo</span>
-<span id="coinBalance" class="coin-value">1.000</span>
-</div>
-
-<button class="demo-btn" onclick="addDemoCoins()">
-＋ Tambah 1.000 Koin Demo
-</button>
-
-</div>
-
-<div class="gift-total">
-Total gift:
-<strong><span id="giftTotalCoins">0</span> koin</strong>
-</div>
-
-<div class="gift-total">
-Host 50%:
-<strong><span id="hostGiftCoins">0</span> koin</strong>
-</div>
-
-<div class="gift-total">
-Platform 50%:
-<strong><span id="platformGiftCoins">0</span> koin</strong>
-</div>
-
+<div class="sp-title">🎁 KIRIM GIFT</div>
 <div id="giftGrid" class="gift-grid"></div>
-
-<div class="gift-history" id="giftHistory"></div>
-
 </div>
 
-
-<!-- BAR CHAT -->
 <div class="fs-bar">
-
-<input
-id="fsChatInput"
-placeholder="Tulis komentar..."
-onkeydown="if(event.key==='Enter')sendChat()">
-
+<input id="fsChatInput" placeholder="Tulis komentar..." onkeydown="if(event.key==='Enter')sendChat()">
 <button onclick="sendChat()" title="Kirim">➤</button>
-
 <button onclick="togglePanel('score')" title="Edit skor">⚙️</button>
-
 <button onclick="togglePanel('gift')" title="Gift">🎁</button>
-
 </div>
 
 </div>
 </div>
-
 
 <div class="camera-info">
-
 <strong>social live.IF</strong>
-
 <div class="viewer-count">
-👁 <span id="viewerNum">0</span>
-penonton •
+👁 <span id="viewerNum">0</span> penonton •
 <span id="liveTimerStatus">Siap</span>
 </div>
 
 <div class="camera-buttons">
-
-<button
-class="start-camera"
-onclick="startCamera()">
-🔴 MULAI LIVE
-</button>
-
-<button
-class="stop-camera"
-onclick="stopCamera()">
-⏹ AKHIRI
-</button>
-
+<button class="start-camera" onclick="startCamera()">🔴 MULAI LIVE</button>
+<button class="stop-camera" onclick="stopCamera()">⏹ AKHIRI</button>
 </div>
 </div>
 
 </div>
-
 
 <div id="scoreControls" class="score-controls">
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
 <strong>🏆 Kontrol Pertandingan Live</strong>
-<span style="font-size:11px;color:#888;">
-Tampil di layar kamera
-</span>
+<span style="font-size:11px;color:#888;">Tampil di layar kamera</span>
 </div>
 
 <div class="score-grid">
 
 <div>
 <label style="font-size:12px;font-weight:bold;">TIM A</label>
-
-<input
-id="teamAInput"
-class="score-input"
-value="TIM A"
-oninput="updateScoreboard()">
-
+<input id="teamAInput" class="score-input" value="TIM A" oninput="updateScoreboard()">
 <div class="score-btn-row">
 <button class="minus" onclick="changeScore('A',-1)">-1</button>
 <button onclick="changeScore('A',1)">+1</button>
 </div>
 </div>
 
-
 <div>
 <label style="font-size:12px;font-weight:bold;">TIM B</label>
-
-<input
-id="teamBInput"
-class="score-input"
-value="TIM B"
-oninput="updateScoreboard()">
-
+<input id="teamBInput" class="score-input" value="TIM B" oninput="updateScoreboard()">
 <div class="score-btn-row">
 <button class="minus" onclick="changeScore('B',-1)">-1</button>
 <button onclick="changeScore('B',1)">+1</button>
@@ -784,52 +390,24 @@ oninput="updateScoreboard()">
 
 </div>
 
-
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
 
 <div>
 <label style="font-size:12px;font-weight:bold;">Skor A</label>
-<input
-id="scoreAInput"
-class="score-input"
-type="number"
-value="0"
-oninput="updateScoreboard()">
+<input id="scoreAInput" class="score-input" type="number" value="0" oninput="updateScoreboard()">
 </div>
 
 <div>
 <label style="font-size:12px;font-weight:bold;">Skor B</label>
-<input
-id="scoreBInput"
-class="score-input"
-type="number"
-value="0"
-oninput="updateScoreboard()">
+<input id="scoreBInput" class="score-input" type="number" value="0" oninput="updateScoreboard()">
 </div>
 
 </div>
-
 
 <div class="time-controls">
-
-<button
-class="time-start"
-onclick="startMatchTimer()">
-▶️ Mulai Waktu
-</button>
-
-<button
-class="time-pause"
-onclick="pauseMatchTimer()">
-⏸ Jeda
-</button>
-
-<button
-class="time-reset"
-onclick="resetMatchTimer()">
-🔄 Reset
-</button>
-
+<button class="time-start" onclick="startMatchTimer()">▶️ Mulai Waktu</button>
+<button class="time-pause" onclick="pauseMatchTimer()">⏸ Jeda</button>
+<button class="time-reset" onclick="resetMatchTimer()">🔄 Reset</button>
 </div>
 
 </div>
@@ -839,7 +417,6 @@ Kamera belum dimulai.
 </div>
 
 </section>
-
 
 <section id="create" class="page">
 
@@ -851,96 +428,56 @@ Kamera belum dimulai.
 
 <img id="createAvatar" class="avatar-small" alt="avatar">
 
-<textarea
-id="bigStatus"
-class="field"
-style="height:130px;margin-top:12px;"
-placeholder="Tulis sesuatu..."></textarea>
+<textarea id="bigStatus" class="field" style="height:130px;margin-top:12px;" placeholder="Tulis sesuatu..."></textarea>
 
-<label
-style="display:block;background:#f1f3f5;padding:13px;border-radius:12px;text-align:center;margin-bottom:10px;">
+<label style="display:block;background:#f1f3f5;padding:13px;border-radius:12px;text-align:center;margin-bottom:10px;">
 📷 Pilih Foto
-<input
-id="bigPhoto"
-type="file"
-accept="image/*"
-style="display:none;">
+<input id="bigPhoto" type="file" accept="image/*" style="display:none;">
 </label>
 
-<button class="main-btn" onclick="addBigPost()">
-TERBITKAN POSTINGAN
-</button>
+<button class="main-btn" onclick="addBigPost()">TERBITKAN POSTINGAN</button>
 
 </div>
-
 </section>
-
 
 <section id="notifications" class="page">
-
-<div class="section-title">
-<h2>🔔 Notifikasi</h2>
-</div>
-
-<div class="empty">
-Belum ada notifikasi.
-</div>
-
+<div class="section-title"><h2>🔔 Notifikasi</h2></div>
+<div class="empty">Belum ada notifikasi.</div>
 </section>
-
 
 <section id="profile" class="page">
 
 <div class="profile-card">
 
-<img
-id="profileAvatar"
-class="profile-avatar"
-alt="profile">
+<img id="profileAvatar" class="profile-avatar" alt="profile">
 
-<div id="profileName" class="profile-name">
-Ifan
-</div>
-
+<div id="profileName" class="profile-name">Ifan</div>
 <div id="profileEmail" class="profile-email"></div>
 
 <div class="profile-edit">
 
-<input
-id="nameInput"
-class="field"
-placeholder="Nama"
-onchange="saveProfile(true)">
+<input id="nameInput" class="field" placeholder="Nama" onchange="saveProfile(true)">
 
-<label
-style="display:block;border:1px solid #ddd;padding:12px;border-radius:12px;text-align:center;margin-bottom:10px;">
+<label style="display:block;border:1px solid #ddd;padding:12px;border-radius:12px;text-align:center;margin-bottom:10px;">
 📷 Ganti foto profil
-<input
-id="avatarInput"
-type="file"
-accept="image/*"
-style="display:none;"
-onchange="autoSaveAvatar(this)">
+<input id="avatarInput" type="file" accept="image/*" style="display:none;" onchange="autoSaveAvatar(this)">
 </label>
 
-<button class="main-btn" onclick="saveProfile()">
-SIMPAN PROFIL
-</button>
+<button class="main-btn" onclick="saveProfile()">SIMPAN PROFIL</button>
 
-<button class="logout" onclick="logoutUser()">
-KELUAR
+<button class="logout" onclick="logoutUser()">KELUAR</button>
+
+<button class="secondary-btn" onclick="downloadApp()" style="margin-top:12px;">
+⬇️ DOWNLOAD APK (PWA)
 </button>
 
 </div>
 </div>
-
 </section>
 
 </div>
 
-
 <div id="bottomNav" class="bottom-nav" style="display:none;">
-
 <div class="nav-inner">
 
 <button class="nav-btn active" onclick="showPage('home')">
@@ -966,20 +503,25 @@ KELUAR
 </div>
 </div>
 
-
 <script type="module">
 
-import {
-initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+/* =========================================================
+   FIREBASE
+   ========================================================= */
+
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
 getAuth,
 createUserWithEmailAndPassword,
 signInWithEmailAndPassword,
 onAuthStateChanged,
-signOut
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+signOut,
+setPersistence,
+browserLocalPersistence
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
 getFirestore,
@@ -996,95 +538,164 @@ orderBy,
 limit,
 setDoc,
 getDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* FIREBASE */
-
+/* KONFIGURASI FIREBASE PROJECT FAN */
 const firebaseConfig={
 apiKey:"AIzaSyBHLDNKvxJ_8cibdyJ4xhQWBmeUV4Wo1oE",
 authDomain:"ifan-social-web.firebaseapp.com",
 projectId:"ifan-social-web"
 };
 
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getFirestore(app);
+
+let app;
+let auth;
+let db;
+let firebaseReady=false;
 
 
-/* GLOBAL */
+/* =========================================================
+   PESAN ERROR FIREBASE
+   ========================================================= */
 
-let posts=[];
-let profile={name:"Ifan",avatar:""};
+function firebaseErrorMessage(e){
 
-let cameraStream=null;
+const code=e&&e.code?String(e.code):"";
+const raw=e&&e.message?String(e.message):"Kesalahan tidak diketahui.";
 
-let matchSeconds=0;
-let matchInterval=null;
-let isMatchRunning=false;
+const messages={
+"auth/invalid-email":"Format email tidak benar.",
+"auth/missing-password":"Password belum diisi.",
+"auth/invalid-credential":"Email atau password salah.",
+"auth/invalid-login-credentials":"Email atau password salah.",
+"auth/user-not-found":"Akun dengan email tersebut tidak ditemukan.",
+"auth/wrong-password":"Password salah.",
+"auth/email-already-in-use":"Email tersebut sudah terdaftar.",
+"auth/weak-password":"Password terlalu lemah. Gunakan minimal 6 karakter.",
+"auth/too-many-requests":"Terlalu banyak percobaan. Tunggu beberapa saat lalu coba lagi.",
+"auth/network-request-failed":"Koneksi internet bermasalah. Periksa internet lalu coba lagi.",
+"auth/operation-not-allowed":"Login Email/Password belum diaktifkan di Firebase Authentication.",
+"auth/unauthorized-domain":"Alamat website GitHub ini belum diizinkan di Firebase Authentication.",
+"auth/internal-error":"Firebase mengalami kesalahan internal.",
+"auth/app-not-authorized":"Aplikasi ini belum diizinkan oleh Firebase.",
+"auth/configuration-not-found":"Konfigurasi Authentication Firebase belum lengkap.",
+"auth/api-key-not-valid":"API Key Firebase tidak valid.",
+"auth/project-not-found":"Project Firebase tidak ditemukan."
+};
 
-let viewerCount=0;
-let viewerInterval=null;
+return (messages[code]||raw)+"\n\nKode: "+(code||"tidak diketahui");
+
+}
 
 
-/* GIFT */
+/* =========================================================
+   INISIALISASI FIREBASE DENGAN ERROR YANG JELAS
+   ========================================================= */
 
-const START_COINS=1000;
+try{
 
-let coinBalance=START_COINS;
-let giftTotal=0;
-let hostGift=0;
-let platformGift=0;
-let giftHistory=[];
+app=initializeApp(firebaseConfig);
+auth=getAuth(app);
+db=getFirestore(app);
+
+firebaseReady=true;
+
+/*
+   Membuat sesi login tetap tersimpan di browser.
+*/
+setPersistence(auth,browserLocalPersistence)
+.catch(e=>{
+console.warn("Persistence Firebase:",e);
+});
+
+}catch(e){
+
+console.error("Firebase initialization error:",e);
+
+const msg=document.getElementById("loginMessage");
+
+if(msg){
+msg.textContent=
+"Firebase gagal dimuat.\n"+
+firebaseErrorMessage(e);
+}
+
+}
 
 
-/* PLACEHOLDER */
-
-const PLACEHOLDER=
-"data:image/svg+xml;utf8="+
-encodeURIComponent(
-'<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150">'+
-'<rect width="150" height="150" fill="#ddd"/>'+
-'<circle cx="75" cy="58" r="26" fill="#aaa"/>'+
-'<rect x="30" y="95" width="90" height="55" rx="30" fill="#aaa"/>'+
-'</svg>'
-);
-
+/* =========================================================
+   UTILITAS
+   ========================================================= */
 
 function $(id){
 return document.getElementById(id);
 }
 
+function showLoginMessage(text,ok=false){
+
+const el=$("loginMessage");
+
+if(!el)return;
+
+el.textContent=text;
+el.className="message"+(ok?" ok":"");
+
+}
+
+function setLoginButtons(disabled){
+
+const a=$("loginBtn");
+const b=$("registerBtn");
+
+if(a){
+a.disabled=disabled;
+a.style.opacity=disabled?".6":"1";
+}
+
+if(b){
+b.disabled=disabled;
+b.style.opacity=disabled?".6":"1";
+}
+
+}
+
+function readImage(file){
+
+return new Promise((res,rej)=>{
+
+if(!file){
+res("");
+return;
+}
+
+const r=new FileReader();
+
+r.onload=e=>res(e.target.result);
+r.onerror=rej;
+
+r.readAsDataURL(file);
+
+});
+
+}
 
 function esc(t){
+
 return String(t||"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
-}
-
-
-function showToast(msg){
-
-const t=document.createElement("div");
-
-t.className="toast";
-t.textContent=msg;
-
-document.body.appendChild(t);
-
-setTimeout(()=>{
-t.remove();
-},2200);
 
 }
 
 
-/* =========================
-NAVIGASI
-========================= */
+/* =========================================================
+   NAVIGASI
+   ========================================================= */
 
 window.showPage=function(page){
 
@@ -1092,8 +703,7 @@ if(page!=="live"){
 exitFullscreen();
 }
 
-document
-.querySelectorAll(".page")
+document.querySelectorAll(".page")
 .forEach(p=>p.classList.remove("active"));
 
 const target=$(page);
@@ -1102,8 +712,7 @@ if(target){
 target.classList.add("active");
 }
 
-document
-.querySelectorAll(".nav-btn")
+document.querySelectorAll(".nav-btn")
 .forEach(b=>b.classList.remove("active"));
 
 const map={
@@ -1115,28 +724,31 @@ profile:4
 };
 
 if(map[page]!=null){
-document
-.querySelectorAll(".nav-btn")[map[page]]
-.classList.add("active");
+
+const nav=document.querySelectorAll(".nav-btn");
+
+if(nav[map[page]]){
+nav[map[page]].classList.add("active");
+}
+
 }
 
 };
 
 
-/* =========================
-FULLSCREEN
-========================= */
+/* =========================================================
+   FULLSCREEN
+   ========================================================= */
 
 const box=$("cameraBox");
 const fsBtn=$("fsBtn");
 
 let usedDocFs=false;
+let vRot=0;
 
 function isFs(){
 return box.classList.contains("pseudo-fs");
 }
-
-let vRot=0;
 
 function applyVideoRot(){
 
@@ -1155,7 +767,6 @@ return;
 
 const W=wrap.clientWidth;
 const H=wrap.clientHeight;
-
 const swap=vRot%180!==0;
 
 v.classList.add("vrot");
@@ -1168,46 +779,40 @@ v.style.transform=
 
 }
 
-
 window.rotateVideo=function(){
 
 vRot=(vRot+90)%360;
 
 applyVideoRot();
 
-showToast(
-"Gambar kamera diputar "+vRot+"°"
-);
+showToast("Gambar kamera diputar "+vRot+"°");
 
 };
-
 
 function setFsUI(on){
 
 fsBtn.textContent=on?"✕":"⛶";
 
-fsBtn.title=
-on?"Keluar layar penuh":"Layar penuh";
+fsBtn.title=on?
+"Keluar layar penuh":
+"Layar penuh";
 
-document.body.classList.toggle(
-"fs-lock",
-on
-);
+document.body.classList.toggle("fs-lock",on);
 
 applyVideoRot();
 
 }
 
-
 function applyRotation(){
 
 if(!isFs()){
+
 clearRotation();
 return;
+
 }
 
-const portrait=
-window.innerHeight>window.innerWidth;
+const portrait=window.innerHeight>window.innerWidth;
 
 if(portrait){
 
@@ -1229,7 +834,6 @@ applyVideoRot();
 
 }
 
-
 function clearRotation(){
 
 box.classList.remove("rotate-fs");
@@ -1238,7 +842,6 @@ box.style.width="";
 box.style.height="";
 
 }
-
 
 async function enterFullscreen(){
 
@@ -1253,60 +856,74 @@ const de=document.documentElement;
 if(de.requestFullscreen){
 
 await de.requestFullscreen();
-
 usedDocFs=true;
 
-}
-
-else if(de.webkitRequestFullscreen){
+}else if(de.webkitRequestFullscreen){
 
 de.webkitRequestFullscreen();
-
 usedDocFs=true;
 
 }
 
-}catch(e){}
+}catch(e){
+
+console.warn("Fullscreen:",e);
+
+}
 
 try{
 
 if(screen.orientation&&screen.orientation.lock){
-
 await screen.orientation.lock("landscape");
-
 }
 
 }catch(e){}
 
-setTimeout(
-applyRotation,
-350
-);
+setTimeout(applyRotation,350);
 
 }
 
+window.addEventListener("resize",()=>{
+
+if(isFs()){
+setTimeout(applyRotation,150);
+}
+
+});
+
+window.addEventListener("orientationchange",()=>{
+
+if(isFs()){
+setTimeout(applyRotation,350);
+}
+
+});
 
 function exitFullscreen(){
 
 clearRotation();
 
+if(box.classList.contains("pseudo-fs")){
 box.classList.remove("pseudo-fs");
+}
 
-if(
-document.fullscreenElement &&
-document.exitFullscreen
-){
+if(document.fullscreenElement&&document.exitFullscreen){
 
 document.exitFullscreen().catch(()=>{});
+
+}else if(
+document.webkitFullscreenElement&&
+document.webkitExitFullscreen
+){
+
+document.webkitExitFullscreen();
 
 }
 
 try{
 
 if(screen.orientation&&screen.orientation.unlock){
-
 screen.orientation.unlock();
-
 }
 
 }catch(e){}
@@ -1314,7 +931,6 @@ screen.orientation.unlock();
 setFsUI(false);
 
 }
-
 
 window.toggleFullscreen=function(){
 
@@ -1326,38 +942,78 @@ enterFullscreen();
 
 };
 
+["fullscreenchange","webkitfullscreenchange"]
+.forEach(ev=>{
 
-window.addEventListener(
-"resize",
-()=>{
-if(isFs()){
-setTimeout(applyRotation,150);
-}
-}
-);
+document.addEventListener(ev,()=>{
 
-window.addEventListener(
-"orientationchange",
-()=>{
-if(isFs()){
+if(
+!document.fullscreenElement&&
+!document.webkitFullscreenElement
+){
+
+if(usedDocFs&&isFs()){
+
+usedDocFs=false;
+exitFullscreen();
+
+}
+
+}else{
+
 setTimeout(applyRotation,350);
+
 }
+
+});
+
+});
+
+document.addEventListener("keydown",e=>{
+
+if(
+e.key==="Escape"&&
+box.classList.contains("pseudo-fs")
+){
+
+exitFullscreen();
+
 }
-);
+
+});
 
 
-/* =========================
-PROFILE
-========================= */
+/* =========================================================
+   PROFIL
+   ========================================================= */
 
 const LEGACY_KEY="social_live_if_profile";
 
-const pKey=()=>
-LEGACY_KEY+
-(auth.currentUser?
-"_"+auth.currentUser.uid:
-"");
+const pKey=()=>{
 
+return LEGACY_KEY+
+(auth.currentUser?
+"_"+auth.currentUser.uid:"");
+
+};
+
+function showToast(msg){
+
+const t=document.createElement("div");
+
+t.className="toast";
+t.textContent=msg;
+
+document.body.appendChild(t);
+
+setTimeout(()=>t.remove(),2200);
+
+}
+
+let profile={
+name:"Ifan",
+avatar:""
+};
 
 function loadLocalProfile(){
 
@@ -1373,9 +1029,7 @@ localStorage.getItem(pKey())||
 localStorage.getItem(LEGACY_KEY);
 
 if(s){
-
 profile=JSON.parse(s);
-
 }
 
 }catch(e){}
@@ -1383,7 +1037,6 @@ profile=JSON.parse(s);
 updateProfileUI();
 
 }
-
 
 async function persistProfile(){
 
@@ -1396,16 +1049,12 @@ JSON.stringify(profile)
 
 }catch(e){}
 
-if(auth.currentUser){
+if(auth&&auth.currentUser){
 
 try{
 
 await setDoc(
-doc(
-db,
-"users",
-auth.currentUser.uid
-),
+doc(db,"users",auth.currentUser.uid),
 {
 profile:{
 name:profile.name||"Ifan",
@@ -1415,31 +1064,31 @@ avatar:profile.avatar||""
 {merge:true}
 );
 
-}catch(e){}
+}catch(e){
+
+console.warn("Profil Firestore:",e);
 
 }
 
 }
 
+}
 
 async function loadRemoteProfile(){
 
-if(!auth.currentUser)return;
+if(!auth||!auth.currentUser)return;
 
 try{
 
 const s=
 await getDoc(
-doc(
-db,
-"users",
-auth.currentUser.uid
-)
+doc(db,"users",auth.currentUser.uid)
 );
 
 const p=
 s.exists()?
-s.data().profile:null;
+s.data().profile:
+null;
 
 if(p){
 
@@ -1461,10 +1110,13 @@ updateProfileUI();
 
 }
 
-}catch(e){}
+}catch(e){
+
+console.warn("Load profile:",e);
 
 }
 
+}
 
 function compressImage(file,max,q){
 
@@ -1483,15 +1135,16 @@ r.onload=e=>{
 
 const img=new Image();
 
-img.onerror=
-()=>res(e.target.result);
+img.onerror=()=>{
+res(e.target.result);
+};
 
 img.onload=()=>{
 
-const k=Math.min(
+const k=
+Math.min(
 1,
-max/
-Math.max(
+max/Math.max(
 img.width,
 img.height
 )
@@ -1509,10 +1162,7 @@ c.getContext("2d")
 .drawImage(img,0,0,w,h);
 
 res(
-c.toDataURL(
-"image/jpeg",
-q
-)
+c.toDataURL("image/jpeg",q)
 );
 
 };
@@ -1527,6 +1177,11 @@ r.readAsDataURL(file);
 
 }
 
+const PLACEHOLDER=
+"data:image/svg+xml;utf8,"+
+encodeURIComponent(
+'<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><rect width="150" height="150" fill="#ddd"/><circle cx="75" cy="58" r="26" fill="#aaa"/><rect x="30" y="95" width="90" height="55" rx="30" fill="#aaa"/></svg>'
+);
 
 function updateProfileUI(){
 
@@ -1536,7 +1191,7 @@ profile.name||"Ifan";
 $("nameInput").value=
 profile.name||"Ifan";
 
-if(auth.currentUser){
+if(auth&&auth.currentUser){
 
 $("profileEmail").textContent=
 auth.currentUser.email||"";
@@ -1552,7 +1207,6 @@ $("homeAvatar").src=a;
 $("createAvatar").src=a;
 
 }
-
 
 window.saveProfile=async function(silent){
 
@@ -1605,9 +1259,7 @@ e.message
 
 };
 
-
-window.autoSaveAvatar=
-async function(input){
+window.autoSaveAvatar=async function(input){
 
 const file=
 input.files&&
@@ -1636,9 +1288,7 @@ updateProfileUI();
 
 await persistProfile();
 
-showToast(
-"Foto profil tersimpan ✓"
-);
+showToast("Foto profil tersimpan ✓");
 
 }catch(e){
 
@@ -1654,12 +1304,21 @@ input.value="";
 };
 
 
-/* =========================
-AUTH
-========================= */
+/* =========================================================
+   AUTH — BAGIAN YANG DIPERBAIKI
+   ========================================================= */
 
-window.registerUser=
-async function(){
+window.registerUser=async function(){
+
+if(!firebaseReady){
+
+showLoginMessage(
+"Firebase belum siap. Muat ulang halaman lalu coba lagi."
+);
+
+return;
+
+}
 
 const email=
 $("email").value.trim();
@@ -1667,23 +1326,47 @@ $("email").value.trim();
 const password=
 $("password").value;
 
-$("loginMessage").textContent="";
+showLoginMessage("");
 
-if(!email||!password){
+if(!email){
 
-$("loginMessage").textContent=
-"Isi email dan password.";
+showLoginMessage(
+"Isi email terlebih dahulu."
+);
+
+$("email").focus();
 
 return;
+
+}
+
+if(!password){
+
+showLoginMessage(
+"Isi password terlebih dahulu."
+);
+
+$("password").focus();
+
+return;
+
 }
 
 if(password.length<6){
 
-$("loginMessage").textContent=
-"Password minimal 6 karakter.";
+showLoginMessage(
+"Password minimal 6 karakter."
+);
 
 return;
+
 }
+
+setLoginButtons(true);
+
+showLoginMessage(
+"Membuat akun..."
+);
 
 try{
 
@@ -1693,21 +1376,42 @@ email,
 password
 );
 
-$("loginMessage").textContent=
-"Akun berhasil dibuat.";
+showLoginMessage(
+"Akun berhasil dibuat. Membuka aplikasi...",
+true
+);
 
 }catch(e){
 
-$("loginMessage").textContent=
-e.message;
+console.error(
+"REGISTER ERROR:",
+e
+);
+
+showLoginMessage(
+firebaseErrorMessage(e)
+);
+
+}finally{
+
+setLoginButtons(false);
 
 }
 
 };
 
 
-window.loginUser=
-async function(){
+window.loginUser=async function(){
+
+if(!firebaseReady){
+
+showLoginMessage(
+"Firebase belum siap. Muat ulang halaman lalu coba lagi."
+);
+
+return;
+
+}
 
 const email=
 $("email").value.trim();
@@ -1715,15 +1419,48 @@ $("email").value.trim();
 const password=
 $("password").value;
 
-if(!email||!password){
+showLoginMessage("");
 
-$("loginMessage").textContent=
-"Isi email dan password.";
+if(!email){
+
+showLoginMessage(
+"Isi email terlebih dahulu."
+);
+
+$("email").focus();
 
 return;
+
 }
 
+if(!password){
+
+showLoginMessage(
+"Isi password terlebih dahulu."
+);
+
+$("password").focus();
+
+return;
+
+}
+
+setLoginButtons(true);
+
+showLoginMessage(
+"Sedang masuk..."
+);
+
 try{
+
+/*
+   Memastikan sesi login tersimpan
+   di browser.
+*/
+await setPersistence(
+auth,
+browserLocalPersistence
+);
 
 await signInWithEmailAndPassword(
 auth,
@@ -1731,29 +1468,56 @@ email,
 password
 );
 
+showLoginMessage(
+"Login berhasil. Membuka aplikasi...",
+true
+);
+
 }catch(e){
 
-$("loginMessage").textContent=
-e.message;
+console.error(
+"LOGIN ERROR:",
+e
+);
+
+showLoginMessage(
+firebaseErrorMessage(e)
+);
+
+}finally{
+
+setLoginButtons(false);
 
 }
 
 };
 
 
-window.logoutUser=
-async function(){
+window.logoutUser=async function(){
+
+try{
 
 stopCamera();
 
+if(auth){
 await signOut(auth);
+}
+
+}catch(e){
+
+showToast(
+"Gagal keluar: "+
+e.message
+);
+
+}
 
 };
 
 
-/* =========================
-SCOREBOARD
-========================= */
+/* =========================================================
+   SCOREBOARD
+   ========================================================= */
 
 window.updateScoreboard=function(){
 
@@ -1775,7 +1539,6 @@ syncFsScore();
 
 };
 
-
 window.changeScore=function(team,delta){
 
 const el=
@@ -1793,6 +1556,17 @@ updateScoreboard();
 
 };
 
+window.toggleScoreboard=function(){
+
+const el=$("scoreControls");
+
+el.style.display="block";
+
+el.scrollIntoView({
+behavior:"smooth"
+});
+
+};
 
 function formatTime(s){
 
@@ -1801,12 +1575,13 @@ Math.floor(s/60)
 ).padStart(2,"0")
 +
 ":"+
-String(
-s%60
-).padStart(2,"0");
+String(s%60).padStart(2,"0");
 
 }
 
+let matchSeconds=0;
+let matchInterval=null;
+let isMatchRunning=false;
 
 window.startMatchTimer=function(){
 
@@ -1830,7 +1605,6 @@ formatTime(matchSeconds);
 
 };
 
-
 window.pauseMatchTimer=function(){
 
 isMatchRunning=false;
@@ -1841,7 +1615,6 @@ $("liveTimerStatus")
 clearInterval(matchInterval);
 
 };
-
 
 window.resetMatchTimer=function(){
 
@@ -1858,24 +1631,13 @@ $("liveTimerStatus")
 };
 
 
-window.toggleScoreboard=function(){
+/* =========================================================
+   POSTINGAN
+   ========================================================= */
 
-$("scoreControls").style.display="block";
+let posts=[];
 
-$("scoreControls")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-};
-
-
-/* =========================
-POSTINGAN
-========================= */
-
-window.addPost=
-async function(){
+window.addPost=async function(){
 
 const text=
 $("statusInput").value.trim();
@@ -1890,6 +1652,7 @@ alert(
 );
 
 return;
+
 }
 
 if(!auth.currentUser){
@@ -1899,6 +1662,7 @@ alert(
 );
 
 return;
+
 }
 
 try{
@@ -1918,8 +1682,7 @@ text,
 image,
 likes:0,
 comments:[],
-time:new Date()
-.toLocaleString("id-ID"),
+time:new Date().toLocaleString("id-ID"),
 createdAt:serverTimestamp()
 };
 
@@ -1959,9 +1722,7 @@ e.message
 
 };
 
-
-window.addBigPost=
-async function(){
+window.addBigPost=async function(){
 
 const text=
 $("bigStatus").value.trim();
@@ -1976,6 +1737,7 @@ alert(
 );
 
 return;
+
 }
 
 $("statusInput").value=text;
@@ -1999,7 +1761,6 @@ $("bigPhoto").value="";
 
 };
 
-
 async function loadPosts(){
 
 if(!auth.currentUser)return;
@@ -2018,12 +1779,14 @@ auth.currentUser.uid,
 
 posts=[];
 
-snap.forEach(i=>
+snap.forEach(i=>{
+
 posts.push({
 id:i.id,
 ...i.data()
-})
-);
+});
+
+});
 
 posts.sort(
 (a,b)=>
@@ -2045,7 +1808,6 @@ Gagal memuat postingan.<br>
 
 }
 
-
 function renderPosts(){
 
 const boxEl=$("posts");
@@ -2059,6 +1821,7 @@ Buat postingan pertama kamu.
 </div>`;
 
 return;
+
 }
 
 boxEl.innerHTML=
@@ -2085,24 +1848,16 @@ return `
 
 <div class="post-head">
 
-<img
-class="avatar-small"
-src="${avatar}">
+<img class="avatar-small" src="${avatar}">
 
 <div class="post-user">
-
-<strong>
-${esc(p.name||"Ifan")}
-</strong>
-
+<strong>${esc(p.name||"Ifan")}</strong>
 <div class="post-time">
 ${esc(p.time||"")}
 </div>
-
 </div>
 
-<button
-class="post-menu"
+<button class="post-menu"
 onclick="postMenu(${i})">
 ⋮
 </button>
@@ -2133,16 +1888,15 @@ ${p.image?
 
 </div>
 
-<div
-id="comments-${i}"
-class="comment-box">
+<div id="comments-${i}" class="comment-box">
 
 <div class="comment-row">
 
 <input
 id="comment-${i}"
 class="comment-input"
-placeholder="Tulis komentar...">
+placeholder="Tulis komentar..."
+>
 
 <button
 class="comment-send"
@@ -2163,9 +1917,7 @@ ${ch}
 
 }
 
-
-window.likePost=
-async function(i){
+window.likePost=async function(i){
 
 const p=posts[i];
 
@@ -2199,12 +1951,9 @@ likes:p.likes
 
 };
 
+window.toggleComments=function(i){
 
-window.toggleComments=
-function(i){
-
-const b=
-$("comments-"+i);
+const b=$("comments-"+i);
 
 if(b){
 
@@ -2217,9 +1966,7 @@ b.style.display==="block"?
 
 };
 
-
-window.addComment=
-async function(i){
+window.addComment=async function(i){
 
 const input=
 $("comment-"+i);
@@ -2233,14 +1980,14 @@ const p=posts[i];
 
 if(!p)return;
 
-if(!Array.isArray(p.comments))
+if(!Array.isArray(p.comments)){
 p.comments=[];
+}
 
 p.comments.push({
 name:profile.name||"Ifan",
 text,
-time:new Date()
-.toLocaleString("id-ID")
+time:new Date().toLocaleString("id-ID")
 });
 
 renderPosts();
@@ -2273,13 +2020,9 @@ comments:p.comments
 
 };
 
-
-window.sharePost=
-async function(i){
+window.sharePost=async function(i){
 
 const p=posts[i];
-
-if(!p)return;
 
 const text=
 (p.name||"IFAN")+
@@ -2309,9 +2052,7 @@ alert(
 
 };
 
-
-window.postMenu=
-async function(i){
+window.postMenu=async function(i){
 
 const p=posts[i];
 
@@ -2361,9 +2102,9 @@ e.message
 };
 
 
-/* =========================
-FULLSCREEN SCORE
-========================= */
+/* =========================================================
+   PANEL SKOR
+   ========================================================= */
 
 function syncFsScore(){
 
@@ -2380,9 +2121,7 @@ parseInt($("scoreBInput").value)||0;
 
 }
 
-
-window.setTeamName=
-function(t,v){
+window.setTeamName=function(t,v){
 
 $(t==="A"?
 "teamAInput":
@@ -2392,9 +2131,7 @@ updateScoreboard();
 
 };
 
-
-window.togglePanel=
-function(name){
+window.togglePanel=function(name){
 
 const sp=$("fsScorePanel");
 const gp=$("fsGiftPanel");
@@ -2425,30 +2162,51 @@ syncFsScore();
 
 }
 
-if(show&&name==="gift"){
-
-renderGiftPanel();
-
-}
-
 };
 
 
-/* =========================
-CHAT
-========================= */
+/* =========================================================
+   CHAT & GIFT
+   ========================================================= */
+
+const GIFTS=[
+{e:"🌹",n:"Mawar"},
+{e:"❤️",n:"Hati"},
+{e:"👏",n:"Tepuk"},
+{e:"🔥",n:"Api"},
+{e:"⚽",n:"Bola"},
+{e:"🏆",n:"Piala"},
+{e:"🚀",n:"Roket"},
+{e:"👑",n:"Mahkota"},
+{e:"💎",n:"Berlian"}
+];
 
 let chatMsgs=[];
 let chatUnsub=null;
 let chatRemote=false;
 let chatFirst=true;
 
+function renderGiftPanel(){
+
+$("giftGrid").innerHTML=
+GIFTS.map(
+(g,i)=>
+`<button class="gift-item"
+onclick="sendGift(${i})">
+<span>${g.e}</span>
+${g.n}
+</button>`
+).join("");
+
+}
+
 function renderChat(){
 
 $("fsChat").innerHTML=
 chatMsgs
 .slice(-6)
-.map(m=>
+.map(
+m=>
 `<div class="chat-msg${m.gift?" gift":""}">
 <b>${esc(m.name)}</b>
 ${esc(m.text)}
@@ -2458,16 +2216,13 @@ ${esc(m.text)}
 
 }
 
-
-function showGiftFx(emoji,value){
+function showGiftFx(emoji){
 
 const s=
 document.createElement("div");
 
 s.className="gift-pop";
-
 s.textContent=emoji;
-
 s.style.left=
 (8+Math.random()*70)+"%";
 
@@ -2478,54 +2233,27 @@ setTimeout(
 2500
 );
 
-
-const v=
-document.createElement("div");
-
-v.className="gift-value-pop";
-
-v.textContent=
-"+"+
-Number(value).toLocaleString("id-ID")+
-" koin";
-
-v.style.left=
-(10+Math.random()*60)+"%";
-
-$("giftFx").appendChild(v);
-
-setTimeout(
-()=>v.remove(),
-2500
-);
-
 }
-
 
 function pushLocal(m){
 
 chatMsgs.push(m);
 
-if(chatMsgs.length>50)
+if(chatMsgs.length>50){
 chatMsgs.shift();
+}
 
 renderChat();
 
-if(m.gift)
-showGiftFx(
-m.gift,
-m.giftValue||0
-);
+if(m.gift){
+showGiftFx(m.gift);
+}
 
 }
 
-
 async function postMsg(m){
 
-if(
-chatRemote&&
-auth.currentUser
-){
+if(chatRemote&&auth.currentUser){
 
 try{
 
@@ -2552,15 +2280,11 @@ pushLocal(m);
 
 }
 
+window.sendChat=async function(){
 
-window.sendChat=
-async function(){
+const inp=$("fsChatInput");
 
-const inp=
-$("fsChatInput");
-
-const t=
-inp.value.trim();
+const t=inp.value.trim();
 
 if(!t)return;
 
@@ -2569,12 +2293,30 @@ inp.value="";
 await postMsg({
 name:profile.name||"Ifan",
 text:t,
-gift:"",
-giftValue:0
+gift:""
 });
 
 };
 
+window.sendGift=async function(i){
+
+const g=GIFTS[i];
+
+if(!g)return;
+
+await postMsg({
+name:profile.name||"Ifan",
+text:
+"mengirim "+
+g.e+
+" "+
+g.n,
+gift:g.e
+});
+
+$("fsGiftPanel").style.display="none";
+
+};
 
 function startChat(){
 
@@ -2586,13 +2328,11 @@ try{
 
 chatUnsub=
 onSnapshot(
-
 query(
 collection(db,"live_chat"),
 orderBy("createdAt","desc"),
 limit(30)
 ),
-
 snap=>{
 
 chatRemote=true;
@@ -2623,12 +2363,7 @@ c.doc.data();
 chatMsgs.push(m);
 
 if(m.gift){
-
-showGiftFx(
-m.gift,
-m.giftValue||0
-);
-
+showGiftFx(m.gift);
 }
 
 }
@@ -2641,13 +2376,11 @@ chatMsgs.slice(-50);
 renderChat();
 
 },
-
 ()=>{
 
 chatRemote=false;
 
 }
-
 );
 
 }catch(e){
@@ -2657,7 +2390,6 @@ chatRemote=false;
 }
 
 }
-
 
 function stopChat(){
 
@@ -2673,425 +2405,18 @@ chatRemote=false;
 
 }
 
+renderGiftPanel();
 
-/* =========================
-GIFT SYSTEM
-========================= */
 
-const GIFTS=[
+/* =========================================================
+   KAMERA
+   ========================================================= */
 
-{
-e:"🌹",
-n:"Mawar",
-value:10
-},
-
-{
-e:"❤️",
-n:"Hati",
-value:25
-},
-
-{
-e:"👏",
-n:"Tepuk",
-value:50
-},
-
-{
-e:"🔥",
-n:"Api",
-value:100
-},
-
-{
-e:"⚽",
-n:"Bola",
-value:250
-},
-
-{
-e:"🏆",
-n:"Piala",
-value:500
-},
-
-{
-e:"🚀",
-n:"Roket",
-value:1000
-},
-
-{
-e:"👑",
-n:"Mahkota",
-value:2500
-},
-
-{
-e:"💎",
-n:"Berlian",
-value:5000
-}
-
-];
-
-
-function formatCoins(n){
-
-return Number(n||0)
-.toLocaleString("id-ID");
-
-}
-
-
-function saveGiftState(){
-
-if(!auth.currentUser)return;
-
-const data={
-coinBalance,
-giftTotal,
-hostGift,
-platformGift,
-updatedAt:Date.now()
-};
-
-try{
-
-localStorage.setItem(
-"social_live_if_gift_"+
-auth.currentUser.uid,
-JSON.stringify(data)
-);
-
-}catch(e){}
-
-}
-
-
-function loadGiftState(){
-
-coinBalance=START_COINS;
-giftTotal=0;
-hostGift=0;
-platformGift=0;
-giftHistory=[];
-
-if(!auth.currentUser)return;
-
-try{
-
-const s=
-localStorage.getItem(
-"social_live_if_gift_"+
-auth.currentUser.uid
-);
-
-if(s){
-
-const d=JSON.parse(s);
-
-coinBalance=
-Number(d.coinBalance??START_COINS);
-
-giftTotal=
-Number(d.giftTotal||0);
-
-hostGift=
-Number(d.hostGift||0);
-
-platformGift=
-Number(d.platformGift||0);
-
-}
-
-}catch(e){}
-
-updateGiftUI();
-
-}
-
-
-function updateGiftUI(){
-
-$("coinBalance").textContent=
-formatCoins(coinBalance);
-
-$("giftTotalCoins").textContent=
-formatCoins(giftTotal);
-
-$("hostGiftCoins").textContent=
-formatCoins(hostGift);
-
-$("platformGiftCoins").textContent=
-formatCoins(platformGift);
-
-renderGiftHistory();
-
-}
-
-
-function renderGiftPanel(){
-
-$("giftGrid").innerHTML=
-GIFTS.map(
-(g,i)=>
-`
-<button
-class="gift-item"
-onclick="sendGift(${i})">
-
-<span>${g.e}</span>
-
-${esc(g.n)}
-
-<small>
-${formatCoins(g.value)} koin
-</small>
-
-</button>
-`
-).join("");
-
-updateGiftUI();
-
-}
-
-
-function renderGiftHistory(){
-
-const el=
-$("giftHistory");
-
-if(!giftHistory.length){
-
-el.innerHTML=
-`<div style="color:#aaa;font-size:11px;">
-Belum ada gift.
-</div>`;
-
-return;
-
-}
-
-el.innerHTML=
-giftHistory
-.slice(-10)
-.reverse()
-.map(g=>
-`
-<div class="gift-history-item">
-${g.emoji}
-<strong>${esc(g.name)}</strong>
-+
-${formatCoins(g.value)}
-koin
-</div>
-`
-)
-.join("");
-
-}
-
-
-/*
-Tambah saldo hanya untuk pengujian.
-Tidak melakukan transaksi uang nyata.
-*/
-
-window.addDemoCoins=
-function(){
-
-coinBalance+=1000;
-
-saveGiftState();
-
-updateGiftUI();
-
-showToast(
-"+1.000 koin demo"
-);
-
-};
-
-
-/*
-Tekan gift:
-1. cek saldo
-2. kurangi koin
-3. hitung nilai gift
-4. bagi 50/50
-5. tampilkan animasi
-6. kirim ke Firestore jika tersedia
-*/
-
-window.sendGift=
-async function(i){
-
-const g=GIFTS[i];
-
-if(!g)return;
-
-if(!auth.currentUser){
-
-showToast(
-"Silakan login terlebih dahulu."
-);
-
-return;
-
-}
-
-if(!cameraStream){
-
-showToast(
-"Mulai LIVE terlebih dahulu."
-);
-
-return;
-
-}
-
-if(coinBalance<g.value){
-
-showToast(
-"Saldo koin demo tidak cukup."
-);
-
-return;
-
-}
-
-
-/* potong saldo */
-
-coinBalance-=g.value;
-
-
-/* total */
-
-giftTotal+=g.value;
-
-
-/* pembagian 50/50 */
-
-const hostValue=
-Math.floor(g.value/2);
-
-const platformValue=
-g.value-hostValue;
-
-hostGift+=hostValue;
-platformGift+=platformValue;
-
-
-/* history */
-
-giftHistory.push({
-
-name:profile.name||"Ifan",
-emoji:g.e,
-gift:g.n,
-value:g.value,
-time:new Date().toISOString()
-
-});
-
-if(giftHistory.length>50)
-giftHistory.shift();
-
-
-/* UI */
-
-saveGiftState();
-
-updateGiftUI();
-
-showGiftFx(
-g.e,
-g.value
-);
-
-postMsg({
-
-name:profile.name||"Ifan",
-text:
-"mengirim "+
-g.e+
-" "+
-g.n+
-" • "+
-formatCoins(g.value)+
-" koin",
-
-gift:g.e,
-
-giftValue:g.value
-
-});
-
-
-/*
-Simpan transaksi gift ke Firestore.
-Ini adalah catatan gift, bukan transaksi pembayaran uang.
-*/
-
-try{
-
-await addDoc(
-collection(db,"live_gifts"),
-{
-
-uid:auth.currentUser.uid,
-
-senderName:
-profile.name||"Ifan",
-
-giftName:g.n,
-
-giftEmoji:g.e,
-
-value:g.value,
-
-hostValue,
-
-platformValue,
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-}catch(e){
-
-console.log(
-"Gift Firestore belum tersimpan:",
-e.message
-);
-
-}
-
-
-showToast(
-g.e+
-" "+
-g.n+
-" berhasil dikirim • "+
-formatCoins(g.value)+
-" koin"
-);
-
-};
-
-
-/* =========================
-KAMERA
-========================= */
-
+let cameraStream=null;
 let camFacing="environment";
 
+let viewerCount=0;
+let viewerInterval=null;
 
 async function openStream(){
 
@@ -3101,13 +2426,12 @@ if(
 ){
 
 throw new Error(
-"Browser tidak mendukung kamera. Buka lewat HTTPS di Chrome terbaru."
+"Browser tidak mendukung kamera. Gunakan Chrome melalui HTTPS."
 );
 
 }
 
 const tries=[
-
 {
 video:{
 facingMode:{
@@ -3116,12 +2440,10 @@ ideal:camFacing
 },
 audio:true
 },
-
 {
 video:true,
 audio:true
 },
-
 {
 video:{
 facingMode:{
@@ -3130,24 +2452,19 @@ ideal:camFacing
 },
 audio:false
 },
-
 {
 video:true,
 audio:false
 }
-
 ];
 
 let last;
 
-for(
-const c of tries
-){
+for(const c of tries){
 
 try{
 
-return await
-navigator.mediaDevices
+return await navigator.mediaDevices
 .getUserMedia(c);
 
 }catch(e){
@@ -3162,9 +2479,7 @@ throw last;
 
 }
 
-
-window.flipCamera=
-async function(){
+window.flipCamera=async function(){
 
 if(!cameraStream){
 
@@ -3185,15 +2500,12 @@ try{
 
 cameraStream
 .getTracks()
-.forEach(
-t=>t.stop()
-);
+.forEach(t=>t.stop());
 
 cameraStream=
 await openStream();
 
-const v=
-$("camera");
+const v=$("camera");
 
 v.srcObject=
 cameraStream;
@@ -3212,20 +2524,18 @@ showToast(
 
 };
 
-
-window.startCamera=
-async function(){
+window.startCamera=async function(){
 
 try{
 
-if(cameraStream)
+if(cameraStream){
 stopCamera();
+}
 
 cameraStream=
 await openStream();
 
-const v=
-$("camera");
+const v=$("camera");
 
 v.muted=true;
 
@@ -3238,7 +2548,7 @@ await v.play();
 
 $("liveStatus").innerHTML=
 "🔴 <strong>LIVE AKTIF</strong><br>"+
-"Kamera sedang digunakan. Tekan ⛶ untuk layar penuh.";
+"Kamera sedang digunakan. Tekan ⛶ untuk layar penuh miring.";
 
 viewerCount=
 Math.floor(
@@ -3248,39 +2558,35 @@ Math.random()*50
 $("viewerNum").textContent=
 viewerCount;
 
-clearInterval(
-viewerInterval
-);
+clearInterval(viewerInterval);
 
 viewerInterval=
-setInterval(
-()=>{
+setInterval(()=>{
 
 $("viewerNum").textContent=
 Math.floor(
 Math.random()*20
 )+viewerCount;
 
-},
-3000
-);
-
-showToast(
-"Live aktif"
-);
+},3000);
 
 }catch(e){
+
+console.error(
+"KAMERA ERROR:",
+e
+);
 
 const msg={
 
 NotAllowedError:
-"Izin kamera ditolak. Aktifkan izin kamera untuk situs ini.",
+"Izin kamera ditolak. Aktifkan izin kamera untuk situs ini di pengaturan browser.",
 
 NotFoundError:
 "Kamera tidak ditemukan di perangkat ini.",
 
 NotReadableError:
-"Kamera sedang dipakai aplikasi lain.",
+"Kamera sedang dipakai aplikasi lain. Tutup aplikasi itu lalu coba lagi.",
 
 SecurityError:
 "Kamera hanya bisa dipakai lewat HTTPS."
@@ -3290,8 +2596,7 @@ SecurityError:
 cameraStream=null;
 
 $("liveStatus").innerHTML=
-"Kamera tidak dapat dibuka.<br>"+
-"<small>"+
+"Kamera tidak dapat dibuka.<br><small>"+
 esc(msg)+
 "</small>";
 
@@ -3299,25 +2604,19 @@ esc(msg)+
 
 };
 
-
-window.stopCamera=
-function(){
+window.stopCamera=function(){
 
 if(cameraStream){
 
 cameraStream
 .getTracks()
-.forEach(
-t=>t.stop()
-);
+.forEach(t=>t.stop());
 
 cameraStream=null;
 
 }
 
-clearInterval(
-viewerInterval
-);
+clearInterval(viewerInterval);
 
 $("viewerNum").textContent="0";
 
@@ -3333,35 +2632,36 @@ exitFullscreen();
 };
 
 
-/* =========================
-AUTH STATE
-========================= */
+/* =========================================================
+   STATUS AUTH
+   ========================================================= */
+
+if(firebaseReady){
 
 onAuthStateChanged(
 auth,
 async user=>{
 
+console.log(
+"Firebase Auth:",
+user?
+"LOGIN "+user.email:
+"BELUM LOGIN"
+);
+
 if(user){
 
-$("loginScreen")
-.style.display="none";
+$("loginScreen").style.display="none";
 
-$("app")
-.style.display="block";
+$("app").style.display="block";
 
-$("appHeader")
-.style.display="flex";
+$("appHeader").style.display="flex";
 
-$("bottomNav")
-.style.display="flex";
+$("bottomNav").style.display="flex";
 
 loadLocalProfile();
 
 updateProfileUI();
-
-loadGiftState();
-
-renderGiftPanel();
 
 startChat();
 
@@ -3373,17 +2673,13 @@ updateScoreboard();
 
 }else{
 
-$("loginScreen")
-.style.display="block";
+$("loginScreen").style.display="block";
 
-$("app")
-.style.display="none";
+$("app").style.display="none";
 
-$("appHeader")
-.style.display="none";
+$("appHeader").style.display="none";
 
-$("bottomNav")
-.style.display="none";
+$("bottomNav").style.display="none";
 
 stopChat();
 
@@ -3391,15 +2687,44 @@ stopCamera();
 
 }
 
-});
+}
+);
 
+}else{
+
+showLoginMessage(
+"Firebase belum berhasil dimuat. Periksa koneksi dan konfigurasi Firebase."
+);
+
+}
+
+
+/* =========================================================
+   ENTER = LOGIN
+   ========================================================= */
+
+$("password").addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter"){
+loginUser();
+}
+
+}
+);
+
+
+/* =========================================================
+   LOAD PROFIL LOKAL
+   ========================================================= */
 
 loadLocalProfile();
 
 
-/* =========================
-PWA ICON
-========================= */
+/* =========================================================
+   PWA ICON
+   ========================================================= */
 
 (function(){
 
@@ -3408,7 +2733,8 @@ document.createElement("canvas");
 
 c.width=c.height=512;
 
-const x=c.getContext("2d");
+const x=
+c.getContext("2d");
 
 x.fillStyle="#111";
 x.fillRect(
@@ -3456,7 +2782,6 @@ fav.href=icon;
 
 document.head.appendChild(fav);
 
-
 const ap=
 document.createElement("link");
 
@@ -3465,14 +2790,13 @@ ap.href=icon;
 
 document.head.appendChild(ap);
 
-
 const manifest={
 
 name:"social live.IF",
 
 short_name:"live.IF",
 
-start_url:".",
+start_url:"./",
 
 display:"standalone",
 
@@ -3512,6 +2836,19 @@ type:"application/json"
 document.head.appendChild(ml);
 
 })();
+
+
+window.downloadApp=function(){
+
+alert(
+"Untuk install social live.IF di HP:\n\n"+
+"1. Buka aplikasi ini melalui Chrome.\n"+
+"2. Tekan titik tiga ⋮.\n"+
+"3. Pilih Tambahkan ke Layar Utama atau Install Aplikasi.\n\n"+
+"Icon social live.IF akan muncul di layar HP."
+);
+
+};
 
 </script>
 
