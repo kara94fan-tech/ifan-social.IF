@@ -11,47 +11,60 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
- 
 
-/* PERBAIKAN LAYAR PENUH DAN KEYBOARD ANDROID */
-.camera-box {
-  min-height: 0;
-}
-
-.video-wrap {
-  min-height: 0;
-  overflow: hidden;
+/* PERBAIKAN FULLSCREEN DAN KEYBOARD ANDROID */
+html,
+body {
+  min-height: 100%;
 }
 
 .camera-box.pseudo-fs {
-  width: 100vw;
-  height: var(--visible-height, 100dvh);
-  top: var(--visible-top, 0px);
-  left: 0;
-  right: 0;
-  bottom: auto;
+  position: fixed !important;
+  z-index: 9999;
+  top: var(--visible-top, 0px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: 100vw !important;
+  height: var(--visible-height, 100dvh) !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  overflow: hidden;
 }
 
 .camera-box.pseudo-fs .video-wrap {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  height: auto;
+  overflow: hidden;
+}
+
+.camera-box.pseudo-fs #camera {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: cover;
 }
 
 .camera-box.pseudo-fs.keyboard-open {
-  transform: none !important;
-  width: 100vw !important;
-  height: var(--visible-height, 100dvh) !important;
   top: var(--visible-top, 0px) !important;
   left: 0 !important;
+  width: 100vw !important;
+  height: var(--visible-height, 100dvh) !important;
+  transform: none !important;
 }
 
 .camera-box.pseudo-fs.keyboard-open .video-wrap {
+  flex: 1 1 auto;
   min-height: 0;
 }
 
 .camera-box.pseudo-fs.keyboard-open .fs-chat {
   bottom: 58px;
   max-height: 25%;
+  overflow: hidden;
 }
 
 .camera-box.pseudo-fs.keyboard-open .fs-bar {
@@ -63,25 +76,21 @@
 }
 
 .camera-box.pseudo-fs.keyboard-open .fs-bar input {
+  flex: 1;
   min-width: 0;
   font-size: 16px;
-  touch-action: manipulation;
 }
 
 .camera-box.pseudo-fs.keyboard-open .fs-panel {
   bottom: 58px;
-  max-height: 45%;
-}
-
-.camera-box.pseudo-fs.keyboard-open #camera {
-  max-width: 100%;
+  max-height: 40%;
+  overflow-y: auto;
 }
 
 body.fs-lock {
   overflow: hidden;
   overscroll-behavior: none;
 }
-
 
  
 <style>
@@ -935,32 +944,27 @@ async function enterFullscreen() {
   setTimeout(applyRotation, 350);
 }
 
-function exitFullscreen() {
-  keyboardOpen = false;
 
-  box.classList.remove("keyboard-open");
-  clearRotation();
-
-  box.classList.remove("pseudo-fs");
-
-  if (document.fullscreenElement && document.exitFullscreen) {
-    document.exitFullscreen().catch(() => {});
-  } else if (
-    document.webkitFullscreenElement &&
-    document.webkitExitFullscreen
-  ) {
-    document.webkitExitFullscreen();
-  }
-
-  try {
-    if (screen.orientation && screen.orientation.unlock) {
-      screen.orientation.unlock();
-    }
-  } catch (e) {}
-
-  setFsUI(false);
+async function enterFullscreen() {
   updateVisibleViewport();
+
+  keyboardOpen = false;
+  box.classList.add("pseudo-fs");
+  box.classList.remove("keyboard-open");
+
+  clearRotation();
+  setFsUI(true);
+  updateVisibleViewport();
+
+  setTimeout(() => {
+    updateVisibleViewport();
+
+    if (isFs() && !keyboardOpen) {
+      applyRotation();
+    }
+  }, 150);
 }
+
 
 window.toggleFullscreen = function() {
   if (isFs()) {
