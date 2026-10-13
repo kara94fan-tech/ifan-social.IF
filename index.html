@@ -11,6 +11,77 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+ 
+/* PERBAIKAN LAYAR PENUH DAN KEYBOARD ANDROID */
+.camera-box {
+  min-height: 0;
+}
+
+.video-wrap {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.camera-box.pseudo-fs {
+  width: 100vw;
+  height: var(--visible-height, 100dvh);
+  top: var(--visible-top, 0px);
+  left: 0;
+  right: 0;
+  bottom: auto;
+}
+
+.camera-box.pseudo-fs .video-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+.camera-box.pseudo-fs.keyboard-open {
+  transform: none !important;
+  width: 100vw !important;
+  height: var(--visible-height, 100dvh) !important;
+  top: var(--visible-top, 0px) !important;
+  left: 0 !important;
+}
+
+.camera-box.pseudo-fs.keyboard-open .video-wrap {
+  min-height: 0;
+}
+
+.camera-box.pseudo-fs.keyboard-open .fs-chat {
+  bottom: 58px;
+  max-height: 25%;
+}
+
+.camera-box.pseudo-fs.keyboard-open .fs-bar {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: max(8px, env(safe-area-inset-bottom));
+  gap: 5px;
+}
+
+.camera-box.pseudo-fs.keyboard-open .fs-bar input {
+  min-width: 0;
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+.camera-box.pseudo-fs.keyboard-open .fs-panel {
+  bottom: 58px;
+  max-height: 45%;
+}
+
+.camera-box.pseudo-fs.keyboard-open #camera {
+  max-width: 100%;
+}
+
+body.fs-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+ 
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f4f7;color:#18202a}
@@ -738,251 +809,256 @@ nav[map[page]].classList.add("active");
 };
 
 
+
 /* =========================================================
-   FULLSCREEN
+   FULLSCREEN + KEYBOARD ANDROID
    ========================================================= */
 
-const box=$("cameraBox");
-const fsBtn=$("fsBtn");
+const box = $("cameraBox");
+const fsBtn = $("fsBtn");
 
-let usedDocFs=false;
-let vRot=0;
+let usedDocFs = false;
+let vRot = 0;
+let keyboardOpen = false;
 
-function isFs(){
-return box.classList.contains("pseudo-fs");
+function isFs() {
+  return box.classList.contains("pseudo-fs");
 }
 
-function applyVideoRot(){
+function updateVisibleViewport() {
+  const vv = window.visualViewport;
 
-const v=$("camera");
-const wrap=v.parentElement;
+  const height = vv ? vv.height : window.innerHeight;
+  const top = vv ? vv.offsetTop : 0;
 
-if(!vRot||!isFs()){
+  document.documentElement.style.setProperty(
+    "--visible-height",
+    Math.max(200, height) + "px"
+  );
 
-v.classList.remove("vrot");
-v.style.width="";
-v.style.height="";
-v.style.transform="";
-
-return;
+  document.documentElement.style.setProperty(
+    "--visible-top",
+    Math.max(0, top) + "px"
+  );
 }
 
-const W=wrap.clientWidth;
-const H=wrap.clientHeight;
-const swap=vRot%180!==0;
+function applyVideoRot() {
+  const v = $("camera");
+  const wrap = v.parentElement;
 
-v.classList.add("vrot");
+  if (!vRot || !isFs() || keyboardOpen) {
+    v.classList.remove("vrot");
+    v.style.width = "";
+    v.style.height = "";
+    v.style.transform = "";
+    return;
+  }
 
-v.style.width=(swap?H:W)+"px";
-v.style.height=(swap?W:H)+"px";
+  const W = wrap.clientWidth;
+  const H = wrap.clientHeight;
+  const swap = vRot % 180 !== 0;
 
-v.style.transform=
-"translate(-50%,-50%) rotate("+vRot+"deg)";
-
+  v.classList.add("vrot");
+  v.style.width = (swap ? H : W) + "px";
+  v.style.height = (swap ? W : H) + "px";
+  v.style.transform =
+    "translate(-50%,-50%) rotate(" + vRot + "deg)";
 }
 
-window.rotateVideo=function(){
-
-vRot=(vRot+90)%360;
-
-applyVideoRot();
-
-showToast("Gambar kamera diputar "+vRot+"°");
-
+window.rotateVideo = function() {
+  vRot = (vRot + 90) % 360;
+  applyVideoRot();
+  showToast("Gambar kamera diputar " + vRot + "°");
 };
 
-function setFsUI(on){
+function setFsUI(on) {
+  fsBtn.textContent = on ? "✕" : "⛶";
+  fsBtn.title = on ? "Keluar layar penuh" : "Layar penuh";
 
-fsBtn.textContent=on?"✕":"⛶";
-
-fsBtn.title=on?
-"Keluar layar penuh":
-"Layar penuh";
-
-document.body.classList.toggle("fs-lock",on);
-
-applyVideoRot();
-
+  document.body.classList.toggle("fs-lock", on);
+  applyVideoRot();
 }
 
-function applyRotation(){
+function applyRotation() {
+  if (!isFs() || keyboardOpen) {
+    clearRotation();
+    return;
+  }
 
-if(!isFs()){
+  const portrait = window.innerHeight > window.innerWidth;
 
-clearRotation();
-return;
+  if (portrait) {
+    box.classList.add("rotate-fs");
+    box.style.width = window.innerHeight + "px";
+    box.style.height = window.innerWidth + "px";
+  } else {
+    clearRotation();
+  }
 
+  applyVideoRot();
 }
 
-const portrait=window.innerHeight>window.innerWidth;
-
-if(portrait){
-
-box.classList.add("rotate-fs");
-
-box.style.width=
-window.innerHeight+"px";
-
-box.style.height=
-window.innerWidth+"px";
-
-}else{
-
-clearRotation();
-
+function clearRotation() {
+  box.classList.remove("rotate-fs");
+  box.style.width = "";
+  box.style.height = "";
 }
 
-applyVideoRot();
+async function enterFullscreen() {
+  updateVisibleViewport();
 
+  box.classList.add("pseudo-fs");
+  setFsUI(true);
+
+  try {
+    if (box.requestFullscreen) {
+      await box.requestFullscreen();
+      usedDocFs = true;
+    } else if (box.webkitRequestFullscreen) {
+      box.webkitRequestFullscreen();
+      usedDocFs = true;
+    }
+  } catch (e) {
+    console.warn("Mode fullscreen browser:", e);
+  }
+
+  try {
+    if (screen.orientation && screen.orientation.lock) {
+      await screen.orientation.lock("landscape");
+    }
+  } catch (e) {
+    // Jika rotasi otomatis tidak didukung, mode fullscreen tetap berjalan.
+  }
+
+  setTimeout(applyRotation, 350);
 }
 
-function clearRotation(){
+function exitFullscreen() {
+  keyboardOpen = false;
 
-box.classList.remove("rotate-fs");
+  box.classList.remove("keyboard-open");
+  clearRotation();
 
-box.style.width="";
-box.style.height="";
+  box.classList.remove("pseudo-fs");
 
+  if (document.fullscreenElement && document.exitFullscreen) {
+    document.exitFullscreen().catch(() => {});
+  } else if (
+    document.webkitFullscreenElement &&
+    document.webkitExitFullscreen
+  ) {
+    document.webkitExitFullscreen();
+  }
+
+  try {
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  } catch (e) {}
+
+  setFsUI(false);
+  updateVisibleViewport();
 }
 
-async function enterFullscreen(){
-
-box.classList.add("pseudo-fs");
-
-setFsUI(true);
-
-try{
-
-const de=document.documentElement;
-
-if(de.requestFullscreen){
-
-await de.requestFullscreen();
-usedDocFs=true;
-
-}else if(de.webkitRequestFullscreen){
-
-de.webkitRequestFullscreen();
-usedDocFs=true;
-
-}
-
-}catch(e){
-
-console.warn("Fullscreen:",e);
-
-}
-
-try{
-
-if(screen.orientation&&screen.orientation.lock){
-await screen.orientation.lock("landscape");
-}
-
-}catch(e){}
-
-setTimeout(applyRotation,350);
-
-}
-
-window.addEventListener("resize",()=>{
-
-if(isFs()){
-setTimeout(applyRotation,150);
-}
-
-});
-
-window.addEventListener("orientationchange",()=>{
-
-if(isFs()){
-setTimeout(applyRotation,350);
-}
-
-});
-
-function exitFullscreen(){
-
-clearRotation();
-
-if(box.classList.contains("pseudo-fs")){
-box.classList.remove("pseudo-fs");
-}
-
-if(document.fullscreenElement&&document.exitFullscreen){
-
-document.exitFullscreen().catch(()=>{});
-
-}else if(
-document.webkitFullscreenElement&&
-document.webkitExitFullscreen
-){
-
-document.webkitExitFullscreen();
-
-}
-
-try{
-
-if(screen.orientation&&screen.orientation.unlock){
-screen.orientation.unlock();
-}
-
-}catch(e){}
-
-setFsUI(false);
-
-}
-
-window.toggleFullscreen=function(){
-
-if(isFs()){
-exitFullscreen();
-}else{
-enterFullscreen();
-}
-
+window.toggleFullscreen = function() {
+  if (isFs()) {
+    exitFullscreen();
+  } else {
+    enterFullscreen();
+  }
 };
 
-["fullscreenchange","webkitfullscreenchange"]
-.forEach(ev=>{
+/* Keyboard dibuka: hentikan rotasi paksa agar kolom chat
+   tetap dapat dijangkau pada layar HP. */
+function onChatFocus() {
+  if (!isFs()) return;
 
-document.addEventListener(ev,()=>{
+  keyboardOpen = true;
 
-if(
-!document.fullscreenElement&&
-!document.webkitFullscreenElement
-){
+  box.classList.add("keyboard-open");
+  clearRotation();
+  updateVisibleViewport();
 
-if(usedDocFs&&isFs()){
-
-usedDocFs=false;
-exitFullscreen();
-
+  setTimeout(() => {
+    updateVisibleViewport();
+    applyVideoRot();
+  }, 250);
 }
 
-}else{
+function onChatBlur() {
+  keyboardOpen = false;
 
-setTimeout(applyRotation,350);
+  box.classList.remove("keyboard-open");
+  updateVisibleViewport();
 
+  if (isFs()) {
+    setTimeout(applyRotation, 300);
+  }
 }
 
-});
+$("fsChatInput").addEventListener("focus", onChatFocus);
+$("fsChatInput").addEventListener("blur", onChatBlur);
 
-});
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", () => {
+    updateVisibleViewport();
 
-document.addEventListener("keydown",e=>{
+    if (isFs() && keyboardOpen) {
+      clearRotation();
+      applyVideoRot();
+    }
+  });
 
-if(
-e.key==="Escape"&&
-box.classList.contains("pseudo-fs")
-){
-
-exitFullscreen();
-
+  window.visualViewport.addEventListener("scroll", () => {
+    if (isFs() && keyboardOpen) {
+      updateVisibleViewport();
+    }
+  });
 }
 
+window.addEventListener("resize", () => {
+  updateVisibleViewport();
+
+  if (isFs() && !keyboardOpen) {
+    setTimeout(applyRotation, 150);
+  }
 });
+
+window.addEventListener("orientationchange", () => {
+  updateVisibleViewport();
+
+  if (isFs() && !keyboardOpen) {
+    setTimeout(applyRotation, 350);
+  }
+});
+
+["fullscreenchange", "webkitfullscreenchange"].forEach(ev => {
+  document.addEventListener(ev, () => {
+    /*
+      Jangan menutup mode pseudo-fullscreen otomatis ketika
+      browser mengubah status fullscreen saat keyboard dibuka.
+    */
+    if (
+      !document.fullscreenElement &&
+      !document.webkitFullscreenElement
+    ) {
+      usedDocFs = false;
+    }
+  });
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && isFs()) {
+    exitFullscreen();
+  }
+});
+
+updateVisibleViewport();
+
+
+
+
+
 
 
 /* =========================================================
